@@ -217,17 +217,17 @@ const translations = {
 };
 
 const backgroundThemesList = {
-  bg_nebula: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-700 via-slate-950 to-indigo-950 pointer-events-none overflow-hidden transition-colors duration-700",
-  bg_void: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-700 via-black to-black pointer-events-none overflow-hidden transition-colors duration-700",
-  bg_solar: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600 via-red-950 to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700",
-  bg_galactic: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-600 via-blue-950 to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700"
+  bg_nebula: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-fuchsia-600 via-purple-800 via-30% to-indigo-950 pointer-events-none overflow-hidden transition-colors duration-700",
+  bg_void: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-400 via-zinc-900 via-25% to-black pointer-events-none overflow-hidden transition-colors duration-700",
+  bg_solar: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-400 via-orange-700 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700",
+  bg_galactic: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-300 via-blue-800 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700"
 };
 
 const backgroundAccents = {
-  bg_nebula: 'bg-indigo-500/30',
-  bg_void: 'bg-slate-300/15',
-  bg_solar: 'bg-orange-500/35',
-  bg_galactic: 'bg-cyan-400/35'
+  bg_nebula: 'bg-fuchsia-500/40',
+  bg_void: 'bg-slate-300/20',
+  bg_solar: 'bg-amber-400/45',
+  bg_galactic: 'bg-cyan-300/45'
 };
 
 /* ============================================================
@@ -310,6 +310,7 @@ function BallVisual({ skinId, level = 1, size = 32, shieldActive = false, booste
         <div className="ball-sheen" />
         <div className="ball-shade" />
         <div className="ball-spec" />
+        <div className="ball-rim" />
         {level > 1 && <div className="ball-ring" style={{ opacity: (level - 1) * 0.28 }} />}
         {level >= 5 && <div className="ball-core" />}
       </div>
@@ -611,9 +612,10 @@ function App() {
   const ballRef = useRef(null);
   const ballInnerRef = useRef(null);
   const activePlanetRef = useRef(null);
+  const impactGlowRef = useRef(null);
 
-  const TRAIL_POOL_SIZE = 14;
-  const TRAIL_LIFE = 260;          // iz ömrü (ms) — kısa ve hareketli
+  const TRAIL_POOL_SIZE = 20;
+  const TRAIL_LIFE = 320;          // iz ömrü (ms) — kısa ve hareketli
   const PARTICLE_POOL_SIZE = 50;
   // Sabit boyutlu "ring buffer" — her karede spread/filter ile yeni dizi
   // oluşturmak yerine mevcut slotlar üzerine yazılır (GC baskısı = FPS düşüşünün
@@ -664,15 +666,16 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const sesKontrol = CapacitorApp.addListener('appStateChange', ({ isActive }) => {
+    let sesKontrol;
+    CapacitorApp.addListener('appStateChange', ({ isActive }) => {
       if (!isActive) {
         stopAmbientSpaceSound();
         if (gameState === 'playing') setIsPaused(true);
       } else {
         if (gameState === 'playing' && soundOn && !adOverlay && !isPaused) startAmbientSpaceSound(true, currentThemeIdxRef.current);
       }
-    });
-    return () => sesKontrol.remove();
+    }).then((handle) => { sesKontrol = handle; });
+    return () => sesKontrol?.remove();
   }, [gameState, soundOn, adOverlay, isPaused]);
 
   useEffect(() => {
@@ -726,13 +729,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const listener = CapacitorApp.addListener('backButton', () => {
+    let listener;
+    CapacitorApp.addListener('backButton', () => {
       setGameState((prev) => {
         if (prev === 'menu') { CapacitorApp.exitApp(); return prev; }
         setIsPaused(false); playSound('click', soundOn); return 'menu';
       });
-    });
-    return () => listener.remove();
+    }).then((handle) => { listener = handle; });
+    return () => listener?.remove();
   }, [soundOn]);
 
   useEffect(() => {
@@ -778,17 +782,19 @@ function App() {
 
   const spawnParticles = (x, y, kind, themeColors) => {
     const isSupernova = kind === 'supernova';
+    const isPerfect = kind === 'perfect';
+    const isGreat = kind === 'great';
     const colors = isSupernova
       ? (themeColors && themeColors.length ? themeColors : ['#fde047', '#fb923c', '#ffffff'])
-      : kind === 'perfect' ? ['#fde047', '#fbbf24', '#ffffff'] : ['#67e8f9', '#22d3ee', '#ffffff'];
-    const count = isSupernova ? 46 : kind === 'perfect' ? 12 : 6;
+      : isPerfect ? ['#fde047', '#fbbf24', '#ffffff', '#fff7d6'] : isGreat ? ['#67e8f9', '#22d3ee', '#ffffff'] : ['#67e8f9', '#0ea5e9'];
+    const count = isSupernova ? 46 : isPerfect ? 22 : isGreat ? 12 : 7;
     const now = performance.now();
 
     for (let n = 0; n < count; n++) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = isSupernova ? 3 + Math.random() * 10 : 2 + Math.random() * 4;
-      const life = isSupernova ? 500 + Math.random() * 500 : 550;
-      const size = isSupernova ? 2 + Math.random() * 7 : 3 + Math.random() * 4;
+      const speed = isSupernova ? 3 + Math.random() * 10 : isPerfect ? 2.8 + Math.random() * 6 : 2 + Math.random() * 4;
+      const life = isSupernova ? 500 + Math.random() * 500 : isPerfect ? 650 : 550;
+      const size = isSupernova ? 2 + Math.random() * 7 : isPerfect ? 3.5 + Math.random() * 5.5 : 3 + Math.random() * 4;
       const color = colors[Math.floor(Math.random() * colors.length)];
 
       const idx = particleCursorRef.current;
@@ -994,6 +1000,18 @@ function App() {
 
               if (kind === 'perfect') slowMoUntilRef.current = currentTime + 160;
 
+              if (impactGlowRef.current && kind !== 'normal') {
+                const glowRgb = kind === 'perfect' ? '253,224,71' : '34,211,238';
+                const glowEl = impactGlowRef.current;
+                glowEl.style.transition = 'none';
+                glowEl.style.background = `radial-gradient(circle, rgba(${glowRgb},0.95) 0%, rgba(${glowRgb},0.3) 42%, transparent 74%)`;
+                glowEl.style.opacity = '1';
+                requestAnimationFrame(() => {
+                  glowEl.style.transition = 'opacity 0.5s ease-out';
+                  glowEl.style.opacity = '0';
+                });
+              }
+
               const popupId = particleUid++;
               let extraText = '';
               const nextScore = live.score + gain + comboBonus;
@@ -1122,7 +1140,7 @@ function App() {
             if (age >= TRAIL_LIFE) { dot.style.opacity = '0'; continue; }
             const frac = 1 - age / TRAIL_LIFE;
             dot.style.opacity = String(frac * 0.9);
-            dot.style.transform = `translate(${-9 + pt.x}px, ${-9 + pt.y}px) scale(${0.25 + frac * 0.85})`;
+            dot.style.transform = `translate(${-13 + pt.x}px, ${-13 + pt.y}px) scale(${0.25 + frac * 0.85})`;
           }
 
           // background/width/height artık doğuşta bir kez set ediliyor (spawnParticles içinde);
@@ -1292,7 +1310,7 @@ function App() {
   const ballScale = 1 + (currentSkinLvl - 1) * 0.13;
   const shownScores = (scoresFailed || onlineLeaderboard.length === 0) ? leaderboard : onlineLeaderboard;
 
-  const PlanetBody = ({ innerRef, isSupernova }) => (
+  const PlanetBody = ({ innerRef, isSupernova, glowRef }) => (
     <>
       <div className="planet-atmo" />
       <div className="planet-ring planet-ring-back" />
@@ -1314,8 +1332,10 @@ function App() {
         <div className="planet-layer p-storm" />
         <div className="planet-layer p-terminator" />
         <div className="planet-layer p-spec" />
+        <div className="planet-layer p-shine" />
         <div className="planet-layer p-rim" />
       </div>
+      {glowRef && <div ref={glowRef} className="impact-glow" />}
       {isSupernova && (
         <>
           <div className="supernova-ring ring-a" />
@@ -1358,7 +1378,7 @@ function App() {
           .planet-group { --p-light:#ffd9a8; --p-mid:#ea580c; --p-dark:#2f0d03; --p-glow:234,88,12; --p-ring-rgb:249,115,22;
                           --p-bands:0; --p-craters:0; --p-land:0; --p-ice:0; --p-storm:0; --p-lava:0; --p-ring-on:0; }
           .planet { position: relative; width: 132px; height: 132px; border-radius: 50%; overflow: hidden;
-                    box-shadow: 0 0 55px rgba(var(--p-glow), .55), 0 0 120px rgba(var(--p-glow), .2);
+                    box-shadow: 0 0 70px rgba(var(--p-glow), .65), 0 0 150px rgba(var(--p-glow), .3), 0 0 18px rgba(255,255,255,.15);
                     transform: scale(1); z-index: 25; }
           .planet-layer { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; }
 
@@ -1420,7 +1440,12 @@ function App() {
 
           .p-spec { background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.78) 0%, rgba(255,255,255,.22) 14%, transparent 34%); }
 
-          .p-rim { box-shadow: inset 0 0 26px 7px rgba(var(--p-glow), .4), inset -16px -16px 38px rgba(0,0,0,.85); }
+          .p-shine { mix-blend-mode: overlay; opacity: .8;
+                     background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.5) 26deg, transparent 70deg, transparent 360deg);
+                     animation: planetShineSweep 5s linear infinite; }
+          @keyframes planetShineSweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+          .p-rim { box-shadow: inset 0 0 26px 7px rgba(var(--p-glow), .5), inset -16px -16px 38px rgba(0,0,0,.85), inset 0 0 3px 1px rgba(255,255,255,.25); }
 
           .planet-atmo { position: absolute; width: 210px; height: 210px; border-radius: 50%; pointer-events: none; z-index: 5;
                          background: radial-gradient(circle, rgba(var(--p-glow), .32) 0%, rgba(var(--p-glow), .11) 42%, transparent 68%);
@@ -1443,16 +1468,20 @@ function App() {
 
           .ball-gold { border-radius: 50%;
                        background: radial-gradient(circle at 34% 28%, #fffdf0 0%, #fde047 34%, #d9a406 66%, #6b4302 100%);
-                       box-shadow: 0 0 20px rgba(253,224,71,.85), inset -4px -5px 10px rgba(0,0,0,.6); }
+                       box-shadow: 0 0 28px rgba(253,224,71,.95), 0 0 50px rgba(253,224,71,.4), inset -4px -5px 10px rgba(0,0,0,.6); }
           .ball-ruby { clip-path: polygon(50% 0%, 92% 24%, 92% 76%, 50% 100%, 8% 76%, 8% 24%);
                        background: linear-gradient(142deg, #ffe4e6 0%, #fb7185 32%, #be123c 66%, #4c0519 100%);
-                       filter: drop-shadow(0 0 12px rgba(251,113,133,.9)); }
+                       filter: drop-shadow(0 0 16px rgba(251,113,133,1)) drop-shadow(0 0 30px rgba(251,113,133,.45)); }
           .ball-emerald { clip-path: polygon(26% 2%, 74% 2%, 98% 50%, 74% 98%, 26% 98%, 2% 50%);
                           background: linear-gradient(138deg, #ecfdf5 0%, #6ee7b7 28%, #059669 62%, #052e1c 100%);
-                          filter: drop-shadow(0 0 12px rgba(74,222,128,.9)); }
+                          filter: drop-shadow(0 0 16px rgba(74,222,128,1)) drop-shadow(0 0 30px rgba(74,222,128,.45)); }
           .ball-nova { border-radius: 50%;
                        background: radial-gradient(circle at 42% 36%, #ffffff 0%, #ddd6fe 20%, #8b5cf6 56%, #3b0764 100%);
-                       box-shadow: 0 0 24px rgba(167,139,250,.95), inset -3px -4px 10px rgba(0,0,0,.55); }
+                       box-shadow: 0 0 32px rgba(167,139,250,1), 0 0 55px rgba(167,139,250,.5), inset -3px -4px 10px rgba(0,0,0,.55); }
+
+          .ball-rim { border-radius: inherit; mix-blend-mode: screen; opacity: .9;
+                      background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.6) 18deg, transparent 55deg, transparent 360deg);
+                      animation: sheenSpin 3.4s linear infinite reverse; }
 
           .ball-facets { opacity: 0; }
           .ball-ruby .ball-facets, .ball-emerald .ball-facets { opacity: 1; mix-blend-mode: overlay;
@@ -1484,8 +1513,11 @@ function App() {
                          box-shadow: 0 0 16px rgba(34,211,238,.8); animation: shieldPing 1.2s ease-out infinite; }
           @keyframes shieldPing { 0% { transform: scale(.9); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
 
-          .trail-dot { position: absolute; width: 18px; height: 18px; border-radius: 50%; pointer-events: none;
-                       filter: blur(1.5px); mix-blend-mode: screen; }
+          .trail-dot { position: absolute; width: 26px; height: 26px; border-radius: 50%; pointer-events: none;
+                       filter: blur(2px); mix-blend-mode: screen; }
+
+          .impact-glow { position: absolute; inset: -55%; border-radius: 50%; pointer-events: none;
+                         opacity: 0; z-index: 26; }
         `}</style>
 
         {showNameModal && (
@@ -1909,7 +1941,7 @@ function App() {
               ))}
 
               <div ref={activeGroupRef} className="planet-group absolute flex items-center justify-center pointer-events-none" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
-                <PlanetBody innerRef={activePlanetRef} isSupernova={supernovaActive} />
+                <PlanetBody innerRef={activePlanetRef} isSupernova={supernovaActive} glowRef={impactGlowRef} />
                 {supernovaActive && <div className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-red-600 opacity-90 blur-xl z-40 pointer-events-none animate-ping"></div>}
               </div>
 
