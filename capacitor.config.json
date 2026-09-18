@@ -1,0 +1,14 @@
+{
+  "appId": "com.orbitjump.game",
+  "appName": "Orbit Jump",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "android": {
+    "adjustMarginsForEdgeToEdge": "force"
+  },
+  "plugins": {
+    "StatusBar": {
+      "overlaysWebView": true
+    }
+  }
+}

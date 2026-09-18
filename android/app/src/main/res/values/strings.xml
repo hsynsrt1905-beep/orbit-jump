@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Orbit Jump</string>
+    <string name="title_activity_main">Orbit Jump</string>
+    <string name="package_name">com.orbitjump.game</string>
+    <string name="custom_url_scheme">com.orbitjump.game</string>
+</resources>
