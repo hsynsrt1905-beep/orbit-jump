@@ -500,35 +500,6 @@ const vibrate = (pattern) => {
   try { if (navigator.vibrate) navigator.vibrate(pattern); } catch (e) {}
 };
 
-const hexToRgbTuple = (hex) => {
-  const h = String(hex).replace('#', '');
-  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
-  const bigint = parseInt(full, 16);
-  return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
-};
-
-// Her iz noktasına hafif rastgele bir renk sapması verir — böylece art arda
-// gelen tüm noktalar birbirinin birebir aynısı olmaz.
-const jitterColor = (hex, amount = 50) => {
-  try {
-    const [r, g, b] = hexToRgbTuple(hex);
-    const j = () => (Math.random() - 0.5) * amount;
-    const clamp = (v) => Math.max(0, Math.min(255, Math.round(v)));
-    return `rgb(${clamp(r + j())}, ${clamp(g + j())}, ${clamp(b + j())})`;
-  } catch (e) { return hex; }
-};
-
-const mixHex = (hexA, hexB, mixT = 0.5) => {
-  try {
-    const [r1, g1, b1] = hexToRgbTuple(hexA);
-    const [r2, g2, b2] = hexToRgbTuple(hexB);
-    const r = Math.round(r1 + (r2 - r1) * mixT);
-    const g = Math.round(g1 + (g2 - g1) * mixT);
-    const b = Math.round(b1 + (b2 - b1) * mixT);
-    return `rgb(${r}, ${g}, ${b})`;
-  } catch (e) { return hexA; }
-};
-
 const loadJSON = (key, fallback) => {
   try {
     const raw = localStorage.getItem(key);
@@ -614,8 +585,8 @@ function App() {
   const activePlanetRef = useRef(null);
   const impactGlowRef = useRef(null);
 
-  const TRAIL_POOL_SIZE = 20;
-  const TRAIL_LIFE = 320;          // iz ömrü (ms) — kısa ve hareketli
+  const TRAIL_POOL_SIZE = 16;
+  const TRAIL_LIFE = 280;          // iz ömrü (ms) — kısa ve hareketli
   const PARTICLE_POOL_SIZE = 50;
   // Sabit boyutlu "ring buffer" — her karede spread/filter ile yeni dizi
   // oluşturmak yerine mevcut slotlar üzerine yazılır (GC baskısı = FPS düşüşünün
@@ -632,15 +603,13 @@ function App() {
   const liveRef = useRef({
     score, highScore, runCrystals, shieldActive, gameMode,
     ballLevels, selectedSkin, soundOn,
-    trailColor: (shopItems.find((s) => s.id === selectedTrail) || {}).color || '#67e8f9',
-    skinTint: (shopItems.find((s) => s.id === selectedSkin) || {}).trailTint || '#67e8f9'
+    trailColor: (shopItems.find((s) => s.id === selectedTrail) || {}).color || '#67e8f9'
   });
   useEffect(() => {
     liveRef.current = {
       score, highScore, runCrystals, shieldActive, gameMode,
       ballLevels, selectedSkin, soundOn,
-      trailColor: (shopItems.find((s) => s.id === selectedTrail) || {}).color || '#67e8f9',
-      skinTint: (shopItems.find((s) => s.id === selectedSkin) || {}).trailTint || '#67e8f9'
+      trailColor: (shopItems.find((s) => s.id === selectedTrail) || {}).color || '#67e8f9'
     };
   });
 
@@ -954,17 +923,17 @@ function App() {
             p.ball.x += p.ball.vx * (effDelta * 60);
             p.ball.y += p.ball.vy * (effDelta * 60);
 
-            // Kısa ömürlü hareket izi — sabit slotlu ring buffer'a yazılır,
-            // her nokta kendi rastgele renk sapmasıyla doğar (artık hepsi farklı).
+            // Kısa ömürlü hareket izi — sabit slotlu ring buffer'a yazılır.
+            // Renk doğrudan seçili iz türünden gelir (top rengiyle karıştırılmaz,
+            // rastgele sapma yok) — böylece farklı iz türleri net ayrışır.
             {
-              const baseColor = mixHex(live.trailColor, live.skinTint, 0.5);
-              const dotColor = jitterColor(baseColor, 70);
+              const trailColor = live.trailColor;
               const tIdx = trailCursorRef.current;
-              trailPointsRef.current[tIdx] = { x: p.ball.x, y: p.ball.y, born: currentTime, color: dotColor };
+              trailPointsRef.current[tIdx] = { x: p.ball.x, y: p.ball.y, born: currentTime, color: trailColor };
               trailCursorRef.current = (tIdx + 1) % TRAIL_POOL_SIZE;
               const tDot = trailDotRefs.current[tIdx];
               if (tDot) {
-                tDot.style.background = `radial-gradient(circle, ${dotColor} 0%, rgba(255,255,255,0.55) 42%, transparent 72%)`;
+                tDot.style.background = `radial-gradient(circle, rgba(255,255,255,0.85) 0%, ${trailColor} 38%, transparent 72%)`;
               }
             }
 
@@ -1140,7 +1109,7 @@ function App() {
             if (age >= TRAIL_LIFE) { dot.style.opacity = '0'; continue; }
             const frac = 1 - age / TRAIL_LIFE;
             dot.style.opacity = String(frac * 0.9);
-            dot.style.transform = `translate(${-13 + pt.x}px, ${-13 + pt.y}px) scale(${0.25 + frac * 0.85})`;
+            dot.style.transform = `translate(${-10 + pt.x}px, ${-10 + pt.y}px) scale(${0.25 + frac * 0.85})`;
           }
 
           // background/width/height artık doğuşta bir kez set ediliyor (spawnParticles içinde);
@@ -1479,9 +1448,8 @@ function App() {
                        background: radial-gradient(circle at 42% 36%, #ffffff 0%, #ddd6fe 20%, #8b5cf6 56%, #3b0764 100%);
                        box-shadow: 0 0 32px rgba(167,139,250,1), 0 0 55px rgba(167,139,250,.5), inset -3px -4px 10px rgba(0,0,0,.55); }
 
-          .ball-rim { border-radius: inherit; mix-blend-mode: screen; opacity: .9;
-                      background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.6) 18deg, transparent 55deg, transparent 360deg);
-                      animation: sheenSpin 3.4s linear infinite reverse; }
+          .ball-rim { border-radius: inherit; mix-blend-mode: screen; opacity: .85;
+                      background: conic-gradient(from -40deg, transparent 0deg, rgba(255,255,255,.6) 30deg, transparent 70deg, transparent 360deg); }
 
           .ball-facets { opacity: 0; }
           .ball-ruby .ball-facets, .ball-emerald .ball-facets { opacity: 1; mix-blend-mode: overlay;
@@ -1513,8 +1481,8 @@ function App() {
                          box-shadow: 0 0 16px rgba(34,211,238,.8); animation: shieldPing 1.2s ease-out infinite; }
           @keyframes shieldPing { 0% { transform: scale(.9); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
 
-          .trail-dot { position: absolute; width: 26px; height: 26px; border-radius: 50%; pointer-events: none;
-                       filter: blur(2px); mix-blend-mode: screen; }
+          .trail-dot { position: absolute; width: 20px; height: 20px; border-radius: 50%; pointer-events: none;
+                       mix-blend-mode: screen; }
 
           .impact-glow { position: absolute; inset: -55%; border-radius: 50%; pointer-events: none;
                          opacity: 0; z-index: 26; }
