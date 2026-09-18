@@ -1100,6 +1100,7 @@ function App() {
             }
           }
 
+          const trailDir = Math.atan2(p.ball.vy, p.ball.vx) * (180 / Math.PI);
           for (let i = 0; i < TRAIL_POOL_SIZE; i++) {
             const dot = trailDotRefs.current[i];
             if (!dot) continue;
@@ -1108,8 +1109,9 @@ function App() {
             const age = currentTime - pt.born;
             if (age >= TRAIL_LIFE) { dot.style.opacity = '0'; continue; }
             const frac = 1 - age / TRAIL_LIFE;
-            dot.style.opacity = String(frac * 0.9);
-            dot.style.transform = `translate(${-10 + pt.x}px, ${-10 + pt.y}px) scale(${0.25 + frac * 0.85})`;
+            const taper = frac * frac;
+            dot.style.opacity = String(taper * 0.95);
+            dot.style.transform = `translate(${-10 + pt.x}px, ${-4 + pt.y}px) rotate(${trailDir}deg) scale(${0.4 + taper * 1.1})`;
           }
 
           // background/width/height artık doğuşta bir kez set ediliyor (spawnParticles içinde);
@@ -1481,8 +1483,7 @@ function App() {
                          box-shadow: 0 0 16px rgba(34,211,238,.8); animation: shieldPing 1.2s ease-out infinite; }
           @keyframes shieldPing { 0% { transform: scale(.9); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
 
-          .trail-dot { position: absolute; width: 20px; height: 20px; border-radius: 50%; pointer-events: none;
-                       mix-blend-mode: screen; }
+          .trail-dot { position: absolute; width: 20px; height: 8px; border-radius: 50%; pointer-events: none; }
 
           .impact-glow { position: absolute; inset: -55%; border-radius: 50%; pointer-events: none;
                          opacity: 0; z-index: 26; }
