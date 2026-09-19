@@ -290,9 +290,9 @@ const shopItems = [
   { id: 'ruby', type: 'ball', price: 40, trailTint: '#fb7185', nameKey: 'itemRuby' },
   { id: 'emerald', type: 'ball', price: 60, trailTint: '#4ade80', nameKey: 'itemEmerald' },
   { id: 'nova', type: 'ball', price: 100, trailTint: '#a78bfa', nameKey: 'itemNova' },
-  { id: 'trail_gold', type: 'trail', price: 50, color: '#fde047', nameKey: 'trailGold' },
-  { id: 'trail_fire', type: 'trail', price: 75, color: '#ef4444', nameKey: 'trailFire' },
-  { id: 'trail_cyan', type: 'trail', price: 75, color: '#06b6d4', nameKey: 'trailCyan' },
+  { id: 'trail_gold', type: 'trail', price: 50, color: '#fde047', shape: 'dust', nameKey: 'trailGold' },
+  { id: 'trail_fire', type: 'trail', price: 75, color: '#ef4444', shape: 'flame', nameKey: 'trailFire' },
+  { id: 'trail_cyan', type: 'trail', price: 75, color: '#06b6d4', shape: 'plasma', nameKey: 'trailCyan' },
   { id: 'bg_nebula', type: 'theme', price: 120, nameKey: 'themeNebula' },
   { id: 'bg_void', type: 'theme', price: 150, nameKey: 'themeVoid' },
   { id: 'bg_solar', type: 'theme', price: 180, nameKey: 'themeSolar' },
@@ -603,13 +603,15 @@ function App() {
   const liveRef = useRef({
     score, highScore, runCrystals, shieldActive, gameMode,
     ballLevels, selectedSkin, soundOn,
-    trailColor: (shopItems.find((s) => s.id === selectedTrail) || {}).color || '#67e8f9'
+    trailColor: (shopItems.find((s) => s.id === selectedTrail) || {}).color || '#67e8f9',
+    trailShape: (shopItems.find((s) => s.id === selectedTrail) || {}).shape || 'dust'
   });
   useEffect(() => {
     liveRef.current = {
       score, highScore, runCrystals, shieldActive, gameMode,
       ballLevels, selectedSkin, soundOn,
-      trailColor: (shopItems.find((s) => s.id === selectedTrail) || {}).color || '#67e8f9'
+      trailColor: (shopItems.find((s) => s.id === selectedTrail) || {}).color || '#67e8f9',
+      trailShape: (shopItems.find((s) => s.id === selectedTrail) || {}).shape || 'dust'
     };
   });
 
@@ -926,13 +928,24 @@ function App() {
             // Kısa ömürlü hareket izi — sabit slotlu ring buffer'a yazılır.
             // Renk doğrudan seçili iz türünden gelir (top rengiyle karıştırılmaz,
             // rastgele sapma yok) — böylece farklı iz türleri net ayrışır.
+            // Şekil de iz türüne göre değişir: toz (dust) dağınık taneli,
+            // alev (flame) uzayan/titreyen, plazma (plasma) geniş yumuşak şerit.
             {
               const trailColor = live.trailColor;
+              const shape = live.trailShape;
+              let jx = 0, jy = 0;
+              if (shape === 'dust') {
+                const perpAngle = Math.atan2(p.ball.vy, p.ball.vx) + Math.PI / 2;
+                const spread = (Math.random() - 0.5) * 16;
+                jx = Math.cos(perpAngle) * spread;
+                jy = Math.sin(perpAngle) * spread;
+              }
               const tIdx = trailCursorRef.current;
-              trailPointsRef.current[tIdx] = { x: p.ball.x, y: p.ball.y, born: currentTime, color: trailColor };
+              trailPointsRef.current[tIdx] = { x: p.ball.x + jx, y: p.ball.y + jy, born: currentTime, color: trailColor, shape };
               trailCursorRef.current = (tIdx + 1) % TRAIL_POOL_SIZE;
               const tDot = trailDotRefs.current[tIdx];
               if (tDot) {
+                tDot.className = `trail-dot trail-${shape} z-[24]`;
                 tDot.style.background = `radial-gradient(circle, rgba(255,255,255,0.85) 0%, ${trailColor} 38%, transparent 72%)`;
               }
             }
@@ -1110,10 +1123,18 @@ function App() {
             if (age >= TRAIL_LIFE) { dot.style.opacity = '0'; continue; }
             const frac = 1 - age / TRAIL_LIFE;
             const taper = Math.pow(frac, 1.6);
-            dot.style.opacity = String(0.15 + taper * 0.8);
-            const sx = 0.3 + taper * 1.5;
-            const sy = 0.4 + taper * 1.0;
-            dot.style.transform = `translate(${pt.x - 34}px, ${-3.5 + pt.y}px) rotate(${trailDir}deg) scale(${sx}, ${sy})`;
+            if (pt.shape === 'dust') {
+              dot.style.opacity = String(0.1 + taper * 0.85);
+              const s = 0.3 + taper * 1.2;
+              dot.style.transform = `translate(${-7 + pt.x}px, ${-7 + pt.y}px) scale(${s})`;
+            } else {
+              dot.style.opacity = String(0.15 + taper * 0.8);
+              const sx = 0.3 + taper * 1.5;
+              const sy = 0.4 + taper * 1.0;
+              const baseW = pt.shape === 'plasma' ? 46 : 34;
+              const halfH = pt.shape === 'plasma' ? 6 : 7;
+              dot.style.transform = `translate(${pt.x - baseW}px, ${-halfH + pt.y}px) rotate(${trailDir}deg) scale(${sx}, ${sy})`;
+            }
           }
 
           // background/width/height artık doğuşta bir kez set ediliyor (spawnParticles içinde);
@@ -1296,6 +1317,7 @@ function App() {
         }}
       >
         <div className="planet-layer p-base" />
+        <div className="planet-layer p-noise" />
         <div className="planet-layer p-bands" />
         <div className="planet-layer p-craters" />
         <div className="planet-layer p-land" />
@@ -1408,10 +1430,14 @@ function App() {
           @keyframes stormSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
           .p-terminator { background:
-                            radial-gradient(circle at 76% 76%, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 34%, transparent 66%),
-                            linear-gradient(118deg, transparent 38%, rgba(0,0,0,.55) 100%); }
+                            radial-gradient(circle at 76% 76%, rgba(0,0,0,.88) 0%, rgba(0,0,0,.6) 34%, transparent 66%),
+                            linear-gradient(118deg, transparent 40%, rgba(0,0,0,.28) 50%, rgba(0,0,0,.68) 60%, rgba(0,0,0,.93) 100%); }
 
-          .p-spec { background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.78) 0%, rgba(255,255,255,.22) 14%, transparent 34%); }
+          .p-noise { opacity: .5; mix-blend-mode: overlay;
+                     background-image: repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,.05) 0px, transparent 1.5px, rgba(0,0,0,.05) 2.5px, transparent 4px); }
+
+          .p-spec { background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.78) 0%, rgba(255,255,255,.22) 14%, transparent 34%),
+                                 radial-gradient(circle at 22% 19%, rgba(255,255,255,.95) 0%, transparent 6%); }
 
           .p-shine { mix-blend-mode: overlay; opacity: .8;
                      background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.5) 26deg, transparent 70deg, transparent 360deg);
@@ -1468,7 +1494,7 @@ function App() {
           .ball-nova .ball-sheen { animation-duration: 1.3s; }
           @keyframes sheenSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-          .ball-shade { background: radial-gradient(circle at 74% 76%, rgba(0,0,0,.55) 0%, transparent 56%); }
+          .ball-shade { background: radial-gradient(circle at 74% 76%, rgba(0,0,0,.68) 0%, rgba(0,0,0,.3) 40%, transparent 62%); }
           .ball-spec { background: radial-gradient(circle at 31% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.25) 11%, transparent 26%); }
 
           .ball-ring { border-radius: 50%; margin: 2px; border: 1px solid rgba(255,255,255,.7); }
@@ -1485,8 +1511,11 @@ function App() {
                          box-shadow: 0 0 16px rgba(34,211,238,.8); animation: shieldPing 1.2s ease-out infinite; }
           @keyframes shieldPing { 0% { transform: scale(.9); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
 
-          .trail-dot { position: absolute; width: 34px; height: 7px; border-radius: 50%; pointer-events: none;
-                       transform-origin: 100% 50%; }
+          .trail-dot { position: absolute; pointer-events: none; }
+          .trail-dust { width: 14px; height: 14px; border-radius: 50%; transform-origin: 50% 50%; }
+          .trail-flame { width: 34px; height: 14px; transform-origin: 100% 50%;
+                         clip-path: polygon(100% 50%, 55% 8%, 24% 32%, 8% 50%, 24% 68%, 55% 92%); }
+          .trail-plasma { width: 46px; height: 12px; border-radius: 50%; transform-origin: 100% 50%; }
 
           .impact-glow { position: absolute; inset: -55%; border-radius: 50%; pointer-events: none;
                          opacity: 0; z-index: 26; }
