@@ -1009,7 +1009,7 @@ function App() {
                   bestRunPerfects: Math.max(s.bestRunPerfects, currentRunPerfects),
                   tempRunPerfects: currentRunPerfects
                 };
-                saveJSON('orbit_stats', next); return next;
+                return next;
               });
 
               if (kind === 'perfect') { playSound('perfect', live.soundOn, p.combo); vibrate([15, 25, 15]); }
@@ -1109,9 +1109,11 @@ function App() {
             const age = currentTime - pt.born;
             if (age >= TRAIL_LIFE) { dot.style.opacity = '0'; continue; }
             const frac = 1 - age / TRAIL_LIFE;
-            const taper = frac * frac;
-            dot.style.opacity = String(taper * 0.95);
-            dot.style.transform = `translate(${-10 + pt.x}px, ${-4 + pt.y}px) rotate(${trailDir}deg) scale(${0.4 + taper * 1.1})`;
+            const taper = Math.pow(frac, 1.6);
+            dot.style.opacity = String(0.15 + taper * 0.8);
+            const sx = 0.3 + taper * 1.5;
+            const sy = 0.4 + taper * 1.0;
+            dot.style.transform = `translate(${-17 + pt.x}px, ${-3.5 + pt.y}px) rotate(${trailDir}deg) scale(${sx}, ${sy})`;
           }
 
           // background/width/height artık doğuşta bir kez set ediliyor (spawnParticles içinde);
@@ -1483,7 +1485,7 @@ function App() {
                          box-shadow: 0 0 16px rgba(34,211,238,.8); animation: shieldPing 1.2s ease-out infinite; }
           @keyframes shieldPing { 0% { transform: scale(.9); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
 
-          .trail-dot { position: absolute; width: 20px; height: 8px; border-radius: 50%; pointer-events: none; }
+          .trail-dot { position: absolute; width: 34px; height: 7px; border-radius: 50%; pointer-events: none; }
 
           .impact-glow { position: absolute; inset: -55%; border-radius: 50%; pointer-events: none;
                          opacity: 0; z-index: 26; }
