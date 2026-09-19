@@ -301,17 +301,26 @@ const shopItems = [
 
 /* Top görseli — hem oyunda hem mağaza önizlemesinde aynı bileşen */
 function BallVisual({ skinId, level = 1, size = 32, shieldActive = false, boosted = false }) {
+  const ringCount = Math.max(0, level - 1);
   return (
     <div className="ball-wrap" style={{ width: size, height: size }}>
       {shieldActive && <div className="ball-shield" />}
       {skinId === 'nova' && <div className="ball-corona" />}
+      {level > 1 && (
+        <div
+          className="ball-level-aura"
+          style={{ inset: `${-18 - ringCount * 10}%`, opacity: 0.35 + ringCount * 0.12, animationDuration: `${2.2 - ringCount * 0.25}s` }}
+        />
+      )}
       <div className={`ball-body ball-${skinId} ${boosted ? 'ball-boosted' : ''}`}>
         <div className="ball-facets" />
         <div className="ball-sheen" />
         <div className="ball-shade" />
         <div className="ball-spec" />
         <div className="ball-rim" />
-        {level > 1 && <div className="ball-ring" style={{ opacity: (level - 1) * 0.28 }} />}
+        {Array.from({ length: ringCount }).map((_, idx) => (
+          <div key={idx} className="ball-ring" style={{ margin: `${2 + idx * 3}px`, opacity: 0.5 + idx * 0.14 }} />
+        ))}
         {level >= 5 && <div className="ball-core" />}
       </div>
     </div>
@@ -1498,6 +1507,9 @@ function App() {
           .ball-spec { background: radial-gradient(circle at 31% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.25) 11%, transparent 26%); }
 
           .ball-ring { border-radius: 50%; margin: 2px; border: 1px solid rgba(255,255,255,.7); }
+          .ball-level-aura { position: absolute; border-radius: 50%; pointer-events: none;
+                              background: radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 68%);
+                              animation-name: coronaPulse; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
           .ball-core { margin: auto; width: 32%; height: 32%; border-radius: 50%; background: #fff;
                        box-shadow: 0 0 10px #fff, 0 0 20px rgba(255,255,255,.7); animation: corePulse 1.1s ease-in-out infinite; }
           @keyframes corePulse { 0%,100% { transform: scale(.85); opacity: .85; } 50% { transform: scale(1.12); opacity: 1; } }
