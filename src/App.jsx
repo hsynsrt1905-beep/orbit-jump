@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { AdMob, RewardAdPluginEvents, AdmobConsentStatus } from '@capacitor-community/admob';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { App as CapacitorApp } from '@capacitor/app';
@@ -394,7 +394,7 @@ const startAmbientSpaceSound = (soundOn, themeIndex = 0) => {
     }
 
     updateAmbientSound(themeIndex);
-  } catch (e) {}
+  } catch {}
 };
 
 const updateAmbientSound = (themeIndex) => {
@@ -407,7 +407,7 @@ const updateAmbientSound = (themeIndex) => {
     const [f1, f2] = freqs[themeIndex % freqs.length];
     ambientOsc1.frequency.exponentialRampToValueAtTime(f1, now + 1.5);
     ambientOsc2.frequency.exponentialRampToValueAtTime(f2, now + 1.5);
-  } catch(e) {}
+  } catch {}
 };
 
 const stopAmbientSpaceSound = () => {
@@ -420,7 +420,7 @@ const stopAmbientSpaceSound = () => {
         if (ambientGain) { ambientGain.disconnect(); ambientGain = null; }
       }, 500);
     }
-  } catch (e) {}
+  } catch {}
 };
 
 const playSound = (type, soundOn, comboLevel = 1) => {
@@ -502,24 +502,72 @@ const playSound = (type, soundOn, comboLevel = 1) => {
       gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
       osc.start(now); osc.stop(now + 0.5);
     }
-  } catch (e) {}
+  } catch {}
 };
 
 const vibrate = (pattern) => {
-  try { if (navigator.vibrate) navigator.vibrate(pattern); } catch (e) {}
+  try { if (navigator.vibrate) navigator.vibrate(pattern); } catch {}
 };
 
 const loadJSON = (key, fallback) => {
   try {
     const raw = localStorage.getItem(key);
     return raw ? JSON.parse(raw) : fallback;
-  } catch (e) { return fallback; }
+  } catch { return fallback; }
 };
 const saveJSON = (key, val) => {
-  try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+};
+
+const loadDailyAdCount = () => {
+  const today = new Date().toDateString();
+  const storedAdDate = localStorage.getItem('orbit_last_ad_date');
+  if (storedAdDate !== today) {
+    localStorage.setItem('orbit_last_ad_date', today);
+    localStorage.setItem('orbit_daily_ad_count', '0');
+    return 0;
+  }
+  return parseInt(localStorage.getItem('orbit_daily_ad_count') || '0', 10);
 };
 
 let particleUid = 0;
+
+const PlanetBody = ({ innerRef, isSupernova, glowRef }) => (
+  <>
+    <div className="planet-atmo" />
+    <div className="planet-ring planet-ring-back" />
+    <div
+      ref={innerRef}
+      className="planet"
+      style={{
+        willChange: isSupernova ? 'transform, opacity, filter' : 'auto',
+        animation: isSupernova ? 'supernovaBlast 0.8s cubic-bezier(0.1, 0.9, 0.2, 1) forwards' : 'none'
+      }}
+    >
+      <div className="planet-layer p-base" />
+      <div className="planet-layer p-noise" />
+      <div className="planet-layer p-bands" />
+      <div className="planet-layer p-craters" />
+      <div className="planet-layer p-land" />
+      <div className="planet-layer p-clouds" />
+      <div className="planet-layer p-ice" />
+      <div className="planet-layer p-lava" />
+      <div className="planet-layer p-storm" />
+      <div className="planet-layer p-terminator" />
+      <div className="planet-layer p-spec" />
+      <div className="planet-layer p-shine" />
+      <div className="planet-layer p-rim" />
+    </div>
+    {glowRef && <div ref={glowRef} className="impact-glow" />}
+    {isSupernova && (
+      <>
+        <div className="supernova-ring ring-a" />
+        <div className="supernova-ring ring-b" />
+      </>
+    )}
+    <div className="planet-ring planet-ring-front" />
+  </>
+);
 
 function App() {
   const [lang, setLang] = useState(localStorage.getItem('orbitJumpLang') || 'en');
@@ -527,15 +575,15 @@ function App() {
   const [isPaused, setIsPaused] = useState(false);
   const [gameMode, setGameMode] = useState('normal');
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState(() => parseInt(localStorage.getItem('orbit_highscore') || '0', 10));
 
   const [soundOn, setSoundOn] = useState(() => {
     const saved = localStorage.getItem('orbit_sound');
     return saved !== null ? JSON.parse(saved) : true;
   });
 
-  const [playerName, setPlayerName] = useState("");
-  const [showNameModal, setShowNameModal] = useState(false);
+  const [playerName, setPlayerName] = useState(() => localStorage.getItem('orbit_player_name') || "");
+  const [showNameModal, setShowNameModal] = useState(() => !localStorage.getItem('orbit_player_name'));
   const [nameInput, setNameInput] = useState("");
   const [onlineLeaderboard, setOnlineLeaderboard] = useState([]);
   const [isLoadingScores, setIsLoadingScores] = useState(false);
@@ -553,32 +601,32 @@ function App() {
 
   const [popup, setPopup] = useState(null);
 
-  const [crystals, setCrystals] = useState(0);
+  const [crystals, setCrystals] = useState(() => loadJSON('orbit_crystals', 60));
   const [runCrystals, setRunCrystals] = useState(0);
-  const [ownedItems, setOwnedItems] = useState(['gold', 'trail_gold', 'bg_nebula']);
-  const [ballLevels, setBallLevels] = useState({ gold: 1, ruby: 1, emerald: 1, nova: 1 });
-  const [boostCounts, setBoostCounts] = useState({ shield: 0, slowmo: 0 });
-  const [boostLevels, setBoostLevels] = useState({ shield: 1, slowmo: 1 });
+  const [ownedItems, setOwnedItems] = useState(() => loadJSON('orbit_owned_items', ['gold', 'trail_gold', 'bg_nebula']));
+  const [ballLevels, setBallLevels] = useState(() => loadJSON('orbit_ball_levels', { gold: 1, ruby: 1, emerald: 1, nova: 1 }));
+  const [boostCounts, setBoostCounts] = useState(() => loadJSON('orbit_boost_counts_v2', { shield: 0, slowmo: 0 }));
+  const [boostLevels, setBoostLevels] = useState(() => loadJSON('orbit_boost_levels_v2', { shield: 1, slowmo: 1 }));
 
-  const [selectedSkin, setSelectedSkin] = useState('gold');
-  const [selectedTrail, setSelectedTrail] = useState('trail_gold');
-  const [selectedTheme, setSelectedTheme] = useState('bg_nebula');
+  const [selectedSkin, setSelectedSkin] = useState(() => loadJSON('orbit_selected_skin', 'gold'));
+  const [selectedTrail, setSelectedTrail] = useState(() => loadJSON('orbit_selected_trail', 'trail_gold'));
+  const [selectedTheme, setSelectedTheme] = useState(() => loadJSON('orbit_selected_theme', 'bg_nebula'));
   const [shopTab, setShopTab] = useState('balls');
   const [shopMessage, setShopMessage] = useState(null);
   const [upgradedBallId, setUpgradedBallId] = useState(null);
   const [shieldActive, setShieldActive] = useState(false);
   const [adOverlay, setAdOverlay] = useState(false);
 
-  const [dailyAdCount, setDailyAdCount] = useState(0);
+  const [dailyAdCount, setDailyAdCount] = useState(loadDailyAdCount);
   const planetTimerRef = useRef(1);
   const [supernovaActive, setSupernovaActive] = useState(false);
 
-  const [stats, setStats] = useState({ totalPerfects: 0, gamesPlayed: 0, bestRun: 0, maxCombo: 0, totalCrystalsEarned: 0, bestRunPerfects: 0 });
-  const [claimedMissions, setClaimedMissions] = useState([]);
-  const [claimedBadges, setClaimedBadges] = useState([]);
-  const [leaderboard, setLeaderboard] = useState([]);
-  const [streakDays, setStreakDays] = useState(1);
-  const [lastStreakDate, setLastStreakDate] = useState('');
+  const [stats, setStats] = useState(() => loadJSON('orbit_stats', { totalPerfects: 0, gamesPlayed: 0, bestRun: 0, maxCombo: 0, totalCrystalsEarned: 0, bestRunPerfects: 0 }));
+  const [claimedMissions, setClaimedMissions] = useState(() => loadJSON('orbit_claimed_missions', []));
+  const [claimedBadges, setClaimedBadges] = useState(() => loadJSON('orbit_claimed_badges', []));
+  const [leaderboard, setLeaderboard] = useState(() => loadJSON('orbit_leaderboard', []));
+  const [streakDays, setStreakDays] = useState(() => loadJSON('orbit_streak_days', 1));
+  const [lastStreakDate, setLastStreakDate] = useState(() => localStorage.getItem('orbit_last_streak') || '');
 
   const [comboCount, setComboCount] = useState(0);
   const [impactPulse, setImpactPulse] = useState(false);
@@ -640,7 +688,7 @@ function App() {
         await StatusBar.setOverlaysWebView({ overlay: true });
         await StatusBar.setStyle({ style: Style.Dark });
         await StatusBar.hide();
-      } catch (e) {}
+      } catch {}
     };
     initAppConfig();
   }, []);
@@ -665,47 +713,13 @@ function App() {
         if (consentInfo.status === AdmobConsentStatus.REQUIRED && consentInfo.isConsentFormAvailable) {
           await AdMob.showConsentForm();
         }
-      } catch (e) {}
+      } catch {}
 
       try {
         await AdMob.initialize({ initializeForTesting: false });
-      } catch (e) {}
+      } catch {}
     };
     initAdMob();
-  }, []);
-
-  useEffect(() => {
-    const savedName = localStorage.getItem('orbit_player_name');
-    if (savedName) setPlayerName(savedName);
-    else setShowNameModal(true);
-
-    const savedHighScore = localStorage.getItem('orbit_highscore');
-    if (savedHighScore) setHighScore(parseInt(savedHighScore, 10));
-
-    setCrystals(loadJSON('orbit_crystals', 60));
-    setOwnedItems(loadJSON('orbit_owned_items', ['gold', 'trail_gold', 'bg_nebula']));
-    setBallLevels(loadJSON('orbit_ball_levels', { gold: 1, ruby: 1, emerald: 1, nova: 1 }));
-    setBoostCounts(loadJSON('orbit_boost_counts_v2', { shield: 0, slowmo: 0 }));
-    setBoostLevels(loadJSON('orbit_boost_levels_v2', { shield: 1, slowmo: 1 }));
-    setSelectedSkin(loadJSON('orbit_selected_skin', 'gold'));
-    setSelectedTrail(loadJSON('orbit_selected_trail', 'trail_gold'));
-    setSelectedTheme(loadJSON('orbit_selected_theme', 'bg_nebula'));
-    setStats(loadJSON('orbit_stats', { totalPerfects: 0, gamesPlayed: 0, bestRun: 0, maxCombo: 0, totalCrystalsEarned: 0, bestRunPerfects: 0 }));
-    setClaimedMissions(loadJSON('orbit_claimed_missions', []));
-    setClaimedBadges(loadJSON('orbit_claimed_badges', []));
-    setLeaderboard(loadJSON('orbit_leaderboard', []));
-    setStreakDays(loadJSON('orbit_streak_days', 1));
-    setLastStreakDate(localStorage.getItem('orbit_last_streak') || '');
-
-    const today = new Date().toDateString();
-    const storedAdDate = localStorage.getItem('orbit_last_ad_date');
-    if (storedAdDate !== today) {
-      setDailyAdCount(0);
-      localStorage.setItem('orbit_last_ad_date', today);
-      localStorage.setItem('orbit_daily_ad_count', '0');
-    } else {
-      setDailyAdCount(parseInt(localStorage.getItem('orbit_daily_ad_count') || '0', 10));
-    }
   }, []);
 
   useEffect(() => {
@@ -757,7 +771,7 @@ function App() {
       AdMob.addListener(RewardAdPluginEvents.FailedToLoad, () => setAdOverlay(false));
       await AdMob.prepareRewardVideoAd({ adUnitId: 'ca-app-pub-1803044471635660/5387368632', isTesting: false });
       await AdMob.showRewardVideoAd();
-    } catch (error) { setAdOverlay(false); }
+    } catch { setAdOverlay(false); }
   };
 
   const spawnParticles = (x, y, kind, themeColors) => {
@@ -792,7 +806,7 @@ function App() {
   };
 
   // YENİ VE GÜVENLİ autoSaveScore FONKSİYONU
-  const autoSaveScore = async (finalScore) => {
+  const autoSaveScore = useCallback(async (finalScore) => {
     if (finalScore <= 0) return;
     
     // Yerel cihazdaki tabloyu güncelle
@@ -824,7 +838,7 @@ function App() {
         console.error("Firebase kayıt veya yetkilendirme hatası: ", e);
       }
     }
-  };
+  }, [playerName]);
 
   const fetchOnlineScores = async () => {
     setIsLoadingScores(true);
@@ -837,7 +851,7 @@ function App() {
         scores.push({ id: docSnap.id, ...docSnap.data() });
       });
       setOnlineLeaderboard(scores);
-    } catch (e) {
+    } catch {
       setScoresFailed(true);
     } finally {
       setIsLoadingScores(false);
@@ -1163,7 +1177,7 @@ function App() {
       animationFrameId = requestAnimationFrame(render);
     }
     return () => cancelAnimationFrame(animationFrameId);
-  }, [gameState, adOverlay, isPaused]);
+  }, [gameState, adOverlay, isPaused, autoSaveScore]);
 
   const handleJump = () => {
     if (isPaused || showNameModal) return;
@@ -1312,43 +1326,6 @@ function App() {
   const currentSkinLvl = ballLevels[selectedSkin] || 1;
   const ballScale = 1 + (currentSkinLvl - 1) * 0.13;
   const shownScores = (scoresFailed || onlineLeaderboard.length === 0) ? leaderboard : onlineLeaderboard;
-
-  const PlanetBody = ({ innerRef, isSupernova, glowRef }) => (
-    <>
-      <div className="planet-atmo" />
-      <div className="planet-ring planet-ring-back" />
-      <div
-        ref={innerRef}
-        className="planet"
-        style={{
-          willChange: isSupernova ? 'transform, opacity, filter' : 'auto',
-          animation: isSupernova ? 'supernovaBlast 0.8s cubic-bezier(0.1, 0.9, 0.2, 1) forwards' : 'none'
-        }}
-      >
-        <div className="planet-layer p-base" />
-        <div className="planet-layer p-noise" />
-        <div className="planet-layer p-bands" />
-        <div className="planet-layer p-craters" />
-        <div className="planet-layer p-land" />
-        <div className="planet-layer p-clouds" />
-        <div className="planet-layer p-ice" />
-        <div className="planet-layer p-lava" />
-        <div className="planet-layer p-storm" />
-        <div className="planet-layer p-terminator" />
-        <div className="planet-layer p-spec" />
-        <div className="planet-layer p-shine" />
-        <div className="planet-layer p-rim" />
-      </div>
-      {glowRef && <div ref={glowRef} className="impact-glow" />}
-      {isSupernova && (
-        <>
-          <div className="supernova-ring ring-a" />
-          <div className="supernova-ring ring-b" />
-        </>
-      )}
-      <div className="planet-ring planet-ring-front" />
-    </>
-  );
 
   return (
     <div
