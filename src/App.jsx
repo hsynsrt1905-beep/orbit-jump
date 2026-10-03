@@ -8,7 +8,7 @@ import { db, auth } from './firebase';
 import { collection, setDoc, doc, getDocs, query, orderBy, limit, serverTimestamp } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { maybeRequestReview, shareScore, noteGameFinished, maybeShowInterstitial, scheduleStreakReminder } from './engagement';
-import { ensureSignedIn, isGoogleUser, signInWithGoogle, signOutGoogle, loadCloudSave, writeCloudSave, mergeProgress } from './cloudSave';
+import { ensureSignedIn, isGoogleUser, signInWithGoogle, signOutGoogle, deleteAccount, loadCloudSave, writeCloudSave, mergeProgress } from './cloudSave';
 
 const translations = {
   en: {
@@ -52,7 +52,8 @@ const translations = {
     namePlaceholder: "Your nickname", saveAndStart: "SAVE & START",
     offlineScores: "Offline — showing local scores.",
     signInGoogle: "Sign in with Google", signedInAs: "Cloud save on", signOut: "Sign out", syncing: "Syncing...", signInFailed: "Sign-in failed. Try again.",
-    shareScore: "SHARE SCORE", shareText: "I scored {n} in Orbit Jump! Can you beat me? 🚀", streakReminderTitle: "🔥 Your streak is about to break!", streakReminderBody: "Claim your day {n} reward before midnight."
+    shareScore: "SHARE SCORE", shareText: "I scored {n} in Orbit Jump! Can you beat me? 🚀", streakReminderTitle: "🔥 Your streak is about to break!", streakReminderBody: "Claim your day {n} reward before midnight.",
+    deleteAccount: "Delete account", deleteConfirm: "Delete your account and cloud save permanently? Your leaderboard entry will also be removed. Progress on this device stays.", deleteFailed: "Could not delete account. Try again."
   },
   tr: {
     title: "YÖRÜNGE", play: "OYNA", score: "SKOR", best: "REKOR", gameOver: "OYUN BİTTİ",
@@ -95,7 +96,8 @@ const translations = {
     namePlaceholder: "Takma Adın", saveAndStart: "KAYDET VE BAŞLA",
     offlineScores: "Çevrimdışı — yerel skorlar gösteriliyor.",
     signInGoogle: "Google ile giriş yap", signedInAs: "Bulut kaydı açık", signOut: "Çıkış yap", syncing: "Eşitleniyor...", signInFailed: "Giriş yapılamadı. Tekrar dene.",
-    shareScore: "SKORU PAYLAŞ", shareText: "Orbit Jump'ta {n} puan yaptım! Geçebilir misin? 🚀", streakReminderTitle: "🔥 Serin bozulmak üzere!", streakReminderBody: "{n}. gün ödülünü gece yarısından önce al."
+    shareScore: "SKORU PAYLAŞ", shareText: "Orbit Jump'ta {n} puan yaptım! Geçebilir misin? 🚀", streakReminderTitle: "🔥 Serin bozulmak üzere!", streakReminderBody: "{n}. gün ödülünü gece yarısından önce al.",
+    deleteAccount: "Hesabı sil", deleteConfirm: "Hesabın ve bulut kaydın kalıcı olarak silinsin mi? Skor tablosundaki kaydın da kaldırılır. Bu cihazdaki ilerlemen kalır.", deleteFailed: "Hesap silinemedi. Tekrar dene."
   },
   es: {
     title: "SALTO ÓRBITA", play: "JUGAR", score: "PUNTAJE", best: "MEJOR", gameOver: "FIN DEL JUEGO",
@@ -138,7 +140,8 @@ const translations = {
     namePlaceholder: "Tu apodo", saveAndStart: "GUARDAR Y EMPEZAR",
     offlineScores: "Sin conexión — mostrando puntuaciones locales.",
     signInGoogle: "Iniciar sesión con Google", signedInAs: "Guardado en la nube activo", signOut: "Cerrar sesión", syncing: "Sincronizando...", signInFailed: "No se pudo iniciar sesión. Inténtalo de nuevo.",
-    shareScore: "COMPARTIR", shareText: "¡Hice {n} puntos en Orbit Jump! ¿Puedes superarme? 🚀", streakReminderTitle: "🔥 ¡Tu racha está a punto de romperse!", streakReminderBody: "Reclama tu recompensa del día {n} antes de medianoche."
+    shareScore: "COMPARTIR", shareText: "¡Hice {n} puntos en Orbit Jump! ¿Puedes superarme? 🚀", streakReminderTitle: "🔥 ¡Tu racha está a punto de romperse!", streakReminderBody: "Reclama tu recompensa del día {n} antes de medianoche.",
+    deleteAccount: "Eliminar cuenta", deleteConfirm: "¿Eliminar tu cuenta y tu guardado en la nube para siempre? También se quitará tu puntuación de la clasificación. El progreso en este dispositivo se mantiene.", deleteFailed: "No se pudo eliminar la cuenta. Inténtalo de nuevo."
   },
   de: {
     title: "ORBIT SPRUNG", play: "SPIELEN", score: "PUNKTE", best: "BESTE", gameOver: "SPIEL VORBEI",
@@ -181,7 +184,8 @@ const translations = {
     namePlaceholder: "Dein Spitzname", saveAndStart: "SPEICHERN & STARTEN",
     offlineScores: "Offline — lokale Ergebnisse werden angezeigt.",
     signInGoogle: "Mit Google anmelden", signedInAs: "Cloud-Speicher aktiv", signOut: "Abmelden", syncing: "Synchronisiere...", signInFailed: "Anmeldung fehlgeschlagen. Erneut versuchen.",
-    shareScore: "TEILEN", shareText: "Ich habe {n} Punkte in Orbit Jump! Schaffst du mehr? 🚀", streakReminderTitle: "🔥 Deine Serie reißt gleich ab!", streakReminderBody: "Hol dir deine Belohnung für Tag {n} vor Mitternacht."
+    shareScore: "TEILEN", shareText: "Ich habe {n} Punkte in Orbit Jump! Schaffst du mehr? 🚀", streakReminderTitle: "🔥 Deine Serie reißt gleich ab!", streakReminderBody: "Hol dir deine Belohnung für Tag {n} vor Mitternacht.",
+    deleteAccount: "Konto löschen", deleteConfirm: "Konto und Cloud-Speicher endgültig löschen? Dein Bestenlisten-Eintrag wird ebenfalls entfernt. Der Fortschritt auf diesem Gerät bleibt erhalten.", deleteFailed: "Konto konnte nicht gelöscht werden. Erneut versuchen."
   },
   ru: {
     title: "ПРЫЖОК ОРБИТЫ", play: "ИГРАТЬ", score: "СЧЕТ", best: "РЕКОРД", gameOver: "ИГРА ОКОНЧЕНА",
@@ -224,7 +228,8 @@ const translations = {
     namePlaceholder: "Ваш ник", saveAndStart: "СОХРАНИТЬ И НАЧАТЬ",
     offlineScores: "Нет сети — показаны локальные результаты.",
     signInGoogle: "Войти через Google", signedInAs: "Облачное сохранение включено", signOut: "Выйти", syncing: "Синхронизация...", signInFailed: "Не удалось войти. Попробуйте снова.",
-    shareScore: "ПОДЕЛИТЬСЯ", shareText: "Мой результат в Orbit Jump — {n}! Сможешь больше? 🚀", streakReminderTitle: "🔥 Серия вот-вот прервётся!", streakReminderBody: "Заберите награду за день {n} до полуночи."
+    shareScore: "ПОДЕЛИТЬСЯ", shareText: "Мой результат в Orbit Jump — {n}! Сможешь больше? 🚀", streakReminderTitle: "🔥 Серия вот-вот прервётся!", streakReminderBody: "Заберите награду за день {n} до полуночи.",
+    deleteAccount: "Удалить аккаунт", deleteConfirm: "Удалить аккаунт и облачное сохранение навсегда? Запись в таблице лидеров тоже будет удалена. Прогресс на этом устройстве сохранится.", deleteFailed: "Не удалось удалить аккаунт. Попробуйте снова."
   }
 };
 
@@ -816,6 +821,20 @@ function App() {
   const handleSignOut = async () => {
     playSound('click', soundOn);
     try { await signOutGoogle(); } catch {}
+  };
+
+  const handleDeleteAccount = async () => {
+    playSound('click', soundOn);
+    if (authBusy || !window.confirm(t.deleteConfirm)) return;
+    setAuthBusy(true);
+    try {
+      await deleteAccount();
+    } catch (e) {
+      console.error('Hesap silinemedi: ', e);
+      window.alert(t.deleteFailed);
+    } finally {
+      setAuthBusy(false);
+    }
   };
 
   useEffect(() => {
@@ -1712,6 +1731,7 @@ function App() {
               <div className="flex items-center gap-2 mb-4 text-[11px] font-bold">
                 <span className="text-emerald-300">☁️ {cloudReady ? t.signedInAs : t.syncing}</span>
                 <button onClick={(e) => { e.stopPropagation(); handleSignOut(); }} className="text-slate-500 underline cursor-pointer">{t.signOut}</button>
+                <button onClick={(e) => { e.stopPropagation(); handleDeleteAccount(); }} disabled={authBusy} className="text-red-400/70 underline cursor-pointer">{t.deleteAccount}</button>
               </div>
             ) : (
               <div className="flex flex-col items-center mb-4">

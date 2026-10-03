@@ -1,7 +1,7 @@
 import { Capacitor } from '@capacitor/core';
 import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
-import { GoogleAuthProvider, linkWithCredential, signInWithCredential, signInAnonymously, signOut } from 'firebase/auth';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { GoogleAuthProvider, linkWithCredential, signInWithCredential, signInAnonymously, signOut, deleteUser, reauthenticateWithCredential } from 'firebase/auth';
+import { doc, getDoc, setDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from './firebase';
 
 export const isGoogleUser = (user) => !!user && !user.isAnonymous;
@@ -38,6 +38,25 @@ export const signInWithGoogle = async () => {
 export const signOutGoogle = async () => {
   try { await FirebaseAuthentication.signOut(); } catch {}
   await signOut(auth);
+};
+
+// Hesap silme (Play politikası): bulut kaydı, skor tablosu kaydı ve Firebase
+// kullanıcısı silinir. Firebase yakın tarihli giriş isterse Google ile yeniden
+// doğrulanıp tekrar denenir.
+export const deleteAccount = async () => {
+  const user = auth.currentUser;
+  if (!user) return;
+  await deleteDoc(doc(db, 'saves', user.uid));
+  await deleteDoc(doc(db, 'leaderboard', user.uid));
+  try {
+    await deleteUser(user);
+  } catch (e) {
+    if (e?.code !== 'auth/requires-recent-login') throw e;
+    const result = await FirebaseAuthentication.signInWithGoogle();
+    await reauthenticateWithCredential(user, GoogleAuthProvider.credential(result.credential?.idToken));
+    await deleteUser(user);
+  }
+  try { await FirebaseAuthentication.signOut(); } catch {}
 };
 
 export const loadCloudSave = async (uid) => {

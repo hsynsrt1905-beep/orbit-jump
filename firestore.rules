@@ -9,7 +9,7 @@ service cloud.firestore {
       allow create: if isOwner(userId) && validEntry(userId);
       allow update: if isOwner(userId) && validEntry(userId)
                     && request.resource.data.score >= resource.data.score;
-      allow delete: if false;
+      allow delete: if isOwner(userId);
     }
     match /saves/{userId} {
       // Bulut kaydını yalnızca sahibi okuyup yazabilir
