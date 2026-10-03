@@ -8,9 +8,8 @@ import { FirebaseCrashlytics } from '@capacitor-firebase/crashlytics';
 const isNative = Capacitor.isNativePlatform();
 const STORE_URL = 'https://play.google.com/store/apps/details?id=com.orbitjump.game';
 
-// AdMob'da oluşturulan geçiş reklamı biriminin kimliği. Boşken geçiş reklamı
-// hiç gösterilmez, böylece kimlik girilmeden yayınlanan sürüm sorun çıkarmaz.
-const INTERSTITIAL_AD_ID = '';
+// AdMob "OrbitJump_Interstitial" birimi. Boş bırakılırsa geçiş reklamı kapanır.
+const INTERSTITIAL_AD_ID = 'ca-app-pub-1803044471635660/1592634831';
 const GAMES_PER_INTERSTITIAL = 4;
 const INTERSTITIAL_MIN_GAP_MS = 3 * 60 * 1000;
 
