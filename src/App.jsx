@@ -622,6 +622,7 @@ function App() {
   const [upgradedBallId, setUpgradedBallId] = useState(null);
   const [shieldActive, setShieldActive] = useState(false);
   const [adOverlay, setAdOverlay] = useState(false);
+  const [reviveUsed, setReviveUsed] = useState(false);
 
   const [dailyAdCount, setDailyAdCount] = useState(loadDailyAdCount);
   const planetTimerRef = useRef(1);
@@ -838,21 +839,25 @@ function App() {
     applyPlanetTheme(targetGroupRef.current, planetThemes[nextThemeIdxRef.current]);
   }, [gameState]);
 
-  const watchRewardedAd = async (onSuccess) => {
+  // countsTowardLimit: kristal reklamı günlük sınıra sayılır; "izle & devam et"
+  // sayılmaz, o tur başına bir hakla sınırlı.
+  const watchRewardedAd = async (onSuccess, countsTowardLimit = true) => {
     // Hata düzeltmesi: adOverlay zaten açıkken çift dokunuşla ikinci kez
     // tetiklenip AdMob listener'larının çakışmasını engeller.
-    if (dailyAdCount >= 2 || adOverlay) return;
+    if ((countsTowardLimit && dailyAdCount >= 2) || adOverlay) return;
     playSound('click', soundOn); setAdOverlay(true);
     try {
       await AdMob.removeAllListeners();
       AdMob.addListener(RewardAdPluginEvents.Rewarded, () => {
-        const today = new Date().toDateString();
-        setDailyAdCount(prev => {
-          const nextCount = prev + 1;
-          localStorage.setItem('orbit_daily_ad_count', nextCount.toString());
-          return nextCount;
-        });
-        localStorage.setItem('orbit_last_ad_date', today);
+        if (countsTowardLimit) {
+          const today = new Date().toDateString();
+          setDailyAdCount(prev => {
+            const nextCount = prev + 1;
+            localStorage.setItem('orbit_daily_ad_count', nextCount.toString());
+            return nextCount;
+          });
+          localStorage.setItem('orbit_last_ad_date', today);
+        }
         if (onSuccess) onSuccess();
       });
       AdMob.addListener(RewardAdPluginEvents.Dismissed, () => setAdOverlay(false));
@@ -1289,13 +1294,18 @@ function App() {
     particleCursorRef.current = 0;
     shakeUntilRef.current = 0;
     if (flashRef.current) flashRef.current.style.opacity = '0';
+    setReviveUsed(false);
     setScore(0); setComboCount(0); setRunCrystals(0); setPopup(null); setImpactPulse(false); setShieldActive(false); setSupernovaActive(false); planetTimerRef.current = 1; resetPlanetVisual(); slowMoUntilRef.current = 0; setGameState('playing');
   };
 
   const continueGameWithAd = () => {
+    if (reviveUsed) return;
     watchRewardedAd(() => {
+      // Ölümde bu turun kristalleri zaten hesaba eklendi; sıfırlanmazsa
+      // ikinci ölümde aynı kristaller tekrar eklenirdi.
+      setReviveUsed(true); setRunCrystals(0);
       const p = physicsRef.current; p.dead = false; p.isFlying = false; p.ball.x = p.active.x + 120; p.ball.y = p.active.y; p.angle = 0; planetTimerRef.current = 1; resetPlanetVisual(); setShieldActive(true); setIsPaused(false); setGameState('playing'); playSound('shield', soundOn);
-    });
+    }, false);
   };
 
   const exitToMenu = () => {
@@ -1970,9 +1980,11 @@ function App() {
               <p className="text-slate-400 text-xs mb-1">{t.score}</p>
               <p className="text-3xl font-black text-cyan-400 mb-3">{score}</p>
               <p className="text-xs text-cyan-300 font-bold mb-5">💎 +{runCrystals}</p>
-              <button onClick={continueGameWithAd} disabled={isAdLimitReached} className={`w-full font-black py-3 px-4 rounded-xl text-sm shadow-md ${isAdLimitReached ? 'bg-slate-800 text-slate-500 cursor-not-allowed' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white'}`}>
-                📺 {isAdLimitReached ? t.adLimitReached : t.watchAdContinue}
-              </button>
+              {!reviveUsed && (
+                <button onClick={continueGameWithAd} className="w-full font-black py-3 px-4 rounded-xl text-sm shadow-md bg-gradient-to-r from-purple-500 to-indigo-500 text-white">
+                  📺 {t.watchAdContinue}
+                </button>
+              )}
             </div>
             <div className="flex gap-3">
               <button onClick={() => startGame()} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3 px-6 rounded-full text-base shadow-md">{t.restart}</button>
