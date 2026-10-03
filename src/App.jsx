@@ -6,7 +6,8 @@ import { App as CapacitorApp } from '@capacitor/app';
 // FIREBASE
 import { db, auth } from './firebase';
 import { collection, setDoc, doc, getDocs, query, orderBy, limit, serverTimestamp } from "firebase/firestore";
-import { signInAnonymously } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { ensureSignedIn, isGoogleUser, signInWithGoogle, signOutGoogle, loadCloudSave, writeCloudSave, mergeProgress } from './cloudSave';
 
 const translations = {
   en: {
@@ -48,7 +49,8 @@ const translations = {
     loadingScores: "Loading scores...",
     welcome: "WELCOME!", namePrompt: "Enter a name to appear on the leaderboard:",
     namePlaceholder: "Your nickname", saveAndStart: "SAVE & START",
-    offlineScores: "Offline — showing local scores."
+    offlineScores: "Offline — showing local scores.",
+    signInGoogle: "Sign in with Google", signedInAs: "Cloud save on", signOut: "Sign out", syncing: "Syncing...", signInFailed: "Sign-in failed. Try again."
   },
   tr: {
     title: "YÖRÜNGE", play: "OYNA", score: "SKOR", best: "REKOR", gameOver: "OYUN BİTTİ",
@@ -89,7 +91,8 @@ const translations = {
     loadingScores: "Skorlar yükleniyor...",
     welcome: "HOŞ GELDİN!", namePrompt: "Skor tablosunda görünmek için bir isim gir:",
     namePlaceholder: "Takma Adın", saveAndStart: "KAYDET VE BAŞLA",
-    offlineScores: "Çevrimdışı — yerel skorlar gösteriliyor."
+    offlineScores: "Çevrimdışı — yerel skorlar gösteriliyor.",
+    signInGoogle: "Google ile giriş yap", signedInAs: "Bulut kaydı açık", signOut: "Çıkış yap", syncing: "Eşitleniyor...", signInFailed: "Giriş yapılamadı. Tekrar dene."
   },
   es: {
     title: "SALTO ÓRBITA", play: "JUGAR", score: "PUNTAJE", best: "MEJOR", gameOver: "FIN DEL JUEGO",
@@ -130,7 +133,8 @@ const translations = {
     loadingScores: "Cargando puntuaciones...",
     welcome: "¡BIENVENIDO!", namePrompt: "Introduce un nombre para la tabla de clasificación:",
     namePlaceholder: "Tu apodo", saveAndStart: "GUARDAR Y EMPEZAR",
-    offlineScores: "Sin conexión — mostrando puntuaciones locales."
+    offlineScores: "Sin conexión — mostrando puntuaciones locales.",
+    signInGoogle: "Iniciar sesión con Google", signedInAs: "Guardado en la nube activo", signOut: "Cerrar sesión", syncing: "Sincronizando...", signInFailed: "No se pudo iniciar sesión. Inténtalo de nuevo."
   },
   de: {
     title: "ORBIT SPRUNG", play: "SPIELEN", score: "PUNKTE", best: "BESTE", gameOver: "SPIEL VORBEI",
@@ -171,7 +175,8 @@ const translations = {
     loadingScores: "Ergebnisse werden geladen...",
     welcome: "WILLKOMMEN!", namePrompt: "Gib einen Namen für die Bestenliste ein:",
     namePlaceholder: "Dein Spitzname", saveAndStart: "SPEICHERN & STARTEN",
-    offlineScores: "Offline — lokale Ergebnisse werden angezeigt."
+    offlineScores: "Offline — lokale Ergebnisse werden angezeigt.",
+    signInGoogle: "Mit Google anmelden", signedInAs: "Cloud-Speicher aktiv", signOut: "Abmelden", syncing: "Synchronisiere...", signInFailed: "Anmeldung fehlgeschlagen. Erneut versuchen."
   },
   ru: {
     title: "ПРЫЖОК ОРБИТЫ", play: "ИГРАТЬ", score: "СЧЕТ", best: "РЕКОРД", gameOver: "ИГРА ОКОНЧЕНА",
@@ -212,7 +217,8 @@ const translations = {
     loadingScores: "Загрузка результатов...",
     welcome: "ДОБРО ПОЖАЛОВАТЬ!", namePrompt: "Введите имя для таблицы рекордов:",
     namePlaceholder: "Ваш ник", saveAndStart: "СОХРАНИТЬ И НАЧАТЬ",
-    offlineScores: "Нет сети — показаны локальные результаты."
+    offlineScores: "Нет сети — показаны локальные результаты.",
+    signInGoogle: "Войти через Google", signedInAs: "Облачное сохранение включено", signOut: "Выйти", syncing: "Синхронизация...", signInFailed: "Не удалось войти. Попробуйте снова."
   }
 };
 
@@ -628,6 +634,41 @@ function App() {
   const [streakDays, setStreakDays] = useState(() => loadJSON('orbit_streak_days', 1));
   const [lastStreakDate, setLastStreakDate] = useState(() => localStorage.getItem('orbit_last_streak') || '');
 
+  const [authUser, setAuthUser] = useState(null);
+  const [cloudReady, setCloudReady] = useState(false);
+  const [authBusy, setAuthBusy] = useState(false);
+  const [authError, setAuthError] = useState(false);
+
+  const progress = {
+    crystals, highScore, ownedItems, ballLevels, boostCounts, boostLevels,
+    selectedSkin, selectedTrail, selectedTheme, stats, claimedMissions, claimedBadges,
+    streakDays, lastStreakDate, playerName
+  };
+  const progressRef = useRef(progress);
+  useEffect(() => { progressRef.current = progress; });
+  const progressKey = JSON.stringify(progress);
+
+  const applyProgress = (p) => {
+    setCrystals(p.crystals); saveJSON('orbit_crystals', p.crystals);
+    setHighScore(p.highScore); localStorage.setItem('orbit_highscore', String(p.highScore));
+    setOwnedItems(p.ownedItems); saveJSON('orbit_owned_items', p.ownedItems);
+    setBallLevels(p.ballLevels); saveJSON('orbit_ball_levels', p.ballLevels);
+    setBoostCounts(p.boostCounts); saveJSON('orbit_boost_counts_v2', p.boostCounts);
+    setBoostLevels(p.boostLevels); saveJSON('orbit_boost_levels_v2', p.boostLevels);
+    setSelectedSkin(p.selectedSkin); saveJSON('orbit_selected_skin', p.selectedSkin);
+    setSelectedTrail(p.selectedTrail); saveJSON('orbit_selected_trail', p.selectedTrail);
+    setSelectedTheme(p.selectedTheme); saveJSON('orbit_selected_theme', p.selectedTheme);
+    setStats(p.stats); saveJSON('orbit_stats', p.stats);
+    setClaimedMissions(p.claimedMissions); saveJSON('orbit_claimed_missions', p.claimedMissions);
+    setClaimedBadges(p.claimedBadges); saveJSON('orbit_claimed_badges', p.claimedBadges);
+    setStreakDays(p.streakDays); saveJSON('orbit_streak_days', p.streakDays);
+    setLastStreakDate(p.lastStreakDate); localStorage.setItem('orbit_last_streak', p.lastStreakDate || '');
+    if (p.playerName) {
+      setPlayerName(p.playerName); localStorage.setItem('orbit_player_name', p.playerName);
+      setShowNameModal(false);
+    }
+  };
+
   const [comboCount, setComboCount] = useState(0);
   const [impactPulse, setImpactPulse] = useState(false);
   const slowMoUntilRef = useRef(0);
@@ -721,6 +762,53 @@ function App() {
     };
     initAdMob();
   }, []);
+
+  // Google ile girişte bulut kaydını yerel ilerlemeyle birleştir. Birleştirme
+  // bitmeden (cloudReady) yükleme yapılmaz, yoksa boş cihaz buluttaki kaydı ezerdi.
+  const applyProgressRef = useRef(applyProgress);
+  useEffect(() => { applyProgressRef.current = applyProgress; });
+  const syncWithCloud = useCallback(async (user) => {
+    setAuthUser(user);
+    setCloudReady(false);
+    if (!isGoogleUser(user)) return;
+    try {
+      const merged = mergeProgress(progressRef.current, await loadCloudSave(user.uid));
+      applyProgressRef.current(merged);
+      await writeCloudSave(user.uid, merged);
+      setCloudReady(true);
+    } catch (e) {
+      console.error('Bulut kaydı yüklenemedi: ', e);
+    }
+  }, []);
+
+  useEffect(() => onAuthStateChanged(auth, syncWithCloud), [syncWithCloud]);
+
+  useEffect(() => {
+    if (!cloudReady || !isGoogleUser(authUser)) return;
+    const timer = setTimeout(() => {
+      writeCloudSave(authUser.uid, JSON.parse(progressKey)).catch((e) => console.error('Bulut kaydı yazılamadı: ', e));
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [progressKey, cloudReady, authUser]);
+
+  const handleGoogleSignIn = async () => {
+    if (authBusy) return;
+    playSound('click', soundOn);
+    setAuthBusy(true); setAuthError(false);
+    try {
+      await syncWithCloud(await signInWithGoogle());
+    } catch (e) {
+      console.error('Google girişi başarısız: ', e);
+      setAuthError(true);
+    } finally {
+      setAuthBusy(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    playSound('click', soundOn);
+    try { await signOutGoogle(); } catch {}
+  };
 
   useEffect(() => {
     let listener;
@@ -823,9 +911,8 @@ function App() {
     // Yalnızca yeni skor, cihazdaki eski rekoru geçerse veya eşitse Firebase'e kaydet
     if (finalScore >= savedHighScore && playerName) {
       try {
-        // Arka planda anonim oturum aç (zaten açıksa mevcut olanı kullanır)
-        const userCredential = await signInAnonymously(auth);
-        const uid = userCredential.user.uid;
+        // Google ile girildiyse o hesabı, yoksa anonim oturumu kullan
+        const uid = (await ensureSignedIn()).uid;
 
         // addDoc yerine setDoc kullanarak oyuncunun UID'si ile belge oluştur/güncelle
         await setDoc(doc(db, "leaderboard", uid), {
@@ -1588,6 +1675,19 @@ function App() {
             </div>
             <h1 className="text-4xl sm:text-5xl font-black mb-3 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-center">{t.title}</h1>
             <p className="text-slate-400 mb-3 tracking-wider font-semibold text-sm">{playerName ? `👤 ${playerName} | ` : ''}{t.best}: {highScore}</p>
+            {isGoogleUser(authUser) ? (
+              <div className="flex items-center gap-2 mb-4 text-[11px] font-bold">
+                <span className="text-emerald-300">☁️ {cloudReady ? t.signedInAs : t.syncing}</span>
+                <button onClick={(e) => { e.stopPropagation(); handleSignOut(); }} className="text-slate-500 underline cursor-pointer">{t.signOut}</button>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center mb-4">
+                <button onClick={(e) => { e.stopPropagation(); handleGoogleSignIn(); }} disabled={authBusy} className="flex items-center gap-2 bg-white text-slate-800 font-bold py-2 px-4 rounded-full text-xs shadow-md cursor-pointer disabled:opacity-60">
+                  <span className="font-black text-sm" style={{ color: '#4285F4' }}>G</span> {authBusy ? t.syncing : t.signInGoogle}
+                </button>
+                {authError && <p className="text-red-400 text-[11px] font-bold mt-1">{t.signInFailed}</p>}
+              </div>
+            )}
 
             <div className="flex flex-wrap justify-center gap-2 mb-4">
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameMode('normal'); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${gameMode === 'normal' ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>

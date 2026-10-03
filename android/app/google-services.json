@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "951978915856",
+    "project_id": "orbit-jump-73b68",
+    "storage_bucket": "orbit-jump-73b68.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951978915856:android:ebf9943a2dc61b50917295",
+        "android_client_info": {
+          "package_name": "com.orbitjump.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951978915856-4nqk2ko3tjh47qekt2mj6sode86j5801.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.orbitjump.game",
+            "certificate_hash": "2786d13e664bb91db2a3e4ebc5d38964bf6926db"
+          }
+        },
+        {
+          "client_id": "951978915856-t6vgmdgv6k0icdtl35vm916i8mn1ufpi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.orbitjump.game",
+            "certificate_hash": "606f41d333bb053e3b5477a0fd4a0ad4ed758903"
+          }
+        },
+        {
+          "client_id": "951978915856-i169q7s7f3rt11rjmni6aj6p722i0lrb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7X62325YyJ928yEDdg-oFqTqWIasXlZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951978915856-i169q7s7f3rt11rjmni6aj6p722i0lrb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

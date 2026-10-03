@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /leaderboard/{userId} {
+      // Herkes skorları okuyabilir (sıralama tablosu için)
+      allow read: if true;
+      // Kullanıcılar sadece giriş yapmışsa ve belge ID'si kendi UID'leri ise yazabilir
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    match /saves/{userId} {
+      // Bulut kaydını yalnızca sahibi okuyup yazabilir
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
