@@ -7,6 +7,7 @@ import { App as CapacitorApp } from '@capacitor/app';
 import { db, auth } from './firebase';
 import { collection, setDoc, doc, getDocs, query, orderBy, limit, serverTimestamp } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import { maybeRequestReview, shareScore, noteGameFinished, maybeShowInterstitial, scheduleStreakReminder } from './engagement';
 import { ensureSignedIn, isGoogleUser, signInWithGoogle, signOutGoogle, loadCloudSave, writeCloudSave, mergeProgress } from './cloudSave';
 
 const translations = {
@@ -50,7 +51,8 @@ const translations = {
     welcome: "WELCOME!", namePrompt: "Enter a name to appear on the leaderboard:",
     namePlaceholder: "Your nickname", saveAndStart: "SAVE & START",
     offlineScores: "Offline — showing local scores.",
-    signInGoogle: "Sign in with Google", signedInAs: "Cloud save on", signOut: "Sign out", syncing: "Syncing...", signInFailed: "Sign-in failed. Try again."
+    signInGoogle: "Sign in with Google", signedInAs: "Cloud save on", signOut: "Sign out", syncing: "Syncing...", signInFailed: "Sign-in failed. Try again.",
+    shareScore: "SHARE SCORE", shareText: "I scored {n} in Orbit Jump! Can you beat me? 🚀", streakReminderTitle: "🔥 Your streak is about to break!", streakReminderBody: "Claim your day {n} reward before midnight."
   },
   tr: {
     title: "YÖRÜNGE", play: "OYNA", score: "SKOR", best: "REKOR", gameOver: "OYUN BİTTİ",
@@ -92,7 +94,8 @@ const translations = {
     welcome: "HOŞ GELDİN!", namePrompt: "Skor tablosunda görünmek için bir isim gir:",
     namePlaceholder: "Takma Adın", saveAndStart: "KAYDET VE BAŞLA",
     offlineScores: "Çevrimdışı — yerel skorlar gösteriliyor.",
-    signInGoogle: "Google ile giriş yap", signedInAs: "Bulut kaydı açık", signOut: "Çıkış yap", syncing: "Eşitleniyor...", signInFailed: "Giriş yapılamadı. Tekrar dene."
+    signInGoogle: "Google ile giriş yap", signedInAs: "Bulut kaydı açık", signOut: "Çıkış yap", syncing: "Eşitleniyor...", signInFailed: "Giriş yapılamadı. Tekrar dene.",
+    shareScore: "SKORU PAYLAŞ", shareText: "Orbit Jump'ta {n} puan yaptım! Geçebilir misin? 🚀", streakReminderTitle: "🔥 Serin bozulmak üzere!", streakReminderBody: "{n}. gün ödülünü gece yarısından önce al."
   },
   es: {
     title: "SALTO ÓRBITA", play: "JUGAR", score: "PUNTAJE", best: "MEJOR", gameOver: "FIN DEL JUEGO",
@@ -134,7 +137,8 @@ const translations = {
     welcome: "¡BIENVENIDO!", namePrompt: "Introduce un nombre para la tabla de clasificación:",
     namePlaceholder: "Tu apodo", saveAndStart: "GUARDAR Y EMPEZAR",
     offlineScores: "Sin conexión — mostrando puntuaciones locales.",
-    signInGoogle: "Iniciar sesión con Google", signedInAs: "Guardado en la nube activo", signOut: "Cerrar sesión", syncing: "Sincronizando...", signInFailed: "No se pudo iniciar sesión. Inténtalo de nuevo."
+    signInGoogle: "Iniciar sesión con Google", signedInAs: "Guardado en la nube activo", signOut: "Cerrar sesión", syncing: "Sincronizando...", signInFailed: "No se pudo iniciar sesión. Inténtalo de nuevo.",
+    shareScore: "COMPARTIR", shareText: "¡Hice {n} puntos en Orbit Jump! ¿Puedes superarme? 🚀", streakReminderTitle: "🔥 ¡Tu racha está a punto de romperse!", streakReminderBody: "Reclama tu recompensa del día {n} antes de medianoche."
   },
   de: {
     title: "ORBIT SPRUNG", play: "SPIELEN", score: "PUNKTE", best: "BESTE", gameOver: "SPIEL VORBEI",
@@ -176,7 +180,8 @@ const translations = {
     welcome: "WILLKOMMEN!", namePrompt: "Gib einen Namen für die Bestenliste ein:",
     namePlaceholder: "Dein Spitzname", saveAndStart: "SPEICHERN & STARTEN",
     offlineScores: "Offline — lokale Ergebnisse werden angezeigt.",
-    signInGoogle: "Mit Google anmelden", signedInAs: "Cloud-Speicher aktiv", signOut: "Abmelden", syncing: "Synchronisiere...", signInFailed: "Anmeldung fehlgeschlagen. Erneut versuchen."
+    signInGoogle: "Mit Google anmelden", signedInAs: "Cloud-Speicher aktiv", signOut: "Abmelden", syncing: "Synchronisiere...", signInFailed: "Anmeldung fehlgeschlagen. Erneut versuchen.",
+    shareScore: "TEILEN", shareText: "Ich habe {n} Punkte in Orbit Jump! Schaffst du mehr? 🚀", streakReminderTitle: "🔥 Deine Serie reißt gleich ab!", streakReminderBody: "Hol dir deine Belohnung für Tag {n} vor Mitternacht."
   },
   ru: {
     title: "ПРЫЖОК ОРБИТЫ", play: "ИГРАТЬ", score: "СЧЕТ", best: "РЕКОРД", gameOver: "ИГРА ОКОНЧЕНА",
@@ -218,7 +223,8 @@ const translations = {
     welcome: "ДОБРО ПОЖАЛОВАТЬ!", namePrompt: "Введите имя для таблицы рекордов:",
     namePlaceholder: "Ваш ник", saveAndStart: "СОХРАНИТЬ И НАЧАТЬ",
     offlineScores: "Нет сети — показаны локальные результаты.",
-    signInGoogle: "Войти через Google", signedInAs: "Облачное сохранение включено", signOut: "Выйти", syncing: "Синхронизация...", signInFailed: "Не удалось войти. Попробуйте снова."
+    signInGoogle: "Войти через Google", signedInAs: "Облачное сохранение включено", signOut: "Выйти", syncing: "Синхронизация...", signInFailed: "Не удалось войти. Попробуйте снова.",
+    shareScore: "ПОДЕЛИТЬСЯ", shareText: "Мой результат в Orbit Jump — {n}! Сможешь больше? 🚀", streakReminderTitle: "🔥 Серия вот-вот прервётся!", streakReminderBody: "Заберите награду за день {n} до полуночи."
   }
 };
 
@@ -623,6 +629,7 @@ function App() {
   const [shieldActive, setShieldActive] = useState(false);
   const [adOverlay, setAdOverlay] = useState(false);
   const [reviveUsed, setReviveUsed] = useState(false);
+  const [leavingGameOver, setLeavingGameOver] = useState(false);
 
   const [dailyAdCount, setDailyAdCount] = useState(loadDailyAdCount);
   const planetTimerRef = useRef(1);
@@ -862,7 +869,7 @@ function App() {
       });
       AdMob.addListener(RewardAdPluginEvents.Dismissed, () => setAdOverlay(false));
       AdMob.addListener(RewardAdPluginEvents.FailedToLoad, () => setAdOverlay(false));
-      await AdMob.prepareRewardVideoAd({ adUnitId: 'ca-app-pub-1803044471635660/5387368632', isTesting: false });
+      await AdMob.prepareRewardVideoAd({ adId: 'ca-app-pub-1803044471635660/5387368632', isTesting: false });
       await AdMob.showRewardVideoAd();
     } catch { setAdOverlay(false); }
   };
@@ -951,6 +958,10 @@ function App() {
   };
 
   const finalizeRunStats = (finalScore, finalCrystals) => {
+    // Oyun döngüsünden çağrıldığı için state yerine her render güncellenen ref okunur
+    const prevStats = progressRef.current.stats;
+    noteGameFinished();
+    maybeRequestReview(prevStats.gamesPlayed + 1, prevStats.bestRun > 0 && finalScore > prevStats.bestRun);
     setStats((s) => {
       const next = { ...s, gamesPlayed: s.gamesPlayed + 1, bestRun: Math.max(s.bestRun, finalScore), tempRunPerfects: 0 };
       saveJSON('orbit_stats', next);
@@ -1372,7 +1383,19 @@ function App() {
     setCrystals(nextCrystals); setStreakDays(nextStreak); setLastStreakDate(today);
     saveJSON('orbit_crystals', nextCrystals); saveJSON('orbit_streak_days', nextStreak); localStorage.setItem('orbit_last_streak', today);
     playSound('coin', soundOn); vibrate(15);
+    // Bildirim izni burada, oyuncu seriyle ilgilendiği anda istenir
+    scheduleStreakReminder({ claimedToday: true, streakDays: nextStreak + 1, title: t.streakReminderTitle, body: t.streakReminderBody, askPermission: true });
   };
+
+  useEffect(() => {
+    scheduleStreakReminder({
+      claimedToday: lastStreakDate === new Date().toDateString(),
+      streakDays: streakDays + 1,
+      title: translations[lang].streakReminderTitle,
+      body: translations[lang].streakReminderBody,
+      askPermission: false,
+    });
+  }, [lang, lastStreakDate, streakDays]);
 
   const buyShopItem = (item) => {
     if (ownedItems.includes(item.id)) {
@@ -1985,10 +2008,15 @@ function App() {
                   📺 {t.watchAdContinue}
                 </button>
               )}
+              {score > 0 && (
+                <button onClick={() => { playSound('click', soundOn); shareScore(t.shareText.replace('{n}', String(score))); }} className="w-full mt-3 font-bold py-2.5 px-4 rounded-xl text-sm border border-slate-700 bg-slate-800 text-slate-200">
+                  📤 {t.shareScore}
+                </button>
+              )}
             </div>
             <div className="flex gap-3">
-              <button onClick={() => startGame()} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3 px-6 rounded-full text-base shadow-md">{t.restart}</button>
-              <button onClick={() => { playSound('click', soundOn); setGameState('menu'); }} className="bg-slate-800 text-slate-300 font-bold py-3 px-6 rounded-full text-base border border-slate-700">{t.menu}</button>
+              <button onClick={async () => { if (leavingGameOver) return; setLeavingGameOver(true); await maybeShowInterstitial(); setLeavingGameOver(false); startGame(); }} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3 px-6 rounded-full text-base shadow-md">{t.restart}</button>
+              <button onClick={() => { if (leavingGameOver) return; playSound('click', soundOn); setGameState('menu'); maybeShowInterstitial(); }} className="bg-slate-800 text-slate-300 font-bold py-3 px-6 rounded-full text-base border border-slate-700">{t.menu}</button>
             </div>
           </div>
         )}
