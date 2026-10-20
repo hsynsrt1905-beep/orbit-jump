@@ -25,3 +25,4 @@ dist-ssr
 
 # Firebase deploy cache
 .firebase/
+android/app/release/
