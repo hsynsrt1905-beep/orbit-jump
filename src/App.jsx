@@ -53,7 +53,7 @@ const translations = {
     offlineScores: "Offline — showing local scores.",
     signInGoogle: "Sign in with Google", signedInAs: "Cloud save on", signOut: "Sign out", syncing: "Syncing...", signInFailed: "Sign-in failed. Try again.",
     shareScore: "SHARE SCORE", shareText: "I scored {n} in Orbit Jump! Can you beat me? 🚀", streakReminderTitle: "🔥 Your streak is about to break!", streakReminderBody: "Claim your day {n} reward before midnight.",
-    deleteAccount: "Delete account", deleteConfirm: "Delete your account and cloud save permanently? Your leaderboard entry will also be removed. Progress on this device stays.", deleteFailed: "Could not delete account. Try again."
+    deleteAccount: "Delete account", privacyOptions: "Privacy options", deleteConfirm: "Delete your account and cloud save permanently? Your leaderboard entry will also be removed. Progress on this device stays.", deleteFailed: "Could not delete account. Try again."
   },
   tr: {
     title: "YÖRÜNGE", play: "OYNA", score: "SKOR", best: "REKOR", gameOver: "OYUN BİTTİ",
@@ -97,7 +97,7 @@ const translations = {
     offlineScores: "Çevrimdışı — yerel skorlar gösteriliyor.",
     signInGoogle: "Google ile giriş yap", signedInAs: "Bulut kaydı açık", signOut: "Çıkış yap", syncing: "Eşitleniyor...", signInFailed: "Giriş yapılamadı. Tekrar dene.",
     shareScore: "SKORU PAYLAŞ", shareText: "Orbit Jump'ta {n} puan yaptım! Geçebilir misin? 🚀", streakReminderTitle: "🔥 Serin bozulmak üzere!", streakReminderBody: "{n}. gün ödülünü gece yarısından önce al.",
-    deleteAccount: "Hesabı sil", deleteConfirm: "Hesabın ve bulut kaydın kalıcı olarak silinsin mi? Skor tablosundaki kaydın da kaldırılır. Bu cihazdaki ilerlemen kalır.", deleteFailed: "Hesap silinemedi. Tekrar dene."
+    deleteAccount: "Hesabı sil", privacyOptions: "Gizlilik seçenekleri", deleteConfirm: "Hesabın ve bulut kaydın kalıcı olarak silinsin mi? Skor tablosundaki kaydın da kaldırılır. Bu cihazdaki ilerlemen kalır.", deleteFailed: "Hesap silinemedi. Tekrar dene."
   },
   es: {
     title: "SALTO ÓRBITA", play: "JUGAR", score: "PUNTAJE", best: "MEJOR", gameOver: "FIN DEL JUEGO",
@@ -141,7 +141,7 @@ const translations = {
     offlineScores: "Sin conexión — mostrando puntuaciones locales.",
     signInGoogle: "Iniciar sesión con Google", signedInAs: "Guardado en la nube activo", signOut: "Cerrar sesión", syncing: "Sincronizando...", signInFailed: "No se pudo iniciar sesión. Inténtalo de nuevo.",
     shareScore: "COMPARTIR", shareText: "¡Hice {n} puntos en Orbit Jump! ¿Puedes superarme? 🚀", streakReminderTitle: "🔥 ¡Tu racha está a punto de romperse!", streakReminderBody: "Reclama tu recompensa del día {n} antes de medianoche.",
-    deleteAccount: "Eliminar cuenta", deleteConfirm: "¿Eliminar tu cuenta y tu guardado en la nube para siempre? También se quitará tu puntuación de la clasificación. El progreso en este dispositivo se mantiene.", deleteFailed: "No se pudo eliminar la cuenta. Inténtalo de nuevo."
+    deleteAccount: "Eliminar cuenta", privacyOptions: "Opciones de privacidad", deleteConfirm: "¿Eliminar tu cuenta y tu guardado en la nube para siempre? También se quitará tu puntuación de la clasificación. El progreso en este dispositivo se mantiene.", deleteFailed: "No se pudo eliminar la cuenta. Inténtalo de nuevo."
   },
   de: {
     title: "ORBIT SPRUNG", play: "SPIELEN", score: "PUNKTE", best: "BESTE", gameOver: "SPIEL VORBEI",
@@ -185,7 +185,7 @@ const translations = {
     offlineScores: "Offline — lokale Ergebnisse werden angezeigt.",
     signInGoogle: "Mit Google anmelden", signedInAs: "Cloud-Speicher aktiv", signOut: "Abmelden", syncing: "Synchronisiere...", signInFailed: "Anmeldung fehlgeschlagen. Erneut versuchen.",
     shareScore: "TEILEN", shareText: "Ich habe {n} Punkte in Orbit Jump! Schaffst du mehr? 🚀", streakReminderTitle: "🔥 Deine Serie reißt gleich ab!", streakReminderBody: "Hol dir deine Belohnung für Tag {n} vor Mitternacht.",
-    deleteAccount: "Konto löschen", deleteConfirm: "Konto und Cloud-Speicher endgültig löschen? Dein Bestenlisten-Eintrag wird ebenfalls entfernt. Der Fortschritt auf diesem Gerät bleibt erhalten.", deleteFailed: "Konto konnte nicht gelöscht werden. Erneut versuchen."
+    deleteAccount: "Konto löschen", privacyOptions: "Datenschutzoptionen", deleteConfirm: "Konto und Cloud-Speicher endgültig löschen? Dein Bestenlisten-Eintrag wird ebenfalls entfernt. Der Fortschritt auf diesem Gerät bleibt erhalten.", deleteFailed: "Konto konnte nicht gelöscht werden. Erneut versuchen."
   },
   ru: {
     title: "ПРЫЖОК ОРБИТЫ", play: "ИГРАТЬ", score: "СЧЕТ", best: "РЕКОРД", gameOver: "ИГРА ОКОНЧЕНА",
@@ -229,7 +229,7 @@ const translations = {
     offlineScores: "Нет сети — показаны локальные результаты.",
     signInGoogle: "Войти через Google", signedInAs: "Облачное сохранение включено", signOut: "Выйти", syncing: "Синхронизация...", signInFailed: "Не удалось войти. Попробуйте снова.",
     shareScore: "ПОДЕЛИТЬСЯ", shareText: "Мой результат в Orbit Jump — {n}! Сможешь больше? 🚀", streakReminderTitle: "🔥 Серия вот-вот прервётся!", streakReminderBody: "Заберите награду за день {n} до полуночи.",
-    deleteAccount: "Удалить аккаунт", deleteConfirm: "Удалить аккаунт и облачное сохранение навсегда? Запись в таблице лидеров тоже будет удалена. Прогресс на этом устройстве сохранится.", deleteFailed: "Не удалось удалить аккаунт. Попробуйте снова."
+    deleteAccount: "Удалить аккаунт", privacyOptions: "Настройки конфиденциальности", deleteConfirm: "Удалить аккаунт и облачное сохранение навсегда? Запись в таблице лидеров тоже будет удалена. Прогресс на этом устройстве сохранится.", deleteFailed: "Не удалось удалить аккаунт. Попробуйте снова."
   }
 };
 
@@ -680,6 +680,7 @@ function App() {
   const [authUser, setAuthUser] = useState(null);
   const [cloudReady, setCloudReady] = useState(false);
   const [authBusy, setAuthBusy] = useState(false);
+  const [privacyOptionsRequired, setPrivacyOptionsRequired] = useState(false);
   const [authError, setAuthError] = useState(false);
 
   const progress = {
@@ -792,10 +793,12 @@ function App() {
   useEffect(() => {
     const initAdMob = async () => {
       try {
-        const consentInfo = await AdMob.requestConsentInfo();
+        let consentInfo = await AdMob.requestConsentInfo();
         if (consentInfo.status === AdmobConsentStatus.REQUIRED && consentInfo.isConsentFormAvailable) {
-          await AdMob.showConsentForm();
+          consentInfo = await AdMob.showConsentForm();
         }
+        // AB kullanıcılarına rızayı sonradan değiştirebilecekleri bir giriş noktası gösterilmeli.
+        setPrivacyOptionsRequired(consentInfo.privacyOptionsRequirementStatus === 'REQUIRED');
       } catch {}
 
       try {
@@ -1839,6 +1842,10 @@ function App() {
                 </button>
                 {authError && <p className="text-red-400 text-[11px] font-bold mt-1">{t.signInFailed}</p>}
               </div>
+            )}
+
+            {privacyOptionsRequired && (
+              <button onClick={(e) => { e.stopPropagation(); AdMob.showPrivacyOptionsForm().catch(() => {}); }} className="text-slate-500 underline text-[11px] font-bold mb-3 cursor-pointer">{t.privacyOptions}</button>
             )}
 
             <div className="flex flex-wrap justify-center gap-2 mb-4">
