@@ -240,11 +240,13 @@ const backgroundThemesList = {
   bg_galactic: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-300 via-blue-800 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700"
 };
 
+// Bulanık daire yerine radial-gradient: blur-[140px] filtresi zayıf
+// telefonlarda her karede yeniden çizilip oyunu kasıyordu.
 const backgroundAccents = {
-  bg_nebula: 'bg-fuchsia-500/40',
-  bg_void: 'bg-slate-300/20',
-  bg_solar: 'bg-amber-400/45',
-  bg_galactic: 'bg-cyan-300/45'
+  bg_nebula: 'radial-gradient(circle, rgba(217,70,239,0.4) 0%, rgba(217,70,239,0.18) 35%, rgba(217,70,239,0) 70%)',
+  bg_void: 'radial-gradient(circle, rgba(203,213,225,0.2) 0%, rgba(203,213,225,0.09) 35%, rgba(203,213,225,0) 70%)',
+  bg_solar: 'radial-gradient(circle, rgba(251,191,36,0.45) 0%, rgba(251,191,36,0.20) 35%, rgba(251,191,36,0) 70%)',
+  bg_galactic: 'radial-gradient(circle, rgba(103,232,249,0.45) 0%, rgba(103,232,249,0.20) 35%, rgba(103,232,249,0) 70%)'
 };
 
 /* ============================================================
@@ -796,13 +798,15 @@ function App() {
 
   useEffect(() => onAuthStateChanged(auth, syncWithCloud), [syncWithCloud]);
 
+  // Oyun sırasında buluta yazılmaz (her inişte stats değişip ağ isteği oyunu
+  // kasıyordu); tur bitince/menüde kaydedilir.
   useEffect(() => {
-    if (!cloudReady || !isGoogleUser(authUser)) return;
+    if (!cloudReady || !isGoogleUser(authUser) || gameState === 'playing') return;
     const timer = setTimeout(() => {
       writeCloudSave(authUser.uid, JSON.parse(progressKey)).catch((e) => console.error('Bulut kaydı yazılamadı: ', e));
     }, 2000);
     return () => clearTimeout(timer);
-  }, [progressKey, cloudReady, authUser]);
+  }, [progressKey, cloudReady, authUser, gameState]);
 
   const handleGoogleSignIn = async () => {
     if (authBusy) return;
@@ -1089,7 +1093,10 @@ function App() {
               trailPointsRef.current[tIdx] = { x: p.ball.x + jx, y: p.ball.y + jy, born: currentTime, color: trailColor, shape };
               trailCursorRef.current = (tIdx + 1) % TRAIL_POOL_SIZE;
               const tDot = trailDotRefs.current[tIdx];
-              if (tDot) {
+              // Sınıf/arka plan yalnızca iz türü değişince yazılır; her karede
+              // yazmak gereksiz stil yeniden hesaplamasına yol açıyordu.
+              if (tDot && tDot.dataset.look !== shape + trailColor) {
+                tDot.dataset.look = shape + trailColor;
                 tDot.className = `trail-dot trail-${shape} z-[24]`;
                 tDot.style.background = `radial-gradient(circle, rgba(255,255,255,0.85) 0%, ${trailColor} 38%, transparent 72%)`;
               }
@@ -1697,7 +1704,7 @@ function App() {
         )}
 
         <div className={currentBgStyle}>
-          <div className={`absolute top-1/4 left-1/4 w-[700px] h-[700px] ${currentAccent} rounded-full blur-[140px] pointer-events-none transition-colors duration-700`}></div>
+          <div className="absolute w-[1000px] h-[1000px] pointer-events-none" style={{ top: 'calc(25% - 150px)', left: 'calc(25% - 150px)', background: currentAccent }}></div>
           {Array.from({ length: 18 }).map((_, i) => (
             <div key={`star-${i}`} className="absolute rounded-full bg-white pointer-events-none" style={{ width: 1.5, height: 1.5, left: `${(i * 37) % 100}%`, top: `${(i * 53) % 100}%`, animation: `twinkle ${2 + (i % 4)}s ease-in-out infinite` }}></div>
           ))}
