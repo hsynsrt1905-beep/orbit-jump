@@ -50,7 +50,7 @@
 <script type="module">
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js';
   import { getAuth, GoogleAuthProvider, signInWithPopup, deleteUser, reauthenticateWithPopup } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js';
-  import { getFirestore, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
+  import { getFirestore, doc, deleteDoc, collection, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
 
   const app = initializeApp({
     apiKey: 'AIzaSyCv9eqQLw-kzkNSjjH4rbbklHsLqyqdx3w',
@@ -85,6 +85,8 @@
     try {
       await deleteDoc(doc(db, 'saves', user.uid));
       await deleteDoc(doc(db, 'leaderboard', user.uid));
+      const names = await getDocs(query(collection(db, 'names'), where('uid', '==', user.uid)));
+      await Promise.all(names.docs.map((d) => deleteDoc(d.ref)));
       try {
         await deleteUser(user);
       } catch (e) {

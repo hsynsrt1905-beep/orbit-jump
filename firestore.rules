@@ -16,6 +16,20 @@ service cloud.firestore {
       allow read, write: if isOwner(userId);
     }
 
+    match /names/{key} {
+      // İsim ayırmaları herkese açık okunur (isim alınmış mı kontrolü);
+      // yalnızca boş bir isim kendi UID'siyle alınabilir, sahibi bırakabilir.
+      allow read: if true;
+      allow create: if request.auth != null
+                    && request.resource.data.keys().hasOnly(['uid', 'name'])
+                    && request.resource.data.uid == request.auth.uid
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() >= 1
+                    && request.resource.data.name.size() <= 12
+                    && key.size() <= 40;
+      allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
+    }
+
     function isOwner(userId) {
       return request.auth != null && request.auth.uid == userId;
     }

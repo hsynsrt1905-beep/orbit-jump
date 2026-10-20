@@ -1,7 +1,7 @@
 import { Capacitor } from '@capacitor/core';
 import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 import { GoogleAuthProvider, linkWithCredential, signInWithCredential, signInAnonymously, signOut, deleteUser, reauthenticateWithCredential } from 'firebase/auth';
-import { doc, getDoc, setDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, getDoc, setDoc, deleteDoc, serverTimestamp, runTransaction, collection, query, where, getDocs, limit } from 'firebase/firestore';
 import { auth, db } from './firebase';
 
 export const isGoogleUser = (user) => !!user && !user.isAnonymous;
@@ -48,6 +48,7 @@ export const deleteAccount = async () => {
   if (!user) return;
   await deleteDoc(doc(db, 'saves', user.uid));
   await deleteDoc(doc(db, 'leaderboard', user.uid));
+  await releaseNames(user.uid).catch(() => {});
   try {
     await deleteUser(user);
   } catch (e) {
@@ -57,6 +58,34 @@ export const deleteAccount = async () => {
     await deleteUser(user);
   }
   try { await FirebaseAuthentication.signOut(); } catch {}
+};
+
+// --- Benzersiz oyuncu isimleri: names/{küçük harfli isim} belgesi ismi bir
+// UID'ye ayırır. Eski oyuncuların ayırması olmadığından skor tablosundaki aynı
+// isim de "alınmış" sayılır.
+export const nameKey = (name) => name.trim().toLowerCase().replace(/s+/g, ' ');
+
+export const claimPlayerName = async (name) => {
+  const uid = (await ensureSignedIn()).uid;
+  const clean = name.trim().substring(0, 12);
+  const key = nameKey(clean);
+
+  const lb = await getDocs(query(collection(db, 'leaderboard'), where('name', '==', clean), limit(5)));
+  if (lb.docs.some((d) => d.id !== uid)) throw new Error('name-taken');
+
+  await runTransaction(db, async (tx) => {
+    const ref = doc(db, 'names', key);
+    const snap = await tx.get(ref);
+    if (snap.exists() && snap.data().uid !== uid) throw new Error('name-taken');
+    if (!snap.exists()) tx.set(ref, { uid, name: clean });
+  });
+  return clean;
+};
+
+// Oyuncunun eski isim ayırmalarını bırakır (isim değişince / hesap silinince).
+export const releaseNames = async (uid, keepKey) => {
+  const snap = await getDocs(query(collection(db, 'names'), where('uid', '==', uid)));
+  await Promise.all(snap.docs.filter((d) => d.id !== keepKey).map((d) => deleteDoc(d.ref)));
 };
 
 export const loadCloudSave = async (uid) => {
