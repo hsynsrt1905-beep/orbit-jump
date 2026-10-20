@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orbit Jump — Google Play</title>
+  <meta name="description" content="One-tap space jump game. Free on Google Play.">
+  <meta property="og:title" content="Orbit Jump">
+  <meta property="og:description" content="One-tap space jump game. Free on Google Play.">
+  <style>
+    :root { --bg: #0a0618; --card: #151030; --text: #f1f5f9; --muted: #94a3b8; --accent: #22d3ee; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 50% 30%, #3b1d6e 0%, var(--bg) 70%); color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding: 24px 16px; }
+    main { width: 100%; max-width: 380px; text-align: center; }
+    .planet { width: 96px; height: 96px; margin: 0 auto 20px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ffd9a8, #ea580c 55%, #2f0d03);
+      box-shadow: 0 0 40px rgba(234, 88, 12, .6); }
+    h1 { margin: 0 0 8px; font-size: 32px; letter-spacing: 2px; }
+    p { margin: 0 0 24px; color: var(--muted); line-height: 1.5; }
+    a.btn { display: block; padding: 16px; border-radius: 999px; background: var(--accent); color: #0a0618;
+      font-weight: 800; font-size: 18px; text-decoration: none; }
+    a.alt { display: block; margin-top: 14px; color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="planet" aria-hidden="true"></div>
+    <h1>ORBIT JUMP</h1>
+    <p>One-tap space jump game · Tek dokunuşla uzay oyunu<br>Free · Ücretsiz</p>
+    <a class="btn" id="get" href="https://play.google.com/store/apps/details?id=com.orbitjump.game&amp;utm_source=instagram&amp;utm_medium=bio">Get it on Google Play</a>
+    <a class="alt" href="https://play.google.com/store/apps/details?id=com.orbitjump.game">play.google.com</a>
+  </main>
+  <script>
+    // Uygulama içi tarayıcılar (Instagram vb.) Play linkini açamayabilir;
+    // Android'de doğrudan Play Store uygulamasını açan intent kullanılır.
+    if (/Android/i.test(navigator.userAgent)) {
+      var intent = 'intent://details?id=com.orbitjump.game&referrer=utm_source%3Dinstagram%26utm_medium%3Dbio' +
+        '#Intent;scheme=market;package=com.android.vending;' +
+        'S.browser_fallback_url=' + encodeURIComponent('https://play.google.com/store/apps/details?id=com.orbitjump.game') + ';end';
+      document.getElementById('get').href = intent;
+      setTimeout(function () { location.href = intent; }, 300);
+    }
+  </script>
+</body>
+</html>
