@@ -601,6 +601,32 @@ function App() {
     return saved !== null ? JSON.parse(saved) : true;
   });
 
+  // Hafif grafik modu: zayıf telefonlarda ağır efektleri (yüzey animasyonları,
+  // karışım modları, büyük gölgeler) kapatır. Kullanıcı seçmediyse cihaz
+  // bellek/çekirdek sayısına göre başlar, oyunda kare süreleri ölçülerek
+  // gerekirse kendiliğinden açılır.
+  const [liteMode, setLiteMode] = useState(() => {
+    try {
+      const saved = localStorage.getItem('orbit_lite');
+      if (saved !== null) return saved === '1';
+    } catch {}
+    return (navigator.deviceMemory || 8) <= 4 || (navigator.hardwareConcurrency || 8) <= 4;
+  });
+  const liteRef = useRef(liteMode);
+  const perfSampleRef = useRef({ frames: 0, slow: 0, done: false });
+  useEffect(() => {
+    liteRef.current = liteMode;
+    document.documentElement.classList.toggle('lite', liteMode);
+  }, [liteMode]);
+  const toggleLite = () => {
+    const next = !liteMode;
+    setLiteMode(next);
+    perfSampleRef.current.done = true;
+    try { localStorage.setItem('orbit_lite', next ? '1' : '0'); localStorage.setItem('orbit_lite_manual', '1'); } catch {}
+    playSound('click', soundOn);
+  };
+  const rootRef = useRef(null);
+
   const [playerName, setPlayerName] = useState(() => localStorage.getItem('orbit_player_name') || "");
   const [showNameModal, setShowNameModal] = useState(() => !localStorage.getItem('orbit_player_name'));
   const [nameInput, setNameInput] = useState("");
@@ -685,7 +711,6 @@ function App() {
   };
 
   const [comboCount, setComboCount] = useState(0);
-  const [impactPulse, setImpactPulse] = useState(false);
   const slowMoUntilRef = useRef(0);
 
   const physicsRef = useRef({ active: { x: 0, y: 0 }, target: { x: 80, y: -440, vx: 2.0 }, ball: { x: 120, y: 0, vx: 0, vy: 0 }, angle: 0, isFlying: false, speed: 0.02, combo: 0, dead: false, camera: { x: 0, y: 200 } });
@@ -904,7 +929,9 @@ function App() {
     const colors = isSupernova
       ? (themeColors && themeColors.length ? themeColors : ['#fde047', '#fb923c', '#ffffff'])
       : isPerfect ? ['#fde047', '#fbbf24', '#ffffff', '#fff7d6'] : isGreat ? ['#67e8f9', '#22d3ee', '#ffffff'] : ['#67e8f9', '#0ea5e9'];
-    const count = isSupernova ? 46 : isPerfect ? 22 : isGreat ? 12 : 7;
+    const fullCount = isSupernova ? 46 : isPerfect ? 22 : isGreat ? 12 : 7;
+    const lite = liteRef.current;
+    const count = lite ? Math.ceil(fullCount / 2) : fullCount;
     const now = performance.now();
 
     for (let n = 0; n < count; n++) {
@@ -923,7 +950,7 @@ function App() {
         dot.style.width = `${size}px`;
         dot.style.height = `${size}px`;
         dot.style.background = color;
-        dot.style.boxShadow = `0 0 ${isSupernova ? 10 : 6}px ${color}`;
+        dot.style.boxShadow = lite ? 'none' : `0 0 ${isSupernova ? 10 : 6}px ${color}`;
       }
     }
   };
@@ -1007,6 +1034,23 @@ function App() {
         lastTime = currentTime;
 
         if (deltaTime < 0.1) {
+          // İlk ~4 saniyede karelerin %30'undan fazlası 22 ms'yi aşarsa
+          // (45 fps altı) hafif moda geçilir; kullanıcı elle seçtiyse dokunulmaz.
+          const perf = perfSampleRef.current;
+          if (!perf.done && !liteRef.current) {
+            perf.frames += 1;
+            if (deltaTime > 0.022) perf.slow += 1;
+            if (perf.frames >= 240) {
+              perf.done = true;
+              let manual = false;
+              try { manual = localStorage.getItem('orbit_lite_manual') === '1'; } catch {}
+              if (!manual && perf.slow / perf.frames > 0.3) {
+                setLiteMode(true);
+                try { localStorage.setItem('orbit_lite', '1'); } catch {}
+              }
+            }
+          }
+
           const p = physicsRef.current;
           const live = liveRef.current;
 
@@ -1130,7 +1174,13 @@ function App() {
               }
 
               p.active.x = shiftX; p.active.y = shiftY;
-              setImpactPulse(true); setTimeout(() => setImpactPulse(false), 120);
+              // Tüm ekranı ölçekleyen nabız React render'ı tetiklemeden DOM'da
+              // yapılır; hafif modda tamamen atlanır.
+              if (rootRef.current && !liteRef.current) {
+                const rootEl = rootRef.current;
+                rootEl.style.transform = 'scale(1.04)';
+                setTimeout(() => { rootEl.style.transform = ''; }, 120);
+              }
 
               if (kind === 'perfect') slowMoUntilRef.current = currentTime + 160;
 
@@ -1336,7 +1386,7 @@ function App() {
     shakeUntilRef.current = 0;
     if (flashRef.current) flashRef.current.style.opacity = '0';
     setReviveUsed(false);
-    setScore(0); setComboCount(0); setRunCrystals(0); setPopup(null); setImpactPulse(false); setShieldActive(false); setSupernovaActive(false); planetTimerRef.current = 1; resetPlanetVisual(); slowMoUntilRef.current = 0; setGameState('playing');
+    setScore(0); setComboCount(0); setRunCrystals(0); setPopup(null); setShieldActive(false); setSupernovaActive(false); planetTimerRef.current = 1; resetPlanetVisual(); slowMoUntilRef.current = 0; setGameState('playing');
   };
 
   const continueGameWithAd = () => {
@@ -1485,10 +1535,20 @@ function App() {
     >
       <div
         className="w-full h-full bg-slate-950 flex flex-col items-center justify-center text-white font-sans overflow-hidden select-none relative m-0 p-0"
-        style={{ width: '100vw', height: '100vh', WebkitTapHighlightColor: 'transparent', transform: `scale(${impactPulse || supernovaActive ? 1.04 : 1})`, transition: 'transform 0.08s ease-out' }}
+        ref={rootRef}
+        style={{ width: '100vw', height: '100vh', WebkitTapHighlightColor: 'transparent', transform: supernovaActive ? 'scale(1.04)' : undefined, transition: 'transform 0.08s ease-out' }}
         onClick={handleJump}
       >
         <style>{`
+          /* ---------------- HAFİF MOD ---------------- */
+          .lite .planet-layer, .lite .planet-atmo, .lite .p-shine, .lite .ball-sheen,
+          .lite .ball-core, .lite .ball-corona { animation: none !important; }
+          .lite .planet-layer { mix-blend-mode: normal !important; }
+          .lite .p-noise, .lite .p-shine { display: none; }
+          .lite .planet { box-shadow: 0 0 40px rgba(var(--p-glow), .55) !important; }
+          .lite .planet-ring { box-shadow: none !important; }
+          .lite .bg-star { animation: none !important; opacity: .6; }
+          .lite .supernova-flash { filter: none !important; animation: none !important; }
           html, body, #root { width: 100vw; height: 100vh; margin: 0; padding: 0; overflow: hidden; background: #000; position: fixed; }
           @keyframes twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
           @keyframes popFloat { 0% { transform: translateY(0) scale(0.6); opacity: 0; } 15% { transform: translateY(-6px) scale(1.15); opacity: 1; } 100% { transform: translateY(-46px) scale(1); opacity: 0; } }
@@ -1710,7 +1770,7 @@ function App() {
         <div className={currentBgStyle}>
           <div className="absolute w-[1000px] h-[1000px] pointer-events-none" style={{ top: 'calc(25% - 150px)', left: 'calc(25% - 150px)', background: currentAccent }}></div>
           {Array.from({ length: 18 }).map((_, i) => (
-            <div key={`star-${i}`} className="absolute rounded-full bg-white pointer-events-none" style={{ width: 1.5, height: 1.5, left: `${(i * 37) % 100}%`, top: `${(i * 53) % 100}%`, animation: `twinkle ${2 + (i % 4)}s ease-in-out infinite` }}></div>
+            <div key={`star-${i}`} className="bg-star absolute rounded-full bg-white pointer-events-none" style={{ width: 1.5, height: 1.5, left: `${(i * 37) % 100}%`, top: `${(i * 53) % 100}%`, animation: `twinkle ${2 + (i % 4)}s ease-in-out infinite` }}></div>
           ))}
         </div>
 
@@ -1718,6 +1778,7 @@ function App() {
           {gameState === 'playing' && <div className="pointer-events-none flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold px-4 h-12 rounded-full text-lg shadow-md">💎 {runCrystals}</div>}
           {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setIsPaused(true); }} className="w-12 h-12 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">⏸️</button>}
           {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); exitToMenu(); }} className="w-12 h-12 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">🏠</button>}
+          {gameState !== 'playing' && <button onClick={(e) => { e.stopPropagation(); toggleLite(); }} aria-label={liteMode ? 'Graphics: low' : 'Graphics: high'} className={`w-12 h-12 bg-slate-900/90 border rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md ${liteMode ? 'border-amber-500/70' : 'border-slate-700/60'}`}>{liteMode ? '⚡' : '✨'}</button>}
           <button onClick={(e) => { e.stopPropagation(); toggleSound(); }} className="w-12 h-12 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">{soundOn ? '🔊' : '🔇'}</button>
         </div>
 
@@ -2103,7 +2164,7 @@ function App() {
 
               <div ref={activeGroupRef} className="planet-group absolute flex items-center justify-center pointer-events-none" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
                 <PlanetBody innerRef={activePlanetRef} isSupernova={supernovaActive} glowRef={impactGlowRef} />
-                {supernovaActive && <div className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-red-600 opacity-90 blur-xl z-40 pointer-events-none animate-ping"></div>}
+                {supernovaActive && <div className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-red-600 opacity-90 blur-xl z-40 pointer-events-none animate-ping supernova-flash"></div>}
               </div>
 
               <div ref={targetGroupRef} className="planet-group absolute flex items-center justify-center pointer-events-none" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%) translate(80px, -440px)' }}>
