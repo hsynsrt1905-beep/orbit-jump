@@ -7,19 +7,19 @@ Karakter sınırları: Uygulama adı 30, kısa açıklama 80, tam açıklama 400
 
 ## Türkçe (tr-TR)
 
-### Uygulama adı (26/30)
+### Uygulama adı (30/30)
 ```
-Orbit Jump: Uzayda Zıplama
+Orbit Jump: Uzay Zıplama Oyunu
 ```
 
-### Kısa açıklama (74/80)
+### Kısa açıklama (77/80)
 ```
-Gezegenden gezegene zıpla, mükemmel iniş yap, kombo kur ve rekorunu kır! 🚀
+İnternetsiz uzay oyunu: gezegenden gezegene zıpla, mükemmel in, rekorunu kır!
 ```
 
 ### Tam açıklama
 ```
-Doğru anda dokun, topu fırlat ve bir sonraki gezegene kusursuz in! Orbit Jump, tek dokunuşla oynanan ama ustalaşması zor, hızlı ve renkli bir uzay arcade oyunu.
+Doğru anda dokun, topu fırlat ve bir sonraki gezegene kusursuz in! Orbit Jump, tek dokunuşla oynanan ama ustalaşması zor, hızlı ve renkli bir uzay zıplama oyunu. İnternet gerekmez, istediğin yerde oyna.
 
 🪐 NASIL OYNANIR?
 Top gezegenin etrafında döner. Ekrana dokun, top fırlasın ve hareket eden hedef gezegeni yakala. Mükemmel iniş yaparsan +3 puan ve yavaş çekim kazanırsın, art arda inişlerle kombo kurarsın. Süre dolmadan zıpla, kaçırırsan oyun biter!
@@ -40,10 +40,10 @@ Top gezegenin etrafında döner. Ekrana dokun, top fırlasın ve hareket eden he
 • Dünya skor tablosu: dünyanın en iyileriyle yarış
 • Google ile giriş ve bulut kaydı: ilerlemen telefon değiştirsen de kaybolmaz
 • Skorunu arkadaşlarınla paylaş ve onlara meydan oku
-• Çevrimdışı oynanabilir
+• İnternetsiz oyna: Wi-Fi ya da mobil veri gerekmez
 • Türkçe, İngilizce, İspanyolca, Almanca ve Rusça dil desteği
 
-Kısa molalar için ideal. Bir tur 1 dakika sürer, ama "bir tur daha" demeden bırakamayacaksın!
+Refleks, zamanlama ve beceri oyunlarını sevenler için kısa molalarda ideal. Bir tur 1 dakika sürer, ama "bir tur daha" demeden bırakamayacaksın!
 
 Hemen indir, yörüngeye çık ve rekorunu kır! 🚀
 ```
@@ -52,19 +52,19 @@ Hemen indir, yörüngeye çık ve rekorunu kır! 🚀
 
 ## English (en-US)
 
-### App name (28/30)
+### App name (27/30)
 ```
-Orbit Jump: Space Hop Arcade
+Orbit Jump: Space Jump Game
 ```
 
 ### Short description (79/80)
 ```
-Hop from planet to planet, land perfectly, build combos and beat your record! 🚀
+Offline space jump game: hop planet to planet, land perfectly, beat your record
 ```
 
 ### Full description
 ```
-Tap at the right moment, launch the ball and land perfectly on the next planet! Orbit Jump is a fast, colorful space arcade game that takes one tap to play and a lot of skill to master.
+Tap at the right moment, launch the ball and land perfectly on the next planet! Orbit Jump is a fast, colorful space jump game that takes one tap to play and a lot of skill to master. No internet needed, play anywhere.
 
 🪐 HOW TO PLAY
 The ball orbits around a planet. Tap to launch it and catch the moving target planet. Land a perfect jump for +3 points and a slow-motion boost, and chain landings to build combos. Jump before time runs out. Miss, and it's game over!
@@ -85,15 +85,20 @@ The ball orbits around a planet. Tap to launch it and catch the moving target pl
 • Global leaderboard: compete with the best players in the world
 • Google sign-in and cloud save: keep your progress even on a new phone
 • Share your score and challenge your friends
-• Play offline
+• Play offline: no Wi-Fi or mobile data needed
 • Available in English, Turkish, Spanish, German and Russian
 
-Perfect for quick breaks. A run takes a minute, but you won't stop at "just one more"!
+A perfect casual arcade game for quick breaks if you love reflex, timing and skill games. A run takes a minute, but you won't stop at "just one more"!
 
 Download now, launch into orbit and beat your high score! 🚀
 ```
 
 ---
+
+## Anahtar kelime notları
+- Google Play başlığı, kısa açıklamayı ve tam açıklamayı aramada tarar; en çok başlık ve kısa açıklama etkiler.
+- Hedeflenen aramalar: "uzay oyunu", "zıplama oyunu", "internetsiz oyun", "refleks oyunu" / "space game", "jump game", "offline game".
+- Başlık ve kısa açıklamada emoji, "en iyi", "#1", "ücretsiz" gibi ifadeler kullanma; Play politikası bunları reddedebilir.
 
 ## Ekran görüntüsü ipuçları
 - İlk 2 görüntü en önemlisi; aramada çoğu kullanıcı sadece onları görür.
