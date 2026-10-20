@@ -1225,7 +1225,8 @@ function App() {
             if (currentTime - pt.born >= pt.life) { particlesRef.current[pi] = null; continue; }
             pt.x += pt.vx * (deltaTime * 60);
             pt.y += pt.vy * (deltaTime * 60);
-            pt.vx *= 0.985; pt.vy *= 0.985;
+            const drag = Math.pow(0.985, deltaTime * 60);
+            pt.vx *= drag; pt.vy *= drag;
           }
 
           let targetCamX, targetCamY;
@@ -1237,8 +1238,11 @@ function App() {
             targetCamY = -p.active.y + 200;
           }
 
-          p.camera.x += (targetCamX - p.camera.x) * 0.14;
-          p.camera.y += (targetCamY - p.camera.y) * 0.14;
+          // Kamera yumuşatması süreye göre ölçeklenir: 120 Hz ekranlarda kare
+          // süresi 8–16 ms arasında oynadığında sabit katsayı kamerayı titretiyordu.
+          const camLerp = 1 - Math.pow(1 - 0.14, deltaTime * 60);
+          p.camera.x += (targetCamX - p.camera.x) * camLerp;
+          p.camera.y += (targetCamY - p.camera.y) * camLerp;
 
           let shakeX = 0, shakeY = 0;
           if (currentTime < shakeUntilRef.current) {
