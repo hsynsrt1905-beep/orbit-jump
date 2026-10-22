@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:web": "vite build --mode web && node -e \"const fs=require('fs');fs.rmSync('hosting/game',{recursive:true,force:true});fs.cpSync('dist-web','hosting/game',{recursive:true})\""
   },
   "dependencies": {
     "@capacitor-community/admob": "^8.1.0",
