@@ -3,6 +3,7 @@ import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 import { GoogleAuthProvider, linkWithCredential, signInWithCredential, signInAnonymously, signOut, deleteUser, reauthenticateWithCredential } from 'firebase/auth';
 import { doc, getDoc, setDoc, deleteDoc, serverTimestamp, runTransaction, collection, query, where, getDocs, limit } from 'firebase/firestore';
 import { auth, db } from './firebase';
+import { utcDayId, utcWeekId } from './periodic';
 
 export const isGoogleUser = (user) => !!user && !user.isAnonymous;
 
@@ -48,6 +49,13 @@ export const deleteAccount = async () => {
   if (!user) return;
   await deleteDoc(doc(db, 'saves', user.uid));
   await deleteDoc(doc(db, 'leaderboard', user.uid));
+  // Güncel dönem tablolarındaki kayıtlar da silinir (eski dönemler gösterilmez).
+  const yesterday = new Date(Date.now() - 86400000);
+  await Promise.all([
+    deleteDoc(doc(db, 'daily', utcDayId(), 'scores', user.uid)),
+    deleteDoc(doc(db, 'daily', utcDayId(yesterday), 'scores', user.uid)),
+    deleteDoc(doc(db, 'weekly', utcWeekId(), 'scores', user.uid)),
+  ]).catch(() => {});
   await releaseNames(user.uid).catch(() => {});
   try {
     await deleteUser(user);

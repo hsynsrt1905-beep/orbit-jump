@@ -4,6 +4,7 @@ import { Share } from '@capacitor/share';
 import { InAppReview } from '@capacitor-community/in-app-review';
 import { LocalNotifications } from '@capacitor/local-notifications';
 import { FirebaseCrashlytics } from '@capacitor-firebase/crashlytics';
+import { FirebaseAnalytics } from '@capacitor-firebase/analytics';
 
 const isNative = Capacitor.isNativePlatform();
 const STORE_URL = 'https://play.google.com/store/apps/details?id=com.orbitjump.game';
@@ -12,9 +13,16 @@ const STORE_URL = 'https://play.google.com/store/apps/details?id=com.orbitjump.g
 const INTERSTITIAL_AD_ID = 'ca-app-pub-1803044471635660/1592634831';
 const GAMES_PER_INTERSTITIAL = 4;
 const INTERSTITIAL_MIN_GAP_MS = 3 * 60 * 1000;
+// Yeni oyuncu ilk gün ve ilk 15 oyunda geçiş reklamı görmez; oyunu
+// bırakmaların en çok ilk oturumdaki reklamdan geldiği görülüyor.
+const AD_FREE_MS = 24 * 60 * 60 * 1000;
+const AD_FREE_GAMES = 15;
 
 const STREAK_REMINDER_ID = 1001;
 const STREAK_REMINDER_HOUR = 20;
+const COMEBACK_IDS = [1002, 1003];
+const COMEBACK_DAYS = [2, 5];
+const COMEBACK_HOUR = 18;
 
 const REVIEW_MIN_GAMES = 5;
 const REVIEW_COOLDOWN_MS = 30 * 24 * 60 * 60 * 1000;
@@ -24,6 +32,16 @@ const readNum = (key) => {
 };
 const writeNum = (key, val) => {
   try { localStorage.setItem(key, String(val)); } catch {}
+};
+
+// İlk açılış zamanı bir kez yazılır; reklamsız ilk gün buna göre hesaplanır.
+if (!readNum('orbit_first_open')) writeNum('orbit_first_open', Date.now());
+
+// --- Analytics: oyuncunun nerede bıraktığını görmek için olaylar. Elde tutma
+// (1. gün / 7. gün) Firebase konsolunda kendiliğinden hesaplanır.
+export const track = (name, params = {}) => {
+  if (!isNative) return;
+  FirebaseAnalytics.logEvent({ name, params }).catch(() => {});
 };
 
 // --- Crashlytics: yerel çökmeler kendiliğinden raporlanır; JS hataları da eklenir.
@@ -75,7 +93,12 @@ const prepareInterstitial = async () => {
   }
 };
 
+const inAdFreePeriod = () =>
+  Date.now() - readNum('orbit_first_open') < AD_FREE_MS || readNum('orbit_games_total') < AD_FREE_GAMES;
+
 export const noteGameFinished = () => {
+  writeNum('orbit_games_total', readNum('orbit_games_total') + 1);
+  if (inAdFreePeriod()) return;
   gamesSinceInterstitial += 1;
   if (gamesSinceInterstitial >= GAMES_PER_INTERSTITIAL - 1) prepareInterstitial();
 };
@@ -83,7 +106,7 @@ export const noteGameFinished = () => {
 // Reklam kapanana kadar bekler; çağıran oyunu ancak ondan sonra başlatmalı,
 // yoksa reklam açıkken oyun arkada akar ve top düşerdi.
 export const maybeShowInterstitial = async () => {
-  if (!isNative || !INTERSTITIAL_AD_ID) return;
+  if (!isNative || !INTERSTITIAL_AD_ID || inAdFreePeriod()) return;
   if (gamesSinceInterstitial < GAMES_PER_INTERSTITIAL) return;
   if (Date.now() - lastInterstitialAt < INTERSTITIAL_MIN_GAP_MS) return;
   if (!interstitialReady) { prepareInterstitial(); return; }
@@ -110,6 +133,7 @@ export const maybeShowInterstitial = async () => {
     AdMob.showInterstitial().catch(finish);
     setTimeout(finish, 90000);
   });
+  track('interstitial_shown');
 };
 
 // --- Seri hatırlatma: bugünkü ödül alınmadıysa bugün 20:00'de, alındıysa
@@ -137,6 +161,32 @@ export const scheduleStreakReminder = async ({ claimedToday, streakDays, title, 
         smallIcon: 'ic_stat_orbit',
         iconColor: '#22d3ee',
       }],
+    });
+  } catch {}
+};
+
+// --- Geri dönüş: oyuncu 2 ve 5 gün girmezse rekoruna atıfla bildirim.
+// Her açılışta ve tur sonunda yeniden kurulur, yani oynayan kimse bunu görmez.
+export const scheduleComebackReminders = async (messages) => {
+  if (!isNative) return;
+  try {
+    const perm = await LocalNotifications.checkPermissions();
+    if (perm.display !== 'granted') return;
+    await LocalNotifications.cancel({ notifications: COMEBACK_IDS.map((id) => ({ id })) });
+    await LocalNotifications.schedule({
+      notifications: COMEBACK_IDS.map((id, i) => {
+        const at = new Date();
+        at.setDate(at.getDate() + COMEBACK_DAYS[i]);
+        at.setHours(COMEBACK_HOUR, 0, 0, 0);
+        return {
+          id,
+          title: messages[i].title,
+          body: messages[i].body,
+          schedule: { at, allowWhileIdle: true },
+          smallIcon: 'ic_stat_orbit',
+          iconColor: '#22d3ee',
+        };
+      }),
     });
   } catch {}
 };

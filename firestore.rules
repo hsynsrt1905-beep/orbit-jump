@@ -11,6 +11,23 @@ service cloud.firestore {
                     && request.resource.data.score >= resource.data.score;
       allow delete: if isOwner(userId);
     }
+    // Günlük meydan okuma ve haftalık tablo: aynı kurallar, dönem başına
+    // oyuncu başına bir kayıt; yalnızca daha yüksek skorla güncellenir.
+    match /daily/{dayId}/scores/{userId} {
+      allow read: if true;
+      allow create: if isOwner(userId) && validEntry(userId) && dayId.size() == 10;
+      allow update: if isOwner(userId) && validEntry(userId)
+                    && request.resource.data.score > resource.data.score;
+      allow delete: if isOwner(userId);
+    }
+    match /weekly/{weekId}/scores/{userId} {
+      allow read: if true;
+      allow create: if isOwner(userId) && validEntry(userId) && weekId.size() == 8;
+      allow update: if isOwner(userId) && validEntry(userId)
+                    && request.resource.data.score > resource.data.score;
+      allow delete: if isOwner(userId);
+    }
+
     match /saves/{userId} {
       // Bulut kaydını yalnızca sahibi okuyup yazabilir
       allow read, write: if isOwner(userId);

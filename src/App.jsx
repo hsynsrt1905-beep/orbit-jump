@@ -7,7 +7,8 @@ import { App as CapacitorApp } from '@capacitor/app';
 import { db, auth } from './firebase';
 import { collection, setDoc, doc, getDocs, query, orderBy, limit, serverTimestamp } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { maybeRequestReview, shareScore, noteGameFinished, maybeShowInterstitial, scheduleStreakReminder } from './engagement';
+import { maybeRequestReview, shareScore, noteGameFinished, maybeShowInterstitial, scheduleStreakReminder, scheduleComebackReminders, track } from './engagement';
+import { utcDayId, utcWeekId, localDayId, seededRandom, submitPeriodScore, fetchPeriodScores, emptyDailyStats, dailyMissionsFor } from './periodic';
 import { ensureSignedIn, isGoogleUser, signInWithGoogle, signOutGoogle, deleteAccount, loadCloudSave, writeCloudSave, mergeProgress, claimPlayerName, releaseNames, nameKey } from './cloudSave';
 
 const translations = {
@@ -53,6 +54,7 @@ const translations = {
     offlineScores: "Offline — showing local scores.",
     signInGoogle: "Sign in with Google", signedInAs: "Cloud save on", signOut: "Sign out", syncing: "Syncing...", signInFailed: "Sign-in failed. Try again.",
     shareScore: "SHARE SCORE", shareText: "I scored {n} in Orbit Jump! Can you beat me? 🚀", streakReminderTitle: "🔥 Your streak is about to break!", streakReminderBody: "Claim your day {n} reward before midnight.",
+    modeDaily: "📅 DAILY CHALLENGE", dailyHint: "Same map for everyone today", lbWeekly: "THIS WEEK", lbAllTime: "ALL TIME", lbDaily: "DAILY", weeklyResets: "Resets every Monday", dailyResets: "New map every day", dailyMissions: "DAILY MISSIONS", dailyMissionsHint: "New missions every day", dm_games: "Play {n} runs", dm_perfects: "Land {n} Perfect jumps", dm_bestScore: "Score {n} in one run", dm_crystals: "Earn {n} crystals", dm_maxCombo: "Hit a {n}x combo", dm_daily: "Play the Daily Challenge", comeback1Title: "🪐 The planets miss you!", comeback1Body: "Your record is {n}. Today could be the day you beat it.", comeback1BodyNew: "Hop back in and set your first record!", comeback2Title: "📅 A new Daily Challenge is waiting", comeback2Body: "Same map for everyone. Can you top today's board?",
     deleteAccount: "Delete account", privacyOptions: "Privacy options", deleteConfirm: "Delete your account and cloud save permanently? Your leaderboard entry will also be removed. Progress on this device stays.", deleteFailed: "Could not delete account. Try again."
   },
   tr: {
@@ -97,6 +99,7 @@ const translations = {
     offlineScores: "Çevrimdışı — yerel skorlar gösteriliyor.",
     signInGoogle: "Google ile giriş yap", signedInAs: "Bulut kaydı açık", signOut: "Çıkış yap", syncing: "Eşitleniyor...", signInFailed: "Giriş yapılamadı. Tekrar dene.",
     shareScore: "SKORU PAYLAŞ", shareText: "Orbit Jump'ta {n} puan yaptım! Geçebilir misin? 🚀", streakReminderTitle: "🔥 Serin bozulmak üzere!", streakReminderBody: "{n}. gün ödülünü gece yarısından önce al.",
+    modeDaily: "📅 GÜNLÜK MEYDAN OKUMA", dailyHint: "Bugün herkes aynı haritada", lbWeekly: "BU HAFTA", lbAllTime: "TÜM ZAMANLAR", lbDaily: "GÜNLÜK", weeklyResets: "Her pazartesi sıfırlanır", dailyResets: "Her gün yeni harita", dailyMissions: "GÜNLÜK GÖREVLER", dailyMissionsHint: "Her gün yeni görevler", dm_games: "{n} tur oyna", dm_perfects: "{n} Mükemmel iniş yap", dm_bestScore: "Tek turda {n} puan yap", dm_crystals: "{n} kristal kazan", dm_maxCombo: "{n}x kombo yap", dm_daily: "Günlük Meydan Okuma'yı oyna", comeback1Title: "🪐 Gezegenler seni özledi!", comeback1Body: "Rekorun {n}. Bugün geçebilirsin.", comeback1BodyNew: "Geri dön, ilk rekorunu kır!", comeback2Title: "📅 Yeni Günlük Meydan Okuma seni bekliyor", comeback2Body: "Herkes aynı haritada. Bugünün tablosunda zirveye çıkabilir misin?",
     deleteAccount: "Hesabı sil", privacyOptions: "Gizlilik seçenekleri", deleteConfirm: "Hesabın ve bulut kaydın kalıcı olarak silinsin mi? Skor tablosundaki kaydın da kaldırılır. Bu cihazdaki ilerlemen kalır.", deleteFailed: "Hesap silinemedi. Tekrar dene."
   },
   es: {
@@ -141,6 +144,7 @@ const translations = {
     offlineScores: "Sin conexión — mostrando puntuaciones locales.",
     signInGoogle: "Iniciar sesión con Google", signedInAs: "Guardado en la nube activo", signOut: "Cerrar sesión", syncing: "Sincronizando...", signInFailed: "No se pudo iniciar sesión. Inténtalo de nuevo.",
     shareScore: "COMPARTIR", shareText: "¡Hice {n} puntos en Orbit Jump! ¿Puedes superarme? 🚀", streakReminderTitle: "🔥 ¡Tu racha está a punto de romperse!", streakReminderBody: "Reclama tu recompensa del día {n} antes de medianoche.",
+    modeDaily: "📅 DESAFÍO DIARIO", dailyHint: "Hoy, el mismo mapa para todos", lbWeekly: "ESTA SEMANA", lbAllTime: "HISTÓRICO", lbDaily: "DIARIO", weeklyResets: "Se reinicia cada lunes", dailyResets: "Mapa nuevo cada día", dailyMissions: "MISIONES DIARIAS", dailyMissionsHint: "Nuevas misiones cada día", dm_games: "Juega {n} partidas", dm_perfects: "Consigue {n} saltos Perfectos", dm_bestScore: "Haz {n} puntos en una partida", dm_crystals: "Gana {n} cristales", dm_maxCombo: "Logra un combo x{n}", dm_daily: "Juega el Desafío Diario", comeback1Title: "🪐 ¡Los planetas te echan de menos!", comeback1Body: "Tu récord es {n}. Hoy puedes superarlo.", comeback1BodyNew: "¡Vuelve y marca tu primer récord!", comeback2Title: "📅 Te espera un nuevo Desafío Diario", comeback2Body: "El mismo mapa para todos. ¿Llegarás a la cima hoy?",
     deleteAccount: "Eliminar cuenta", privacyOptions: "Opciones de privacidad", deleteConfirm: "¿Eliminar tu cuenta y tu guardado en la nube para siempre? También se quitará tu puntuación de la clasificación. El progreso en este dispositivo se mantiene.", deleteFailed: "No se pudo eliminar la cuenta. Inténtalo de nuevo."
   },
   de: {
@@ -185,6 +189,7 @@ const translations = {
     offlineScores: "Offline — lokale Ergebnisse werden angezeigt.",
     signInGoogle: "Mit Google anmelden", signedInAs: "Cloud-Speicher aktiv", signOut: "Abmelden", syncing: "Synchronisiere...", signInFailed: "Anmeldung fehlgeschlagen. Erneut versuchen.",
     shareScore: "TEILEN", shareText: "Ich habe {n} Punkte in Orbit Jump! Schaffst du mehr? 🚀", streakReminderTitle: "🔥 Deine Serie reißt gleich ab!", streakReminderBody: "Hol dir deine Belohnung für Tag {n} vor Mitternacht.",
+    modeDaily: "📅 TAGES-CHALLENGE", dailyHint: "Heute für alle dieselbe Karte", lbWeekly: "DIESE WOCHE", lbAllTime: "ALLZEIT", lbDaily: "TÄGLICH", weeklyResets: "Wird jeden Montag zurückgesetzt", dailyResets: "Jeden Tag eine neue Karte", dailyMissions: "TAGESMISSIONEN", dailyMissionsHint: "Jeden Tag neue Missionen", dm_games: "Spiele {n} Runden", dm_perfects: "Schaffe {n} perfekte Sprünge", dm_bestScore: "Erreiche {n} Punkte in einer Runde", dm_crystals: "Verdiene {n} Kristalle", dm_maxCombo: "Schaffe eine {n}x-Kombo", dm_daily: "Spiele die Tages-Challenge", comeback1Title: "🪐 Die Planeten vermissen dich!", comeback1Body: "Dein Rekord ist {n}. Heute knackst du ihn.", comeback1BodyNew: "Komm zurück und stell deinen ersten Rekord auf!", comeback2Title: "📅 Eine neue Tages-Challenge wartet", comeback2Body: "Dieselbe Karte für alle. Schaffst du heute Platz 1?",
     deleteAccount: "Konto löschen", privacyOptions: "Datenschutzoptionen", deleteConfirm: "Konto und Cloud-Speicher endgültig löschen? Dein Bestenlisten-Eintrag wird ebenfalls entfernt. Der Fortschritt auf diesem Gerät bleibt erhalten.", deleteFailed: "Konto konnte nicht gelöscht werden. Erneut versuchen."
   },
   ru: {
@@ -229,6 +234,7 @@ const translations = {
     offlineScores: "Нет сети — показаны локальные результаты.",
     signInGoogle: "Войти через Google", signedInAs: "Облачное сохранение включено", signOut: "Выйти", syncing: "Синхронизация...", signInFailed: "Не удалось войти. Попробуйте снова.",
     shareScore: "ПОДЕЛИТЬСЯ", shareText: "Мой результат в Orbit Jump — {n}! Сможешь больше? 🚀", streakReminderTitle: "🔥 Серия вот-вот прервётся!", streakReminderBody: "Заберите награду за день {n} до полуночи.",
+    modeDaily: "📅 ЕЖЕДНЕВНОЕ ИСПЫТАНИЕ", dailyHint: "Сегодня у всех одна карта", lbWeekly: "НЕДЕЛЯ", lbAllTime: "ВСЁ ВРЕМЯ", lbDaily: "ДЕНЬ", weeklyResets: "Сбрасывается каждый понедельник", dailyResets: "Каждый день новая карта", dailyMissions: "ЕЖЕДНЕВНЫЕ ЗАДАНИЯ", dailyMissionsHint: "Новые задания каждый день", dm_games: "Сыграйте {n} забегов", dm_perfects: "Сделайте {n} идеальных прыжков", dm_bestScore: "Наберите {n} очков за забег", dm_crystals: "Заработайте {n} кристаллов", dm_maxCombo: "Сделайте комбо x{n}", dm_daily: "Сыграйте ежедневное испытание", comeback1Title: "🪐 Планеты скучают по вам!", comeback1Body: "Ваш рекорд — {n}. Сегодня можно его побить.", comeback1BodyNew: "Возвращайтесь и поставьте первый рекорд!", comeback2Title: "📅 Новое ежедневное испытание ждёт", comeback2Body: "У всех одна карта. Сможете возглавить таблицу сегодня?",
     deleteAccount: "Удалить аккаунт", privacyOptions: "Настройки конфиденциальности", deleteConfirm: "Удалить аккаунт и облачное сохранение навсегда? Запись в таблице лидеров тоже будет удалена. Прогресс на этом устройстве сохранится.", deleteFailed: "Не удалось удалить аккаунт. Попробуйте снова."
   }
 };
@@ -549,6 +555,13 @@ const loadDailyAdCount = () => {
   return parseInt(localStorage.getItem('orbit_daily_ad_count') || '0', 10);
 };
 
+// Günlük görev sayaçları gün değişince sıfırlanır
+const loadDailyStats = () => {
+  const today = localDayId();
+  const saved = loadJSON('orbit_daily_stats', null);
+  return saved && saved.id === today ? saved : emptyDailyStats(today);
+};
+
 let particleUid = 0;
 
 const PlanetBody = ({ innerRef, isSupernova, glowRef }) => (
@@ -676,6 +689,29 @@ function App() {
   const [leaderboard, setLeaderboard] = useState(() => loadJSON('orbit_leaderboard', []));
   const [streakDays, setStreakDays] = useState(() => loadJSON('orbit_streak_days', 1));
   const [lastStreakDate, setLastStreakDate] = useState(() => localStorage.getItem('orbit_last_streak') || '');
+  const [dailyStats, setDailyStats] = useState(loadDailyStats);
+  const [lbTab, setLbTab] = useState('weekly');
+  // Oyun mantığındaki rastgelelik: günlük meydan okumada tarihle tohumlanır,
+  // diğer modlarda Math.random.
+  const rngRef = useRef(Math.random);
+
+  const comebackMessages = (best) => {
+    const tr = translations[lang];
+    return [
+      { title: tr.comeback1Title, body: best > 0 ? tr.comeback1Body.replace('{n}', String(best)) : tr.comeback1BodyNew },
+      { title: tr.comeback2Title, body: tr.comeback2Body },
+    ];
+  };
+
+  // Gün içinde açık kalan uygulamada gece yarısı geçtiyse sayaçlar yenilenir
+  const bumpDaily = (update) => {
+    setDailyStats((prev) => {
+      const base = prev.id === localDayId() ? prev : emptyDailyStats(localDayId());
+      const next = { ...base, ...update(base) };
+      saveJSON('orbit_daily_stats', next);
+      return next;
+    });
+  };
 
   const [authUser, setAuthUser] = useState(null);
   const [cloudReady, setCloudReady] = useState(false);
@@ -975,12 +1011,14 @@ function App() {
     // Cihazdaki mevcut en yüksek skoru çek
     const savedHighScore = parseInt(localStorage.getItem('orbit_highscore') || '0', 10);
     
-    // Yalnızca yeni skor, cihazdaki eski rekoru geçerse veya eşitse Firebase'e kaydet
-    if (finalScore >= savedHighScore && playerName) {
-      try {
-        // Google ile girildiyse o hesabı, yoksa anonim oturumu kullan
-        const uid = (await ensureSignedIn()).uid;
+    if (!playerName) return;
+    const mode = liveRef.current.gameMode;
+    try {
+      // Google ile girildiyse o hesabı, yoksa anonim oturumu kullan
+      const uid = (await ensureSignedIn()).uid;
 
+      // Genel tabloya yalnızca yeni skor cihazdaki rekoru geçerse veya eşitse yazılır
+      if (finalScore >= savedHighScore) {
         // İsim çevrimdışı seçildiyse burada ayrılır; başkasınınsa yeni isim istenir.
         try {
           await claimPlayerName(playerName);
@@ -996,19 +1034,28 @@ function App() {
         await setDoc(doc(db, "leaderboard", uid), {
           name: playerName,
           score: finalScore,
-          uid: uid, 
+          uid: uid,
           date: serverTimestamp()
         });
-      } catch (e) {
-        console.error("Firebase kayıt veya yetkilendirme hatası: ", e);
       }
+
+      // Haftalık ve günlük tablolar kendi dönem rekoruna göre ayrıca güncellenir
+      await submitPeriodScore('weekly', utcWeekId(), uid, playerName, finalScore);
+      if (mode === 'daily') await submitPeriodScore('daily', utcDayId(), uid, playerName, finalScore);
+    } catch (e) {
+      console.error("Firebase kayıt veya yetkilendirme hatası: ", e);
     }
   }, [playerName]);
 
-  const fetchOnlineScores = async () => {
+  const fetchOnlineScores = async (tab = lbTab) => {
+    setLbTab(tab);
     setIsLoadingScores(true);
     setScoresFailed(false);
+    setOnlineLeaderboard([]);
+    track('leaderboard_open', { tab });
     try {
+      if (tab === 'weekly') { setOnlineLeaderboard(await fetchPeriodScores('weekly', utcWeekId())); return; }
+      if (tab === 'daily') { setOnlineLeaderboard(await fetchPeriodScores('daily', utcDayId())); return; }
       const q = query(collection(db, "leaderboard"), orderBy("score", "desc"), limit(10));
       const querySnapshot = await getDocs(q);
       const scores = [];
@@ -1023,11 +1070,32 @@ function App() {
     }
   };
 
+  // Oyun döngüsü efekti yeniden kurulmadan güncel sürümü çağırsın diye ref üzerinden
+  const finalizeRunStatsRef = useRef(null);
   const finalizeRunStats = (finalScore, finalCrystals) => {
     // Oyun döngüsünden çağrıldığı için state yerine her render güncellenen ref okunur
     const prevStats = progressRef.current.stats;
+    const mode = liveRef.current.gameMode;
     noteGameFinished();
     maybeRequestReview(prevStats.gamesPlayed + 1, prevStats.bestRun > 0 && finalScore > prevStats.bestRun);
+    track('game_end', { mode, score: finalScore, games_played: prevStats.gamesPlayed + 1 });
+    bumpDaily((d) => ({
+      games: d.games + 1,
+      bestScore: Math.max(d.bestScore, finalScore),
+      crystals: d.crystals + finalCrystals,
+      daily: d.daily + (mode === 'daily' ? 1 : 0),
+    }));
+    // Birkaç tur oynayan oyuncuya bildirim izni sorulur (hatırlatmalar için)
+    if (prevStats.gamesPlayed + 1 === 3) {
+      const tr = translations[lang];
+      scheduleStreakReminder({
+        claimedToday: progressRef.current.lastStreakDate === new Date().toDateString(),
+        streakDays: progressRef.current.streakDays + 1,
+        title: tr.streakReminderTitle, body: tr.streakReminderBody, askPermission: true,
+      }).then(() => scheduleComebackReminders(comebackMessages(Math.max(progressRef.current.highScore, finalScore))));
+    } else {
+      scheduleComebackReminders(comebackMessages(Math.max(progressRef.current.highScore, finalScore)));
+    }
     setStats((s) => {
       const next = { ...s, gamesPlayed: s.gamesPlayed + 1, bestRun: Math.max(s.bestRun, finalScore), tempRunPerfects: 0 };
       saveJSON('orbit_stats', next);
@@ -1039,6 +1107,7 @@ function App() {
       return next;
     });
   };
+  useEffect(() => { finalizeRunStatsRef.current = finalizeRunStats; });
 
   useEffect(() => {
     let animationFrameId;
@@ -1122,7 +1191,7 @@ function App() {
                 autoSaveScore(live.score);
                 setTimeout(() => {
                   setSupernovaActive(false); setGameState('gameover');
-                  finalizeRunStats(live.score, live.runCrystals);
+                  finalizeRunStatsRef.current(live.score, live.runCrystals);
                 }, 850);
               }
             }
@@ -1242,6 +1311,10 @@ function App() {
                 };
                 return next;
               });
+              if (kind === 'perfect' || p.combo > 1) {
+                const landedCombo = p.combo;
+                bumpDaily((d) => ({ perfects: d.perfects + (kind === 'perfect' ? 1 : 0), maxCombo: Math.max(d.maxCombo, landedCombo) }));
+              }
 
               if (kind === 'perfect') { playSound('perfect', live.soundOn, p.combo); vibrate([15, 25, 15]); }
               else { playSound('score', live.soundOn, p.combo); vibrate(12); }
@@ -1262,9 +1335,10 @@ function App() {
 
               p.speed = Math.min(0.02 + (live.score * 0.0035), 0.08);
 
-              const direction = Math.random() > 0.5 ? 1 : -1;
-              const randomSpeed = (1.9 + Math.random() * 1.8) * (1 + tierLevel * 0.15);
-              p.target = { x: shiftX + ((Math.random() * 220) - 110), y: shiftY - (440 + tierLevel * 20), vx: direction * randomSpeed };
+              const rand = rngRef.current;
+              const direction = rand() > 0.5 ? 1 : -1;
+              const randomSpeed = (1.9 + rand() * 1.8) * (1 + tierLevel * 0.15);
+              p.target = { x: shiftX + ((rand() * 220) - 110), y: shiftY - (440 + tierLevel * 20), vx: direction * randomSpeed };
               p.angle = Math.atan2(p.ball.y - p.active.y, p.ball.x - p.active.x);
             }
 
@@ -1278,7 +1352,7 @@ function App() {
                 shakeUntilRef.current = currentTime + 260;
                 autoSaveScore(live.score);
                 setGameState('gameover');
-                finalizeRunStats(live.score, live.runCrystals);
+                finalizeRunStatsRef.current(live.score, live.runCrystals);
               }
             }
           }
@@ -1387,8 +1461,10 @@ function App() {
     }
   };
 
-  const startGame = () => {
+  const startGame = (mode = gameMode) => {
     playSound('click', soundOn); setIsPaused(false);
+    rngRef.current = mode === 'daily' ? seededRandom(`daily-${utcDayId()}`) : Math.random;
+    track('game_start', { mode });
     currentThemeIdxRef.current = 0;
     nextThemeIdxRef.current = 1;
     applyPlanetTheme(activeGroupRef.current, planetThemes[0]);
@@ -1410,6 +1486,7 @@ function App() {
     watchRewardedAd(() => {
       // Ölümde bu turun kristalleri zaten hesaba eklendi; sıfırlanmazsa
       // ikinci ölümde aynı kristaller tekrar eklenirdi.
+      track('revive_ad');
       setReviveUsed(true); setRunCrystals(0);
       const p = physicsRef.current; p.dead = false; p.isFlying = false; p.ball.x = p.active.x + 120; p.ball.y = p.active.y; p.angle = 0; planetTimerRef.current = 1; resetPlanetVisual(); setShieldActive(true); setIsPaused(false); setGameState('playing'); playSound('shield', soundOn);
     }, false);
@@ -1479,6 +1556,7 @@ function App() {
     setCrystals(nextCrystals); setStreakDays(nextStreak); setLastStreakDate(today);
     saveJSON('orbit_crystals', nextCrystals); saveJSON('orbit_streak_days', nextStreak); localStorage.setItem('orbit_last_streak', today);
     playSound('coin', soundOn); vibrate(15);
+    track('streak_claim', { day: nextStreak });
     // Bildirim izni burada, oyuncu seriyle ilgilendiği anda istenir
     scheduleStreakReminder({ claimedToday: true, streakDays: nextStreak + 1, title: t.streakReminderTitle, body: t.streakReminderBody, askPermission: true });
   };
@@ -1492,6 +1570,25 @@ function App() {
       askPermission: false,
     });
   }, [lang, lastStreakDate, streakDays]);
+
+  // Açılışta geri dönüş bildirimleri ileri alınır (oyuncu geldiyse boşa düşmez)
+  useEffect(() => {
+    scheduleComebackReminders(comebackMessages(progressRef.current.highScore));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
+
+  const todayStats = dailyStats.id === localDayId() ? dailyStats : emptyDailyStats(localDayId());
+  const dailyMissions = dailyMissionsFor(todayStats.id);
+  const hasClaimableDaily = dailyMissions.some((m) => (todayStats[m.stat] || 0) >= m.target && !todayStats.claimed.includes(m.id));
+
+  const claimDailyMission = (m) => {
+    if ((todayStats[m.stat] || 0) < m.target || todayStats.claimed.includes(m.id)) return;
+    bumpDaily((d) => ({ claimed: [...d.claimed, m.id] }));
+    const nextCrystals = crystals + m.reward;
+    setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals);
+    playSound('perfect', soundOn); vibrate([10, 15, 10]);
+    track('daily_mission_claim', { stat: m.stat, target: m.target });
+  };
 
   const buyShopItem = (item) => {
     if (ownedItems.includes(item.id)) {
@@ -1523,6 +1620,7 @@ function App() {
     if (progress < mission.target || claimedMissions.includes(mission.id)) return;
     const nextClaimed = [...claimedMissions, mission.id]; const nextCrystals = crystals + mission.reward;
     setClaimedMissions(nextClaimed); setCrystals(nextCrystals); saveJSON('orbit_claimed_missions', nextClaimed); saveJSON('orbit_crystals', nextCrystals);
+    track('mission_claim', { id: mission.id });
     playSound('perfect', soundOn); vibrate([10, 15, 10]);
   };
 
@@ -1541,7 +1639,8 @@ function App() {
   const isAdLimitReached = dailyAdCount >= 2;
   const currentSkinLvl = ballLevels[selectedSkin] || 1;
   const ballScale = 1 + (currentSkinLvl - 1) * 0.13;
-  const shownScores = (scoresFailed || onlineLeaderboard.length === 0) ? leaderboard : onlineLeaderboard;
+  // Yerel yedek liste yalnızca tüm zamanlar sekmesinde anlamlı
+  const shownScores = lbTab === 'all' && (scoresFailed || onlineLeaderboard.length === 0) ? leaderboard : onlineLeaderboard;
 
   return (
     <div
@@ -1849,7 +1948,7 @@ function App() {
             )}
 
             <div className="flex flex-wrap justify-center gap-2 mb-4">
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameMode('normal'); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${gameMode === 'normal' ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>
+              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameMode('normal'); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${gameMode === 'normal' || gameMode === 'daily' ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>
                 {t.modeNormal}
               </button>
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameMode('supernova'); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${gameMode === 'supernova' ? 'bg-red-600 border-red-400 text-white font-black animate-pulse' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>
@@ -1863,8 +1962,17 @@ function App() {
               </button>
             </div>
 
-            <button onClick={(e) => { e.stopPropagation(); startGame(); }} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3.5 px-14 rounded-full text-xl shadow-[0_0_25px_rgba(34,211,238,0.4)] mb-3 cursor-pointer">{t.play}</button>
-            <button onClick={(e) => { e.stopPropagation(); if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); }); } }} disabled={isAdLimitReached} className={`flex items-center gap-2 font-black py-2.5 px-6 rounded-full text-xs mb-3 ${isAdLimitReached ? 'bg-slate-900/60 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-[0_0_20px_rgba(168,85,247,0.4)]'}`}>
+            <button onClick={(e) => {
+              e.stopPropagation();
+              // Günlük meydan okuma kendi butonundan açılır; OYNA her zaman seçili normal modu başlatır
+              const mode = gameMode === 'daily' ? 'normal' : gameMode;
+              setGameMode(mode); startGame(mode);
+            }} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3.5 px-14 rounded-full text-xl shadow-[0_0_25px_rgba(34,211,238,0.4)] mb-3 cursor-pointer">{t.play}</button>
+            <button onClick={(e) => { e.stopPropagation(); setGameMode('daily'); startGame('daily'); }} className="flex flex-col items-center bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white font-black py-2 px-7 rounded-2xl text-sm shadow-[0_0_20px_rgba(192,38,211,0.4)] mb-3 cursor-pointer">
+              <span>{t.modeDaily}{todayStats.daily === 0 ? ' 🆕' : ''}</span>
+              <span className="text-[10px] font-bold text-fuchsia-100/80">{t.dailyHint}</span>
+            </button>
+            <button onClick={(e) => { e.stopPropagation(); if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); track('reward_ad_crystals'); }); } }} disabled={isAdLimitReached} className={`flex items-center gap-2 font-black py-2.5 px-6 rounded-full text-xs mb-3 ${isAdLimitReached ? 'bg-slate-900/60 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-[0_0_20px_rgba(168,85,247,0.4)]'}`}>
               📺 {isAdLimitReached ? t.adLimitReached : `${t.watchAdReward} (${2 - dailyAdCount}/2)`}
             </button>
             <button onClick={(e) => { e.stopPropagation(); claimStreakBonus(); }} disabled={!isStreakReady} className={`flex items-center gap-2 font-bold py-2 px-5 rounded-full text-xs mb-4 ${isStreakReady ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 animate-pulse' : 'bg-slate-900/60 text-slate-500'}`}>
@@ -1873,8 +1981,8 @@ function App() {
             <div className="flex flex-wrap justify-center gap-2.5 mb-5 max-w-md">
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('badges'); }} className="bg-slate-900/90 border border-slate-700/60 text-yellow-300 font-bold py-2 px-3 rounded-full text-xs shadow-md">🏅 {t.badges}</button>
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('howtoplay'); }} className="bg-slate-900/90 border border-slate-700/60 text-teal-300 font-bold py-2 px-3 rounded-full text-xs shadow-md">❓ {t.howToPlay}</button>
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('leaderboard'); fetchOnlineScores(); }} className="bg-slate-900/90 border border-slate-700/60 text-amber-300 font-bold py-2 px-3 rounded-full text-xs shadow-md">👑 {t.leaderboard}</button>
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('missions'); }} className="bg-slate-900/90 border border-slate-700/60 text-slate-200 font-bold py-2 px-3 rounded-full text-xs shadow-md">🏆 {t.missions}</button>
+              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('leaderboard'); fetchOnlineScores('weekly'); }} className="bg-slate-900/90 border border-slate-700/60 text-amber-300 font-bold py-2 px-3 rounded-full text-xs shadow-md">👑 {t.leaderboard}</button>
+              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('missions'); }} className="relative bg-slate-900/90 border border-slate-700/60 text-slate-200 font-bold py-2 px-3 rounded-full text-xs shadow-md">🏆 {t.missions}{hasClaimableDaily && <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-amber-400 animate-pulse" />}</button>
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('shop'); }} className="bg-slate-900/90 border border-slate-700/60 text-cyan-300 font-bold py-2 px-3 rounded-full text-xs shadow-md">🛒 {t.shop}</button>
               <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold py-2 px-3 rounded-full text-xs shadow-md">💎 {crystals}</div>
             </div>
@@ -1941,6 +2049,12 @@ function App() {
               <h2 className="text-2xl font-black text-amber-300">{t.leaderboard}</h2>
               <div className="w-11"></div>
             </div>
+            <div className="grid grid-cols-3 gap-1.5 w-full mb-2">
+              {[['weekly', t.lbWeekly], ['daily', t.lbDaily], ['all', t.lbAllTime]].map(([id, label]) => (
+                <button key={id} onClick={() => { playSound('click', soundOn); fetchOnlineScores(id); }} className={`py-2 rounded-xl text-[11px] font-bold border ${lbTab === id ? 'bg-amber-400 text-slate-950 font-black border-amber-300' : 'bg-slate-900 text-slate-400 border-slate-800'}`}>{label}</button>
+              ))}
+            </div>
+            {lbTab !== 'all' && <p className="text-[11px] text-slate-500 font-bold mb-3">{lbTab === 'weekly' ? t.weeklyResets : t.dailyResets}</p>}
             <div className="w-full bg-slate-900/80 border border-slate-800 rounded-2xl p-5 flex flex-col gap-3">
               {isLoadingScores ? (
                 <p className="text-center text-slate-500 py-6 text-sm animate-pulse">{t.loadingScores}</p>
@@ -2099,6 +2213,30 @@ function App() {
               <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold py-2 px-3 rounded-full text-sm">💎 {crystals}</div>
             </div>
             <div className="w-full flex flex-col gap-3 max-h-[60vh] overflow-y-auto pr-1">
+              <div className="flex items-baseline justify-between px-1">
+                <p className="text-sm font-black text-amber-300">📅 {t.dailyMissions}</p>
+                <p className="text-[10px] text-slate-500 font-bold">{t.dailyMissionsHint}</p>
+              </div>
+              {dailyMissions.map((m) => {
+                const progress = Math.min(todayStats[m.stat] || 0, m.target);
+                const done = progress >= m.target;
+                const claimed = todayStats.claimed.includes(m.id);
+                return (
+                  <div key={m.id} className="bg-slate-900/80 border border-amber-500/40 rounded-2xl p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <p className="text-sm font-bold text-slate-200">{t[`dm_${m.stat}`].replace('{n}', String(m.target))}</p>
+                      <p className="text-xs text-slate-400 font-mono">{progress}/{m.target}</p>
+                    </div>
+                    <div className="flex items-center justify-between mt-3">
+                      <p className="text-xs text-amber-300 font-bold">💎 +{m.reward}</p>
+                      <button onClick={(e) => { e.stopPropagation(); claimDailyMission(m); }} disabled={!done || claimed} className={`py-1.5 px-4 rounded-full text-xs font-black ${claimed ? 'bg-slate-800 text-slate-500' : done ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-600'}`}>
+                        {claimed ? t.claimed : t.claim}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+              <p className="text-sm font-black text-slate-300 px-1 mt-2">🏆 {t.missions}</p>
               {missionDefs.map((m) => {
                 const progress = Math.min(stats[m.statKey] || 0, m.target);
                 const done = progress >= m.target;
@@ -2126,6 +2264,7 @@ function App() {
           <div className="flex flex-col items-center z-50 bg-black/85 inset-0 absolute justify-center px-6" onClick={(e) => e.stopPropagation()}>
             <h2 className="text-4xl font-black text-amber-400 mb-3 animate-pulse">{t.gameOver}</h2>
             <div className="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl mb-6 text-center shadow-2xl min-w-[280px]">
+              {gameMode === 'daily' && <p className="text-fuchsia-300 text-[11px] font-black mb-2">{t.modeDaily}</p>}
               <p className="text-slate-400 text-xs mb-1">{t.score}</p>
               <p className="text-3xl font-black text-cyan-400 mb-3">{score}</p>
               <p className="text-xs text-cyan-300 font-bold mb-5">💎 +{runCrystals}</p>
@@ -2135,7 +2274,7 @@ function App() {
                 </button>
               )}
               {score > 0 && (
-                <button onClick={() => { playSound('click', soundOn); shareScore(t.shareText.replace('{n}', String(score))); }} className="w-full mt-3 font-bold py-2.5 px-4 rounded-xl text-sm border border-slate-700 bg-slate-800 text-slate-200">
+                <button onClick={() => { playSound('click', soundOn); shareScore(t.shareText.replace('{n}', String(score))); track('share_score', { score }); }} className="w-full mt-3 font-bold py-2.5 px-4 rounded-xl text-sm border border-slate-700 bg-slate-800 text-slate-200">
                   📤 {t.shareScore}
                 </button>
               )}
