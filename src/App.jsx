@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { AdMob, RewardAdPluginEvents, AdmobConsentStatus } from '@capacitor-community/admob';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { App as CapacitorApp } from '@capacitor/app';
+import { Capacitor } from '@capacitor/core';
 
 // FIREBASE
 import { db, auth } from './firebase';
@@ -55,6 +56,7 @@ const translations = {
     signInGoogle: "Sign in with Google", signedInAs: "Cloud save on", signOut: "Sign out", syncing: "Syncing...", signInFailed: "Sign-in failed. Try again.",
     shareScore: "SHARE SCORE", shareText: "I scored {n} in Orbit Jump! Can you beat me? 🚀", streakReminderTitle: "🔥 Your streak is about to break!", streakReminderBody: "Claim your day {n} reward before midnight.",
     modeDaily: "📅 DAILY CHALLENGE", dailyHint: "Same map for everyone today", lbWeekly: "THIS WEEK", lbAllTime: "ALL TIME", lbDaily: "DAILY", weeklyResets: "Resets every Monday", dailyResets: "New map every day", dailyMissions: "DAILY MISSIONS", dailyMissionsHint: "New missions every day", dm_games: "Play {n} runs", dm_perfects: "Land {n} Perfect jumps", dm_bestScore: "Score {n} in one run", dm_crystals: "Earn {n} crystals", dm_maxCombo: "Hit a {n}x combo", dm_daily: "Play the Daily Challenge", comeback1Title: "🪐 The planets miss you!", comeback1Body: "Your record is {n}. Today could be the day you beat it.", comeback1BodyNew: "Hop back in and set your first record!", comeback2Title: "📅 A new Daily Challenge is waiting", comeback2Body: "Same map for everyone. Can you top today's board?",
+    getOnPlay: "📲 GET IT ON GOOGLE PLAY", webHint: "Cloud save, daily streak rewards & more on mobile",
     deleteAccount: "Delete account", privacyOptions: "Privacy options", deleteConfirm: "Delete your account and cloud save permanently? Your leaderboard entry will also be removed. Progress on this device stays.", deleteFailed: "Could not delete account. Try again."
   },
   tr: {
@@ -100,6 +102,7 @@ const translations = {
     signInGoogle: "Google ile giriş yap", signedInAs: "Bulut kaydı açık", signOut: "Çıkış yap", syncing: "Eşitleniyor...", signInFailed: "Giriş yapılamadı. Tekrar dene.",
     shareScore: "SKORU PAYLAŞ", shareText: "Orbit Jump'ta {n} puan yaptım! Geçebilir misin? 🚀", streakReminderTitle: "🔥 Serin bozulmak üzere!", streakReminderBody: "{n}. gün ödülünü gece yarısından önce al.",
     modeDaily: "📅 GÜNLÜK MEYDAN OKUMA", dailyHint: "Bugün herkes aynı haritada", lbWeekly: "BU HAFTA", lbAllTime: "TÜM ZAMANLAR", lbDaily: "GÜNLÜK", weeklyResets: "Her pazartesi sıfırlanır", dailyResets: "Her gün yeni harita", dailyMissions: "GÜNLÜK GÖREVLER", dailyMissionsHint: "Her gün yeni görevler", dm_games: "{n} tur oyna", dm_perfects: "{n} Mükemmel iniş yap", dm_bestScore: "Tek turda {n} puan yap", dm_crystals: "{n} kristal kazan", dm_maxCombo: "{n}x kombo yap", dm_daily: "Günlük Meydan Okuma'yı oyna", comeback1Title: "🪐 Gezegenler seni özledi!", comeback1Body: "Rekorun {n}. Bugün geçebilirsin.", comeback1BodyNew: "Geri dön, ilk rekorunu kır!", comeback2Title: "📅 Yeni Günlük Meydan Okuma seni bekliyor", comeback2Body: "Herkes aynı haritada. Bugünün tablosunda zirveye çıkabilir misin?",
+    getOnPlay: "📲 GOOGLE PLAY'DEN İNDİR", webHint: "Bulut kaydı, günlük seri ödülleri ve fazlası mobilde",
     deleteAccount: "Hesabı sil", privacyOptions: "Gizlilik seçenekleri", deleteConfirm: "Hesabın ve bulut kaydın kalıcı olarak silinsin mi? Skor tablosundaki kaydın da kaldırılır. Bu cihazdaki ilerlemen kalır.", deleteFailed: "Hesap silinemedi. Tekrar dene."
   },
   es: {
@@ -145,6 +148,7 @@ const translations = {
     signInGoogle: "Iniciar sesión con Google", signedInAs: "Guardado en la nube activo", signOut: "Cerrar sesión", syncing: "Sincronizando...", signInFailed: "No se pudo iniciar sesión. Inténtalo de nuevo.",
     shareScore: "COMPARTIR", shareText: "¡Hice {n} puntos en Orbit Jump! ¿Puedes superarme? 🚀", streakReminderTitle: "🔥 ¡Tu racha está a punto de romperse!", streakReminderBody: "Reclama tu recompensa del día {n} antes de medianoche.",
     modeDaily: "📅 DESAFÍO DIARIO", dailyHint: "Hoy, el mismo mapa para todos", lbWeekly: "ESTA SEMANA", lbAllTime: "HISTÓRICO", lbDaily: "DIARIO", weeklyResets: "Se reinicia cada lunes", dailyResets: "Mapa nuevo cada día", dailyMissions: "MISIONES DIARIAS", dailyMissionsHint: "Nuevas misiones cada día", dm_games: "Juega {n} partidas", dm_perfects: "Consigue {n} saltos Perfectos", dm_bestScore: "Haz {n} puntos en una partida", dm_crystals: "Gana {n} cristales", dm_maxCombo: "Logra un combo x{n}", dm_daily: "Juega el Desafío Diario", comeback1Title: "🪐 ¡Los planetas te echan de menos!", comeback1Body: "Tu récord es {n}. Hoy puedes superarlo.", comeback1BodyNew: "¡Vuelve y marca tu primer récord!", comeback2Title: "📅 Te espera un nuevo Desafío Diario", comeback2Body: "El mismo mapa para todos. ¿Llegarás a la cima hoy?",
+    getOnPlay: "📲 DISPONIBLE EN GOOGLE PLAY", webHint: "Guardado en la nube, recompensas diarias y más en el móvil",
     deleteAccount: "Eliminar cuenta", privacyOptions: "Opciones de privacidad", deleteConfirm: "¿Eliminar tu cuenta y tu guardado en la nube para siempre? También se quitará tu puntuación de la clasificación. El progreso en este dispositivo se mantiene.", deleteFailed: "No se pudo eliminar la cuenta. Inténtalo de nuevo."
   },
   de: {
@@ -190,6 +194,7 @@ const translations = {
     signInGoogle: "Mit Google anmelden", signedInAs: "Cloud-Speicher aktiv", signOut: "Abmelden", syncing: "Synchronisiere...", signInFailed: "Anmeldung fehlgeschlagen. Erneut versuchen.",
     shareScore: "TEILEN", shareText: "Ich habe {n} Punkte in Orbit Jump! Schaffst du mehr? 🚀", streakReminderTitle: "🔥 Deine Serie reißt gleich ab!", streakReminderBody: "Hol dir deine Belohnung für Tag {n} vor Mitternacht.",
     modeDaily: "📅 TAGES-CHALLENGE", dailyHint: "Heute für alle dieselbe Karte", lbWeekly: "DIESE WOCHE", lbAllTime: "ALLZEIT", lbDaily: "TÄGLICH", weeklyResets: "Wird jeden Montag zurückgesetzt", dailyResets: "Jeden Tag eine neue Karte", dailyMissions: "TAGESMISSIONEN", dailyMissionsHint: "Jeden Tag neue Missionen", dm_games: "Spiele {n} Runden", dm_perfects: "Schaffe {n} perfekte Sprünge", dm_bestScore: "Erreiche {n} Punkte in einer Runde", dm_crystals: "Verdiene {n} Kristalle", dm_maxCombo: "Schaffe eine {n}x-Kombo", dm_daily: "Spiele die Tages-Challenge", comeback1Title: "🪐 Die Planeten vermissen dich!", comeback1Body: "Dein Rekord ist {n}. Heute knackst du ihn.", comeback1BodyNew: "Komm zurück und stell deinen ersten Rekord auf!", comeback2Title: "📅 Eine neue Tages-Challenge wartet", comeback2Body: "Dieselbe Karte für alle. Schaffst du heute Platz 1?",
+    getOnPlay: "📲 JETZT BEI GOOGLE PLAY", webHint: "Cloud-Speicher, tägliche Belohnungen und mehr auf dem Handy",
     deleteAccount: "Konto löschen", privacyOptions: "Datenschutzoptionen", deleteConfirm: "Konto und Cloud-Speicher endgültig löschen? Dein Bestenlisten-Eintrag wird ebenfalls entfernt. Der Fortschritt auf diesem Gerät bleibt erhalten.", deleteFailed: "Konto konnte nicht gelöscht werden. Erneut versuchen."
   },
   ru: {
@@ -235,6 +240,7 @@ const translations = {
     signInGoogle: "Войти через Google", signedInAs: "Облачное сохранение включено", signOut: "Выйти", syncing: "Синхронизация...", signInFailed: "Не удалось войти. Попробуйте снова.",
     shareScore: "ПОДЕЛИТЬСЯ", shareText: "Мой результат в Orbit Jump — {n}! Сможешь больше? 🚀", streakReminderTitle: "🔥 Серия вот-вот прервётся!", streakReminderBody: "Заберите награду за день {n} до полуночи.",
     modeDaily: "📅 ЕЖЕДНЕВНОЕ ИСПЫТАНИЕ", dailyHint: "Сегодня у всех одна карта", lbWeekly: "НЕДЕЛЯ", lbAllTime: "ВСЁ ВРЕМЯ", lbDaily: "ДЕНЬ", weeklyResets: "Сбрасывается каждый понедельник", dailyResets: "Каждый день новая карта", dailyMissions: "ЕЖЕДНЕВНЫЕ ЗАДАНИЯ", dailyMissionsHint: "Новые задания каждый день", dm_games: "Сыграйте {n} забегов", dm_perfects: "Сделайте {n} идеальных прыжков", dm_bestScore: "Наберите {n} очков за забег", dm_crystals: "Заработайте {n} кристаллов", dm_maxCombo: "Сделайте комбо x{n}", dm_daily: "Сыграйте ежедневное испытание", comeback1Title: "🪐 Планеты скучают по вам!", comeback1Body: "Ваш рекорд — {n}. Сегодня можно его побить.", comeback1BodyNew: "Возвращайтесь и поставьте первый рекорд!", comeback2Title: "📅 Новое ежедневное испытание ждёт", comeback2Body: "У всех одна карта. Сможете возглавить таблицу сегодня?",
+    getOnPlay: "📲 СКАЧАТЬ В GOOGLE PLAY", webHint: "Облачное сохранение, ежедневные награды и многое другое — в приложении",
     deleteAccount: "Удалить аккаунт", privacyOptions: "Настройки конфиденциальности", deleteConfirm: "Удалить аккаунт и облачное сохранение навсегда? Запись в таблице лидеров тоже будет удалена. Прогресс на этом устройстве сохранится.", deleteFailed: "Не удалось удалить аккаунт. Попробуйте снова."
   }
 };
@@ -562,6 +568,15 @@ const loadDailyStats = () => {
   return saved && saved.id === today ? saved : emptyDailyStats(today);
 };
 
+// Tarayıcı sürümü (itch.io, CrazyGames vb.): reklam ve Google girişi yok,
+// bunların yerine oyuncu Play Store'a yönlendirilir.
+const isWeb = !Capacitor.isNativePlatform();
+const webStoreUrl = () => {
+  const host = (typeof location !== 'undefined' && location.hostname.replace(/[^a-z0-9.]/gi, '')) || 'web';
+  return `https://play.google.com/store/apps/details?id=com.orbitjump.game&referrer=utm_source%3D${host}%26utm_medium%3Dweb_game`;
+};
+const openStore = () => { try { window.open(webStoreUrl(), '_blank', 'noopener'); } catch {} };
+
 let particleUid = 0;
 
 const PlanetBody = ({ innerRef, isSupernova, glowRef }) => (
@@ -828,6 +843,7 @@ function App() {
 
   useEffect(() => {
     const initAdMob = async () => {
+      if (isWeb) return;
       try {
         let consentInfo = await AdMob.requestConsentInfo();
         if (consentInfo.status === AdmobConsentStatus.REQUIRED && consentInfo.isConsentFormAvailable) {
@@ -1928,7 +1944,12 @@ function App() {
             </div>
             <h1 className="text-4xl sm:text-5xl font-black mb-3 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-center">{t.title}</h1>
             <p className="text-slate-400 mb-3 tracking-wider font-semibold text-sm">{playerName ? `👤 ${playerName} | ` : ''}{t.best}: {highScore}</p>
-            {isGoogleUser(authUser) ? (
+            {isWeb ? (
+              <div className="flex flex-col items-center mb-4">
+                <button onClick={(e) => { e.stopPropagation(); track('store_click', { from: 'menu' }); openStore(); }} className="bg-white text-slate-900 font-black py-2 px-5 rounded-full text-xs shadow-md cursor-pointer">{t.getOnPlay}</button>
+                <p className="text-slate-400 text-[11px] font-bold mt-1">{t.webHint}</p>
+              </div>
+            ) : isGoogleUser(authUser) ? (
               <div className="flex items-center gap-2 mb-4 text-[11px] font-bold">
                 <span className="text-emerald-300">☁️ {cloudReady ? t.signedInAs : t.syncing}</span>
                 <button onClick={(e) => { e.stopPropagation(); handleSignOut(); }} className="text-slate-500 underline cursor-pointer">{t.signOut}</button>
@@ -1972,9 +1993,9 @@ function App() {
               <span>{t.modeDaily}{todayStats.daily === 0 ? ' 🆕' : ''}</span>
               <span className="text-[10px] font-bold text-fuchsia-100/80">{t.dailyHint}</span>
             </button>
-            <button onClick={(e) => { e.stopPropagation(); if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); track('reward_ad_crystals'); }); } }} disabled={isAdLimitReached} className={`flex items-center gap-2 font-black py-2.5 px-6 rounded-full text-xs mb-3 ${isAdLimitReached ? 'bg-slate-900/60 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-[0_0_20px_rgba(168,85,247,0.4)]'}`}>
+            {!isWeb && <button onClick={(e) => { e.stopPropagation(); if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); track('reward_ad_crystals'); }); } }} disabled={isAdLimitReached} className={`flex items-center gap-2 font-black py-2.5 px-6 rounded-full text-xs mb-3 ${isAdLimitReached ? 'bg-slate-900/60 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-[0_0_20px_rgba(168,85,247,0.4)]'}`}>
               📺 {isAdLimitReached ? t.adLimitReached : `${t.watchAdReward} (${2 - dailyAdCount}/2)`}
-            </button>
+            </button>}
             <button onClick={(e) => { e.stopPropagation(); claimStreakBonus(); }} disabled={!isStreakReady} className={`flex items-center gap-2 font-bold py-2 px-5 rounded-full text-xs mb-4 ${isStreakReady ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 animate-pulse' : 'bg-slate-900/60 text-slate-500'}`}>
               🔥 {t.streakTitle} ({t.dayWord} {streakDays}) {isStreakReady ? `(💎 +${streakDays * 15})` : t.streakClaimed}
             </button>
@@ -2268,7 +2289,7 @@ function App() {
               <p className="text-slate-400 text-xs mb-1">{t.score}</p>
               <p className="text-3xl font-black text-cyan-400 mb-3">{score}</p>
               <p className="text-xs text-cyan-300 font-bold mb-5">💎 +{runCrystals}</p>
-              {!reviveUsed && (
+              {!reviveUsed && !isWeb && (
                 <button onClick={continueGameWithAd} className="w-full font-black py-3 px-4 rounded-xl text-sm shadow-md bg-gradient-to-r from-purple-500 to-indigo-500 text-white">
                   📺 {t.watchAdContinue}
                 </button>
@@ -2276,6 +2297,11 @@ function App() {
               {score > 0 && (
                 <button onClick={() => { playSound('click', soundOn); shareScore(t.shareText.replace('{n}', String(score))); track('share_score', { score }); }} className="w-full mt-3 font-bold py-2.5 px-4 rounded-xl text-sm border border-slate-700 bg-slate-800 text-slate-200">
                   📤 {t.shareScore}
+                </button>
+              )}
+              {isWeb && (
+                <button onClick={() => { track('store_click', { from: 'gameover' }); openStore(); }} className="w-full mt-3 font-black py-2.5 px-4 rounded-xl text-sm bg-white text-slate-900">
+                  {t.getOnPlay}
                 </button>
               )}
             </div>
