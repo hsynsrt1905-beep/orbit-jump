@@ -66,8 +66,8 @@ export const maybeRequestReview = (gamesPlayed, isNewRecord) => {
 };
 
 // --- Skor paylaşma
-export const shareScore = async (text) => {
-  const message = `${text}\n${STORE_URL}`;
+export const shareScore = async (text, url = STORE_URL) => {
+  const message = `${text}\n${url}`;
   try {
     if (isNative) {
       await Share.share({ text: message, dialogTitle: 'Orbit Jump' });

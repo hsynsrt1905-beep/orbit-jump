@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orbit Jump — Challenge</title>
+  <meta name="description" content="A friend challenged you in Orbit Jump. Same map — can you beat their score?">
+  <meta property="og:title" content="⚔️ Orbit Jump challenge">
+  <meta property="og:description" content="A friend challenged you. Same map — can you beat their score?">
+  <meta name="robots" content="noindex">
+  <style>
+    :root { --bg: #0a0618; --text: #f1f5f9; --muted: #94a3b8; --accent: #22d3ee; --hot: #f43f5e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 50% 30%, #3b1d6e 0%, var(--bg) 70%); color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding: 24px 16px; }
+    main { width: 100%; max-width: 380px; text-align: center; }
+    .planet { width: 96px; height: 96px; margin: 0 auto 20px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ffd9a8, #ea580c 55%, #2f0d03);
+      box-shadow: 0 0 40px rgba(234, 88, 12, .6); }
+    h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: 1px; }
+    .score { font-size: 56px; font-weight: 900; color: var(--accent); margin: 4px 0 8px; }
+    p { margin: 0 0 24px; color: var(--muted); line-height: 1.5; }
+    a.btn { display: block; padding: 16px; border-radius: 999px; background: linear-gradient(90deg, var(--hot), #f97316);
+      color: #fff; font-weight: 800; font-size: 18px; text-decoration: none; }
+    a.alt { display: block; margin-top: 14px; padding: 12px; border-radius: 999px; border: 1px solid #334155;
+      color: var(--text); font-weight: 700; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="planet" aria-hidden="true"></div>
+    <h1>⚔️ Challenge · Meydan okuma</h1>
+    <div class="score" id="score">?</div>
+    <p>Beat this score on the same map.<br>Aynı haritada bu puanı geç.</p>
+    <a class="btn" id="app" href="https://play.google.com/store/apps/details?id=com.orbitjump.game&amp;referrer=utm_source%3Dchallenge">Play in the app · Uygulamada oyna</a>
+    <a class="alt" id="web" href="/game/">Play in browser · Tarayıcıda oyna</a>
+  </main>
+  <script>
+    // Uygulamadaki parseChallenge ile aynı doğrulama: geçersiz bağlantı düz oyun sayfasına düşer.
+    var q = new URLSearchParams(location.search);
+    var s = q.get('s') || '', n = parseInt(q.get('n') || '', 10), m = q.get('m') || 'normal';
+    var ok = /^[a-z0-9-]{4,24}$/.test(s) && n > 0 && n <= 10000 && ['normal', 'supernova', 'zen', 'fast'].indexOf(m) >= 0;
+    if (ok) {
+      var qs = 's=' + s + '&n=' + n + '&m=' + m;
+      document.getElementById('score').textContent = String(n);
+      document.getElementById('web').href = '/game/?' + qs;
+      if (/Android/i.test(navigator.userAgent)) {
+        // Uygulama kuruluysa açılır; değilse (veya eski sürümse) Play Store'a düşer.
+        var store = 'https://play.google.com/store/apps/details?id=com.orbitjump.game&referrer=utm_source%3Dchallenge';
+        document.getElementById('app').href = 'intent://c?' + qs + '#Intent;scheme=orbitjump;package=com.orbitjump.game;S.browser_fallback_url=' + encodeURIComponent(store) + ';end';
+      }
+    } else {
+      document.getElementById('score').textContent = '🚀';
+    }
+  </script>
+</body>
+</html>

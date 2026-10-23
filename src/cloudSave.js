@@ -146,5 +146,6 @@ export const mergeProgress = (local, cloud) => {
     streakDays: cloudStreakNewer ? (cloud.streakDays ?? local.streakDays) : local.streakDays,
     lastStreakDate: cloudStreakNewer ? (cloud.lastStreakDate ?? local.lastStreakDate) : local.lastStreakDate,
     playerName: cloud.playerName || local.playerName,
+    xp: Math.max(local.xp || 0, cloud.xp || 0),
   };
 };

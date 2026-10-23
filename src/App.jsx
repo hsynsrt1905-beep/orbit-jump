@@ -245,11 +245,68 @@ const translations = {
   }
 };
 
+// Rekor, seri kurtarma, seviye, meydan okuma, etkinlik ve ayarlar metinleri
+const extraTranslations = {
+  en: {
+    newBest: "🏆 NEW BEST!", newRecord: "🏆 NEW RECORD!", toBeatBest: "Only {n} to beat your best!", bestWas: "Best: {n}",
+    streakLost: "Your {n}-day streak broke!", streakSave: "SAVE STREAK", streakSaveAd: "📺 Watch ad", streakSaveCrystals: "💎 {n}",
+    lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
+    settings: "Settings", language: "Language", account: "Account", graphics: "Graphics", graphicsHigh: "High", graphicsLow: "Low",
+    challengeTitle: "⚔️ CHALLENGE", challengeBeat: "Beat {n} on the same map", challengeAccept: "ACCEPT", challengeWon: "🎉 Challenge won!", challengeShort: "{n} short of the challenge",
+    challengeShare: "I scored {n} in Orbit Jump. Beat me on the same map! 🚀", challengeSend: "⚔️ CHALLENGE A FRIEND",
+    eventTitle: "🎃 HALLOWEEN EVENT", eventHint: "Limited time — yours forever once bought", eventEnds: "Until {d}",
+    itemPumpkin: "Pumpkin", trailEmber: "Ember Trail", themeNight: "Haunted Night"
+  },
+  tr: {
+    newBest: "🏆 YENİ REKOR!", newRecord: "🏆 YENİ REKOR!", toBeatBest: "Rekoruna sadece {n} kaldı!", bestWas: "Rekor: {n}",
+    streakLost: "{n} günlük serin bozuldu!", streakSave: "SERİYİ KURTAR", streakSaveAd: "📺 Reklam izle", streakSaveCrystals: "💎 {n}",
+    lv: "Sv", levelUp: "⬆️ SEVİYE {n}!", xpGain: "+{n} XP",
+    settings: "Ayarlar", language: "Dil", account: "Hesap", graphics: "Grafik", graphicsHigh: "Yüksek", graphicsLow: "Düşük",
+    challengeTitle: "⚔️ MEYDAN OKUMA", challengeBeat: "Aynı haritada {n} puanı geç", challengeAccept: "KABUL ET", challengeWon: "🎉 Meydan okumayı kazandın!", challengeShort: "Meydan okumaya {n} puan kaldı",
+    challengeShare: "Orbit Jump'ta {n} puan yaptım. Aynı haritada geç bakalım! 🚀", challengeSend: "⚔️ ARKADAŞINA MEYDAN OKU",
+    eventTitle: "🎃 CADILAR BAYRAMI ETKİNLİĞİ", eventHint: "Süreli — satın alınca hep senin", eventEnds: "{d} tarihine kadar",
+    itemPumpkin: "Balkabağı", trailEmber: "Kor İzi", themeNight: "Perili Gece"
+  },
+  es: {
+    newBest: "🏆 ¡NUEVO RÉCORD!", newRecord: "🏆 ¡NUEVO RÉCORD!", toBeatBest: "¡Solo {n} para batir tu récord!", bestWas: "Récord: {n}",
+    streakLost: "¡Tu racha de {n} días se rompió!", streakSave: "SALVAR RACHA", streakSaveAd: "📺 Ver anuncio", streakSaveCrystals: "💎 {n}",
+    lv: "Nv", levelUp: "⬆️ ¡NIVEL {n}!", xpGain: "+{n} XP",
+    settings: "Ajustes", language: "Idioma", account: "Cuenta", graphics: "Gráficos", graphicsHigh: "Altos", graphicsLow: "Bajos",
+    challengeTitle: "⚔️ DESAFÍO", challengeBeat: "Supera {n} en el mismo mapa", challengeAccept: "ACEPTAR", challengeWon: "🎉 ¡Desafío superado!", challengeShort: "Te faltaron {n} para el desafío",
+    challengeShare: "Hice {n} puntos en Orbit Jump. ¡Supérame en el mismo mapa! 🚀", challengeSend: "⚔️ DESAFIAR A UN AMIGO",
+    eventTitle: "🎃 EVENTO DE HALLOWEEN", eventHint: "Tiempo limitado — tuyo para siempre", eventEnds: "Hasta el {d}",
+    itemPumpkin: "Calabaza", trailEmber: "Estela de brasas", themeNight: "Noche embrujada"
+  },
+  de: {
+    newBest: "🏆 NEUER REKORD!", newRecord: "🏆 NEUER REKORD!", toBeatBest: "Nur noch {n} bis zum Rekord!", bestWas: "Rekord: {n}",
+    streakLost: "Deine {n}-Tage-Serie ist gerissen!", streakSave: "SERIE RETTEN", streakSaveAd: "📺 Werbung ansehen", streakSaveCrystals: "💎 {n}",
+    lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
+    settings: "Einstellungen", language: "Sprache", account: "Konto", graphics: "Grafik", graphicsHigh: "Hoch", graphicsLow: "Niedrig",
+    challengeTitle: "⚔️ HERAUSFORDERUNG", challengeBeat: "Schlage {n} auf derselben Karte", challengeAccept: "ANNEHMEN", challengeWon: "🎉 Herausforderung geschafft!", challengeShort: "{n} fehlten zur Herausforderung",
+    challengeShare: "Ich habe {n} Punkte in Orbit Jump. Schlag mich auf derselben Karte! 🚀", challengeSend: "⚔️ FREUND HERAUSFORDERN",
+    eventTitle: "🎃 HALLOWEEN-EVENT", eventHint: "Nur kurze Zeit — gekauft gehört es dir", eventEnds: "Bis {d}",
+    itemPumpkin: "Kürbis", trailEmber: "Glutspur", themeNight: "Spuknacht"
+  },
+  ru: {
+    newBest: "🏆 НОВЫЙ РЕКОРД!", newRecord: "🏆 НОВЫЙ РЕКОРД!", toBeatBest: "До рекорда всего {n}!", bestWas: "Рекорд: {n}",
+    streakLost: "Серия из {n} дн. прервалась!", streakSave: "СПАСТИ СЕРИЮ", streakSaveAd: "📺 Смотреть рекламу", streakSaveCrystals: "💎 {n}",
+    lv: "Ур", levelUp: "⬆️ УРОВЕНЬ {n}!", xpGain: "+{n} XP",
+    settings: "Настройки", language: "Язык", account: "Аккаунт", graphics: "Графика", graphicsHigh: "Высокая", graphicsLow: "Низкая",
+    challengeTitle: "⚔️ ВЫЗОВ", challengeBeat: "Побейте {n} на той же карте", challengeAccept: "ПРИНЯТЬ", challengeWon: "🎉 Вызов выполнен!", challengeShort: "До вызова не хватило {n}",
+    challengeShare: "Мой результат в Orbit Jump — {n}. Побей меня на той же карте! 🚀", challengeSend: "⚔️ БРОСИТЬ ВЫЗОВ ДРУГУ",
+    eventTitle: "🎃 ХЭЛЛОУИН", eventHint: "Ограниченное время — после покупки навсегда", eventEnds: "До {d}",
+    itemPumpkin: "Тыква", trailEmber: "Тлеющий след", themeNight: "Ночь с призраками"
+  }
+};
+for (const [l, extra] of Object.entries(extraTranslations)) Object.assign(translations[l], extra);
+const LANG_NAMES = { en: 'English', tr: 'Türkçe', es: 'Español', de: 'Deutsch', ru: 'Русский' };
+
 const backgroundThemesList = {
   bg_nebula: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-fuchsia-600 via-purple-800 via-30% to-indigo-950 pointer-events-none overflow-hidden transition-colors duration-700",
   bg_void: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-400 via-zinc-900 via-25% to-black pointer-events-none overflow-hidden transition-colors duration-700",
   bg_solar: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-400 via-orange-700 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700",
-  bg_galactic: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-300 via-blue-800 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700"
+  bg_galactic: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-300 via-blue-800 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700",
+  bg_night: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500 via-purple-950 via-30% to-black pointer-events-none overflow-hidden transition-colors duration-700"
 };
 
 // Bulanık daire yerine radial-gradient: blur-[140px] filtresi zayıf
@@ -258,7 +315,8 @@ const backgroundAccents = {
   bg_nebula: 'radial-gradient(circle, rgba(217,70,239,0.4) 0%, rgba(217,70,239,0.18) 35%, rgba(217,70,239,0) 70%)',
   bg_void: 'radial-gradient(circle, rgba(203,213,225,0.2) 0%, rgba(203,213,225,0.09) 35%, rgba(203,213,225,0) 70%)',
   bg_solar: 'radial-gradient(circle, rgba(251,191,36,0.45) 0%, rgba(251,191,36,0.20) 35%, rgba(251,191,36,0) 70%)',
-  bg_galactic: 'radial-gradient(circle, rgba(103,232,249,0.45) 0%, rgba(103,232,249,0.20) 35%, rgba(103,232,249,0) 70%)'
+  bg_galactic: 'radial-gradient(circle, rgba(103,232,249,0.45) 0%, rgba(103,232,249,0.20) 35%, rgba(103,232,249,0) 70%)',
+  bg_night: 'radial-gradient(circle, rgba(249,115,22,0.35) 0%, rgba(126,34,206,0.18) 35%, rgba(126,34,206,0) 70%)'
 };
 
 /* ============================================================
@@ -327,8 +385,38 @@ const shopItems = [
   { id: 'bg_nebula', type: 'theme', price: 120, nameKey: 'themeNebula' },
   { id: 'bg_void', type: 'theme', price: 150, nameKey: 'themeVoid' },
   { id: 'bg_solar', type: 'theme', price: 180, nameKey: 'themeSolar' },
-  { id: 'bg_galactic', type: 'theme', price: 200, nameKey: 'themeGalactic' }
+  { id: 'bg_galactic', type: 'theme', price: 200, nameKey: 'themeGalactic' },
+  // Etkinlik ürünleri: yalnız etkinlik süresince satılır, alınan ürün kalıcıdır
+  { id: 'pumpkin', type: 'ball', price: 80, trailTint: '#fb923c', nameKey: 'itemPumpkin', event: true },
+  { id: 'trail_ember', type: 'trail', price: 60, color: '#f97316', shape: 'flame', nameKey: 'trailEmber', event: true },
+  { id: 'bg_night', type: 'theme', price: 120, nameKey: 'themeNight', event: true }
 ];
+
+// Süreli etkinlik (yerel tarihe göre, bitiş günü dahil)
+const EVENT = { id: 'halloween26', start: '2026-10-24', end: '2026-11-02' };
+const isEventActive = () => { const d = localDayId(); return d >= EVENT.start && d <= EVENT.end; };
+
+// Oyuncu seviyesi: her tur XP verir; bir sonraki seviye için gereken XP
+// 60'tan başlayıp her seviyede 30 artar. Seviye atlayınca kristal ödülü.
+const xpForLevel = (level) => 60 + (level - 1) * 30;
+const levelInfo = (xp) => {
+  let level = 1, rest = xp;
+  while (rest >= xpForLevel(level)) { rest -= xpForLevel(level); level++; }
+  return { level, into: rest, need: xpForLevel(level) };
+};
+const levelReward = (level) => (level % 5 === 0 ? 100 : 20 + level * 4);
+
+// Meydan okuma bağlantısı: aynı tohumla aynı harita üretilir
+const CHALLENGE_MODES = ['normal', 'supernova', 'zen', 'fast'];
+const parseChallenge = (params) => {
+  const seed = params.get('s') || '';
+  const target = parseInt(params.get('n') || '', 10);
+  const mode = params.get('m') || 'normal';
+  if (!/^[a-z0-9-]{4,24}$/.test(seed) || !(target > 0 && target <= 10000) || !CHALLENGE_MODES.includes(mode)) return null;
+  return { seed, target, mode };
+};
+const challengeUrl = (seed, score, mode) => `https://orbit-jump-73b68.web.app/c?s=${seed}&n=${score}&m=${mode}`;
+const randomSeed = () => `r${Math.random().toString(36).slice(2, 10)}`;
 
 /* Top görseli — hem oyunda hem mağaza önizlemesinde aynı bileşen */
 function BallVisual({ skinId, level = 1, size = 32, shieldActive = false, boosted = false }) {
@@ -709,6 +797,16 @@ function App() {
   // Oyun mantığındaki rastgelelik: günlük meydan okumada tarihle tohumlanır,
   // diğer modlarda Math.random.
   const rngRef = useRef(Math.random);
+  const runSeedRef = useRef('');
+  // Tur başındaki rekor: oyun sırasında highScore güncellendiği için "rekora
+  // N kaldı" ve "yeni rekor" bu değere göre hesaplanır.
+  const runStartBestRef = useRef(0);
+  const recordShownRef = useRef(false);
+  const [recordFlash, setRecordFlash] = useState(false);
+  const [xp, setXp] = useState(() => loadJSON('orbit_xp', 0));
+  const [lastRun, setLastRun] = useState(null);
+  const [challenge, setChallenge] = useState(() => (isWeb && typeof location !== 'undefined' ? parseChallenge(new URLSearchParams(location.search)) : null));
+  const [activeChallenge, setActiveChallenge] = useState(null);
 
   const comebackMessages = (best) => {
     const tr = translations[lang];
@@ -737,7 +835,7 @@ function App() {
   const progress = {
     crystals, highScore, ownedItems, ballLevels, boostCounts, boostLevels,
     selectedSkin, selectedTrail, selectedTheme, stats, claimedMissions, claimedBadges,
-    streakDays, lastStreakDate, playerName
+    streakDays, lastStreakDate, playerName, xp
   };
   const progressRef = useRef(progress);
   useEffect(() => { progressRef.current = progress; });
@@ -758,6 +856,7 @@ function App() {
     setClaimedBadges(p.claimedBadges); saveJSON('orbit_claimed_badges', p.claimedBadges);
     setStreakDays(p.streakDays); saveJSON('orbit_streak_days', p.streakDays);
     setLastStreakDate(p.lastStreakDate); localStorage.setItem('orbit_last_streak', p.lastStreakDate || '');
+    setXp(p.xp || 0); saveJSON('orbit_xp', p.xp || 0);
     if (p.playerName) {
       setPlayerName(p.playerName); localStorage.setItem('orbit_player_name', p.playerName);
       setShowNameModal(false);
@@ -922,6 +1021,22 @@ function App() {
       setAuthBusy(false);
     }
   };
+
+  // Meydan okuma bağlantısıyla açılış: orbitjump://c?s=..&n=..&m=..
+  useEffect(() => {
+    if (isWeb) return;
+    const handle = (url) => {
+      if (!url) return;
+      try {
+        const c = parseChallenge(new URL(url).searchParams);
+        if (c) { setChallenge(c); setGameState((prev) => (prev === 'playing' ? prev : 'menu')); track('challenge_open'); }
+      } catch {}
+    };
+    CapacitorApp.getLaunchUrl().then((r) => handle(r?.url)).catch(() => {});
+    let listener;
+    CapacitorApp.addListener('appUrlOpen', (e) => handle(e.url)).then((h) => { listener = h; });
+    return () => listener?.remove();
+  }, []);
 
   useEffect(() => {
     let listener;
@@ -1117,8 +1232,18 @@ function App() {
       saveJSON('orbit_stats', next);
       return next;
     });
+    // XP: puan + Mükemmel inişler + katılım; seviye atlanan her seviye için ödül
+    const prevXp = progressRef.current.xp || 0;
+    const xpGain = 5 + finalScore + (prevStats.tempRunPerfects || 0) * 2;
+    const before = levelInfo(prevXp).level;
+    const after = levelInfo(prevXp + xpGain).level;
+    let levelCrystals = 0;
+    for (let lv = before + 1; lv <= after; lv++) levelCrystals += levelReward(lv);
+    setXp(prevXp + xpGain); saveJSON('orbit_xp', prevXp + xpGain);
+    if (after > before) { track('level_up', { level: after }); playSound('perfect', liveRef.current.soundOn); }
+    setLastRun({ startBest: runStartBestRef.current, xpGain, levelUp: after > before ? after : 0, levelCrystals });
     setCrystals((c) => {
-      const next = c + finalCrystals;
+      const next = c + finalCrystals + levelCrystals;
       saveJSON('orbit_crystals', next);
       return next;
     });
@@ -1335,6 +1460,14 @@ function App() {
               if (kind === 'perfect') { playSound('perfect', live.soundOn, p.combo); vibrate([15, 25, 15]); }
               else { playSound('score', live.soundOn, p.combo); vibrate(12); }
 
+              // Tur içinde eski rekor geçildiği an bir kez kutlanır
+              if (!recordShownRef.current && runStartBestRef.current > 0 && nextScore > runStartBestRef.current) {
+                recordShownRef.current = true;
+                setRecordFlash(true); vibrate([30, 40, 30, 40, 60]);
+                setTimeout(() => setRecordFlash(false), 1600);
+                track('record_passed', { best: runStartBestRef.current });
+              }
+
               setScore((prevScore) => {
                 const newScore = prevScore + gain + comboBonus;
                 setHighScore((prevHigh) => {
@@ -1477,10 +1610,15 @@ function App() {
     }
   };
 
-  const startGame = (mode = gameMode) => {
+  // seed verilirse (meydan okuma) aynı harita üretilir; yoksa her tur yeni tohum
+  // alır ki tur sonunda "aynı haritada geç" bağlantısı paylaşılabilsin.
+  const startGame = (mode = gameMode, seed = null) => {
     playSound('click', soundOn); setIsPaused(false);
-    rngRef.current = mode === 'daily' ? seededRandom(`daily-${utcDayId()}`) : Math.random;
-    track('game_start', { mode });
+    runSeedRef.current = mode === 'daily' ? `daily-${utcDayId()}` : (seed || randomSeed());
+    rngRef.current = seededRandom(runSeedRef.current);
+    if (!seed) setActiveChallenge(null);
+    runStartBestRef.current = highScore; recordShownRef.current = false; setRecordFlash(false); setLastRun(null);
+    track('game_start', { mode, challenge: seed ? 1 : 0 });
     currentThemeIdxRef.current = 0;
     nextThemeIdxRef.current = 1;
     applyPlanetTheme(activeGroupRef.current, planetThemes[0]);
@@ -1564,6 +1702,25 @@ function App() {
     } else { playSound('gameover', soundOn); showShopMessage(t.insufficientCrystals); }
   };
 
+  // Seri kurtarma: tam bir gün kaçırıldıysa (ve seri 2+ gündüyse) son alım dün
+  // yapılmış sayılır; ardından normal alım seriyi bir artırır.
+  const daysSinceStreak = lastStreakDate ? Math.round((new Date(new Date().toDateString()) - new Date(lastStreakDate)) / 86400000) : null;
+  const canSaveStreak = daysSinceStreak === 2 && streakDays >= 2;
+  const STREAK_SAVE_COST = 30;
+  const saveStreak = (useAd) => {
+    if (!canSaveStreak) return;
+    const apply = () => {
+      const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
+      setLastStreakDate(yesterday.toDateString()); localStorage.setItem('orbit_last_streak', yesterday.toDateString());
+      playSound('shield', soundOn); track('streak_saved', { days: streakDays, by: useAd ? 'ad' : 'crystals' });
+    };
+    if (useAd) { watchRewardedAd(apply, false); return; }
+    if (crystals < STREAK_SAVE_COST) { playSound('click', soundOn); return; }
+    const nextCrystals = crystals - STREAK_SAVE_COST;
+    setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals);
+    apply();
+  };
+
   const claimStreakBonus = () => {
     const today = new Date().toDateString(); if (lastStreakDate === today) return;
     const daysSinceLastClaim = lastStreakDate ? Math.round((new Date(today) - new Date(lastStreakDate)) / 86400000) : null;
@@ -1595,7 +1752,10 @@ function App() {
 
   const todayStats = dailyStats.id === localDayId() ? dailyStats : emptyDailyStats(localDayId());
   const dailyMissions = dailyMissionsFor(todayStats.id);
-  const hasClaimableDaily = dailyMissions.some((m) => (todayStats[m.stat] || 0) >= m.target && !todayStats.claimed.includes(m.id));
+  const lvl = levelInfo(xp);
+  const eventOn = isEventActive();
+  const eventEndLabel = new Date(`${EVENT.end}T12:00:00`).toLocaleDateString(lang, { day: 'numeric', month: 'long' });
+  const hasClaimableDaily =dailyMissions.some((m) => (todayStats[m.stat] || 0) >= m.target && !todayStats.claimed.includes(m.id));
 
   const claimDailyMission = (m) => {
     if ((todayStats[m.stat] || 0) < m.target || todayStats.claimed.includes(m.id)) return;
@@ -1805,6 +1965,11 @@ function App() {
                        background: radial-gradient(circle at 42% 36%, #ffffff 0%, #ddd6fe 20%, #8b5cf6 56%, #3b0764 100%);
                        box-shadow: 0 0 32px rgba(167,139,250,1), 0 0 55px rgba(167,139,250,.5), inset -3px -4px 10px rgba(0,0,0,.55); }
 
+          .ball-pumpkin { border-radius: 46% 46% 50% 50%;
+                          background: repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 18%, rgba(124,45,18,.45) 20% 22%),
+                                      radial-gradient(circle at 36% 30%, #ffedd5 0%, #fb923c 32%, #c2410c 68%, #431407 100%);
+                          box-shadow: 0 0 26px rgba(251,146,60,.95), 0 0 48px rgba(126,34,206,.35), inset -4px -5px 10px rgba(0,0,0,.55); }
+
           .ball-rim { border-radius: inherit; mix-blend-mode: screen; opacity: .85;
                       background: conic-gradient(from -40deg, transparent 0deg, rgba(255,255,255,.6) 30deg, transparent 70deg, transparent 360deg); }
 
@@ -1919,6 +2084,9 @@ function App() {
           ))}
         </div>
 
+        {gameState === 'menu' && (
+          <div className="absolute top-10 left-6 z-50 flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold px-4 h-12 rounded-full text-base shadow-md pointer-events-none" style={{ marginTop: 'env(safe-area-inset-top)' }}>💎 {crystals}</div>
+        )}
         <div className="absolute top-10 right-6 flex items-center gap-3 z-50" style={{ marginTop: 'env(safe-area-inset-top)' }}>
           {gameState === 'playing' && <div className="pointer-events-none flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold px-4 h-12 rounded-full text-lg shadow-md">💎 {runCrystals}</div>}
           {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setIsPaused(true); }} className="w-12 h-12 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">⏸️</button>}
@@ -1928,89 +2096,158 @@ function App() {
         </div>
 
         {gameState === 'menu' && (
-          <div className="flex flex-col items-center z-10 px-4 pt-8">
-            <div
-              className="planet-group relative flex items-center justify-center mb-6"
-              style={{
-                width: 90, height: 90,
-                '--p-light': '#ffd9a8', '--p-mid': '#ea580c', '--p-dark': '#2f0d03',
-                '--p-glow': '234,88,12', '--p-ring-rgb': '249,115,22',
-                '--p-craters': 0.85, '--p-lava': 0.9, '--p-ring-on': 0
-              }}
-            >
-              <div style={{ transform: 'scale(0.62)' }} className="flex items-center justify-center">
-                <PlanetBody isSupernova={false} />
+          <div className="absolute inset-0 z-10 overflow-y-auto overscroll-contain" style={{ touchAction: 'pan-y' }} onClick={(e) => e.stopPropagation()}>
+            <div className="min-h-full flex flex-col items-center justify-center px-4 pb-6" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 96px)' }}>
+              <h1 className="text-4xl sm:text-5xl font-black mb-2 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-center">{t.title}</h1>
+              <p className="text-slate-400 mb-2 font-semibold text-sm text-center">{playerName ? `👤 ${playerName} · ` : ''}{t.best}: {highScore}</p>
+              <div className="w-full max-w-[240px] mb-4">
+                <div className="flex justify-between text-[11px] font-black mb-1">
+                  <span className="text-amber-300">{t.lv} {lvl.level}</span>
+                  <span className="text-slate-500">{lvl.into}/{lvl.need} XP</span>
+                </div>
+                <div className="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-amber-400 to-orange-500" style={{ width: `${Math.round((lvl.into / lvl.need) * 100)}%` }} />
+                </div>
               </div>
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-black mb-3 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-center">{t.title}</h1>
-            <p className="text-slate-400 mb-3 tracking-wider font-semibold text-sm">{playerName ? `👤 ${playerName} | ` : ''}{t.best}: {highScore}</p>
-            {isWeb ? (
-              <div className="flex flex-col items-center mb-4">
-                <button onClick={(e) => { e.stopPropagation(); track('store_click', { from: 'menu' }); openStore(); }} className="bg-white text-slate-900 font-black py-2 px-5 rounded-full text-xs shadow-md cursor-pointer">{t.getOnPlay}</button>
-                <p className="text-slate-400 text-[11px] font-bold mt-1">{t.webHint}</p>
+
+              {challenge && (
+                <div className="w-full max-w-xs bg-rose-950/80 border border-rose-500/60 rounded-2xl p-3 mb-4 text-center">
+                  <p className="text-rose-300 text-xs font-black">{t.challengeTitle}</p>
+                  <p className="text-white text-sm font-bold mb-2">{t.challengeBeat.replace('{n}', String(challenge.target))}</p>
+                  <div className="flex gap-2 justify-center">
+                    <button onClick={() => { const c = challenge; setActiveChallenge(c); setChallenge(null); setGameMode(c.mode); startGame(c.mode, c.seed); }} className="bg-gradient-to-r from-rose-500 to-orange-500 text-white font-black py-2 px-6 rounded-full text-sm">{t.challengeAccept}</button>
+                    <button onClick={() => { playSound('click', soundOn); setChallenge(null); }} className="bg-slate-800 text-slate-400 font-bold py-2 px-3 rounded-full text-sm">✕</button>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex flex-wrap justify-center gap-2 mb-4">
+                {[
+                  ['normal', t.modeNormal, 'bg-cyan-500 border-cyan-300 text-slate-950'],
+                  ['supernova', t.modeSupernova, 'bg-red-600 border-red-400 text-white'],
+                  ['zen', t.modeZen, 'bg-emerald-500 border-emerald-300 text-slate-950'],
+                  ['fast', t.modeFast, 'bg-amber-500 border-amber-300 text-slate-950']
+                ].map(([id, label, on]) => {
+                  const selected = gameMode === id || (id === 'normal' && gameMode === 'daily');
+                  return (
+                    <button key={id} onClick={() => { playSound('click', soundOn); setGameMode(id); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${selected ? `${on} font-black` : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
-            ) : isGoogleUser(authUser) ? (
-              <div className="flex items-center gap-2 mb-4 text-[11px] font-bold">
-                <span className="text-emerald-300">☁️ {cloudReady ? t.signedInAs : t.syncing}</span>
-                <button onClick={(e) => { e.stopPropagation(); handleSignOut(); }} className="text-slate-500 underline cursor-pointer">{t.signOut}</button>
-                <button onClick={(e) => { e.stopPropagation(); handleDeleteAccount(); }} disabled={authBusy} className="text-red-400/70 underline cursor-pointer">{t.deleteAccount}</button>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center mb-4">
-                <button onClick={(e) => { e.stopPropagation(); handleGoogleSignIn(); }} disabled={authBusy} className="flex items-center gap-2 bg-white text-slate-800 font-bold py-2 px-4 rounded-full text-xs shadow-md cursor-pointer disabled:opacity-60">
-                  <span className="font-black text-sm" style={{ color: '#4285F4' }}>G</span> {authBusy ? t.syncing : t.signInGoogle}
+
+              <button onClick={() => {
+                // Günlük meydan okuma kendi butonundan açılır; OYNA her zaman seçili normal modu başlatır
+                const mode = gameMode === 'daily' ? 'normal' : gameMode;
+                setGameMode(mode); startGame(mode);
+              }} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3.5 px-16 rounded-full text-xl shadow-[0_0_25px_rgba(34,211,238,0.4)] mb-3 cursor-pointer">{t.play}</button>
+              <button onClick={() => { setGameMode('daily'); startGame('daily'); }} className="flex flex-col items-center bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white font-black py-2 px-7 rounded-2xl text-sm shadow-[0_0_20px_rgba(192,38,211,0.4)] mb-4 cursor-pointer">
+                <span>{t.modeDaily}{todayStats.daily === 0 ? ' 🆕' : ''}</span>
+                <span className="text-[10px] font-bold text-fuchsia-100/80">{t.dailyHint}</span>
+              </button>
+
+              {canSaveStreak && isStreakReady ? (
+                <div className="w-full max-w-xs bg-orange-950/70 border border-orange-500/50 rounded-2xl p-3 mb-3 text-center">
+                  <p className="text-orange-200 text-xs font-black mb-2">🔥 {t.streakLost.replace('{n}', String(streakDays))}</p>
+                  <div className="flex gap-2 justify-center">
+                    {!isWeb && <button onClick={() => saveStreak(true)} className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black py-1.5 px-3 rounded-full text-xs">{t.streakSaveAd}</button>}
+                    <button onClick={() => saveStreak(false)} className={`font-black py-1.5 px-3 rounded-full text-xs ${crystals >= STREAK_SAVE_COST ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-500'}`}>{t.streakSaveCrystals.replace('{n}', String(STREAK_SAVE_COST))}</button>
+                  </div>
+                </div>
+              ) : (
+                <button onClick={() => claimStreakBonus()} disabled={!isStreakReady} className={`flex items-center gap-2 font-bold py-2 px-5 rounded-full text-xs mb-3 ${isStreakReady ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 animate-pulse' : 'bg-slate-900/60 text-slate-500'}`}>
+                  🔥 {t.dayWord} {streakDays} · {isStreakReady ? `💎 +${(daysSinceStreak === 1 ? streakDays + 1 : 1) * 15}` : t.streakClaimed}
                 </button>
-                {authError && <p className="text-red-400 text-[11px] font-bold mt-1">{t.signInFailed}</p>}
+              )}
+              {!isWeb && (
+                <button onClick={() => { if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); track('reward_ad_crystals'); }); } }} disabled={isAdLimitReached} className={`flex items-center gap-2 font-bold py-2 px-5 rounded-full text-xs mb-5 ${isAdLimitReached ? 'bg-slate-900/60 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white'}`}>
+                  📺 {isAdLimitReached ? t.adLimitReached : `${t.watchAdReward} (${2 - dailyAdCount}/2)`}
+                </button>
+              )}
+
+              {eventOn && (
+                <button onClick={() => { playSound('click', soundOn); setShopTab('balls'); setGameState('shop'); }} className="w-full max-w-xs bg-gradient-to-r from-orange-600/90 to-purple-800/90 border border-orange-400/50 rounded-2xl py-2 px-4 mb-4 text-center">
+                  <p className="text-white text-xs font-black">{t.eventTitle}</p>
+                  <p className="text-orange-100/80 text-[10px] font-bold">{t.eventEnds.replace('{d}', eventEndLabel)}</p>
+                </button>
+              )}
+
+              <div className="grid grid-cols-5 gap-2 w-full max-w-sm mb-4">
+                {[
+                  ['🛒', t.shop, () => setGameState('shop'), false],
+                  ['🏆', t.missions, () => setGameState('missions'), hasClaimableDaily],
+                  ['👑', t.leaderboard, () => { setGameState('leaderboard'); fetchOnlineScores('weekly'); }, false],
+                  ['🏅', t.badges, () => setGameState('badges'), false],
+                  ['⚙️', t.settings, () => setGameState('settings'), false]
+                ].map(([icon, label, go, dot]) => (
+                  <button key={icon} onClick={() => { playSound('click', soundOn); go(); }} className="relative flex flex-col items-center justify-center gap-1 bg-slate-900/90 border border-slate-700/60 rounded-2xl py-2.5 px-1 min-w-0">
+                    <span className="text-xl leading-none">{icon}</span>
+                    <span className="text-[10px] font-bold text-slate-300 w-full truncate text-center">{label}</span>
+                    {dot && <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-amber-400 animate-pulse" />}
+                  </button>
+                ))}
               </div>
-            )}
 
-            {privacyOptionsRequired && (
-              <button onClick={(e) => { e.stopPropagation(); AdMob.showPrivacyOptionsForm().catch(() => {}); }} className="text-slate-500 underline text-[11px] font-bold mb-3 cursor-pointer">{t.privacyOptions}</button>
-            )}
-
-            <div className="flex flex-wrap justify-center gap-2 mb-4">
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameMode('normal'); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${gameMode === 'normal' || gameMode === 'daily' ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>
-                {t.modeNormal}
-              </button>
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameMode('supernova'); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${gameMode === 'supernova' ? 'bg-red-600 border-red-400 text-white font-black animate-pulse' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>
-                {t.modeSupernova}
-              </button>
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameMode('zen'); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${gameMode === 'zen' ? 'bg-emerald-500 border-emerald-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>
-                {t.modeZen}
-              </button>
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameMode('fast'); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${gameMode === 'fast' ? 'bg-amber-500 border-amber-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>
-                {t.modeFast}
-              </button>
+              {isWeb && (
+                <div className="flex flex-col items-center">
+                  <button onClick={() => { track('store_click', { from: 'menu' }); openStore(); }} className="bg-white text-slate-900 font-black py-2 px-5 rounded-full text-xs shadow-md cursor-pointer">{t.getOnPlay}</button>
+                  <p className="text-slate-400 text-[11px] font-bold mt-1 text-center">{t.webHint}</p>
+                </div>
+              )}
             </div>
+          </div>
+        )}
 
-            <button onClick={(e) => {
-              e.stopPropagation();
-              // Günlük meydan okuma kendi butonundan açılır; OYNA her zaman seçili normal modu başlatır
-              const mode = gameMode === 'daily' ? 'normal' : gameMode;
-              setGameMode(mode); startGame(mode);
-            }} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3.5 px-14 rounded-full text-xl shadow-[0_0_25px_rgba(34,211,238,0.4)] mb-3 cursor-pointer">{t.play}</button>
-            <button onClick={(e) => { e.stopPropagation(); setGameMode('daily'); startGame('daily'); }} className="flex flex-col items-center bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white font-black py-2 px-7 rounded-2xl text-sm shadow-[0_0_20px_rgba(192,38,211,0.4)] mb-3 cursor-pointer">
-              <span>{t.modeDaily}{todayStats.daily === 0 ? ' 🆕' : ''}</span>
-              <span className="text-[10px] font-bold text-fuchsia-100/80">{t.dailyHint}</span>
-            </button>
-            {!isWeb && <button onClick={(e) => { e.stopPropagation(); if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); track('reward_ad_crystals'); }); } }} disabled={isAdLimitReached} className={`flex items-center gap-2 font-black py-2.5 px-6 rounded-full text-xs mb-3 ${isAdLimitReached ? 'bg-slate-900/60 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-[0_0_20px_rgba(168,85,247,0.4)]'}`}>
-              📺 {isAdLimitReached ? t.adLimitReached : `${t.watchAdReward} (${2 - dailyAdCount}/2)`}
-            </button>}
-            <button onClick={(e) => { e.stopPropagation(); claimStreakBonus(); }} disabled={!isStreakReady} className={`flex items-center gap-2 font-bold py-2 px-5 rounded-full text-xs mb-4 ${isStreakReady ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 animate-pulse' : 'bg-slate-900/60 text-slate-500'}`}>
-              🔥 {t.streakTitle} ({t.dayWord} {streakDays}) {isStreakReady ? `(💎 +${streakDays * 15})` : t.streakClaimed}
-            </button>
-            <div className="flex flex-wrap justify-center gap-2.5 mb-5 max-w-md">
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('badges'); }} className="bg-slate-900/90 border border-slate-700/60 text-yellow-300 font-bold py-2 px-3 rounded-full text-xs shadow-md">🏅 {t.badges}</button>
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('howtoplay'); }} className="bg-slate-900/90 border border-slate-700/60 text-teal-300 font-bold py-2 px-3 rounded-full text-xs shadow-md">❓ {t.howToPlay}</button>
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('leaderboard'); fetchOnlineScores('weekly'); }} className="bg-slate-900/90 border border-slate-700/60 text-amber-300 font-bold py-2 px-3 rounded-full text-xs shadow-md">👑 {t.leaderboard}</button>
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('missions'); }} className="relative bg-slate-900/90 border border-slate-700/60 text-slate-200 font-bold py-2 px-3 rounded-full text-xs shadow-md">🏆 {t.missions}{hasClaimableDaily && <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-amber-400 animate-pulse" />}</button>
-              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('shop'); }} className="bg-slate-900/90 border border-slate-700/60 text-cyan-300 font-bold py-2 px-3 rounded-full text-xs shadow-md">🛒 {t.shop}</button>
-              <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold py-2 px-3 rounded-full text-xs shadow-md">💎 {crystals}</div>
-            </div>
-            <div className="flex gap-3 bg-slate-900/90 p-2.5 rounded-2xl border border-slate-800">
-              {Object.keys(translations).map((l) => (
-                <button key={l} onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setLang(l); localStorage.setItem('orbitJumpLang', l); }} className={`w-9 h-9 rounded-full font-bold uppercase text-xs ${lang === l ? 'bg-cyan-500 text-slate-950 font-black' : 'bg-slate-800 text-slate-400'}`}>{l}</button>
-              ))}
+        {gameState === 'settings' && (
+          <div className="absolute inset-0 z-10 overflow-y-auto overscroll-contain" style={{ touchAction: 'pan-y' }} onClick={(e) => e.stopPropagation()}>
+            <div className="flex flex-col w-full max-w-md mx-auto px-6 pb-8" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 100px)' }}>
+              <div className="flex items-center gap-3 mb-6">
+                <button onClick={() => { playSound('click', soundOn); setGameState('menu'); }} className="w-11 h-11 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-lg">←</button>
+                <h2 className="text-2xl font-black text-cyan-300">{t.settings}</h2>
+              </div>
+
+              <p className="text-xs font-black text-slate-400 mb-2">🌐 {t.language}</p>
+              <div className="grid grid-cols-2 gap-2 mb-6">
+                {Object.keys(translations).map((l) => (
+                  <button key={l} onClick={() => { playSound('click', soundOn); setLang(l); localStorage.setItem('orbitJumpLang', l); }} className={`py-2.5 rounded-xl font-bold text-sm border ${lang === l ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>{LANG_NAMES[l]}</button>
+                ))}
+              </div>
+
+              <p className="text-xs font-black text-slate-400 mb-2">✨ {t.graphics}</p>
+              <div className="grid grid-cols-2 gap-2 mb-6">
+                <button onClick={() => { if (liteMode) toggleLite(); }} className={`py-2.5 rounded-xl font-bold text-sm border ${!liteMode ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>{t.graphicsHigh}</button>
+                <button onClick={() => { if (!liteMode) toggleLite(); }} className={`py-2.5 rounded-xl font-bold text-sm border ${liteMode ? 'bg-amber-500 border-amber-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>{t.graphicsLow}</button>
+              </div>
+
+              {!isWeb && (
+                <>
+                  <p className="text-xs font-black text-slate-400 mb-2">☁️ {t.account}</p>
+                  <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 mb-6 flex flex-col items-center gap-3">
+                    {isGoogleUser(authUser) ? (
+                      <>
+                        <p className="text-emerald-300 text-sm font-bold">☁️ {cloudReady ? t.signedInAs : t.syncing}</p>
+                        <div className="flex gap-4 text-xs font-bold">
+                          <button onClick={() => handleSignOut()} className="text-slate-400 underline">{t.signOut}</button>
+                          <button onClick={() => handleDeleteAccount()} disabled={authBusy} className="text-red-400/80 underline">{t.deleteAccount}</button>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <button onClick={() => handleGoogleSignIn()} disabled={authBusy} className="flex items-center gap-2 bg-white text-slate-800 font-bold py-2 px-4 rounded-full text-sm shadow-md disabled:opacity-60">
+                          <span className="font-black" style={{ color: '#4285F4' }}>G</span> {authBusy ? t.syncing : t.signInGoogle}
+                        </button>
+                        {authError && <p className="text-red-400 text-[11px] font-bold">{t.signInFailed}</p>}
+                      </>
+                    )}
+                    {privacyOptionsRequired && (
+                      <button onClick={() => { AdMob.showPrivacyOptionsForm().catch(() => {}); }} className="text-slate-500 underline text-xs font-bold">{t.privacyOptions}</button>
+                    )}
+                  </div>
+                </>
+              )}
+
+              <button onClick={() => { playSound('click', soundOn); setGameState('howtoplay'); }} className="bg-slate-900/90 border border-slate-700/60 text-teal-300 font-bold py-3 rounded-xl text-sm">❓ {t.howToPlay}</button>
             </div>
           </div>
         )}
@@ -2120,6 +2357,12 @@ function App() {
             </div>
 
             <div className="w-full flex flex-col gap-3 max-h-[52vh] overflow-y-auto pr-1">
+              {eventOn && shopTab !== 'boosts' && (
+                <div className="bg-gradient-to-r from-orange-600/80 to-purple-800/80 border border-orange-400/50 rounded-2xl px-4 py-2 text-center">
+                  <p className="text-white text-xs font-black">{t.eventTitle} · {t.eventEnds.replace('{d}', eventEndLabel)}</p>
+                  <p className="text-orange-100/80 text-[10px] font-bold">{t.eventHint}</p>
+                </div>
+              )}
               {shopTab === 'boosts' && (
                 <>
                   {['shield', 'slowmo'].map((boostType) => {
@@ -2156,7 +2399,7 @@ function App() {
                 </>
               )}
 
-              {shopItems.filter(s => (shopTab === 'balls' && s.type === 'ball') || (shopTab === 'trails' && s.type === 'trail') || (shopTab === 'themes' && s.type === 'theme')).map((item) => {
+              {shopItems.filter(s => (!s.event || eventOn || ownedItems.includes(s.id)) && ((shopTab === 'balls' && s.type === 'ball') || (shopTab === 'trails' && s.type === 'trail') || (shopTab === 'themes' && s.type === 'theme'))).map((item) => {
                 const owned = ownedItems.includes(item.id);
                 const isSelected = selectedSkin === item.id || selectedTrail === item.id || selectedTheme === item.id;
                 const ballLvl = ballLevels[item.id] || 1;
@@ -2204,9 +2447,9 @@ function App() {
                         </div>
                       )}
                       {item.type === 'trail' && <div className="w-10 h-10 flex items-center justify-center text-xl" style={{ color: item.color }}>☄️</div>}
-                      {item.type === 'theme' && <div className="w-10 h-10 flex items-center justify-center text-xl">🌌</div>}
+                      {item.type === 'theme' && <div className="w-10 h-10 flex items-center justify-center text-xl">{item.event ? '🎃' : '🌌'}</div>}
                       <div>
-                        <p className="font-bold text-sm">{t[item.nameKey]}</p>
+                        <p className="font-bold text-sm">{item.event ? '🎃 ' : ''}{t[item.nameKey]}</p>
                         <p className="text-xs text-slate-400">{owned ? t.owned : `💎 ${item.price}`}</p>
                       </div>
                     </div>
@@ -2287,16 +2530,35 @@ function App() {
             <div className="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl mb-6 text-center shadow-2xl min-w-[280px]">
               {gameMode === 'daily' && <p className="text-fuchsia-300 text-[11px] font-black mb-2">{t.modeDaily}</p>}
               <p className="text-slate-400 text-xs mb-1">{t.score}</p>
-              <p className="text-3xl font-black text-cyan-400 mb-3">{score}</p>
-              <p className="text-xs text-cyan-300 font-bold mb-5">💎 +{runCrystals}</p>
+              <p className="text-3xl font-black text-cyan-400 mb-2">{score}</p>
+              {(() => {
+                const best = lastRun?.startBest || 0;
+                if (best > 0 && score > best) return <p className="text-sm font-black text-amber-300 mb-2 animate-pulse">{t.newRecord}</p>;
+                const gap = best - score + 1;
+                if (best > 0 && score > 0 && gap <= Math.max(3, Math.ceil(best * 0.25))) return <p className="text-sm font-black text-orange-300 mb-2">{t.toBeatBest.replace('{n}', String(gap))}</p>;
+                return best > 0 ? <p className="text-xs font-bold text-slate-500 mb-2">{t.bestWas.replace('{n}', String(best))}</p> : null;
+              })()}
+              {activeChallenge && (
+                <p className={`text-sm font-black mb-2 ${score > activeChallenge.target ? 'text-emerald-300' : 'text-rose-300'}`}>
+                  {score > activeChallenge.target ? t.challengeWon : t.challengeShort.replace('{n}', String(activeChallenge.target - score + 1))}
+                </p>
+              )}
+              <p className="text-xs text-cyan-300 font-bold mb-1">💎 +{runCrystals}{lastRun ? ` · ${t.xpGain.replace('{n}', String(lastRun.xpGain))}` : ''}</p>
+              {lastRun?.levelUp > 0 && <p className="text-sm font-black text-amber-300 mb-1">{t.levelUp.replace('{n}', String(lastRun.levelUp))} 💎 +{lastRun.levelCrystals}</p>}
+              <div className="mb-4" />
               {!reviveUsed && !isWeb && (
                 <button onClick={continueGameWithAd} className="w-full font-black py-3 px-4 rounded-xl text-sm shadow-md bg-gradient-to-r from-purple-500 to-indigo-500 text-white">
                   📺 {t.watchAdContinue}
                 </button>
               )}
               {score > 0 && (
-                <button onClick={() => { playSound('click', soundOn); shareScore(t.shareText.replace('{n}', String(score))); track('share_score', { score }); }} className="w-full mt-3 font-bold py-2.5 px-4 rounded-xl text-sm border border-slate-700 bg-slate-800 text-slate-200">
-                  📤 {t.shareScore}
+                <button onClick={() => {
+                  playSound('click', soundOn);
+                  const mode = gameMode === 'daily' ? 'normal' : gameMode;
+                  shareScore(t.challengeShare.replace('{n}', String(score)), challengeUrl(runSeedRef.current, score, mode));
+                  track('share_score', { score, challenge: 1 });
+                }} className="w-full mt-3 font-black py-2.5 px-4 rounded-xl text-sm bg-gradient-to-r from-rose-500 to-orange-500 text-white">
+                  {t.challengeSend}
                 </button>
               )}
               {isWeb && (
@@ -2306,7 +2568,7 @@ function App() {
               )}
             </div>
             <div className="flex gap-3">
-              <button onClick={async () => { if (leavingGameOver) return; setLeavingGameOver(true); await maybeShowInterstitial(); setLeavingGameOver(false); startGame(); }} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3 px-6 rounded-full text-base shadow-md">{t.restart}</button>
+              <button onClick={async () => { if (leavingGameOver) return; setLeavingGameOver(true); await maybeShowInterstitial(); setLeavingGameOver(false); if (activeChallenge) startGame(activeChallenge.mode, activeChallenge.seed); else startGame(); }} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3 px-6 rounded-full text-base shadow-md">{t.restart}</button>
               <button onClick={() => { if (leavingGameOver) return; playSound('click', soundOn); setGameState('menu'); maybeShowInterstitial(); }} className="bg-slate-800 text-slate-300 font-bold py-3 px-6 rounded-full text-base border border-slate-700">{t.menu}</button>
             </div>
           </div>
@@ -2335,6 +2597,10 @@ function App() {
                 ⏳ <span className={`absolute bottom-1 right-2 text-xs font-black px-1.5 py-0.5 rounded-full ${(boostCounts.slowmo || 0) > 0 ? 'bg-slate-950/80 text-purple-300' : 'bg-slate-900/80 text-slate-500'}`}>{boostCounts.slowmo || 0}</span>
               </button>
             </div>
+
+            {recordFlash && (
+              <div className="absolute z-50 pointer-events-none left-1/2 top-[22%] -translate-x-1/2 text-3xl font-black text-amber-300 whitespace-nowrap animate-bounce drop-shadow-[0_0_12px_rgba(251,191,36,0.8)]">{t.newBest}</div>
+            )}
 
             {popup && (
               <div className={`absolute z-50 pointer-events-none font-black text-2xl left-1/2 top-1/2 ${popup.kind === 'perfect' ? 'text-yellow-300' : 'text-cyan-300'}`} style={{ animation: 'popFloat 0.65s ease-out forwards', transform: 'translate(-50%, -50%)' }}>

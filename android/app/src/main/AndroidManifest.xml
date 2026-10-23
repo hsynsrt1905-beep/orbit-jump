@@ -19,6 +19,13 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- Meydan okuma bağlantısı: orbitjump://c?s=..&n=..&m=.. (orbit-jump-73b68.web.app/c açar) -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="orbitjump" android:host="c" />
+            </intent-filter>
         </activity>
 
         <provider
