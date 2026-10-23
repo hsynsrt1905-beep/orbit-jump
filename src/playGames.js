@@ -3,9 +3,10 @@ import { Capacitor, registerPlugin } from '@capacitor/core';
 // Google Play Oyun Hizmetleri başarımları: oyundaki rozet açılınca Play'deki
 // karşılığı da açılır. Kimlikler Play Console → Play Oyun Hizmetleri →
 // Başarımlar sayfasından (store/play-games/achievements.md). Boş kimlik atlanır.
+const P = 'CgkIkPD1stobEAIQ';
 const ACHIEVEMENT_IDS = {
-  badge1: '', badge2: '', badge3: '', badge4: '', badge5: '', badge6: '',
-  badge7: '', badge8: '', badge9: '', badge10: '', badge11: '', badge12: '',
+  badge1: `${P}Ag`, badge2: `${P}Aw`, badge3: `${P}BA`, badge4: `${P}BQ`, badge5: `${P}Bg`, badge6: `${P}Bw`,
+  badge7: `${P}CA`, badge8: `${P}CQ`, badge9: `${P}Cg`, badge10: `${P}Cw`, badge11: `${P}DA`, badge12: `${P}DQ`,
 };
 
 const PlayGames = registerPlugin('PlayGames');
