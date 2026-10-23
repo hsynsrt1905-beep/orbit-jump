@@ -248,54 +248,54 @@ const translations = {
 // Rekor, seri kurtarma, seviye, meydan okuma, etkinlik ve ayarlar metinleri
 const extraTranslations = {
   en: {
+    tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Fast",
+    hintNormal: "Classic — a timer on every planet", hintSupernova: "5 s per planet · 2× points", hintZen: "No timer — relax and aim", hintFast: "Faster planets · extreme",
     newBest: "🏆 NEW BEST!", newRecord: "🏆 NEW RECORD!", toBeatBest: "Only {n} to beat your best!", bestWas: "Best: {n}",
     streakLost: "Your {n}-day streak broke!", streakSave: "SAVE STREAK", streakSaveAd: "📺 Watch ad", streakSaveCrystals: "💎 {n}",
     lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
     settings: "Settings", language: "Language", account: "Account", graphics: "Graphics", graphicsHigh: "High", graphicsLow: "Low",
     challengeTitle: "⚔️ CHALLENGE", challengeBeat: "Beat {n} on the same map", challengeAccept: "ACCEPT", challengeWon: "🎉 Challenge won!", challengeShort: "{n} short of the challenge",
     challengeShare: "I scored {n} in Orbit Jump. Beat me on the same map! 🚀", challengeSend: "⚔️ CHALLENGE A FRIEND",
-    eventTitle: "🎃 HALLOWEEN EVENT", eventHint: "Limited time — yours forever once bought", eventEnds: "Until {d}",
-    itemPumpkin: "Pumpkin", trailEmber: "Ember Trail", themeNight: "Haunted Night"
   },
   tr: {
+    tabNormal: "Normal", tabSupernova: "Süpernova", tabZen: "Zen", tabFast: "Hızlı",
+    hintNormal: "Klasik — her gezegende süre sayacı", hintSupernova: "Gezegen başına 5 sn · 2× puan", hintZen: "Süre yok — rahatla ve nişan al", hintFast: "Daha hızlı gezegenler · ekstrem",
     newBest: "🏆 YENİ REKOR!", newRecord: "🏆 YENİ REKOR!", toBeatBest: "Rekoruna sadece {n} kaldı!", bestWas: "Rekor: {n}",
     streakLost: "{n} günlük serin bozuldu!", streakSave: "SERİYİ KURTAR", streakSaveAd: "📺 Reklam izle", streakSaveCrystals: "💎 {n}",
     lv: "Sv", levelUp: "⬆️ SEVİYE {n}!", xpGain: "+{n} XP",
     settings: "Ayarlar", language: "Dil", account: "Hesap", graphics: "Grafik", graphicsHigh: "Yüksek", graphicsLow: "Düşük",
     challengeTitle: "⚔️ MEYDAN OKUMA", challengeBeat: "Aynı haritada {n} puanı geç", challengeAccept: "KABUL ET", challengeWon: "🎉 Meydan okumayı kazandın!", challengeShort: "Meydan okumaya {n} puan kaldı",
     challengeShare: "Orbit Jump'ta {n} puan yaptım. Aynı haritada geç bakalım! 🚀", challengeSend: "⚔️ ARKADAŞINA MEYDAN OKU",
-    eventTitle: "🎃 CADILAR BAYRAMI ETKİNLİĞİ", eventHint: "Süreli — satın alınca hep senin", eventEnds: "{d} tarihine kadar",
-    itemPumpkin: "Balkabağı", trailEmber: "Kor İzi", themeNight: "Perili Gece"
   },
   es: {
+    tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Rápido",
+    hintNormal: "Clásico — temporizador en cada planeta", hintSupernova: "5 s por planeta · puntos x2", hintZen: "Sin tiempo — relájate y apunta", hintFast: "Planetas más rápidos · extremo",
     newBest: "🏆 ¡NUEVO RÉCORD!", newRecord: "🏆 ¡NUEVO RÉCORD!", toBeatBest: "¡Solo {n} para batir tu récord!", bestWas: "Récord: {n}",
     streakLost: "¡Tu racha de {n} días se rompió!", streakSave: "SALVAR RACHA", streakSaveAd: "📺 Ver anuncio", streakSaveCrystals: "💎 {n}",
     lv: "Nv", levelUp: "⬆️ ¡NIVEL {n}!", xpGain: "+{n} XP",
     settings: "Ajustes", language: "Idioma", account: "Cuenta", graphics: "Gráficos", graphicsHigh: "Altos", graphicsLow: "Bajos",
     challengeTitle: "⚔️ DESAFÍO", challengeBeat: "Supera {n} en el mismo mapa", challengeAccept: "ACEPTAR", challengeWon: "🎉 ¡Desafío superado!", challengeShort: "Te faltaron {n} para el desafío",
     challengeShare: "Hice {n} puntos en Orbit Jump. ¡Supérame en el mismo mapa! 🚀", challengeSend: "⚔️ DESAFIAR A UN AMIGO",
-    eventTitle: "🎃 EVENTO DE HALLOWEEN", eventHint: "Tiempo limitado — tuyo para siempre", eventEnds: "Hasta el {d}",
-    itemPumpkin: "Calabaza", trailEmber: "Estela de brasas", themeNight: "Noche embrujada"
   },
   de: {
+    tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Schnell",
+    hintNormal: "Klassisch — Timer auf jedem Planeten", hintSupernova: "5 s pro Planet · 2× Punkte", hintZen: "Kein Timer — entspannt zielen", hintFast: "Schnellere Planeten · extrem",
     newBest: "🏆 NEUER REKORD!", newRecord: "🏆 NEUER REKORD!", toBeatBest: "Nur noch {n} bis zum Rekord!", bestWas: "Rekord: {n}",
     streakLost: "Deine {n}-Tage-Serie ist gerissen!", streakSave: "SERIE RETTEN", streakSaveAd: "📺 Werbung ansehen", streakSaveCrystals: "💎 {n}",
     lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
     settings: "Einstellungen", language: "Sprache", account: "Konto", graphics: "Grafik", graphicsHigh: "Hoch", graphicsLow: "Niedrig",
     challengeTitle: "⚔️ HERAUSFORDERUNG", challengeBeat: "Schlage {n} auf derselben Karte", challengeAccept: "ANNEHMEN", challengeWon: "🎉 Herausforderung geschafft!", challengeShort: "{n} fehlten zur Herausforderung",
     challengeShare: "Ich habe {n} Punkte in Orbit Jump. Schlag mich auf derselben Karte! 🚀", challengeSend: "⚔️ FREUND HERAUSFORDERN",
-    eventTitle: "🎃 HALLOWEEN-EVENT", eventHint: "Nur kurze Zeit — gekauft gehört es dir", eventEnds: "Bis {d}",
-    itemPumpkin: "Kürbis", trailEmber: "Glutspur", themeNight: "Spuknacht"
   },
   ru: {
+    tabNormal: "Обычный", tabSupernova: "Сверхновая", tabZen: "Дзен", tabFast: "Быстрый",
+    hintNormal: "Классика — таймер на каждой планете", hintSupernova: "5 с на планету · очки x2", hintZen: "Без таймера — спокойно цельтесь", hintFast: "Быстрые планеты · экстрим",
     newBest: "🏆 НОВЫЙ РЕКОРД!", newRecord: "🏆 НОВЫЙ РЕКОРД!", toBeatBest: "До рекорда всего {n}!", bestWas: "Рекорд: {n}",
     streakLost: "Серия из {n} дн. прервалась!", streakSave: "СПАСТИ СЕРИЮ", streakSaveAd: "📺 Смотреть рекламу", streakSaveCrystals: "💎 {n}",
     lv: "Ур", levelUp: "⬆️ УРОВЕНЬ {n}!", xpGain: "+{n} XP",
     settings: "Настройки", language: "Язык", account: "Аккаунт", graphics: "Графика", graphicsHigh: "Высокая", graphicsLow: "Низкая",
     challengeTitle: "⚔️ ВЫЗОВ", challengeBeat: "Побейте {n} на той же карте", challengeAccept: "ПРИНЯТЬ", challengeWon: "🎉 Вызов выполнен!", challengeShort: "До вызова не хватило {n}",
     challengeShare: "Мой результат в Orbit Jump — {n}. Побей меня на той же карте! 🚀", challengeSend: "⚔️ БРОСИТЬ ВЫЗОВ ДРУГУ",
-    eventTitle: "🎃 ХЭЛЛОУИН", eventHint: "Ограниченное время — после покупки навсегда", eventEnds: "До {d}",
-    itemPumpkin: "Тыква", trailEmber: "Тлеющий след", themeNight: "Ночь с призраками"
   }
 };
 for (const [l, extra] of Object.entries(extraTranslations)) Object.assign(translations[l], extra);
@@ -305,8 +305,7 @@ const backgroundThemesList = {
   bg_nebula: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-fuchsia-600 via-purple-800 via-30% to-indigo-950 pointer-events-none overflow-hidden transition-colors duration-700",
   bg_void: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-400 via-zinc-900 via-25% to-black pointer-events-none overflow-hidden transition-colors duration-700",
   bg_solar: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-400 via-orange-700 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700",
-  bg_galactic: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-300 via-blue-800 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700",
-  bg_night: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500 via-purple-950 via-30% to-black pointer-events-none overflow-hidden transition-colors duration-700"
+  bg_galactic: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-300 via-blue-800 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700"
 };
 
 // Bulanık daire yerine radial-gradient: blur-[140px] filtresi zayıf
@@ -315,8 +314,7 @@ const backgroundAccents = {
   bg_nebula: 'radial-gradient(circle, rgba(217,70,239,0.4) 0%, rgba(217,70,239,0.18) 35%, rgba(217,70,239,0) 70%)',
   bg_void: 'radial-gradient(circle, rgba(203,213,225,0.2) 0%, rgba(203,213,225,0.09) 35%, rgba(203,213,225,0) 70%)',
   bg_solar: 'radial-gradient(circle, rgba(251,191,36,0.45) 0%, rgba(251,191,36,0.20) 35%, rgba(251,191,36,0) 70%)',
-  bg_galactic: 'radial-gradient(circle, rgba(103,232,249,0.45) 0%, rgba(103,232,249,0.20) 35%, rgba(103,232,249,0) 70%)',
-  bg_night: 'radial-gradient(circle, rgba(249,115,22,0.35) 0%, rgba(126,34,206,0.18) 35%, rgba(126,34,206,0) 70%)'
+  bg_galactic: 'radial-gradient(circle, rgba(103,232,249,0.45) 0%, rgba(103,232,249,0.20) 35%, rgba(103,232,249,0) 70%)'
 };
 
 /* ============================================================
@@ -385,16 +383,9 @@ const shopItems = [
   { id: 'bg_nebula', type: 'theme', price: 120, nameKey: 'themeNebula' },
   { id: 'bg_void', type: 'theme', price: 150, nameKey: 'themeVoid' },
   { id: 'bg_solar', type: 'theme', price: 180, nameKey: 'themeSolar' },
-  { id: 'bg_galactic', type: 'theme', price: 200, nameKey: 'themeGalactic' },
-  // Etkinlik ürünleri: yalnız etkinlik süresince satılır, alınan ürün kalıcıdır
-  { id: 'pumpkin', type: 'ball', price: 80, trailTint: '#fb923c', nameKey: 'itemPumpkin', event: true },
-  { id: 'trail_ember', type: 'trail', price: 60, color: '#f97316', shape: 'flame', nameKey: 'trailEmber', event: true },
-  { id: 'bg_night', type: 'theme', price: 120, nameKey: 'themeNight', event: true }
+  { id: 'bg_galactic', type: 'theme', price: 200, nameKey: 'themeGalactic' }
 ];
 
-// Süreli etkinlik (yerel tarihe göre, bitiş günü dahil)
-const EVENT = { id: 'halloween26', start: '2026-10-24', end: '2026-11-02' };
-const isEventActive = () => { const d = localDayId(); return d >= EVENT.start && d <= EVENT.end; };
 
 // Oyuncu seviyesi: her tur XP verir; bir sonraki seviye için gereken XP
 // 60'tan başlayıp her seviyede 30 artar. Seviye atlayınca kristal ödülü.
@@ -1753,8 +1744,6 @@ function App() {
   const todayStats = dailyStats.id === localDayId() ? dailyStats : emptyDailyStats(localDayId());
   const dailyMissions = dailyMissionsFor(todayStats.id);
   const lvl = levelInfo(xp);
-  const eventOn = isEventActive();
-  const eventEndLabel = new Date(`${EVENT.end}T12:00:00`).toLocaleDateString(lang, { day: 'numeric', month: 'long' });
   const hasClaimableDaily =dailyMissions.some((m) => (todayStats[m.stat] || 0) >= m.target && !todayStats.claimed.includes(m.id));
 
   const claimDailyMission = (m) => {
@@ -1965,11 +1954,6 @@ function App() {
                        background: radial-gradient(circle at 42% 36%, #ffffff 0%, #ddd6fe 20%, #8b5cf6 56%, #3b0764 100%);
                        box-shadow: 0 0 32px rgba(167,139,250,1), 0 0 55px rgba(167,139,250,.5), inset -3px -4px 10px rgba(0,0,0,.55); }
 
-          .ball-pumpkin { border-radius: 46% 46% 50% 50%;
-                          background: repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 18%, rgba(124,45,18,.45) 20% 22%),
-                                      radial-gradient(circle at 36% 30%, #ffedd5 0%, #fb923c 32%, #c2410c 68%, #431407 100%);
-                          box-shadow: 0 0 26px rgba(251,146,60,.95), 0 0 48px rgba(126,34,206,.35), inset -4px -5px 10px rgba(0,0,0,.55); }
-
           .ball-rim { border-radius: inherit; mix-blend-mode: screen; opacity: .85;
                       background: conic-gradient(from -40deg, transparent 0deg, rgba(255,255,255,.6) 30deg, transparent 70deg, transparent 360deg); }
 
@@ -2121,20 +2105,24 @@ function App() {
                 </div>
               )}
 
-              <div className="flex flex-wrap justify-center gap-2 mb-4">
-                {[
-                  ['normal', t.modeNormal, 'bg-cyan-500 border-cyan-300 text-slate-950'],
-                  ['supernova', t.modeSupernova, 'bg-red-600 border-red-400 text-white'],
-                  ['zen', t.modeZen, 'bg-emerald-500 border-emerald-300 text-slate-950'],
-                  ['fast', t.modeFast, 'bg-amber-500 border-amber-300 text-slate-950']
-                ].map(([id, label, on]) => {
-                  const selected = gameMode === id || (id === 'normal' && gameMode === 'daily');
-                  return (
-                    <button key={id} onClick={() => { playSound('click', soundOn); setGameMode(id); }} className={`py-1.5 px-3 rounded-full text-[11px] font-bold border cursor-pointer ${selected ? `${on} font-black` : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>
-                      {label}
-                    </button>
-                  );
-                })}
+              <div className="w-full max-w-sm mb-4">
+                <div className="grid grid-cols-4 gap-1 bg-slate-900/90 border border-slate-700/60 rounded-2xl p-1">
+                  {[
+                    ['normal', '🪐', t.tabNormal, 'bg-cyan-500 text-slate-950'],
+                    ['supernova', '💥', t.tabSupernova, 'bg-red-600 text-white'],
+                    ['zen', '🧘', t.tabZen, 'bg-emerald-500 text-slate-950'],
+                    ['fast', '⚡', t.tabFast, 'bg-amber-500 text-slate-950']
+                  ].map(([id, icon, label, on]) => {
+                    const selected = gameMode === id || (id === 'normal' && gameMode === 'daily');
+                    return (
+                      <button key={id} onClick={() => { playSound('click', soundOn); setGameMode(id); }} className={`flex flex-col items-center gap-0.5 py-1.5 rounded-xl min-w-0 transition-colors ${selected ? `${on} font-black shadow-md` : 'text-slate-400 font-bold'}`}>
+                        <span className="text-base leading-none">{icon}</span>
+                        <span className="text-[10px] w-full truncate text-center">{label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+                <p className="text-center text-[11px] font-bold text-slate-400 mt-1.5">{t[{ supernova: 'hintSupernova', zen: 'hintZen', fast: 'hintFast' }[gameMode] || 'hintNormal']}</p>
               </div>
 
               <button onClick={() => {
@@ -2163,13 +2151,6 @@ function App() {
               {!isWeb && (
                 <button onClick={() => { if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); track('reward_ad_crystals'); }); } }} disabled={isAdLimitReached} className={`flex items-center gap-2 font-bold py-2 px-5 rounded-full text-xs mb-5 ${isAdLimitReached ? 'bg-slate-900/60 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white'}`}>
                   📺 {isAdLimitReached ? t.adLimitReached : `${t.watchAdReward} (${2 - dailyAdCount}/2)`}
-                </button>
-              )}
-
-              {eventOn && (
-                <button onClick={() => { playSound('click', soundOn); setShopTab('balls'); setGameState('shop'); }} className="w-full max-w-xs bg-gradient-to-r from-orange-600/90 to-purple-800/90 border border-orange-400/50 rounded-2xl py-2 px-4 mb-4 text-center">
-                  <p className="text-white text-xs font-black">{t.eventTitle}</p>
-                  <p className="text-orange-100/80 text-[10px] font-bold">{t.eventEnds.replace('{d}', eventEndLabel)}</p>
                 </button>
               )}
 
@@ -2357,12 +2338,6 @@ function App() {
             </div>
 
             <div className="w-full flex flex-col gap-3 max-h-[52vh] overflow-y-auto pr-1">
-              {eventOn && shopTab !== 'boosts' && (
-                <div className="bg-gradient-to-r from-orange-600/80 to-purple-800/80 border border-orange-400/50 rounded-2xl px-4 py-2 text-center">
-                  <p className="text-white text-xs font-black">{t.eventTitle} · {t.eventEnds.replace('{d}', eventEndLabel)}</p>
-                  <p className="text-orange-100/80 text-[10px] font-bold">{t.eventHint}</p>
-                </div>
-              )}
               {shopTab === 'boosts' && (
                 <>
                   {['shield', 'slowmo'].map((boostType) => {
@@ -2399,7 +2374,7 @@ function App() {
                 </>
               )}
 
-              {shopItems.filter(s => (!s.event || eventOn || ownedItems.includes(s.id)) && ((shopTab === 'balls' && s.type === 'ball') || (shopTab === 'trails' && s.type === 'trail') || (shopTab === 'themes' && s.type === 'theme'))).map((item) => {
+              {shopItems.filter(s => ((shopTab === 'balls' && s.type === 'ball') || (shopTab === 'trails' && s.type === 'trail') || (shopTab === 'themes' && s.type === 'theme'))).map((item) => {
                 const owned = ownedItems.includes(item.id);
                 const isSelected = selectedSkin === item.id || selectedTrail === item.id || selectedTheme === item.id;
                 const ballLvl = ballLevels[item.id] || 1;
@@ -2447,9 +2422,9 @@ function App() {
                         </div>
                       )}
                       {item.type === 'trail' && <div className="w-10 h-10 flex items-center justify-center text-xl" style={{ color: item.color }}>☄️</div>}
-                      {item.type === 'theme' && <div className="w-10 h-10 flex items-center justify-center text-xl">{item.event ? '🎃' : '🌌'}</div>}
+                      {item.type === 'theme' && <div className="w-10 h-10 flex items-center justify-center text-xl">🌌</div>}
                       <div>
-                        <p className="font-bold text-sm">{item.event ? '🎃 ' : ''}{t[item.nameKey]}</p>
+                        <p className="font-bold text-sm">{t[item.nameKey]}</p>
                         <p className="text-xs text-slate-400">{owned ? t.owned : `💎 ${item.price}`}</p>
                       </div>
                     </div>
