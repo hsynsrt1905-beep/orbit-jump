@@ -4,4 +4,6 @@
     <string name="title_activity_main">Orbit Jump</string>
     <string name="package_name">com.orbitjump.game</string>
     <string name="custom_url_scheme">com.orbitjump.game</string>
+    <!-- Play Console → Play Oyun Hizmetleri → Yapılandırma → Proje Kimliği -->
+    <string name="game_services_project_id" translatable="false">951978915856</string>
 </resources>

@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.getcapacitor.BridgeActivity;
+import com.google.android.gms.games.PlayGamesSdk;
 
 public class MainActivity extends BridgeActivity {
 
@@ -38,6 +39,10 @@ public class MainActivity extends BridgeActivity {
         // bir kombo bekleyişinde ekrana dokunmayabilir; sistemin ekranı
         // karartıp kilitlemesini önler.
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        // Play Oyun Hizmetleri (başarımlar): SDK başlatılır, köprü eklentisi kaydedilir
+        PlayGamesSdk.initialize(this);
+        registerPlugin(PlayGamesPlugin.class);
 
         super.onCreate(savedInstanceState);
 

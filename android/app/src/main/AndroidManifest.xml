@@ -52,7 +52,13 @@
         <!-- UMP/GDPR Onayı Alınana Kadar Veri Toplamayı Beklet (YENİ) -->
         <meta-data
             android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT"
-            android:value="true" 
+            android:value="true"
+        />
+
+        <!-- Google Play Oyun Hizmetleri (başarımlar) proje kimliği -->
+        <meta-data
+            android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/game_services_project_id"
         />
     </application>
 

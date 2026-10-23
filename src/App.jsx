@@ -10,6 +10,7 @@ import { collection, setDoc, doc, getDocs, query, orderBy, limit, serverTimestam
 import { onAuthStateChanged } from "firebase/auth";
 import { maybeRequestReview, shareScore, noteGameFinished, maybeShowInterstitial, scheduleStreakReminder, scheduleComebackReminders, track } from './engagement';
 import { utcDayId, utcWeekId, localDayId, seededRandom, submitPeriodScore, fetchPeriodScores, emptyDailyStats, dailyMissionsFor } from './periodic';
+import { syncAchievements, showAchievements, playGamesAvailable } from './playGames';
 import { ensureSignedIn, isGoogleUser, signInWithGoogle, signOutGoogle, deleteAccount, loadCloudSave, writeCloudSave, mergeProgress, claimPlayerName, releaseNames, nameKey } from './cloudSave';
 
 const translations = {
@@ -1914,6 +1915,11 @@ function App() {
   const lvl = levelInfo(xp);
   // Rozet koşulları için stat'lara seviye, karakter sayısı ve seri eklenir
   const badgeStats = { ...stats, level: lvl.level, skins: ownedItems.filter((id) => (shopItems.find((s) => s.id === id) || {}).type === 'ball').length, streak: streakDays };
+  // Açılan rozetler Google Play başarımı olarak da gönderilir
+  const unlockedBadgeKey = badgeDefs.filter((b) => b.check(badgeStats)).map((b) => b.id).join(',');
+  useEffect(() => {
+    if (unlockedBadgeKey) syncAchievements(unlockedBadgeKey.split(','));
+  }, [unlockedBadgeKey]);
   const hasClaimableDaily =dailyMissions.some((m) => (todayStats[m.stat] || 0) >= m.target && !todayStats.claimed.includes(m.id));
 
   const claimDailyMission = (m) => {
@@ -2414,6 +2420,11 @@ function App() {
               <h2 className="text-xl font-black text-yellow-300">{t.badges}</h2>
               <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold py-1.5 px-3 rounded-full text-xs">💎 {crystals}</div>
             </div>
+            {playGamesAvailable && (
+              <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); showAchievements(); }} className="w-full mb-3 flex items-center justify-center gap-2 bg-emerald-600 text-white font-black py-3 rounded-2xl text-sm shadow-md">
+                🎮 {t.playAchievements}
+              </button>
+            )}
             <div className="w-full bg-slate-900/85 border border-slate-800 rounded-2xl p-4 flex flex-col gap-3 max-h-[64vh] overflow-y-auto">
               {badgeDefs.map((b) => {
                 const unlocked = b.check(badgeStats);
