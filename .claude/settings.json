@@ -1,4 +1,9 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(npx firebase deploy --only hosting --project orbit-jump-73b68)"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
