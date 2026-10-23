@@ -41,6 +41,12 @@ public class MainActivity extends BridgeActivity {
 
         super.onCreate(savedInstanceState);
 
+        // Sistem yazı boyutu büyütülmüş telefonlarda WebView tüm metni büyütüp
+        // menüyü taşırıyordu; oyun arayüzü kendi boyutlarını kullanır.
+        if (getBridge() != null && getBridge().getWebView() != null) {
+            getBridge().getWebView().getSettings().setTextZoom(100);
+        }
+
         enableImmersiveMode();
     }
 

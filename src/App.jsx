@@ -853,6 +853,15 @@ function App() {
   // karışım modları, büyük gölgeler) kapatır. Kullanıcı seçmediyse cihaz
   // bellek/çekirdek sayısına göre başlar, oyunda kare süreleri ölçülerek
   // gerekirse kendiliğinden açılır.
+  // Oyun dünyası 400x860 (CSS px) için tasarlandı; ekran buna göre ölçeklenir
+  const calcWorldScale = () => Math.min(1.3, Math.max(0.68, Math.min(window.innerHeight / 860, window.innerWidth / 400)));
+  const [worldScale, setWorldScale] = useState(calcWorldScale);
+  useEffect(() => {
+    const onResize = () => setWorldScale(calcWorldScale());
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   const [liteMode, setLiteMode] = useState(() => {
     try {
       const saved = localStorage.getItem('orbit_lite');
@@ -2197,20 +2206,20 @@ function App() {
         {gameState === 'menu' && (
           <div className="absolute top-10 left-6 z-50 flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold px-4 h-12 rounded-full text-base shadow-md pointer-events-none" style={{ marginTop: 'env(safe-area-inset-top)' }}>💎 {crystals}</div>
         )}
-        <div className="absolute top-10 right-6 flex items-center gap-3 z-50" style={{ marginTop: 'env(safe-area-inset-top)' }}>
-          {gameState === 'playing' && <div className="pointer-events-none flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold px-4 h-12 rounded-full text-lg shadow-md">💎 {runCrystals}</div>}
-          {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setIsPaused(true); }} className="w-12 h-12 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">⏸️</button>}
-          {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); exitToMenu(); }} className="w-12 h-12 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">🏠</button>}
-          {gameState !== 'playing' && <button onClick={(e) => { e.stopPropagation(); toggleLite(); }} aria-label={liteMode ? 'Graphics: low' : 'Graphics: high'} className={`w-12 h-12 bg-slate-900/90 border rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md ${liteMode ? 'border-amber-500/70' : 'border-slate-700/60'}`}>{liteMode ? '⚡' : '✨'}</button>}
-          <button onClick={(e) => { e.stopPropagation(); toggleSound(); }} className="w-12 h-12 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">{soundOn ? '🔊' : '🔇'}</button>
+        <div className="absolute top-10 right-6 max-[380px]:right-3 flex items-center gap-3 max-[380px]:gap-2 z-50" style={{ marginTop: 'env(safe-area-inset-top)' }}>
+          {gameState === 'playing' && <div className="pointer-events-none flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold px-4 max-[380px]:px-3 h-12 max-[380px]:h-10 rounded-full text-lg shadow-md">💎 {runCrystals}</div>}
+          {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setIsPaused(true); }} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">⏸️</button>}
+          {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); exitToMenu(); }} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">🏠</button>}
+          {gameState !== 'playing' && <button onClick={(e) => { e.stopPropagation(); toggleLite(); }} aria-label={liteMode ? 'Graphics: low' : 'Graphics: high'} className={`w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md ${liteMode ? 'border-amber-500/70' : 'border-slate-700/60'}`}>{liteMode ? '⚡' : '✨'}</button>}
+          <button onClick={(e) => { e.stopPropagation(); toggleSound(); }} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">{soundOn ? '🔊' : '🔇'}</button>
         </div>
 
         {gameState === 'menu' && (
           <div className="absolute inset-0 z-10 overflow-y-auto overscroll-contain" style={{ touchAction: 'pan-y' }} onClick={(e) => e.stopPropagation()}>
             {/* Üç bölge: üstte başlık ve seviye, ortada oyna alanı, altta gezinme çubuğu */}
-            <div className="min-h-full w-full max-w-md mx-auto flex flex-col px-5" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 100px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 20px)' }}>
+            <div className="min-h-full w-full max-w-md mx-auto flex flex-col px-5" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 96px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 16px)' }}>
               <div className="flex flex-col items-center">
-                <h1 className="text-5xl sm:text-6xl font-black mb-2 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-center">{t.title}</h1>
+                <h1 className="text-5xl sm:text-6xl [@media(max-height:700px)]:text-4xl font-black mb-2 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-center">{t.title}</h1>
                 <p className="text-slate-300 mb-3 font-semibold text-base text-center">{playerName ? `👤 ${playerName} · ` : ''}{t.best}: {highScore}</p>
                 <div className="w-full max-w-xs">
                   <div className="flex justify-between text-xs font-black mb-1">
@@ -2223,7 +2232,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="flex-1 flex flex-col justify-center gap-4 py-6">
+              <div className="flex-1 flex flex-col justify-center gap-4 py-6 [@media(max-height:700px)]:gap-2.5 [@media(max-height:700px)]:py-3">
                 {challenge && (
                   <div className="w-full bg-rose-950/80 border border-rose-500/60 rounded-2xl p-4 text-center">
                     <p className="text-rose-300 text-sm font-black">{t.challengeTitle}</p>
@@ -2259,7 +2268,7 @@ function App() {
                   // Günlük meydan okuma kendi butonundan açılır; OYNA her zaman seçili normal modu başlatır
                   const mode = gameMode === 'daily' ? 'normal' : gameMode;
                   setGameMode(mode); startGame(mode);
-                }} className="w-full bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-5 rounded-3xl text-3xl tracking-widest shadow-[0_0_30px_rgba(34,211,238,0.45)] cursor-pointer">{t.play}</button>
+                }} className="w-full bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-5 [@media(max-height:700px)]:py-3.5 rounded-3xl text-3xl tracking-widest shadow-[0_0_30px_rgba(34,211,238,0.45)] cursor-pointer">{t.play}</button>
                 <button onClick={() => { setGameMode('daily'); startGame('daily'); }} className="w-full flex flex-col items-center bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white font-black py-3 rounded-2xl text-base shadow-[0_0_20px_rgba(192,38,211,0.4)] cursor-pointer">
                   <span>{t.modeDaily}{todayStats.daily === 0 ? ' 🆕' : ''}</span>
                   <span className="text-xs font-bold text-fuchsia-100/80">{t.dailyHint}</span>
@@ -2688,7 +2697,7 @@ function App() {
         {gameState === 'playing' && (
           <>
             <div ref={flashRef} className="absolute inset-0 bg-white pointer-events-none z-[95]" style={{ opacity: 0 }}></div>
-            <div className="absolute top-6 left-12 z-50 pointer-events-none">
+            <div className="absolute top-6 left-12 max-[380px]:left-5 z-50 pointer-events-none" style={{ marginTop: 'env(safe-area-inset-top)' }}>
               <div className="text-6xl font-black text-white/10 leading-none">{score}</div>
               <div className={`text-xs font-black tracking-widest mt-1 ${tier.color}`}>{tier.badge} {t[tier.key]}</div>
               {comboCount > 1 && <div className="text-sm font-black text-orange-300 mt-1">🔥 {t.combo} x{comboCount}</div>}
@@ -2719,6 +2728,9 @@ function App() {
               </div>
             )}
 
+            {/* Oyun dünyası ekran boyutuna göre ölçeklenir: kısa ekranda hedef gezegen
+                üstten taşmaz, uzun ekranda oyun küçük kalmaz */}
+            <div className="absolute inset-0 pointer-events-none" style={{ transform: `scale(${worldScale})` }}>
             <div ref={cameraRef} className="absolute inset-0 pointer-events-none" style={{ transform: 'translate(0px, 200px)' }}>
               {Array.from({ length: TRAIL_POOL_SIZE }).map((_, idx) => (
                 <div
@@ -2754,6 +2766,7 @@ function App() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </>
         )}
