@@ -248,6 +248,7 @@ const translations = {
 // Rekor, seri kurtarma, seviye, meydan okuma, etkinlik ve ayarlar metinleri
 const extraTranslations = {
   en: {
+    tabBalls: "SKINS", skinAstronaut: "Astronaut", skinRocket: "Rocket", skinUfo: "UFO", skinAlien: "Alien", skinRobot: "Robot", skinCat: "Space Cat", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Fast",
     hintNormal: "Classic — a timer on every planet", hintSupernova: "5 s per planet · 2× points", hintZen: "No timer — relax and aim", hintFast: "Faster planets · extreme",
     newBest: "🏆 NEW BEST!", newRecord: "🏆 NEW RECORD!", toBeatBest: "Only {n} to beat your best!", bestWas: "Best: {n}",
@@ -258,6 +259,7 @@ const extraTranslations = {
     challengeShare: "I scored {n} in Orbit Jump. Beat me on the same map! 🚀", challengeSend: "⚔️ CHALLENGE A FRIEND",
   },
   tr: {
+    tabBalls: "KARAKTER", skinAstronaut: "Astronot", skinRocket: "Roket", skinUfo: "UFO", skinAlien: "Uzaylı", skinRobot: "Robot", skinCat: "Uzay Kedisi", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Süpernova", tabZen: "Zen", tabFast: "Hızlı",
     hintNormal: "Klasik — her gezegende süre sayacı", hintSupernova: "Gezegen başına 5 sn · 2× puan", hintZen: "Süre yok — rahatla ve nişan al", hintFast: "Daha hızlı gezegenler · ekstrem",
     newBest: "🏆 YENİ REKOR!", newRecord: "🏆 YENİ REKOR!", toBeatBest: "Rekoruna sadece {n} kaldı!", bestWas: "Rekor: {n}",
@@ -268,6 +270,7 @@ const extraTranslations = {
     challengeShare: "Orbit Jump'ta {n} puan yaptım. Aynı haritada geç bakalım! 🚀", challengeSend: "⚔️ ARKADAŞINA MEYDAN OKU",
   },
   es: {
+    tabBalls: "PERSONAJES", skinAstronaut: "Astronauta", skinRocket: "Cohete", skinUfo: "OVNI", skinAlien: "Alien", skinRobot: "Robot", skinCat: "Gato espacial", skinMeteor: "Meteorito",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Rápido",
     hintNormal: "Clásico — temporizador en cada planeta", hintSupernova: "5 s por planeta · puntos x2", hintZen: "Sin tiempo — relájate y apunta", hintFast: "Planetas más rápidos · extremo",
     newBest: "🏆 ¡NUEVO RÉCORD!", newRecord: "🏆 ¡NUEVO RÉCORD!", toBeatBest: "¡Solo {n} para batir tu récord!", bestWas: "Récord: {n}",
@@ -278,6 +281,7 @@ const extraTranslations = {
     challengeShare: "Hice {n} puntos en Orbit Jump. ¡Supérame en el mismo mapa! 🚀", challengeSend: "⚔️ DESAFIAR A UN AMIGO",
   },
   de: {
+    tabBalls: "FIGUREN", skinAstronaut: "Astronaut", skinRocket: "Rakete", skinUfo: "UFO", skinAlien: "Alien", skinRobot: "Roboter", skinCat: "Weltraumkatze", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Schnell",
     hintNormal: "Klassisch — Timer auf jedem Planeten", hintSupernova: "5 s pro Planet · 2× Punkte", hintZen: "Kein Timer — entspannt zielen", hintFast: "Schnellere Planeten · extrem",
     newBest: "🏆 NEUER REKORD!", newRecord: "🏆 NEUER REKORD!", toBeatBest: "Nur noch {n} bis zum Rekord!", bestWas: "Rekord: {n}",
@@ -288,6 +292,7 @@ const extraTranslations = {
     challengeShare: "Ich habe {n} Punkte in Orbit Jump. Schlag mich auf derselben Karte! 🚀", challengeSend: "⚔️ FREUND HERAUSFORDERN",
   },
   ru: {
+    tabBalls: "ГЕРОИ", skinAstronaut: "Астронавт", skinRocket: "Ракета", skinUfo: "НЛО", skinAlien: "Пришелец", skinRobot: "Робот", skinCat: "Космокот", skinMeteor: "Метеор",
     tabNormal: "Обычный", tabSupernova: "Сверхновая", tabZen: "Дзен", tabFast: "Быстрый",
     hintNormal: "Классика — таймер на каждой планете", hintSupernova: "5 с на планету · очки x2", hintZen: "Без таймера — спокойно цельтесь", hintFast: "Быстрые планеты · экстрим",
     newBest: "🏆 НОВЫЙ РЕКОРД!", newRecord: "🏆 НОВЫЙ РЕКОРД!", toBeatBest: "До рекорда всего {n}!", bestWas: "Рекорд: {n}",
@@ -324,31 +329,54 @@ const backgroundAccents = {
    ============================================================ */
 const planetThemes = [
   { // Volkanik dünya — kraterli, lav çatlaklı
-    light: '#ffd9a8', mid: '#ea580c', dark: '#2f0d03',
-    glow: '234,88,12', ringRgb: '249,115,22',
-    bands: 0, craters: 0.85, land: 0, ice: 0, storm: 0, lava: 0.9, ringOn: 0
+    light: '#ffd9a8', mid: '#ea580c', dark: '#2f0d03', glow: '234,88,12', ringRgb: '249,115,22',
+    bands: 0, craters: 0.85, land: 0, ice: 0, storm: 0, lava: 0.9, ringOn: 0, size: 1, radius: '50%'
   },
   { // Gaz devi — kuşaklı, büyük fırtına lekeli, halkalı
-    light: '#ffd7ec', mid: '#db2777', dark: '#3d0420',
-    glow: '219,39,119', ringRgb: '236,72,153',
-    bands: 0.85, craters: 0, land: 0, ice: 0, storm: 0.9, lava: 0, ringOn: 1
+    light: '#ffd7ec', mid: '#db2777', dark: '#3d0420', glow: '219,39,119', ringRgb: '236,72,153',
+    bands: 0.85, craters: 0, land: 0, ice: 0, storm: 0.9, lava: 0, ringOn: 1, size: 1.15, radius: '50%'
   },
   { // Yaşanabilir dünya — kıtalar ve bulut örtüsü
-    light: '#b8f5d6', mid: '#059669', dark: '#012019',
-    glow: '5,150,105', ringRgb: '16,185,129',
-    bands: 0, craters: 0, land: 0.95, ice: 0, storm: 0, lava: 0, ringOn: 0
+    light: '#b8f5d6', mid: '#059669', dark: '#012019', glow: '5,150,105', ringRgb: '16,185,129',
+    bands: 0, craters: 0, land: 0.95, ice: 0, storm: 0, lava: 0, ringOn: 0, size: 1, radius: '50%'
   },
   { // Buz devi — yumuşak kuşaklar, halkalı
-    light: '#d7ddff', mid: '#4f46e5', dark: '#12102e',
-    glow: '79,70,229', ringRgb: '99,102,241',
-    bands: 0.55, craters: 0, land: 0, ice: 0.45, storm: 0, lava: 0, ringOn: 1
+    light: '#d7ddff', mid: '#4f46e5', dark: '#12102e', glow: '79,70,229', ringRgb: '99,102,241',
+    bands: 0.55, craters: 0, land: 0, ice: 0.45, storm: 0, lava: 0, ringOn: 1, size: 1.1, radius: '50%'
   },
   { // Donmuş okyanus — çatlaklı buz kabuğu
-    light: '#c2f4ff', mid: '#0891b2', dark: '#04212c',
-    glow: '8,145,178', ringRgb: '6,182,212',
-    bands: 0, craters: 0.2, land: 0, ice: 0.95, storm: 0, lava: 0, ringOn: 0
+    light: '#c2f4ff', mid: '#0891b2', dark: '#04212c', glow: '8,145,178', ringRgb: '6,182,212',
+    bands: 0, craters: 0.2, land: 0, ice: 0.95, storm: 0, lava: 0, ringOn: 0, size: 0.95, radius: '50%'
+  },
+  { // Ay — küçük, gri, bol kraterli
+    light: '#f1f5f9', mid: '#94a3b8', dark: '#1e293b', glow: '148,163,184', ringRgb: '203,213,225',
+    bands: 0, craters: 1, land: 0, ice: 0, storm: 0, lava: 0, ringOn: 0, size: 0.82, radius: '50%'
+  },
+  { // Çöl gezegeni — kum kuşakları
+    light: '#fef3c7', mid: '#d97706', dark: '#451a03', glow: '217,119,6', ringRgb: '251,191,36',
+    bands: 0.45, craters: 0.35, land: 0, ice: 0, storm: 0, lava: 0, ringOn: 0, size: 1.05, radius: '50%'
+  },
+  { // Zehirli dev — yeşil fırtınalı, halkalı
+    light: '#d9f99d', mid: '#65a30d', dark: '#1a2e05', glow: '132,204,22', ringRgb: '163,230,53',
+    bands: 0.6, craters: 0, land: 0, ice: 0, storm: 0.75, lava: 0, ringOn: 1, size: 1.12, radius: '50%'
+  },
+  { // Kristal cüce — mor, hafif yamuk
+    light: '#f5d0fe', mid: '#a21caf', dark: '#2e1065', glow: '192,38,211', ringRgb: '232,121,249',
+    bands: 0, craters: 0.2, land: 0, ice: 0.8, storm: 0, lava: 0, ringOn: 0, size: 0.9, radius: '47% 53% 50% 50% / 52% 48% 52% 48%'
+  },
+  { // Asteroit — düzensiz, taşlı
+    light: '#e7e5e4', mid: '#78716c', dark: '#1c1917', glow: '168,162,158', ringRgb: '214,211,209',
+    bands: 0, craters: 1, land: 0, ice: 0, storm: 0, lava: 0, ringOn: 0, size: 0.78, radius: '42% 58% 55% 45% / 58% 40% 60% 42%'
   }
 ];
+// Gezegen türü turun görünüş tohumundan seçilir: günlük meydan okuma ve arkadaş
+// meydan okumasında herkes aynı gezegen dizisini görür. Harita tohumundan ayrı
+// tutulur ki gezegen konumları değişmesin. Art arda aynı tür gelmez.
+const pickPlanetTheme = (except, rand) => {
+  let n = Math.floor(rand() * (planetThemes.length - 1));
+  if (n >= except) n++;
+  return n;
+};
 
 const applyPlanetTheme = (groupEl, theme) => {
   if (!groupEl || !theme) return;
@@ -365,18 +393,22 @@ const applyPlanetTheme = (groupEl, theme) => {
   s.setProperty('--p-storm', String(theme.storm));
   s.setProperty('--p-lava', String(theme.lava));
   s.setProperty('--p-ring-on', String(theme.ringOn));
+  s.setProperty('--p-size', String(theme.size));
+  s.setProperty('--p-radius', theme.radius);
 };
 
 /* ============================================================
-   TOPLAR — her biri farklı malzeme ve siluet.
-   gold: metal küre | ruby: kesme taş (sekizgen)
-   emerald: altıgen kristal | nova: dönen plazma çekirdeği
+   KARAKTERLER — mağazada satılır ve 5 seviyeye kadar geliştirilir.
+   (Kimlikler eski sürümlerle uyum için "ball" tipinde kalır.)
    ============================================================ */
 const shopItems = [
-  { id: 'gold', type: 'ball', price: 0, trailTint: '#fde047', nameKey: 'itemGold' },
-  { id: 'ruby', type: 'ball', price: 40, trailTint: '#fb7185', nameKey: 'itemRuby' },
-  { id: 'emerald', type: 'ball', price: 60, trailTint: '#4ade80', nameKey: 'itemEmerald' },
-  { id: 'nova', type: 'ball', price: 100, trailTint: '#a78bfa', nameKey: 'itemNova' },
+  { id: 'astronaut', type: 'ball', price: 0, trailTint: '#67e8f9', nameKey: 'skinAstronaut' },
+  { id: 'rocket', type: 'ball', price: 40, trailTint: '#f97316', nameKey: 'skinRocket' },
+  { id: 'ufo', type: 'ball', price: 60, trailTint: '#a78bfa', nameKey: 'skinUfo' },
+  { id: 'alien', type: 'ball', price: 80, trailTint: '#4ade80', nameKey: 'skinAlien' },
+  { id: 'robot', type: 'ball', price: 100, trailTint: '#22d3ee', nameKey: 'skinRobot' },
+  { id: 'cat', type: 'ball', price: 120, trailTint: '#fb923c', nameKey: 'skinCat' },
+  { id: 'meteor', type: 'ball', price: 150, trailTint: '#fbbf24', nameKey: 'skinMeteor' },
   { id: 'trail_gold', type: 'trail', price: 50, color: '#fde047', shape: 'dust', nameKey: 'trailGold' },
   { id: 'trail_fire', type: 'trail', price: 75, color: '#ef4444', shape: 'flame', nameKey: 'trailFire' },
   { id: 'trail_cyan', type: 'trail', price: 75, color: '#06b6d4', shape: 'plasma', nameKey: 'trailCyan' },
@@ -409,30 +441,131 @@ const parseChallenge = (params) => {
 const challengeUrl = (seed, score, mode) => `https://orbit-jump-73b68.web.app/c?s=${seed}&n=${score}&m=${mode}`;
 const randomSeed = () => `r${Math.random().toString(36).slice(2, 10)}`;
 
-/* Top görseli — hem oyunda hem mağaza önizlemesinde aynı bileşen */
+// 1.0.14: toplar karakterlere dönüştü; eski kimlikler (ve seviyeleri) yenilerine taşınır
+const SKIN_MIGRATION = { gold: 'astronaut', ruby: 'rocket', emerald: 'alien', nova: 'ufo' };
+const migrateSkins = (p) => {
+  if (!p) return p;
+  const map = (id) => SKIN_MIGRATION[id] || id;
+  const levels = {};
+  for (const [k, v] of Object.entries(p.ballLevels || {})) levels[map(k)] = Math.max(levels[map(k)] || 1, v);
+  return { ...p, ownedItems: [...new Set((p.ownedItems || []).map(map))], selectedSkin: map(p.selectedSkin), ballLevels: levels };
+};
+try {
+  const read = (k) => JSON.parse(localStorage.getItem(k) || 'null');
+  const owned = read('orbit_owned_items'), skin = read('orbit_selected_skin'), levels = read('orbit_ball_levels');
+  const m = migrateSkins({ ownedItems: owned || [], selectedSkin: skin, ballLevels: levels || {} });
+  if (owned) localStorage.setItem('orbit_owned_items', JSON.stringify(m.ownedItems));
+  if (skin) localStorage.setItem('orbit_selected_skin', JSON.stringify(m.selectedSkin));
+  if (levels) localStorage.setItem('orbit_ball_levels', JSON.stringify(m.ballLevels));
+} catch { /* depolama yoksa varsayılanlar kullanılır */ }
+
+/* Karakter çizimleri: küçük, düz renkli SVG'ler (gradyan, filtre, animasyon yok)
+   — zayıf telefonda da her karede ucuz. Yönü olanlar sağa bakar; oyunda uçuş
+   yönüne döndürülür. */
+const SKIN_ART = {
+  astronaut: (
+    <>
+      <rect x="0.8" y="11" width="3.2" height="10" rx="1.6" fill="#cbd5e1" />
+      <rect x="28" y="11" width="3.2" height="10" rx="1.6" fill="#cbd5e1" />
+      <circle cx="16" cy="16" r="14.2" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="1.5" />
+      <ellipse cx="16" cy="15" rx="9.5" ry="7.5" fill="#0e7490" stroke="#1e293b" strokeWidth="1.2" />
+      <path d="M10 12.5 Q13 9.5 17 10" stroke="#a5f3fc" strokeWidth="1.8" fill="none" strokeLinecap="round" />
+      <circle cx="21" cy="17.5" r="1.2" fill="#67e8f9" />
+      <rect x="12" y="25" width="8" height="2.5" rx="1.2" fill="#f97316" />
+    </>
+  ),
+  rocket: (
+    <>
+      <path d="M1 16 L8 12 L8 20 Z" fill="#f97316" />
+      <path d="M4 16 L8 13.5 L8 18.5 Z" fill="#fde047" />
+      <path d="M9 6.5 L14.5 11 L9 11 Z" fill="#dc2626" />
+      <path d="M9 25.5 L14.5 21 L9 21 Z" fill="#dc2626" />
+      <path d="M7 16 C7 11.5 12 9.5 19 9.5 C25 9.5 29 12.5 31 16 C29 19.5 25 22.5 19 22.5 C12 22.5 7 20.5 7 16 Z" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="1" />
+      <path d="M24 10.4 C27.5 11.5 30 13.5 31 16 C30 18.5 27.5 20.5 24 21.6 Z" fill="#ef4444" />
+      <circle cx="17.5" cy="16" r="3.3" fill="#38bdf8" stroke="#1e40af" strokeWidth="1.2" />
+      <circle cx="16.6" cy="15" r="1" fill="#e0f2fe" />
+    </>
+  ),
+  ufo: (
+    <>
+      <ellipse cx="16" cy="13.5" rx="7" ry="6.5" fill="#a5f3fc" stroke="#0891b2" strokeWidth="1" />
+      <path d="M12.5 11 Q14.5 9 17 9.5" stroke="#fff" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+      <ellipse cx="16" cy="18.5" rx="15" ry="5.5" fill="#7c3aed" />
+      <ellipse cx="16" cy="17.2" rx="14" ry="3.6" fill="#a78bfa" />
+      <circle cx="8" cy="19.6" r="1.3" fill="#fde047" />
+      <circle cx="16" cy="20.6" r="1.3" fill="#fde047" />
+      <circle cx="24" cy="19.6" r="1.3" fill="#fde047" />
+    </>
+  ),
+  alien: (
+    <>
+      <path d="M16 2.5 C25 2.5 29.5 9 29.5 14.5 C29.5 22.5 22.5 29.5 16 29.5 C9.5 29.5 2.5 22.5 2.5 14.5 C2.5 9 7 2.5 16 2.5 Z" fill="#4ade80" stroke="#15803d" strokeWidth="1.2" />
+      <ellipse cx="10.5" cy="15.5" rx="4.6" ry="2.8" transform="rotate(28 10.5 15.5)" fill="#052e16" />
+      <ellipse cx="21.5" cy="15.5" rx="4.6" ry="2.8" transform="rotate(-28 21.5 15.5)" fill="#052e16" />
+      <circle cx="9.3" cy="14.4" r="1" fill="#fff" />
+      <circle cx="20.3" cy="14.4" r="1" fill="#fff" />
+      <path d="M13.5 23 Q16 24.5 18.5 23" stroke="#14532d" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+    </>
+  ),
+  robot: (
+    <>
+      <line x1="16" y1="7" x2="16" y2="3" stroke="#64748b" strokeWidth="1.6" />
+      <circle cx="16" cy="2.6" r="2" fill="#f87171" />
+      <rect x="1" y="13" width="2.5" height="7" rx="1" fill="#94a3b8" />
+      <rect x="28.5" y="13" width="2.5" height="7" rx="1" fill="#94a3b8" />
+      <rect x="3.5" y="7" width="25" height="20" rx="5" fill="#cbd5e1" stroke="#64748b" strokeWidth="1.2" />
+      <rect x="7" y="11" width="18" height="11" rx="3" fill="#0f172a" />
+      <circle cx="12" cy="16.5" r="2.3" fill="#22d3ee" />
+      <circle cx="20" cy="16.5" r="2.3" fill="#22d3ee" />
+    </>
+  ),
+  cat: (
+    <>
+      <path d="M8.5 11 L9.5 4.5 L14 9 Z" fill="#fb923c" />
+      <path d="M23.5 11 L22.5 4.5 L18 9 Z" fill="#fb923c" />
+      <circle cx="16" cy="17" r="10" fill="#fb923c" />
+      <ellipse cx="12.3" cy="16" rx="1.6" ry="2.2" fill="#1c1917" />
+      <ellipse cx="19.7" cy="16" rx="1.6" ry="2.2" fill="#1c1917" />
+      <path d="M15 19.5 L17 19.5 L16 20.8 Z" fill="#f472b6" />
+      <path d="M16 20.8 Q14.5 22.5 13 21.5 M16 20.8 Q17.5 22.5 19 21.5" stroke="#7c2d12" strokeWidth="0.9" fill="none" strokeLinecap="round" />
+      <circle cx="16" cy="16" r="14.8" fill="#bae6fd" fillOpacity="0.18" stroke="#e2e8f0" strokeWidth="1.6" />
+      <path d="M7 10 Q10 6 14 5.5" stroke="#fff" strokeWidth="1.4" fill="none" strokeLinecap="round" opacity="0.8" />
+    </>
+  ),
+  meteor: (
+    <>
+      <path d="M11 8 Q0 16 11 25 Q5 16 11 8 Z" fill="#f97316" />
+      <path d="M12 11 Q5 16 12 22 Q9 16 12 11 Z" fill="#fde047" />
+      <path d="M13 6 L22 4.5 L29 10 L30 19 L24 27.5 L14 27 L8.5 20 L9 11.5 Z" fill="#a8a29e" stroke="#57534e" strokeWidth="1.2" />
+      <circle cx="20" cy="11" r="2.4" fill="#78716c" />
+      <circle cx="24.5" cy="19" r="3" fill="#78716c" />
+      <circle cx="15.5" cy="20" r="1.8" fill="#78716c" />
+    </>
+  ),
+};
+
+/* Karakter görseli — hem oyunda hem mağazada aynı bileşen. Seviye arttıkça
+   karakter rengindeki hale büyür; 3+ seviyede parıltı, 5. seviyede yıldız. */
 function BallVisual({ skinId, level = 1, size = 32, shieldActive = false, boosted = false }) {
-  const ringCount = Math.max(0, level - 1);
+  const glow = (shopItems.find((s) => s.id === skinId) || {}).trailTint || '#ffffff';
+  const aura = Math.max(0, level - 1);
   return (
     <div className="ball-wrap" style={{ width: size, height: size }}>
       {shieldActive && <div className="ball-shield" />}
-      {skinId === 'nova' && <div className="ball-corona" />}
       {level > 1 && (
         <div
           className="ball-level-aura"
-          style={{ inset: `${-18 - ringCount * 10}%`, opacity: 0.35 + ringCount * 0.12, animationDuration: `${2.2 - ringCount * 0.25}s` }}
+          style={{ inset: `${-18 - aura * 10}%`, opacity: 0.3 + aura * 0.1, animationDuration: `${2.2 - aura * 0.25}s`, background: `radial-gradient(circle, ${glow}99 0%, transparent 68%)` }}
         />
       )}
-      <div className={`ball-body ball-${skinId} ${boosted ? 'ball-boosted' : ''}`}>
-        <div className="ball-facets" />
-        <div className="ball-sheen" />
-        <div className="ball-shade" />
-        <div className="ball-spec" />
-        <div className="ball-rim" />
-        {Array.from({ length: ringCount }).map((_, idx) => (
-          <div key={idx} className="ball-ring" style={{ margin: `${2 + idx * 3}px`, opacity: 0.5 + idx * 0.14 }} />
-        ))}
-        {level >= 5 && <div className="ball-core" />}
-      </div>
+      <svg
+        viewBox="0 0 32 32" width={size} height={size} aria-hidden="true"
+        className={`skin ${level >= 3 ? 'skin-glow' : ''} ${boosted ? 'ball-boosted' : ''}`}
+        style={level >= 3 ? { '--skin-glow': glow } : undefined}
+      >
+        {SKIN_ART[skinId] || SKIN_ART.astronaut}
+      </svg>
+      {level >= 5 && <div className="skin-star" style={{ fontSize: Math.round(size * 0.42) }}>★</div>}
     </div>
   );
 }
@@ -757,12 +890,12 @@ function App() {
 
   const [crystals, setCrystals] = useState(() => loadJSON('orbit_crystals', 60));
   const [runCrystals, setRunCrystals] = useState(0);
-  const [ownedItems, setOwnedItems] = useState(() => loadJSON('orbit_owned_items', ['gold', 'trail_gold', 'bg_nebula']));
+  const [ownedItems, setOwnedItems] = useState(() => loadJSON('orbit_owned_items', ['astronaut', 'trail_gold', 'bg_nebula']));
   const [ballLevels, setBallLevels] = useState(() => loadJSON('orbit_ball_levels', { gold: 1, ruby: 1, emerald: 1, nova: 1 }));
   const [boostCounts, setBoostCounts] = useState(() => loadJSON('orbit_boost_counts_v2', { shield: 0, slowmo: 0 }));
   const [boostLevels, setBoostLevels] = useState(() => loadJSON('orbit_boost_levels_v2', { shield: 1, slowmo: 1 }));
 
-  const [selectedSkin, setSelectedSkin] = useState(() => loadJSON('orbit_selected_skin', 'gold'));
+  const [selectedSkin, setSelectedSkin] = useState(() => loadJSON('orbit_selected_skin', 'astronaut'));
   const [selectedTrail, setSelectedTrail] = useState(() => loadJSON('orbit_selected_trail', 'trail_gold'));
   const [selectedTheme, setSelectedTheme] = useState(() => loadJSON('orbit_selected_theme', 'bg_nebula'));
   const [shopTab, setShopTab] = useState('balls');
@@ -789,6 +922,7 @@ function App() {
   // diğer modlarda Math.random.
   const rngRef = useRef(Math.random);
   const runSeedRef = useRef('');
+  const lookRngRef = useRef(Math.random);
   // Tur başındaki rekor: oyun sırasında highScore güncellendiği için "rekora
   // N kaldı" ve "yeni rekor" bu değere göre hesaplanır.
   const runStartBestRef = useRef(0);
@@ -832,7 +966,8 @@ function App() {
   useEffect(() => { progressRef.current = progress; });
   const progressKey = JSON.stringify(progress);
 
-  const applyProgress = (p) => {
+  const applyProgress = (raw) => {
+    const p = migrateSkins(raw);
     setCrystals(p.crystals); saveJSON('orbit_crystals', p.crystals);
     setHighScore(p.highScore); localStorage.setItem('orbit_highscore', String(p.highScore));
     setOwnedItems(p.ownedItems); saveJSON('orbit_owned_items', p.ownedItems);
@@ -1469,7 +1604,7 @@ function App() {
               });
 
               currentThemeIdxRef.current = nextThemeIdxRef.current;
-              nextThemeIdxRef.current = (nextThemeIdxRef.current + 1) % planetThemes.length;
+              nextThemeIdxRef.current = pickPlanetTheme(currentThemeIdxRef.current, lookRngRef.current);
               applyPlanetTheme(activeGroupRef.current, planetThemes[currentThemeIdxRef.current]);
               applyPlanetTheme(targetGroupRef.current, planetThemes[nextThemeIdxRef.current]);
 
@@ -1607,13 +1742,14 @@ function App() {
     playSound('click', soundOn); setIsPaused(false);
     runSeedRef.current = mode === 'daily' ? `daily-${utcDayId()}` : (seed || randomSeed());
     rngRef.current = seededRandom(runSeedRef.current);
+    lookRngRef.current = seededRandom(`${runSeedRef.current}-look`);
     if (!seed) setActiveChallenge(null);
     runStartBestRef.current = highScore; recordShownRef.current = false; setRecordFlash(false); setLastRun(null);
     track('game_start', { mode, challenge: seed ? 1 : 0 });
-    currentThemeIdxRef.current = 0;
-    nextThemeIdxRef.current = 1;
-    applyPlanetTheme(activeGroupRef.current, planetThemes[0]);
-    applyPlanetTheme(targetGroupRef.current, planetThemes[1]);
+    currentThemeIdxRef.current = Math.floor(lookRngRef.current() * planetThemes.length);
+    nextThemeIdxRef.current = pickPlanetTheme(currentThemeIdxRef.current, lookRngRef.current);
+    applyPlanetTheme(activeGroupRef.current, planetThemes[currentThemeIdxRef.current]);
+    applyPlanetTheme(targetGroupRef.current, planetThemes[nextThemeIdxRef.current]);
 
     physicsRef.current = { active: { x: 0, y: 0 }, target: { x: 80, y: -440, vx: 2.0 }, ball: { x: 120, y: 0, vx: 0, vy: 0 }, angle: 0, isFlying: false, speed: 0.02, combo: 0, dead: false, camera: { x: 0, y: 200 } };
     trailPointsRef.current = new Array(TRAIL_POOL_SIZE).fill(null);
@@ -1821,8 +1957,9 @@ function App() {
       >
         <style>{`
           /* ---------------- HAFİF MOD ---------------- */
-          .lite .planet-layer, .lite .planet-atmo, .lite .p-shine, .lite .ball-sheen,
-          .lite .ball-core, .lite .ball-corona { animation: none !important; }
+          .lite .planet-layer, .lite .planet-atmo, .lite .p-shine,
+          .lite .ball-level-aura, .lite .skin-star { animation: none !important; }
+          .lite .skin-glow { filter: none !important; }
           .lite .planet-layer { mix-blend-mode: normal !important; }
           .lite .p-noise, .lite .p-shine { display: none; }
           .lite .planet { box-shadow: 0 0 40px rgba(var(--p-glow), .55) !important; }
@@ -1847,11 +1984,12 @@ function App() {
 
           /* ---------------- GEZEGEN ---------------- */
           .planet-group { --p-light:#ffd9a8; --p-mid:#ea580c; --p-dark:#2f0d03; --p-glow:234,88,12; --p-ring-rgb:249,115,22;
-                          --p-bands:0; --p-craters:0; --p-land:0; --p-ice:0; --p-storm:0; --p-lava:0; --p-ring-on:0; }
-          .planet { position: relative; width: 132px; height: 132px; border-radius: 50%; overflow: hidden;
+                          --p-bands:0; --p-craters:0; --p-land:0; --p-ice:0; --p-storm:0; --p-lava:0; --p-ring-on:0;
+                          --p-size:1; --p-radius:50%; }
+          .planet { position: relative; width: calc(132px * var(--p-size)); height: calc(132px * var(--p-size)); border-radius: var(--p-radius); overflow: hidden;
                     box-shadow: 0 0 70px rgba(var(--p-glow), .65), 0 0 150px rgba(var(--p-glow), .3), 0 0 18px rgba(255,255,255,.15);
                     transform: scale(1); z-index: 25; }
-          .planet-layer { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; }
+          .planet-layer { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
 
           .p-base { background: radial-gradient(circle at 33% 27%, var(--p-light) 0%, var(--p-mid) 46%, var(--p-dark) 100%); }
 
@@ -1902,7 +2040,7 @@ function App() {
           @keyframes lavaPulse { 0%,100% { filter: brightness(.85); } 50% { filter: brightness(1.45); } }
 
           .p-storm { opacity: var(--p-storm); animation: stormSpin 18s linear infinite;
-                     background-image: radial-gradient(ellipse 15% 10% at 68% 62%, rgba(255,240,245,.9) 0%, rgba(190,24,93,.85) 45%, transparent 72%); }
+                     background-image: radial-gradient(ellipse 15% 10% at 68% 62%, rgba(255,255,255,.9) 0%, rgba(var(--p-glow),.85) 45%, transparent 72%); }
           @keyframes stormSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
           .p-terminator { background:
@@ -1922,12 +2060,12 @@ function App() {
 
           .p-rim { box-shadow: inset 0 0 26px 7px rgba(var(--p-glow), .5), inset -16px -16px 38px rgba(0,0,0,.85), inset 0 0 3px 1px rgba(255,255,255,.25); }
 
-          .planet-atmo { position: absolute; width: 210px; height: 210px; border-radius: 50%; pointer-events: none; z-index: 5;
+          .planet-atmo { position: absolute; width: calc(210px * var(--p-size)); height: calc(210px * var(--p-size)); border-radius: 50%; pointer-events: none; z-index: 5;
                          background: radial-gradient(circle, rgba(var(--p-glow), .32) 0%, rgba(var(--p-glow), .11) 42%, transparent 68%);
                          animation: atmoBreathe 5s ease-in-out infinite; }
           @keyframes atmoBreathe { 0%,100% { transform: scale(1); opacity: .85; } 50% { transform: scale(1.07); opacity: 1; } }
 
-          .planet-ring { position: absolute; width: 208px; height: 62px; border-radius: 50%; pointer-events: none;
+          .planet-ring { position: absolute; width: calc(208px * var(--p-size)); height: calc(62px * var(--p-size)); border-radius: 50%; pointer-events: none;
                          opacity: calc(var(--p-ring-on) * .95); transform: rotate(-16deg);
                          border: 2px solid rgba(var(--p-ring-rgb), .55);
                          box-shadow: 0 0 18px rgba(var(--p-ring-rgb), .5), inset 0 0 14px rgba(var(--p-ring-rgb), .38);
@@ -1940,50 +2078,13 @@ function App() {
           .ball-body { position: absolute; inset: 0; overflow: hidden; }
           .ball-body > * { position: absolute; inset: 0; pointer-events: none; }
           .ball-boosted { filter: brightness(1.5); }
-
-          .ball-gold { border-radius: 50%;
-                       background: radial-gradient(circle at 34% 28%, #fffdf0 0%, #fde047 34%, #d9a406 66%, #6b4302 100%);
-                       box-shadow: 0 0 28px rgba(253,224,71,.95), 0 0 50px rgba(253,224,71,.4), inset -4px -5px 10px rgba(0,0,0,.6); }
-          .ball-ruby { clip-path: polygon(50% 0%, 92% 24%, 92% 76%, 50% 100%, 8% 76%, 8% 24%);
-                       background: linear-gradient(142deg, #ffe4e6 0%, #fb7185 32%, #be123c 66%, #4c0519 100%);
-                       filter: drop-shadow(0 0 16px rgba(251,113,133,1)) drop-shadow(0 0 30px rgba(251,113,133,.45)); }
-          .ball-emerald { clip-path: polygon(26% 2%, 74% 2%, 98% 50%, 74% 98%, 26% 98%, 2% 50%);
-                          background: linear-gradient(138deg, #ecfdf5 0%, #6ee7b7 28%, #059669 62%, #052e1c 100%);
-                          filter: drop-shadow(0 0 16px rgba(74,222,128,1)) drop-shadow(0 0 30px rgba(74,222,128,.45)); }
-          .ball-nova { border-radius: 50%;
-                       background: radial-gradient(circle at 42% 36%, #ffffff 0%, #ddd6fe 20%, #8b5cf6 56%, #3b0764 100%);
-                       box-shadow: 0 0 32px rgba(167,139,250,1), 0 0 55px rgba(167,139,250,.5), inset -3px -4px 10px rgba(0,0,0,.55); }
-
-          .ball-rim { border-radius: inherit; mix-blend-mode: screen; opacity: .85;
-                      background: conic-gradient(from -40deg, transparent 0deg, rgba(255,255,255,.6) 30deg, transparent 70deg, transparent 360deg); }
-
-          .ball-facets { opacity: 0; }
-          .ball-ruby .ball-facets, .ball-emerald .ball-facets { opacity: 1; mix-blend-mode: overlay;
-            background-image: linear-gradient(90deg, transparent 49%, rgba(255,255,255,.55) 50%, transparent 51%),
-                              linear-gradient(35deg, transparent 47%, rgba(0,0,0,.4) 48%, transparent 49%),
-                              linear-gradient(-35deg, transparent 47%, rgba(255,255,255,.35) 48%, transparent 49%); }
-
-          .ball-sheen { opacity: 0; }
-          .ball-gold .ball-sheen, .ball-nova .ball-sheen { opacity: 1; border-radius: 50%; mix-blend-mode: screen;
-            background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.55) 40deg, transparent 110deg, transparent 360deg);
-            animation: sheenSpin 2.6s linear infinite; }
-          .ball-nova .ball-sheen { animation-duration: 1.3s; }
-          @keyframes sheenSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-          .ball-shade { background: radial-gradient(circle at 74% 76%, rgba(0,0,0,.68) 0%, rgba(0,0,0,.3) 40%, transparent 62%); }
-          .ball-spec { background: radial-gradient(circle at 31% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.25) 11%, transparent 26%); }
-
-          .ball-ring { border-radius: 50%; margin: 2px; border: 1px solid rgba(255,255,255,.7); }
-          .ball-level-aura { position: absolute; border-radius: 50%; pointer-events: none;
-                              background: radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 68%);
-                              animation-name: coronaPulse; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
-          .ball-core { margin: auto; width: 32%; height: 32%; border-radius: 50%; background: #fff;
-                       box-shadow: 0 0 10px #fff, 0 0 20px rgba(255,255,255,.7); animation: corePulse 1.1s ease-in-out infinite; }
+          .skin { position: relative; overflow: visible; display: block; }
+          .skin-glow { filter: drop-shadow(0 0 5px var(--skin-glow)); }
+          .skin-star { position: absolute; top: -22%; right: -22%; line-height: 1; color: #fde047; pointer-events: none;
+                       text-shadow: 0 0 4px #f59e0b; animation: corePulse 1.1s ease-in-out infinite; }
           @keyframes corePulse { 0%,100% { transform: scale(.85); opacity: .85; } 50% { transform: scale(1.12); opacity: 1; } }
-
-          .ball-corona { position: absolute; inset: -30%; border-radius: 50%; pointer-events: none;
-                         background: radial-gradient(circle, rgba(167,139,250,.45) 0%, transparent 62%);
-                         animation: coronaPulse 1.6s ease-in-out infinite; }
+          .ball-level-aura { position: absolute; border-radius: 50%; pointer-events: none;
+                              animation-name: coronaPulse; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
           @keyframes coronaPulse { 0%,100% { transform: scale(.9); opacity: .55; } 50% { transform: scale(1.18); opacity: .95; } }
 
           .ball-shield { position: absolute; inset: -22%; border-radius: 50%; border: 2px solid #22d3ee;
