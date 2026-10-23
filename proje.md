@@ -206,5 +206,4 @@ Model ölçümü (23 Eki): `haiku`→claude-haiku-5-5, `sonnet`→claude-sonnet-
 - Play'deki geliştirici adresini değiştirmek; değişince mağaza sayfası kontrol edilecek.
 - AdMob kimlik doğrulama ve banka bilgisi.
 - itch.io / CrazyGames yüklemesi (başka ağdan).
-- `firebase-yonetici` ajanının "deploy yapma" satırını "hosting deploy yapabilir" yapmak ve izinlere `Bash(npx firebase deploy --only hosting:*)` eklemek (Claude kendi izinlerini değiştiremiyor).
 - Almanya'dan çıkarma sorusu: sebep netleşince karar.
