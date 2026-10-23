@@ -328,47 +328,48 @@ const backgroundAccents = {
    uygulanıyor, böylece her inişte tek hamlede tema değişiyor.
    ============================================================ */
 const planetThemes = [
-  { // Volkanik dünya — kraterli, lav çatlaklı
-    light: '#ffd9a8', mid: '#ea580c', dark: '#2f0d03', glow: '234,88,12', ringRgb: '249,115,22',
-    bands: 0, craters: 0.85, land: 0, ice: 0, storm: 0, lava: 0.9, ringOn: 0, size: 1, radius: '50%'
+  { // Volkanik dünya — koyu kırmızı, lav çatlaklı
+    light: '#ffd0a0', mid: '#dc2626', dark: '#2a0505', glow: '239,68,68', ringRgb: '249,115,22',
+    bands: 0, craters: 0.7, land: 0, ice: 0, storm: 0, lava: 1, ringOn: 0, facets: 0, dunes: 0, spots: 0, size: 1, radius: '50%', tilt: '-16deg'
   },
-  { // Gaz devi — kuşaklı, büyük fırtına lekeli, halkalı
-    light: '#ffd7ec', mid: '#db2777', dark: '#3d0420', glow: '219,39,119', ringRgb: '236,72,153',
-    bands: 0.85, craters: 0, land: 0, ice: 0, storm: 0.9, lava: 0, ringOn: 1, size: 1.15, radius: '50%'
+  { // Gaz devi — pembe kuşaklar, fırtına lekesi, eğik halka
+    light: '#ffd7ec', mid: '#db2777', dark: '#3d0420', glow: '219,39,119', ringRgb: '244,114,182',
+    bands: 0.95, craters: 0, land: 0, ice: 0, storm: 0.9, lava: 0, ringOn: 1, facets: 0, dunes: 0, spots: 0, size: 1.2, radius: '50%', tilt: '-16deg'
   },
-  { // Yaşanabilir dünya — kıtalar ve bulut örtüsü
-    light: '#b8f5d6', mid: '#059669', dark: '#012019', glow: '5,150,105', ringRgb: '16,185,129',
-    bands: 0, craters: 0, land: 0.95, ice: 0, storm: 0, lava: 0, ringOn: 0, size: 1, radius: '50%'
+  { // Yaşanabilir dünya — mavi okyanus, yeşil kıtalar, bulutlar
+    light: '#cfe8ff', mid: '#2563eb', dark: '#071a44', glow: '59,130,246', ringRgb: '96,165,250',
+    bands: 0, craters: 0, land: 1, ice: 0, storm: 0, lava: 0, ringOn: 0, facets: 0, dunes: 0, spots: 0, size: 1, radius: '50%', tilt: '0deg'
   },
-  { // Buz devi — yumuşak kuşaklar, halkalı
-    light: '#d7ddff', mid: '#4f46e5', dark: '#12102e', glow: '79,70,229', ringRgb: '99,102,241',
-    bands: 0.55, craters: 0, land: 0, ice: 0.45, storm: 0, lava: 0, ringOn: 1, size: 1.1, radius: '50%'
+  { // Buz devi — derin mor-lacivert, düz halka
+    light: '#e0d7ff', mid: '#6d28d9', dark: '#140a33', glow: '139,92,246', ringRgb: '196,181,253',
+    bands: 0.5, craters: 0, land: 0, ice: 0.3, storm: 0, lava: 0, ringOn: 1, facets: 0, dunes: 0, spots: 0, size: 1.08, radius: '50%', tilt: '8deg'
   },
-  { // Donmuş okyanus — çatlaklı buz kabuğu
-    light: '#c2f4ff', mid: '#0891b2', dark: '#04212c', glow: '8,145,178', ringRgb: '6,182,212',
-    bands: 0, craters: 0.2, land: 0, ice: 0.95, storm: 0, lava: 0, ringOn: 0, size: 0.95, radius: '50%'
+  { // Donmuş okyanus — beyaz-camgöbeği, buz çatlakları
+    light: '#f0fdff', mid: '#22d3ee', dark: '#06303b', glow: '34,211,238', ringRgb: '103,232,249',
+    bands: 0, craters: 0.15, land: 0, ice: 1, storm: 0, lava: 0, ringOn: 0, facets: 0, dunes: 0, spots: 0, size: 0.95, radius: '50%', tilt: '0deg'
   },
   { // Ay — küçük, gri, bol kraterli
-    light: '#f1f5f9', mid: '#94a3b8', dark: '#1e293b', glow: '148,163,184', ringRgb: '203,213,225',
-    bands: 0, craters: 1, land: 0, ice: 0, storm: 0, lava: 0, ringOn: 0, size: 0.82, radius: '50%'
+    light: '#f8fafc', mid: '#94a3b8', dark: '#1e293b', glow: '226,232,240', ringRgb: '203,213,225',
+    bands: 0, craters: 1, land: 0, ice: 0, storm: 0, lava: 0, ringOn: 0, facets: 0, dunes: 0, spots: 0, size: 0.8, radius: '50%', tilt: '0deg'
   },
-  { // Çöl gezegeni — kum kuşakları
-    light: '#fef3c7', mid: '#d97706', dark: '#451a03', glow: '217,119,6', ringRgb: '251,191,36',
-    bands: 0.45, craters: 0.35, land: 0, ice: 0, storm: 0, lava: 0, ringOn: 0, size: 1.05, radius: '50%'
+  { // Çöl gezegeni — kum sarısı, kum tepeleri
+    light: '#fff7d6', mid: '#eab308', dark: '#422006', glow: '234,179,8', ringRgb: '253,224,71',
+    bands: 0, craters: 0.25, land: 0, ice: 0, storm: 0, lava: 0, ringOn: 0, facets: 0, dunes: 1, spots: 0, size: 1.05, radius: '50%', tilt: '0deg'
   },
-  { // Zehirli dev — yeşil fırtınalı, halkalı
-    light: '#d9f99d', mid: '#65a30d', dark: '#1a2e05', glow: '132,204,22', ringRgb: '163,230,53',
-    bands: 0.6, craters: 0, land: 0, ice: 0, storm: 0.75, lava: 0, ringOn: 1, size: 1.12, radius: '50%'
+  { // Zehirli dev — asit yeşili, parlak lekeler, dik halka
+    light: '#ecfccb', mid: '#65a30d', dark: '#142305', glow: '132,204,22', ringRgb: '217,70,239',
+    bands: 0.35, craters: 0, land: 0, ice: 0, storm: 0.5, lava: 0, ringOn: 1, facets: 0, dunes: 0, spots: 1, size: 1.12, radius: '50%', tilt: '-34deg'
   },
-  { // Kristal cüce — mor, hafif yamuk
-    light: '#f5d0fe', mid: '#a21caf', dark: '#2e1065', glow: '192,38,211', ringRgb: '232,121,249',
-    bands: 0, craters: 0.2, land: 0, ice: 0.8, storm: 0, lava: 0, ringOn: 0, size: 0.9, radius: '47% 53% 50% 50% / 52% 48% 52% 48%'
+  { // Kristal cüce — macenta, kesme taş yüzeyli, hafif yamuk
+    light: '#fdf4ff', mid: '#c026d3', dark: '#3b0764', glow: '217,70,239', ringRgb: '240,171,252',
+    bands: 0, craters: 0, land: 0, ice: 0.3, storm: 0, lava: 0, ringOn: 0, facets: 1, dunes: 0, spots: 0, size: 0.9, radius: '47% 53% 50% 50% / 52% 48% 52% 48%', tilt: '0deg'
   },
-  { // Asteroit — düzensiz, taşlı
-    light: '#e7e5e4', mid: '#78716c', dark: '#1c1917', glow: '168,162,158', ringRgb: '214,211,209',
-    bands: 0, craters: 1, land: 0, ice: 0, storm: 0, lava: 0, ringOn: 0, size: 0.78, radius: '42% 58% 55% 45% / 58% 40% 60% 42%'
+  { // Asteroit — pas kahvesi, düzensiz, taşlı
+    light: '#f5d0b5', mid: '#9a3412', dark: '#1c0a04', glow: '194,65,12', ringRgb: '251,146,60',
+    bands: 0, craters: 1, land: 0, ice: 0, storm: 0, lava: 0, ringOn: 0, facets: 0, dunes: 0, spots: 0, size: 0.76, radius: '42% 58% 55% 45% / 58% 40% 60% 42%', tilt: '0deg'
   }
 ];
+
 // Gezegen türü turun görünüş tohumundan seçilir: günlük meydan okuma ve arkadaş
 // meydan okumasında herkes aynı gezegen dizisini görür. Harita tohumundan ayrı
 // tutulur ki gezegen konumları değişmesin. Art arda aynı tür gelmez.
@@ -395,6 +396,10 @@ const applyPlanetTheme = (groupEl, theme) => {
   s.setProperty('--p-ring-on', String(theme.ringOn));
   s.setProperty('--p-size', String(theme.size));
   s.setProperty('--p-radius', theme.radius);
+  s.setProperty('--p-ring-tilt', theme.tilt);
+  s.setProperty('--p-facets', String(theme.facets));
+  s.setProperty('--p-dunes', String(theme.dunes));
+  s.setProperty('--p-spots', String(theme.spots));
 };
 
 /* ============================================================
@@ -792,7 +797,7 @@ const openStore = () => { try { window.open(webStoreUrl(), '_blank', 'noopener')
 let particleUid = 0;
 
 const PlanetBody = ({ innerRef, isSupernova, glowRef }) => (
-  <>
+  <div className="planet-scale">
     <div className="planet-atmo" />
     <div className="planet-ring planet-ring-back" />
     <div
@@ -812,6 +817,9 @@ const PlanetBody = ({ innerRef, isSupernova, glowRef }) => (
       <div className="planet-layer p-ice" />
       <div className="planet-layer p-lava" />
       <div className="planet-layer p-storm" />
+      <div className="planet-layer p-facets" />
+      <div className="planet-layer p-dunes" />
+      <div className="planet-layer p-spots" />
       <div className="planet-layer p-terminator" />
       <div className="planet-layer p-spec" />
       <div className="planet-layer p-shine" />
@@ -825,7 +833,7 @@ const PlanetBody = ({ innerRef, isSupernova, glowRef }) => (
       </>
     )}
     <div className="planet-ring planet-ring-front" />
-  </>
+  </div>
 );
 
 function App() {
@@ -1962,6 +1970,7 @@ function App() {
           .lite .skin-glow { filter: none !important; }
           .lite .planet-layer { mix-blend-mode: normal !important; }
           .lite .p-noise, .lite .p-shine { display: none; }
+          .lite .planet-scale { will-change: auto; }
           .lite .planet { box-shadow: 0 0 40px rgba(var(--p-glow), .55) !important; }
           .lite .planet-ring { box-shadow: none !important; }
           .lite .bg-star { animation: none !important; opacity: .6; }
@@ -1985,11 +1994,13 @@ function App() {
           /* ---------------- GEZEGEN ---------------- */
           .planet-group { --p-light:#ffd9a8; --p-mid:#ea580c; --p-dark:#2f0d03; --p-glow:234,88,12; --p-ring-rgb:249,115,22;
                           --p-bands:0; --p-craters:0; --p-land:0; --p-ice:0; --p-storm:0; --p-lava:0; --p-ring-on:0;
-                          --p-size:1; --p-radius:50%; }
-          .planet { position: relative; width: calc(132px * var(--p-size)); height: calc(132px * var(--p-size)); border-radius: var(--p-radius); overflow: hidden;
+                          --p-size:1; --p-radius:50%; --p-ring-tilt:-16deg; --p-facets:0; --p-dunes:0; --p-spots:0; }
+          .planet { position: relative; width: 132px; height: 132px; border-radius: var(--p-radius); overflow: hidden;
                     box-shadow: 0 0 70px rgba(var(--p-glow), .65), 0 0 150px rgba(var(--p-glow), .3), 0 0 18px rgba(255,255,255,.15);
                     transform: scale(1); z-index: 25; }
           .planet-layer { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
+          .planet-scale { position: relative; display: flex; align-items: center; justify-content: center;
+                          width: 132px; height: 132px; transform: scale(var(--p-size)); }
 
           .p-base { background: radial-gradient(circle at 33% 27%, var(--p-light) 0%, var(--p-mid) 46%, var(--p-dark) 100%); }
 
@@ -2011,12 +2022,12 @@ function App() {
                          radial-gradient(circle at 34% 84%, rgba(0,0,0,.26) 0 6px, transparent 8px); }
           @keyframes surfaceDrift { from { background-position: 0% 50%; } to { background-position: 200% 50%; } }
 
-          .p-land { opacity: var(--p-land); mix-blend-mode: multiply; background-size: 200% 100%; animation: surfaceDrift 40s linear infinite;
+          .p-land { opacity: var(--p-land); background-size: 200% 100%; animation: surfaceDrift 40s linear infinite;
                     background-image:
-                      radial-gradient(ellipse 26% 18% at 28% 40%, rgba(12,74,44,.95), transparent 70%),
-                      radial-gradient(ellipse 18% 26% at 58% 62%, rgba(9,60,36,.95), transparent 70%),
-                      radial-gradient(ellipse 14% 12% at 76% 30%, rgba(16,84,50,.9), transparent 70%),
-                      radial-gradient(ellipse 20% 10% at 42% 82%, rgba(12,70,42,.85), transparent 70%); }
+                      radial-gradient(ellipse 26% 18% at 28% 40%, rgba(74,160,60,.95), rgba(74,160,60,.6) 55%, transparent 72%),
+                      radial-gradient(ellipse 18% 26% at 58% 62%, rgba(120,150,60,.95), rgba(120,150,60,.55) 55%, transparent 72%),
+                      radial-gradient(ellipse 14% 12% at 76% 30%, rgba(60,140,70,.9), transparent 70%),
+                      radial-gradient(ellipse 20% 10% at 42% 82%, rgba(90,130,50,.85), transparent 70%); }
 
           .p-clouds { opacity: calc(var(--p-land) * 0.55); background-size: 210% 100%; animation: surfaceDrift 22s linear infinite reverse;
                       background-image:
@@ -2043,6 +2054,20 @@ function App() {
                      background-image: radial-gradient(ellipse 15% 10% at 68% 62%, rgba(255,255,255,.9) 0%, rgba(var(--p-glow),.85) 45%, transparent 72%); }
           @keyframes stormSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
+          .p-facets { opacity: var(--p-facets); mix-blend-mode: overlay;
+                      background-image: linear-gradient(90deg, transparent 49%, rgba(255,255,255,.6) 50%, transparent 51%),
+                                        linear-gradient(32deg, transparent 47%, rgba(0,0,0,.45) 48%, transparent 49.5%),
+                                        linear-gradient(-32deg, transparent 47%, rgba(255,255,255,.45) 48%, transparent 49.5%),
+                                        linear-gradient(64deg, transparent 70%, rgba(0,0,0,.35) 71%, transparent 72.5%),
+                                        linear-gradient(-64deg, transparent 26%, rgba(255,255,255,.35) 27%, transparent 28.5%); }
+          .p-dunes { opacity: var(--p-dunes); mix-blend-mode: multiply; background-size: 200% 100%; animation: surfaceDrift 50s linear infinite;
+                     background-image: repeating-radial-gradient(ellipse 120% 40% at 30% 120%, rgba(120,53,15,.0) 0 7px, rgba(120,53,15,.45) 8px 10px, rgba(120,53,15,0) 11px 16px); }
+          .p-spots { opacity: var(--p-spots); background-size: 200% 100%; animation: surfaceDrift 30s linear infinite;
+                     background-image:
+                       radial-gradient(circle at 25% 30%, rgba(250,250,140,.85) 0 6px, transparent 9px),
+                       radial-gradient(circle at 60% 55%, rgba(250,250,140,.8) 0 9px, transparent 12px),
+                       radial-gradient(circle at 78% 25%, rgba(250,250,140,.75) 0 4px, transparent 7px),
+                       radial-gradient(circle at 40% 78%, rgba(250,250,140,.75) 0 5px, transparent 8px); }
           .p-terminator { background:
                             radial-gradient(circle at 76% 76%, rgba(0,0,0,.88) 0%, rgba(0,0,0,.6) 34%, transparent 66%),
                             linear-gradient(118deg, transparent 40%, rgba(0,0,0,.28) 50%, rgba(0,0,0,.68) 60%, rgba(0,0,0,.93) 100%); }
@@ -2060,13 +2085,13 @@ function App() {
 
           .p-rim { box-shadow: inset 0 0 26px 7px rgba(var(--p-glow), .5), inset -16px -16px 38px rgba(0,0,0,.85), inset 0 0 3px 1px rgba(255,255,255,.25); }
 
-          .planet-atmo { position: absolute; width: calc(210px * var(--p-size)); height: calc(210px * var(--p-size)); border-radius: 50%; pointer-events: none; z-index: 5;
+          .planet-atmo { position: absolute; width: 210px; height: 210px; border-radius: 50%; pointer-events: none; z-index: 5;
                          background: radial-gradient(circle, rgba(var(--p-glow), .32) 0%, rgba(var(--p-glow), .11) 42%, transparent 68%);
                          animation: atmoBreathe 5s ease-in-out infinite; }
           @keyframes atmoBreathe { 0%,100% { transform: scale(1); opacity: .85; } 50% { transform: scale(1.07); opacity: 1; } }
 
-          .planet-ring { position: absolute; width: calc(208px * var(--p-size)); height: calc(62px * var(--p-size)); border-radius: 50%; pointer-events: none;
-                         opacity: calc(var(--p-ring-on) * .95); transform: rotate(-16deg);
+          .planet-ring { position: absolute; width: 208px; height: 62px; border-radius: 50%; pointer-events: none;
+                         opacity: calc(var(--p-ring-on) * .95); transform: rotate(var(--p-ring-tilt));
                          border: 2px solid rgba(var(--p-ring-rgb), .55);
                          box-shadow: 0 0 18px rgba(var(--p-ring-rgb), .5), inset 0 0 14px rgba(var(--p-ring-rgb), .38);
                          background: radial-gradient(ellipse at center, transparent 58%, rgba(var(--p-ring-rgb), .22) 62%, transparent 78%); }
