@@ -2212,7 +2212,7 @@ function App() {
           {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); exitToMenu(); }} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">🏠</button>}
           {gameState === 'menu' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('settings'); }} aria-label={t.settings} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">⚙️</button>}
           {/* Oyun dışında ses Ayarlar ekranından açılıp kapanır */}
-          {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); toggleSound(); }} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">{soundOn ? '🔊' : '🔇'}</button>
+          {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); toggleSound(); }} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">{soundOn ? '🔊' : '🔇'}</button>}
         </div>
 
         {gameState === 'menu' && (
