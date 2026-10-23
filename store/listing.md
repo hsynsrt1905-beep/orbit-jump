@@ -33,13 +33,16 @@ Top gezegenin etrafında döner. Ekrana dokun, top fırlasın ve hareket eden he
 ✨ ÖZELLİKLER
 • Tek dokunuşla oynanış: herkes hemen başlar, ustalaşmak zaman alır
 • Mükemmel iniş ve kombo sistemi
-• Mağaza: farklı toplar, iz efektleri ve uzay temaları
-• Topları ve güçlendirmeleri (kalkan, yavaş çekim) yükselt
-• Görevler ve rozetler: kristal kazan, koleksiyonunu tamamla
-• Günlük seri ödülleri: her gün gir, ödülün büyüsün
+• 7 karakter: astronot, roket, UFO, uzaylı, robot, uzay kedisi ve meteor — topla ve geliştir
+• 10 farklı gezegen türü: ay, çöl, buz devi, zehirli dev, kristal cüce, asteroit ve dahası
+• Seviye sistemi: her tur XP kazan, seviye atladıkça kristal ödülü al
+• Arkadaşına meydan oku: skorunu paylaş, arkadaşın aynı haritada seni geçmeye çalışsın
+• Günlük Meydan Okuma: her gün herkes aynı haritada, günlük ve haftalık skor tabloları
+• 12 rozet ve Google Play başarımları
+• Günlük seri ödülleri ve seri kurtarma: her gün gir, ödülün büyüsün
+• Mağaza: iz efektleri ve uzay temaları, güçlendirmeleri (kalkan, yavaş çekim) yükselt
 • Dünya skor tablosu: dünyanın en iyileriyle yarış
 • Google ile giriş ve bulut kaydı: ilerlemen telefon değiştirsen de kaybolmaz
-• Skorunu arkadaşlarınla paylaş ve onlara meydan oku
 • İnternetsiz oyna: Wi-Fi ya da mobil veri gerekmez
 • Türkçe, İngilizce, İspanyolca, Almanca ve Rusça dil desteği
 
@@ -78,19 +81,68 @@ The ball orbits around a planet. Tap to launch it and catch the moving target pl
 ✨ FEATURES
 • One-tap gameplay: easy to start, hard to master
 • Perfect landing and combo system
-• Shop: unique balls, trail effects and space themes
-• Upgrade your balls and power-ups (shield, slow motion)
-• Missions and badges: earn crystals and complete your collection
-• Daily streak rewards: come back every day for bigger prizes
+• 7 characters: astronaut, rocket, UFO, alien, robot, space cat and meteor — collect and upgrade them
+• 10 planet types: moon, desert, ice giant, toxic giant, crystal dwarf, asteroid and more
+• Level system: earn XP every run and get crystal rewards as you level up
+• Challenge your friends: share your score and let them try to beat you on the same map
+• Daily Challenge: the same map for everyone every day, with daily and weekly leaderboards
+• 12 badges and Google Play achievements
+• Daily streak rewards and streak saver: come back every day for bigger prizes
+• Shop: trail effects and space themes, upgrade power-ups (shield, slow motion)
 • Global leaderboard: compete with the best players in the world
 • Google sign-in and cloud save: keep your progress even on a new phone
-• Share your score and challenge your friends
 • Play offline: no Wi-Fi or mobile data needed
 • Available in English, Turkish, Spanish, German and Russian
 
 A perfect casual arcade game for quick breaks if you love reflex, timing and skill games. A run takes a minute, but you won't stop at "just one more"!
 
 Download now, launch into orbit and beat your high score! 🚀
+```
+
+---
+
+## Deutsch (de-DE)
+
+### App-Name (27/30)
+```
+Orbit Jump: Weltraum-Sprung
+```
+
+### Kurzbeschreibung (79/80)
+```
+Offline-Weltraumspiel: spring von Planet zu Planet, lande perfekt, knack Rekorde
+```
+
+### Vollständige Beschreibung
+```
+Tippe im richtigen Moment, schleudere deine Figur los und lande perfekt auf dem nächsten Planeten! Orbit Jump ist ein schnelles, farbenfrohes Weltraum-Sprungspiel: mit einem Fingertipp gespielt, aber schwer zu meistern. Kein Internet nötig – spiel, wo du willst.
+
+🪐 SO WIRD GESPIELT
+Deine Figur umkreist einen Planeten. Tippe, um sie loszuschleudern, und erwische den beweglichen Zielplaneten. Eine perfekte Landung bringt +3 Punkte und Zeitlupe, Landungen hintereinander ergeben Kombos. Spring, bevor die Zeit abläuft!
+
+🎮 4 SPIELMODI
+• Normal – 10 Sekunden pro Planet
+• Supernova – nur 5 Sekunden, dafür doppelte Punkte
+• Zen – kein Zeitlimit, ganz entspannt
+• Schnell – extremes Tempo für echte Reflexe
+
+✨ FEATURES
+• Ein-Finger-Steuerung: sofort losspielen, schwer zu meistern
+• 7 Figuren: Astronaut, Rakete, UFO, Alien, Roboter, Weltraumkatze und Meteor – sammeln und verbessern
+• 10 Planetentypen: Mond, Wüste, Eisriese, Giftriese, Kristallzwerg, Asteroid und mehr
+• Levelsystem: sammle bei jeder Runde XP und erhalte Kristall-Belohnungen
+• Fordere Freunde heraus: teile deinen Punktestand, sie spielen dieselbe Karte
+• Tages-Challenge: jeden Tag dieselbe Karte für alle, mit Tages- und Wochenbestenlisten
+• 12 Abzeichen und Google Play-Erfolge
+• Tägliche Serienbelohnungen und Serien-Retter
+• Shop: Spuren-Effekte und Weltraum-Themen, Power-ups (Schild, Zeitlupe) verbessern
+• Weltweite Bestenliste und Cloud-Speicher mit Google-Anmeldung
+• Offline spielbar: kein WLAN oder mobile Daten nötig
+• Auf Deutsch, Englisch, Türkisch, Spanisch und Russisch
+
+Ideal für kurze Pausen, wenn du Reflex-, Timing- und Geschicklichkeitsspiele magst. Eine Runde dauert eine Minute – aber bei „nur noch eine“ bleibt es nie!
+
+Jetzt herunterladen, ab in den Orbit und den Highscore knacken! 🚀
 ```
 
 ---
