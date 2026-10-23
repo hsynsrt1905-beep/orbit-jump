@@ -19,7 +19,7 @@ Ek kurallar:
 - Model adları kısa adla yazılır (`haiku`, `sonnet`, `opus`, `fable`). Kısa ad ailesinin son sürümüne çözülür. Yeni bir model sürümü çıkınca ölçüm tekrarlanır: alt ajan transkriptlerinde (`~/.claude/projects/*/*/subagents/*.jsonl`) yanıtların `message.model` alanına bakılır. Kısa ad geride kalırsa yalnız o aile için tam ad yazılır ve sebebi buraya eklenir.
 - Ölçüm kaydı: 2026-10-23 — haiku → claude-haiku-5-5 · sonnet → claude-sonnet-5-5 · opus → claude-opus-5-5 · fable → claude-opus-5-5 (Fable değil!)
   - `fable` kısa adı bu hesapta Opus 5.5'e düşüyor; Fable 5.1 hesapta açık değil gibi görünüyor. Agent aracı yalnız kısa ad kabul ettiği için çağrıda tam ad verilemiyor. Plan ajanı eklenirse frontmatter'a `model: claude-fable-5-1` yazılıp yeniden ölçülmeli; o da Opus'a düşerse planlama fiilen Opus'ta koşar (kota açısından pahalı, plan işlerini az tut).
-  - `haiku-hafif` ajanı ölçülemedi: ajan dosyaları oturum açılırken yükleniyor, aynı oturumda oluşturulan ajan çağrılamıyor. Sonraki oturumda tekrar ölç.
+  - `haiku-hafif` (frontmatter `model: haiku`) → claude-haiku-5-5 ✓ (oturum yeniden açıldıktan sonra ölçüldü; ajan dosyaları oturum açılırken yüklenir, aynı oturumda oluşturulan ajan çağrılamaz).
 
 ## Bu projenin otomasyon ajanları (kota kısıtlı — en ucuz yeterli kademe)
 

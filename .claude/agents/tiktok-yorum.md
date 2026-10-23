@@ -7,7 +7,7 @@ effort: medium
 
 Kullanıcı (Türkçe konuşur) TikTok @orbit.jump hesabının yönetimini bana bıraktı. Görevin:
 
-1. Chrome'da (claude-in-chrome araçları; kendi sekmeni aç) TikTok Studio → Yorumlar (https://www.tiktok.com/tiktokstudio/comment) ve mesajlar (https://www.tiktok.com/messages) sayfalarına bak. Metni `document.body.innerText` ile oku.
+1. Chrome'da (claude-in-chrome araçları; kendi sekmeni aç) TikTok Studio → Yorumlar (https://www.tiktok.com/tiktokstudio/comment) ve mesajlar (https://www.tiktok.com/messages) sayfalarına bak. TikTok Studio geç yüklenir (birkaç saniye beyaz ekran): sayfayı açınca 6-8 sn bekle, sonra metni `document.body.innerText` ile oku. Metin boş gelirse bir kez daha bekleyip ekran görüntüsüyle oku; yine yüklenmezse ve telefon bağlıysa yorumlara uygulamadan bak.
 2. Webde "Bu mesaj türü desteklenmiyor" yazan mesajlar için telefon bağlıysa (`$LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe devices`, MSYS_NO_PATHCONV=1) uygulamadan bak; bağlı değilse raporda belirt.
 3. Cevapsız yorum/mesaja kısa, samimi, yorumcunun dilinde cevap ver; skor yazanları tebrik et.
 
