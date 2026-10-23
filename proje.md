@@ -55,7 +55,7 @@
 | Instagram @orbit.jump | 7 gönderi (5 Reels), en iyi Reels 2.100+ izlenme, düzenli günlük paylaşım + linkli hikâye |
 | TikTok @orbit.jump | 5 video; telefondan atılanlar izlenme alıyor, webden atılanlar 0'da kaldı |
 | LinkedIn | Lansman gönderisi yayında; 2. gönderi 24 Ekim'de planlı |
-| Otomasyon | 15 alt ajan (yorum cevaplama, Instagram/TikTok/LinkedIn paylaşımı, hesap ısıtma, Play Console / AdMob / Firebase yöneticileri), oturum açılışında otomatik kurulum |
+| Otomasyon | 16 alt ajan (haftalık bileşen/güvenlik kontrolü, yorum cevaplama, Instagram/TikTok/LinkedIn paylaşımı, hesap ısıtma, Play Console / AdMob / Firebase yöneticileri), oturum açılışında otomatik kurulum |
 
 ## Özellikler (features)
 
@@ -152,6 +152,7 @@
 ## Teknik notlar
 
 - **Web sürümü:** paket `store/web/orbit-jump-web.zip`, mağaza metinleri `store/web/listing.md`. Ofis ağı (Sophos) itch.io / CrazyGames / Poki'yi engelliyor → başka ağdan yüklenmeli.
+- **Site güvenlik başlıkları** (`firebase.json`, 23 Eki): tüm sayfalarda nosniff, Referrer-Policy, Permissions-Policy, HSTS; ana sayfa, /play, /privacy, /delete-account'ta X-Frame-Options DENY. `/game` bilerek hariç (oyun sitelerinde iframe içinde açılabilsin).
 - **Deploy sonrası:** /play, /privacy, /delete-account, /game sayfaları curl ile 200 kontrol edilir. Firestore kuralları ayrıca onayla deploy edilir.
 - **Ekran görüntüsü için oyun:** `vite preview` ve localStorage `orbit_highscore` yüksek ayarlanır ki test oyunları canlı skor tablosuna yazmasın.
 - **İsim anahtarı:** `nameKey` 1.0.13'e kadar `/s+/g` kullanıyordu ("s" harflerini boşluğa çeviriyordu). Düzeltildi; `claimPlayerName` eski anahtardaki ayırmaya da bakar (belgedeki asıl isimle karşılaştırarak). İsim değişince `releaseNames` eski belgeyi siler.
@@ -193,6 +194,7 @@
 | 10:41, 14:41, 18:41, 22:41 | hesap-isitma | sonnet |
 | 17:03 | ig-gunluk-paylasim | sonnet |
 | 11:13 | linkedin-paylasim (planlı gönderi varsa) | sonnet |
+| Pazartesi 09:07 | bilesen-kontrol (npm audit, güncellik, uyum) | sonnet |
 | 10:07 | gunluk-rapor (Instagram/TikTok/kuyruk) | haiku |
 | 10:17 / 10:27 / 10:37 | play-console / admob-yonetici / firebase-yonetici günlük tur | sonnet |
 | 20:03 | akşam hatırlatması | — |
