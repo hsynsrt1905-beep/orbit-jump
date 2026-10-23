@@ -248,6 +248,7 @@ const translations = {
 // Rekor, seri kurtarma, seviye, meydan okuma, etkinlik ve ayarlar metinleri
 const extraTranslations = {
   en: {
+    badge5: "Orbit Pro", badge5Desc: "Score 25 in one run", badge6: "Comet Rider", badge6Desc: "Score 50 in one run", badge7: "Combo Master", badge7Desc: "Hit an 8x combo", badge8: "Flawless", badge8Desc: "Land 100 Perfect jumps", badge9: "Space Regular", badge9Desc: "Play 50 runs", badge10: "Crew Collector", badge10Desc: "Own 3 characters", badge11: "Veteran Explorer", badge11Desc: "Reach level 10", badge12: "Weekly Explorer", badge12Desc: "Keep a 7-day streak", playAchievements: "Google Play achievements",
     tabBalls: "SKINS", skinAstronaut: "Astronaut", skinRocket: "Rocket", skinUfo: "UFO", skinAlien: "Alien", skinRobot: "Robot", skinCat: "Space Cat", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Fast",
     hintNormal: "Classic — a timer on every planet", hintSupernova: "5 s per planet · 2× points", hintZen: "No timer — relax and aim", hintFast: "Faster planets · extreme",
@@ -259,6 +260,7 @@ const extraTranslations = {
     challengeShare: "I scored {n} in Orbit Jump. Beat me on the same map! 🚀", challengeSend: "⚔️ CHALLENGE A FRIEND",
   },
   tr: {
+    badge5: "Yörünge Ustası", badge5Desc: "Tek turda 25 puan yap", badge6: "Kuyruklu Yıldız", badge6Desc: "Tek turda 50 puan yap", badge7: "Kombo Ustası", badge7Desc: "8x kombo yap", badge8: "Kusursuz", badge8Desc: "100 Mükemmel iniş yap", badge9: "Uzay Müdavimi", badge9Desc: "50 tur oyna", badge10: "Mürettebat", badge10Desc: "3 karaktere sahip ol", badge11: "Kıdemli Kâşif", badge11Desc: "10. seviyeye ulaş", badge12: "Haftalık Kâşif", badge12Desc: "7 günlük seri yap", playAchievements: "Google Play başarımları",
     tabBalls: "KARAKTER", skinAstronaut: "Astronot", skinRocket: "Roket", skinUfo: "UFO", skinAlien: "Uzaylı", skinRobot: "Robot", skinCat: "Uzay Kedisi", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Süpernova", tabZen: "Zen", tabFast: "Hızlı",
     hintNormal: "Klasik — her gezegende süre sayacı", hintSupernova: "Gezegen başına 5 sn · 2× puan", hintZen: "Süre yok — rahatla ve nişan al", hintFast: "Daha hızlı gezegenler · ekstrem",
@@ -270,6 +272,7 @@ const extraTranslations = {
     challengeShare: "Orbit Jump'ta {n} puan yaptım. Aynı haritada geç bakalım! 🚀", challengeSend: "⚔️ ARKADAŞINA MEYDAN OKU",
   },
   es: {
+    badge5: "Experto orbital", badge5Desc: "Haz 25 puntos en una partida", badge6: "Jinete de cometas", badge6Desc: "Haz 50 puntos en una partida", badge7: "Maestro del combo", badge7Desc: "Logra un combo x8", badge8: "Impecable", badge8Desc: "Consigue 100 saltos Perfectos", badge9: "Habitual del espacio", badge9Desc: "Juega 50 partidas", badge10: "Coleccionista", badge10Desc: "Ten 3 personajes", badge11: "Explorador veterano", badge11Desc: "Llega al nivel 10", badge12: "Explorador semanal", badge12Desc: "Mantén una racha de 7 días", playAchievements: "Logros de Google Play",
     tabBalls: "PERSONAJES", skinAstronaut: "Astronauta", skinRocket: "Cohete", skinUfo: "OVNI", skinAlien: "Alien", skinRobot: "Robot", skinCat: "Gato espacial", skinMeteor: "Meteorito",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Rápido",
     hintNormal: "Clásico — temporizador en cada planeta", hintSupernova: "5 s por planeta · puntos x2", hintZen: "Sin tiempo — relájate y apunta", hintFast: "Planetas más rápidos · extremo",
@@ -281,6 +284,7 @@ const extraTranslations = {
     challengeShare: "Hice {n} puntos en Orbit Jump. ¡Supérame en el mismo mapa! 🚀", challengeSend: "⚔️ DESAFIAR A UN AMIGO",
   },
   de: {
+    badge5: "Orbit-Profi", badge5Desc: "Erreiche 25 Punkte in einer Runde", badge6: "Kometenreiter", badge6Desc: "Erreiche 50 Punkte in einer Runde", badge7: "Kombo-Meister", badge7Desc: "Schaffe eine 8x-Kombo", badge8: "Makellos", badge8Desc: "Schaffe 100 perfekte Sprünge", badge9: "Stammgast im All", badge9Desc: "Spiele 50 Runden", badge10: "Crew-Sammler", badge10Desc: "Besitze 3 Figuren", badge11: "Erfahrener Entdecker", badge11Desc: "Erreiche Level 10", badge12: "Wochen-Entdecker", badge12Desc: "Halte eine 7-Tage-Serie", playAchievements: "Google Play-Erfolge",
     tabBalls: "FIGUREN", skinAstronaut: "Astronaut", skinRocket: "Rakete", skinUfo: "UFO", skinAlien: "Alien", skinRobot: "Roboter", skinCat: "Weltraumkatze", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Schnell",
     hintNormal: "Klassisch — Timer auf jedem Planeten", hintSupernova: "5 s pro Planet · 2× Punkte", hintZen: "Kein Timer — entspannt zielen", hintFast: "Schnellere Planeten · extrem",
@@ -292,6 +296,7 @@ const extraTranslations = {
     challengeShare: "Ich habe {n} Punkte in Orbit Jump. Schlag mich auf derselben Karte! 🚀", challengeSend: "⚔️ FREUND HERAUSFORDERN",
   },
   ru: {
+    badge5: "Мастер орбиты", badge5Desc: "Наберите 25 очков за забег", badge6: "Наездник комет", badge6Desc: "Наберите 50 очков за забег", badge7: "Мастер комбо", badge7Desc: "Сделайте комбо x8", badge8: "Безупречный", badge8Desc: "Сделайте 100 идеальных прыжков", badge9: "Завсегдатай космоса", badge9Desc: "Сыграйте 50 забегов", badge10: "Коллекционер", badge10Desc: "Соберите 3 персонажа", badge11: "Опытный исследователь", badge11Desc: "Достигните 10 уровня", badge12: "Исследователь недели", badge12Desc: "Серия из 7 дней", playAchievements: "Достижения Google Play",
     tabBalls: "ГЕРОИ", skinAstronaut: "Астронавт", skinRocket: "Ракета", skinUfo: "НЛО", skinAlien: "Пришелец", skinRobot: "Робот", skinCat: "Космокот", skinMeteor: "Метеор",
     tabNormal: "Обычный", tabSupernova: "Сверхновая", tabZen: "Дзен", tabFast: "Быстрый",
     hintNormal: "Классика — таймер на каждой планете", hintSupernova: "5 с на планету · очки x2", hintZen: "Без таймера — спокойно цельтесь", hintFast: "Быстрые планеты · экстрим",
@@ -597,12 +602,22 @@ const missionDefs = [
   { id: 'games25', statKey: 'gamesPlayed', target: 25, reward: 50, labelKey: 'm10' }
 ];
 
+// Rozetler: stat değeri hedefe ulaşınca açılır, ödül elle alınır. Aynı rozetler
+// Google Play başarımı olarak da açılır (playGames.js).
 const badgeDefs = [
-  { id: 'badge1', nameKey: 'badge1', descKey: 'badge1Desc', icon: '🌟', reward: 50, check: (s) => s.gamesPlayed >= 1 },
-  { id: 'badge2', nameKey: 'badge2', descKey: 'badge2Desc', icon: '🪐', reward: 50, check: (s) => s.bestRun >= 10 },
-  { id: 'badge3', nameKey: 'badge3', descKey: 'badge3Desc', icon: '💎', reward: 50, check: (s) => s.totalPerfects >= 3 },
-  { id: 'badge4', nameKey: 'badge4', descKey: 'badge4Desc', icon: '💰', reward: 100, check: (s) => s.totalCrystalsEarned >= 500 }
-];
+  { id: 'badge1', icon: '🌟', reward: 50, stat: 'gamesPlayed', target: 1 },
+  { id: 'badge2', icon: '🪐', reward: 50, stat: 'bestRun', target: 10 },
+  { id: 'badge3', icon: '💎', reward: 50, stat: 'totalPerfects', target: 3 },
+  { id: 'badge4', icon: '💰', reward: 100, stat: 'totalCrystalsEarned', target: 500 },
+  { id: 'badge5', icon: '🚀', reward: 75, stat: 'bestRun', target: 25 },
+  { id: 'badge6', icon: '☄️', reward: 150, stat: 'bestRun', target: 50 },
+  { id: 'badge7', icon: '🔥', reward: 100, stat: 'maxCombo', target: 8 },
+  { id: 'badge8', icon: '✨', reward: 120, stat: 'totalPerfects', target: 100 },
+  { id: 'badge9', icon: '🎮', reward: 80, stat: 'gamesPlayed', target: 50 },
+  { id: 'badge10', icon: '👨‍🚀', reward: 100, stat: 'skins', target: 3 },
+  { id: 'badge11', icon: '⭐', reward: 150, stat: 'level', target: 10 },
+  { id: 'badge12', icon: '📅', reward: 150, stat: 'streak', target: 7 }
+].map((b) => ({ ...b, nameKey: b.id, descKey: `${b.id}Desc`, check: (s) => (s[b.stat] || 0) >= b.target }));
 
 let globalAudioCtx = null;
 let ambientOsc1 = null;
@@ -1897,6 +1912,8 @@ function App() {
   const todayStats = dailyStats.id === localDayId() ? dailyStats : emptyDailyStats(localDayId());
   const dailyMissions = dailyMissionsFor(todayStats.id);
   const lvl = levelInfo(xp);
+  // Rozet koşulları için stat'lara seviye, karakter sayısı ve seri eklenir
+  const badgeStats = { ...stats, level: lvl.level, skins: ownedItems.filter((id) => (shopItems.find((s) => s.id === id) || {}).type === 'ball').length, streak: streakDays };
   const hasClaimableDaily =dailyMissions.some((m) => (todayStats[m.stat] || 0) >= m.target && !todayStats.claimed.includes(m.id));
 
   const claimDailyMission = (m) => {
@@ -1943,7 +1960,7 @@ function App() {
   };
 
   const claimBadge = (badge) => {
-    const unlocked = badge.check(stats);
+    const unlocked = badge.check(badgeStats);
     if (!unlocked || claimedBadges.includes(badge.id)) return;
     const nextClaimed = [...claimedBadges, badge.id]; const nextCrystals = crystals + badge.reward;
     setClaimedBadges(nextClaimed); setCrystals(nextCrystals); saveJSON('orbit_claimed_badges', nextClaimed); saveJSON('orbit_crystals', nextCrystals);
@@ -2397,17 +2414,18 @@ function App() {
               <h2 className="text-xl font-black text-yellow-300">{t.badges}</h2>
               <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold py-1.5 px-3 rounded-full text-xs">💎 {crystals}</div>
             </div>
-            <div className="w-full bg-slate-900/85 border border-slate-800 rounded-2xl p-4 flex flex-col gap-3 max-h-[60vh] overflow-y-auto">
+            <div className="w-full bg-slate-900/85 border border-slate-800 rounded-2xl p-4 flex flex-col gap-3 max-h-[64vh] overflow-y-auto">
               {badgeDefs.map((b) => {
-                const unlocked = b.check(stats);
+                const unlocked = b.check(badgeStats);
                 const claimed = claimedBadges.includes(b.id);
+                const current = Math.min(badgeStats[b.stat] || 0, b.target);
                 return (
                   <div key={b.id} className={`flex items-center justify-between p-3.5 rounded-xl border ${unlocked ? 'bg-slate-950/80 border-yellow-500/50' : 'bg-slate-950/30 border-slate-800 opacity-60'}`}>
                     <div className="flex items-center gap-3">
                       <div className="text-3xl bg-slate-900 p-2.5 rounded-2xl border border-slate-800">{b.icon}</div>
                       <div>
                         <p className={`font-bold text-sm ${unlocked ? 'text-yellow-300' : 'text-slate-400'}`}>{t[b.nameKey]}</p>
-                        <p className="text-xs text-slate-500">{t[b.descKey]}</p>
+                        <p className="text-xs text-slate-500">{t[b.descKey]}{!unlocked && b.target > 1 ? ` · ${current}/${b.target}` : ''}</p>
                       </div>
                     </div>
                     <button onClick={(e) => { e.stopPropagation(); claimBadge(b); }} disabled={!unlocked || claimed} className={`py-1.5 px-4 rounded-full text-xs font-black ${claimed ? 'bg-slate-800 text-slate-500' : unlocked ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950' : 'bg-slate-800 text-slate-600'}`}>
