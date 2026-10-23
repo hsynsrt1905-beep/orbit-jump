@@ -24,6 +24,7 @@
 | Backend | Firebase 12 (web SDK) + `@capacitor-firebase/*` 8 | Authentication (anonim + Google), Cloud Firestore (skor tabloları, bulut kayıt, isimler), Analytics, Crashlytics, Hosting |
 | Site | Firebase Hosting (`hosting/`) | /play (Play yönlendirme), /privacy, /delete-account, /game (web sürümü), app-ads.txt |
 | Android derleme | Gradle 8.14, JDK jbr-21 | İmzalı AAB/APK Android Studio'da üretilir |
+| Bileşen kontrolü | Context7 MCP (`.mcp.json`) + `npm audit` | Her bileşen ekleme/güncellemede güncellik, uyum ve güvenlik kontrolü (`.claude/rules/bilesen-kontrolu.md`) |
 
 ### Komutlar
 
@@ -95,6 +96,8 @@
 - [ ] Yeni oyun kayıtlarıyla Reels/TikTok kuyruğunu doldurmak (Süpernova, PERFECT serisi, tema/mağaza)
 - [ ] `cloudSave.js` içindeki `nameKey` hatası (`/s+/g` → `/\s+/g`) — mevcut isimler için geçiş planıyla düzeltmek
 - [ ] AdMob'a kullanıcının telefonunu test cihazı olarak eklemek
+- [ ] Güvenlik yaması 23 Eki'de `npm update` ile yapıldı (@capacitor/android 8.5.3 kritik düzeltme, vite 8.3.5). Android'e ulaşması için **yeni AAB (1.0.14) derlenip yüklenmeli**
+- [ ] Kalan `npm audit` uyarıları (yalnız geliştirme araçları, uygulamaya girmiyor): `@capacitor/assets` içindeki eski tar/sharp/uuid, firebase'in Node tarafındaki `@grpc/grpc-js` — üst paketler güncellenince tekrar kontrol
 
 ### Orta vade (1-3 ay)
 - [ ] Instagram ve TikTok'ta ilk 100 takipçi; Play'de 100+ yükleme, 50+ değerlendirme
