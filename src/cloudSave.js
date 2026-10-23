@@ -71,12 +71,19 @@ export const deleteAccount = async () => {
 // --- Benzersiz oyuncu isimleri: names/{küçük harfli isim} belgesi ismi bir
 // UID'ye ayırır. Eski oyuncuların ayırması olmadığından skor tablosundaki aynı
 // isim de "alınmış" sayılır.
-export const nameKey = (name) => name.trim().toLowerCase().replace(/s+/g, ' ');
+export const nameKey = (name) => name.trim().toLowerCase().replace(/\s+/g, ' ');
+
+// 1.0.13 ve öncesi anahtarı yanlış üretiyordu ("s" harflerini boşluğa çeviriyordu).
+// O sürümlerle alınmış isimler hâlâ bu anahtarla duruyor; yeni anahtarda belge
+// yoksa eskisine de bakılır. Eski anahtar farklı isimleri çakıştırabildiği için
+// belgedeki asıl isim de karşılaştırılır.
+const legacyNameKey = (name) => name.trim().toLowerCase().replace(/s+/g, ' ');
 
 export const claimPlayerName = async (name) => {
   const uid = (await ensureSignedIn()).uid;
   const clean = name.trim().substring(0, 12);
   const key = nameKey(clean);
+  const legacyKey = legacyNameKey(clean);
 
   const lb = await getDocs(query(collection(db, 'leaderboard'), where('name', '==', clean), limit(5)));
   if (lb.docs.some((d) => d.id !== uid)) throw new Error('name-taken');
@@ -85,6 +92,11 @@ export const claimPlayerName = async (name) => {
     const ref = doc(db, 'names', key);
     const snap = await tx.get(ref);
     if (snap.exists() && snap.data().uid !== uid) throw new Error('name-taken');
+    if (legacyKey !== key) {
+      const legacy = await tx.get(doc(db, 'names', legacyKey));
+      const d = legacy.exists() ? legacy.data() : null;
+      if (d && d.uid !== uid && nameKey(d.name || '') === key) throw new Error('name-taken');
+    }
     if (!snap.exists()) tx.set(ref, { uid, name: clean });
   });
   return clean;
