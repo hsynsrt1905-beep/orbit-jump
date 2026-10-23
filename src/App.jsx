@@ -256,7 +256,7 @@ const extraTranslations = {
     newBest: "🏆 NEW BEST!", newRecord: "🏆 NEW RECORD!", toBeatBest: "Only {n} to beat your best!", bestWas: "Best: {n}",
     streakLost: "Your {n}-day streak broke!", streakSave: "SAVE STREAK", streakSaveAd: "📺 Watch ad", streakSaveCrystals: "💎 {n}",
     lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
-    settings: "Settings", soundLabel: "Sound", onLabel: "On", offLabel: "Off", language: "Language", account: "Account", graphics: "Graphics", graphicsHigh: "High", graphicsLow: "Low",
+    settings: "Settings", soundLabel: "Sound", navRank: "Ranking", onLabel: "On", offLabel: "Off", language: "Language", account: "Account", graphics: "Graphics", graphicsHigh: "High", graphicsLow: "Low",
     challengeTitle: "⚔️ CHALLENGE", challengeBeat: "Beat {n} on the same map", challengeAccept: "ACCEPT", challengeWon: "🎉 Challenge won!", challengeShort: "{n} short of the challenge",
     challengeShare: "I scored {n} in Orbit Jump. Beat me on the same map! 🚀", challengeSend: "⚔️ CHALLENGE A FRIEND",
   },
@@ -268,7 +268,7 @@ const extraTranslations = {
     newBest: "🏆 YENİ REKOR!", newRecord: "🏆 YENİ REKOR!", toBeatBest: "Rekoruna sadece {n} kaldı!", bestWas: "Rekor: {n}",
     streakLost: "{n} günlük serin bozuldu!", streakSave: "SERİYİ KURTAR", streakSaveAd: "📺 Reklam izle", streakSaveCrystals: "💎 {n}",
     lv: "Sv", levelUp: "⬆️ SEVİYE {n}!", xpGain: "+{n} XP",
-    settings: "Ayarlar", soundLabel: "Ses", onLabel: "Açık", offLabel: "Kapalı", language: "Dil", account: "Hesap", graphics: "Grafik", graphicsHigh: "Yüksek", graphicsLow: "Düşük",
+    settings: "Ayarlar", soundLabel: "Ses", navRank: "Sıralama", onLabel: "Açık", offLabel: "Kapalı", language: "Dil", account: "Hesap", graphics: "Grafik", graphicsHigh: "Yüksek", graphicsLow: "Düşük",
     challengeTitle: "⚔️ MEYDAN OKUMA", challengeBeat: "Aynı haritada {n} puanı geç", challengeAccept: "KABUL ET", challengeWon: "🎉 Meydan okumayı kazandın!", challengeShort: "Meydan okumaya {n} puan kaldı",
     challengeShare: "Orbit Jump'ta {n} puan yaptım. Aynı haritada geç bakalım! 🚀", challengeSend: "⚔️ ARKADAŞINA MEYDAN OKU",
   },
@@ -280,7 +280,7 @@ const extraTranslations = {
     newBest: "🏆 ¡NUEVO RÉCORD!", newRecord: "🏆 ¡NUEVO RÉCORD!", toBeatBest: "¡Solo {n} para batir tu récord!", bestWas: "Récord: {n}",
     streakLost: "¡Tu racha de {n} días se rompió!", streakSave: "SALVAR RACHA", streakSaveAd: "📺 Ver anuncio", streakSaveCrystals: "💎 {n}",
     lv: "Nv", levelUp: "⬆️ ¡NIVEL {n}!", xpGain: "+{n} XP",
-    settings: "Ajustes", soundLabel: "Sonido", onLabel: "Sí", offLabel: "No", language: "Idioma", account: "Cuenta", graphics: "Gráficos", graphicsHigh: "Altos", graphicsLow: "Bajos",
+    settings: "Ajustes", soundLabel: "Sonido", navRank: "Ranking", onLabel: "Sí", offLabel: "No", language: "Idioma", account: "Cuenta", graphics: "Gráficos", graphicsHigh: "Altos", graphicsLow: "Bajos",
     challengeTitle: "⚔️ DESAFÍO", challengeBeat: "Supera {n} en el mismo mapa", challengeAccept: "ACEPTAR", challengeWon: "🎉 ¡Desafío superado!", challengeShort: "Te faltaron {n} para el desafío",
     challengeShare: "Hice {n} puntos en Orbit Jump. ¡Supérame en el mismo mapa! 🚀", challengeSend: "⚔️ DESAFIAR A UN AMIGO",
   },
@@ -292,7 +292,7 @@ const extraTranslations = {
     newBest: "🏆 NEUER REKORD!", newRecord: "🏆 NEUER REKORD!", toBeatBest: "Nur noch {n} bis zum Rekord!", bestWas: "Rekord: {n}",
     streakLost: "Deine {n}-Tage-Serie ist gerissen!", streakSave: "SERIE RETTEN", streakSaveAd: "📺 Werbung ansehen", streakSaveCrystals: "💎 {n}",
     lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
-    settings: "Einstellungen", soundLabel: "Ton", onLabel: "An", offLabel: "Aus", language: "Sprache", account: "Konto", graphics: "Grafik", graphicsHigh: "Hoch", graphicsLow: "Niedrig",
+    settings: "Einstellungen", soundLabel: "Ton", navRank: "Rangliste", onLabel: "An", offLabel: "Aus", language: "Sprache", account: "Konto", graphics: "Grafik", graphicsHigh: "Hoch", graphicsLow: "Niedrig",
     challengeTitle: "⚔️ HERAUSFORDERUNG", challengeBeat: "Schlage {n} auf derselben Karte", challengeAccept: "ANNEHMEN", challengeWon: "🎉 Herausforderung geschafft!", challengeShort: "{n} fehlten zur Herausforderung",
     challengeShare: "Ich habe {n} Punkte in Orbit Jump. Schlag mich auf derselben Karte! 🚀", challengeSend: "⚔️ FREUND HERAUSFORDERN",
   },
@@ -304,7 +304,7 @@ const extraTranslations = {
     newBest: "🏆 НОВЫЙ РЕКОРД!", newRecord: "🏆 НОВЫЙ РЕКОРД!", toBeatBest: "До рекорда всего {n}!", bestWas: "Рекорд: {n}",
     streakLost: "Серия из {n} дн. прервалась!", streakSave: "СПАСТИ СЕРИЮ", streakSaveAd: "📺 Смотреть рекламу", streakSaveCrystals: "💎 {n}",
     lv: "Ур", levelUp: "⬆️ УРОВЕНЬ {n}!", xpGain: "+{n} XP",
-    settings: "Настройки", soundLabel: "Звук", onLabel: "Вкл", offLabel: "Выкл", language: "Язык", account: "Аккаунт", graphics: "Графика", graphicsHigh: "Высокая", graphicsLow: "Низкая",
+    settings: "Настройки", soundLabel: "Звук", navRank: "Рейтинг", onLabel: "Вкл", offLabel: "Выкл", language: "Язык", account: "Аккаунт", graphics: "Графика", graphicsHigh: "Высокая", graphicsLow: "Низкая",
     challengeTitle: "⚔️ ВЫЗОВ", challengeBeat: "Побейте {n} на той же карте", challengeAccept: "ПРИНЯТЬ", challengeWon: "🎉 Вызов выполнен!", challengeShort: "До вызова не хватило {n}",
     challengeShare: "Мой результат в Orbit Jump — {n}. Побей меня на той же карте! 🚀", challengeSend: "⚔️ БРОСИТЬ ВЫЗОВ ДРУГУ",
   }
@@ -2329,7 +2329,7 @@ function App() {
                 {[
                   ['🛒', t.shop, () => setGameState('shop'), false],
                   ['🏆', t.missions, () => setGameState('missions'), hasClaimableDaily],
-                  ['👑', t.leaderboard, () => { setGameState('leaderboard'); fetchOnlineScores('weekly'); }, false],
+                  ['👑', t.navRank, () => { setGameState('leaderboard'); fetchOnlineScores('weekly'); }, false],
                   ['🏅', t.badges, () => setGameState('badges'), false]
                 ].map(([icon, label, go, dot]) => (
                   <button key={icon} onClick={() => { playSound('click', soundOn); go(); }} className="relative flex flex-col items-center justify-center gap-2 bg-slate-900/90 border border-slate-700/60 rounded-2xl py-4 [@media(max-height:700px)]:py-3 px-1 min-w-0">
