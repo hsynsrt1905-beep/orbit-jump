@@ -1,4 +1,4 @@
-# LinkedIn 2. gönderi — "Ucuz telefonda kasma" (planlanan: 2026-10-24)
+# LinkedIn 2. gönderi — "Ucuz telefonda kasma" (planlanan: 2026-10-26)
 
 Görsel: oyun-2.png (veya menu.png)
 

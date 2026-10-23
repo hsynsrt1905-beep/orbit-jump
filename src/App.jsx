@@ -1112,7 +1112,9 @@ function App() {
       } catch {}
 
       try {
-        await AdMob.initialize({ initializeForTesting: false });
+        // Geliştiricinin telefonu (Galaxy S24+) test cihazı: orada yalnız test
+        // reklamı çıkar, kendi reklamına tıklama riski olmaz. Diğer cihazlar etkilenmez.
+        await AdMob.initialize({ initializeForTesting: true, testingDevices: ['357057D2EFB25D17A16CB635B8A9CB39'] });
       } catch {}
     };
     initAdMob();
