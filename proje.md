@@ -55,7 +55,7 @@
 | Instagram @orbit.jump | 7 gönderi (5 Reels), en iyi Reels 2.100+ izlenme, düzenli günlük paylaşım + linkli hikâye |
 | TikTok @orbit.jump | 5 video; telefondan atılanlar izlenme alıyor, webden atılanlar 0'da kaldı |
 | LinkedIn | Lansman gönderisi yayında; 2. gönderi 24 Ekim'de planlı |
-| Otomasyon | 14 alt ajan (yorum cevaplama, paylaşım, hesap ısıtma, Play Console / AdMob / Firebase yöneticileri), oturum açılışında otomatik kurulum |
+| Otomasyon | 15 alt ajan (yorum cevaplama, Instagram/TikTok/LinkedIn paylaşımı, hesap ısıtma, Play Console / AdMob / Firebase yöneticileri), oturum açılışında otomatik kurulum |
 
 ## Özellikler (features)
 
@@ -94,7 +94,7 @@
 - [ ] AdMob kimlik doğrulama ve banka bilgisi (kullanıcı yapacak)
 - [ ] Web sürümünü itch.io ve CrazyGames'e yüklemek (başka ağdan)
 - [ ] Yeni oyun kayıtlarıyla Reels/TikTok kuyruğunu doldurmak (Süpernova, PERFECT serisi, tema/mağaza)
-- [ ] `cloudSave.js` içindeki `nameKey` hatası (`/s+/g` → `/\s+/g`) — mevcut isimler için geçiş planıyla düzeltmek
+- [x] `cloudSave.js` `nameKey` hatası düzeltildi (23 Eki); eski anahtarla alınmış isimler de kontrol ediliyor. Uygulamaya 1.0.14 ile girer
 - [ ] AdMob'a kullanıcının telefonunu test cihazı olarak eklemek
 - [ ] Güvenlik yaması 23 Eki'de `npm update` ile yapıldı (@capacitor/android 8.5.3 kritik düzeltme, vite 8.3.5). Android'e ulaşması için **yeni AAB (1.0.14) derlenip yüklenmeli**
 - [ ] Kalan `npm audit` uyarıları (yalnız geliştirme araçları, uygulamaya girmiyor): `@capacitor/assets` içindeki eski tar/sharp/uuid, firebase'in Node tarafındaki `@grpc/grpc-js` — üst paketler güncellenince tekrar kontrol
@@ -154,7 +154,7 @@
 - **Web sürümü:** paket `store/web/orbit-jump-web.zip`, mağaza metinleri `store/web/listing.md`. Ofis ağı (Sophos) itch.io / CrazyGames / Poki'yi engelliyor → başka ağdan yüklenmeli.
 - **Deploy sonrası:** /play, /privacy, /delete-account, /game sayfaları curl ile 200 kontrol edilir. Firestore kuralları ayrıca onayla deploy edilir.
 - **Ekran görüntüsü için oyun:** `vite preview` ve localStorage `orbit_highscore` yüksek ayarlanır ki test oyunları canlı skor tablosuna yazmasın.
-- **Bilinen hata:** `src/cloudSave.js` `nameKey` içinde `/s+/g` olmalı `/\s+/g`; mevcut isimler için geçiş planıyla düzeltilecek.
+- **İsim anahtarı:** `nameKey` 1.0.13'e kadar `/s+/g` kullanıyordu ("s" harflerini boşluğa çeviriyordu). Düzeltildi; `claimPlayerName` eski anahtardaki ayırmaya da bakar (belgedeki asıl isimle karşılaştırarak). İsim değişince `releaseNames` eski belgeyi siler.
 - **Durum çubuğu:** `~/.claude/statusline.js` (model, efor, bağlam, 5 saatlik ve haftalık limit, branch, telefon, kuyruk, sonraki paylaşım).
 
 ## Telefon (adb) ve video üretimi
@@ -173,7 +173,7 @@
 
 - Instagram: lansman karuseli (20 Eki), Reels R1 "19", R2 "27" (2.100+ izlenme, en iyisi), Süpernova karuseli, R3 özelleştirme, R4 Zen, R6 "Looks easy… then 0" (23 Eki, telefondan, trend müzik) + linkli hikâye. Kuyruk: `store/social/queue.md` (kalan: R5 Hızlı mod, Temalar, Geliştirici hikâyesi, Rekor meydan okuması).
 - TikTok: T1 "27", T2 Zen (webden, 0 izlenme), T3 Hızlı mod (telefondan, 187 izlenme), R6 (23 Eki). Kuyruk: `store/social/tiktok_queue.md`.
-- LinkedIn: 2. gönderi metni `store/social/linkedin_2.md` (24 Ekim planlı).
+- LinkedIn: 2. gönderi metni `store/social/linkedin_2.md` (24 Ekim planlı). Planlı gönderileri `linkedin-paylasim` ajanı atar; yeni gönderi `linkedin_N.md` olarak `(planlanan: YYYY-MM-DD)` başlığıyla eklenir.
 - Reddit Chrome uzantısına kapalı → kullanıcı kendisi paylaşır.
 - Isıtmada etkileşilen hesaplardan bazıları: ach.owl, summitswrong, bigredeight (TikTok), indiegamesdaily (IG). Hassas içerikler (savaş teması, AI tartışması) atlanır.
 
@@ -192,6 +192,7 @@
 | 2 saatte bir | linkedin-yorum | haiku |
 | 10:41, 14:41, 18:41, 22:41 | hesap-isitma | sonnet |
 | 17:03 | ig-gunluk-paylasim | sonnet |
+| 11:13 | linkedin-paylasim (planlı gönderi varsa) | sonnet |
 | 10:07 | gunluk-rapor (Instagram/TikTok/kuyruk) | haiku |
 | 10:17 / 10:27 / 10:37 | play-console / admob-yonetici / firebase-yonetici günlük tur | sonnet |
 | 20:03 | akşam hatırlatması | — |

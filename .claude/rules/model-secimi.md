@@ -34,6 +34,7 @@ Ek kurallar:
 | `play-yorum` | sonnet / low | Play'de herkese açık, geri alınması zahmetli cevap yayınlar |
 | `hesap-isitma` | sonnet / low | Telefon ekranını yorumlayıp elle dokunma; yanlış dokunuş riski |
 | `ig-gunluk-paylasim` | sonnet / medium | Çok adımlı, geri alınamaz herkese açık paylaşım |
+| `linkedin-paylasim` | sonnet / medium | Planlı LinkedIn gönderisi; geri alınamaz herkese açık paylaşım, günde en fazla bir |
 | `play-console` | sonnet / medium | İstek üzerine çalışır; mağaza/yayın değişiklikleri hemen yayına çıkar. Yasal beyanlar ve yayından kaldırma kullanıcı onayı olmadan yapılmaz |
 
 Haiku ajanı işi beceremezse (sayfa okunamadı, yanlış yere tıkladı) aynı iş bir sonraki çalıştırmada `model: "sonnet"` ile tekrarlanır.
