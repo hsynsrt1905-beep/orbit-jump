@@ -2207,80 +2207,90 @@ function App() {
 
         {gameState === 'menu' && (
           <div className="absolute inset-0 z-10 overflow-y-auto overscroll-contain" style={{ touchAction: 'pan-y' }} onClick={(e) => e.stopPropagation()}>
-            <div className="min-h-full flex flex-col items-center justify-center px-4 pb-6" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 96px)' }}>
-              <h1 className="text-4xl sm:text-5xl font-black mb-2 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-center">{t.title}</h1>
-              <p className="text-slate-400 mb-2 font-semibold text-sm text-center">{playerName ? `👤 ${playerName} · ` : ''}{t.best}: {highScore}</p>
-              <div className="w-full max-w-[240px] mb-4">
-                <div className="flex justify-between text-[11px] font-black mb-1">
-                  <span className="text-amber-300">{t.lv} {lvl.level}</span>
-                  <span className="text-slate-500">{lvl.into}/{lvl.need} XP</span>
-                </div>
-                <div className="h-1.5 rounded-full bg-slate-800 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-amber-400 to-orange-500" style={{ width: `${Math.round((lvl.into / lvl.need) * 100)}%` }} />
+            {/* Üç bölge: üstte başlık ve seviye, ortada oyna alanı, altta gezinme çubuğu */}
+            <div className="min-h-full w-full max-w-md mx-auto flex flex-col px-5" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 100px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 20px)' }}>
+              <div className="flex flex-col items-center">
+                <h1 className="text-5xl sm:text-6xl font-black mb-2 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-center">{t.title}</h1>
+                <p className="text-slate-300 mb-3 font-semibold text-base text-center">{playerName ? `👤 ${playerName} · ` : ''}{t.best}: {highScore}</p>
+                <div className="w-full max-w-xs">
+                  <div className="flex justify-between text-xs font-black mb-1">
+                    <span className="text-amber-300">{t.lv} {lvl.level}</span>
+                    <span className="text-slate-400">{lvl.into}/{lvl.need} XP</span>
+                  </div>
+                  <div className="h-2 rounded-full bg-slate-800 overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-amber-400 to-orange-500" style={{ width: `${Math.round((lvl.into / lvl.need) * 100)}%` }} />
+                  </div>
                 </div>
               </div>
 
-              {challenge && (
-                <div className="w-full max-w-xs bg-rose-950/80 border border-rose-500/60 rounded-2xl p-3 mb-4 text-center">
-                  <p className="text-rose-300 text-xs font-black">{t.challengeTitle}</p>
-                  <p className="text-white text-sm font-bold mb-2">{t.challengeBeat.replace('{n}', String(challenge.target))}</p>
-                  <div className="flex gap-2 justify-center">
-                    <button onClick={() => { const c = challenge; setActiveChallenge(c); setChallenge(null); setGameMode(c.mode); startGame(c.mode, c.seed); }} className="bg-gradient-to-r from-rose-500 to-orange-500 text-white font-black py-2 px-6 rounded-full text-sm">{t.challengeAccept}</button>
-                    <button onClick={() => { playSound('click', soundOn); setChallenge(null); }} className="bg-slate-800 text-slate-400 font-bold py-2 px-3 rounded-full text-sm">✕</button>
+              <div className="flex-1 flex flex-col justify-center gap-4 py-6">
+                {challenge && (
+                  <div className="w-full bg-rose-950/80 border border-rose-500/60 rounded-2xl p-4 text-center">
+                    <p className="text-rose-300 text-sm font-black">{t.challengeTitle}</p>
+                    <p className="text-white text-base font-bold mb-3">{t.challengeBeat.replace('{n}', String(challenge.target))}</p>
+                    <div className="flex gap-2 justify-center">
+                      <button onClick={() => { const c = challenge; setActiveChallenge(c); setChallenge(null); setGameMode(c.mode); startGame(c.mode, c.seed); }} className="flex-1 bg-gradient-to-r from-rose-500 to-orange-500 text-white font-black py-3 rounded-full text-base">{t.challengeAccept}</button>
+                      <button onClick={() => { playSound('click', soundOn); setChallenge(null); }} className="bg-slate-800 text-slate-400 font-bold py-3 px-5 rounded-full text-base">✕</button>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              <div className="w-full max-w-sm mb-4">
-                <div className="grid grid-cols-4 gap-1 bg-slate-900/90 border border-slate-700/60 rounded-2xl p-1">
-                  {[
-                    ['normal', '🪐', t.tabNormal, 'bg-cyan-500 text-slate-950'],
-                    ['supernova', '💥', t.tabSupernova, 'bg-red-600 text-white'],
-                    ['zen', '🧘', t.tabZen, 'bg-emerald-500 text-slate-950'],
-                    ['fast', '⚡', t.tabFast, 'bg-amber-500 text-slate-950']
-                  ].map(([id, icon, label, on]) => {
-                    const selected = gameMode === id || (id === 'normal' && gameMode === 'daily');
-                    return (
-                      <button key={id} onClick={() => { playSound('click', soundOn); setGameMode(id); }} className={`flex flex-col items-center gap-0.5 py-1.5 rounded-xl min-w-0 transition-colors ${selected ? `${on} font-black shadow-md` : 'text-slate-400 font-bold'}`}>
-                        <span className="text-base leading-none">{icon}</span>
-                        <span className="text-[10px] w-full truncate text-center">{label}</span>
-                      </button>
-                    );
-                  })}
+                <div className="w-full">
+                  <div className="grid grid-cols-4 gap-1 bg-slate-900/90 border border-slate-700/60 rounded-2xl p-1">
+                    {[
+                      ['normal', '🪐', t.tabNormal, 'bg-cyan-500 text-slate-950'],
+                      ['supernova', '💥', t.tabSupernova, 'bg-red-600 text-white'],
+                      ['zen', '🧘', t.tabZen, 'bg-emerald-500 text-slate-950'],
+                      ['fast', '⚡', t.tabFast, 'bg-amber-500 text-slate-950']
+                    ].map(([id, icon, label, on]) => {
+                      const selected = gameMode === id || (id === 'normal' && gameMode === 'daily');
+                      return (
+                        <button key={id} onClick={() => { playSound('click', soundOn); setGameMode(id); }} className={`flex flex-col items-center gap-1 py-2.5 rounded-xl min-w-0 transition-colors ${selected ? `${on} font-black shadow-md` : 'text-slate-400 font-bold'}`}>
+                          <span className="text-2xl leading-none">{icon}</span>
+                          <span className="text-xs w-full truncate text-center">{label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <p className="text-center text-xs font-bold text-slate-400 mt-2">{t[{ supernova: 'hintSupernova', zen: 'hintZen', fast: 'hintFast' }[gameMode] || 'hintNormal']}</p>
                 </div>
-                <p className="text-center text-[11px] font-bold text-slate-400 mt-1.5">{t[{ supernova: 'hintSupernova', zen: 'hintZen', fast: 'hintFast' }[gameMode] || 'hintNormal']}</p>
+
+                <button onClick={() => {
+                  // Günlük meydan okuma kendi butonundan açılır; OYNA her zaman seçili normal modu başlatır
+                  const mode = gameMode === 'daily' ? 'normal' : gameMode;
+                  setGameMode(mode); startGame(mode);
+                }} className="w-full bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-5 rounded-3xl text-3xl tracking-widest shadow-[0_0_30px_rgba(34,211,238,0.45)] cursor-pointer">{t.play}</button>
+                <button onClick={() => { setGameMode('daily'); startGame('daily'); }} className="w-full flex flex-col items-center bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white font-black py-3 rounded-2xl text-base shadow-[0_0_20px_rgba(192,38,211,0.4)] cursor-pointer">
+                  <span>{t.modeDaily}{todayStats.daily === 0 ? ' 🆕' : ''}</span>
+                  <span className="text-xs font-bold text-fuchsia-100/80">{t.dailyHint}</span>
+                </button>
+
+                {canSaveStreak && isStreakReady && (
+                  <div className="w-full bg-orange-950/70 border border-orange-500/50 rounded-2xl p-3 text-center">
+                    <p className="text-orange-200 text-sm font-black mb-2">🔥 {t.streakLost.replace('{n}', String(streakDays))}</p>
+                    <div className="flex gap-2 justify-center">
+                      {!isWeb && <button onClick={() => saveStreak(true)} className="flex-1 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black py-2.5 rounded-full text-sm">{t.streakSaveAd}</button>}
+                      <button onClick={() => saveStreak(false)} className={`flex-1 font-black py-2.5 rounded-full text-sm ${crystals >= STREAK_SAVE_COST ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-500'}`}>{t.streakSaveCrystals.replace('{n}', String(STREAK_SAVE_COST))}</button>
+                    </div>
+                  </div>
+                )}
+                <div className="grid grid-cols-2 gap-3">
+                  {!(canSaveStreak && isStreakReady) && (
+                    <button onClick={() => claimStreakBonus()} disabled={!isStreakReady} className={`${isWeb ? 'col-span-2' : ''} flex flex-col items-center justify-center font-black py-3 rounded-2xl text-sm ${isStreakReady ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 animate-pulse' : 'bg-slate-900/80 border border-slate-800 text-slate-500'}`}>
+                      <span>🔥 {t.dayWord} {streakDays}</span>
+                      <span className="text-xs font-bold">{isStreakReady ? `💎 +${(daysSinceStreak === 1 ? streakDays + 1 : 1) * 15}` : t.streakClaimed}</span>
+                    </button>
+                  )}
+                  {!isWeb && (
+                    <button onClick={() => { if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); track('reward_ad_crystals'); }); } }} disabled={isAdLimitReached} className={`${canSaveStreak && isStreakReady ? 'col-span-2' : ''} flex flex-col items-center justify-center font-black py-3 rounded-2xl text-sm ${isAdLimitReached ? 'bg-slate-900/80 border border-slate-800 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white'}`}>
+                      <span>📺 💎 +50</span>
+                      <span className="text-xs font-bold">{isAdLimitReached ? t.adLimitReached : `${2 - dailyAdCount}/2`}</span>
+                    </button>
+                  )}
+                </div>
               </div>
 
-              <button onClick={() => {
-                // Günlük meydan okuma kendi butonundan açılır; OYNA her zaman seçili normal modu başlatır
-                const mode = gameMode === 'daily' ? 'normal' : gameMode;
-                setGameMode(mode); startGame(mode);
-              }} className="bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950 font-black py-3.5 px-16 rounded-full text-xl shadow-[0_0_25px_rgba(34,211,238,0.4)] mb-3 cursor-pointer">{t.play}</button>
-              <button onClick={() => { setGameMode('daily'); startGame('daily'); }} className="flex flex-col items-center bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white font-black py-2 px-7 rounded-2xl text-sm shadow-[0_0_20px_rgba(192,38,211,0.4)] mb-4 cursor-pointer">
-                <span>{t.modeDaily}{todayStats.daily === 0 ? ' 🆕' : ''}</span>
-                <span className="text-[10px] font-bold text-fuchsia-100/80">{t.dailyHint}</span>
-              </button>
-
-              {canSaveStreak && isStreakReady ? (
-                <div className="w-full max-w-xs bg-orange-950/70 border border-orange-500/50 rounded-2xl p-3 mb-3 text-center">
-                  <p className="text-orange-200 text-xs font-black mb-2">🔥 {t.streakLost.replace('{n}', String(streakDays))}</p>
-                  <div className="flex gap-2 justify-center">
-                    {!isWeb && <button onClick={() => saveStreak(true)} className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black py-1.5 px-3 rounded-full text-xs">{t.streakSaveAd}</button>}
-                    <button onClick={() => saveStreak(false)} className={`font-black py-1.5 px-3 rounded-full text-xs ${crystals >= STREAK_SAVE_COST ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-500'}`}>{t.streakSaveCrystals.replace('{n}', String(STREAK_SAVE_COST))}</button>
-                  </div>
-                </div>
-              ) : (
-                <button onClick={() => claimStreakBonus()} disabled={!isStreakReady} className={`flex items-center gap-2 font-bold py-2 px-5 rounded-full text-xs mb-3 ${isStreakReady ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 animate-pulse' : 'bg-slate-900/60 text-slate-500'}`}>
-                  🔥 {t.dayWord} {streakDays} · {isStreakReady ? `💎 +${(daysSinceStreak === 1 ? streakDays + 1 : 1) * 15}` : t.streakClaimed}
-                </button>
-              )}
-              {!isWeb && (
-                <button onClick={() => { if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); track('reward_ad_crystals'); }); } }} disabled={isAdLimitReached} className={`flex items-center gap-2 font-bold py-2 px-5 rounded-full text-xs mb-5 ${isAdLimitReached ? 'bg-slate-900/60 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white'}`}>
-                  📺 {isAdLimitReached ? t.adLimitReached : `${t.watchAdReward} (${2 - dailyAdCount}/2)`}
-                </button>
-              )}
-
-              <div className="grid grid-cols-5 gap-2 w-full max-w-sm mb-4">
+              <div className="grid grid-cols-5 gap-2">
                 {[
                   ['🛒', t.shop, () => setGameState('shop'), false],
                   ['🏆', t.missions, () => setGameState('missions'), hasClaimableDaily],
@@ -2288,18 +2298,18 @@ function App() {
                   ['🏅', t.badges, () => setGameState('badges'), false],
                   ['⚙️', t.settings, () => setGameState('settings'), false]
                 ].map(([icon, label, go, dot]) => (
-                  <button key={icon} onClick={() => { playSound('click', soundOn); go(); }} className="relative flex flex-col items-center justify-center gap-1 bg-slate-900/90 border border-slate-700/60 rounded-2xl py-2.5 px-1 min-w-0">
-                    <span className="text-xl leading-none">{icon}</span>
-                    <span className="text-[10px] font-bold text-slate-300 w-full truncate text-center">{label}</span>
-                    {dot && <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-amber-400 animate-pulse" />}
+                  <button key={icon} onClick={() => { playSound('click', soundOn); go(); }} className="relative flex flex-col items-center justify-center gap-1.5 bg-slate-900/90 border border-slate-700/60 rounded-2xl py-3 px-1 min-w-0">
+                    <span className="text-2xl leading-none">{icon}</span>
+                    <span className="text-[11px] font-bold text-slate-300 w-full truncate text-center">{label}</span>
+                    {dot && <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-amber-400 animate-pulse" />}
                   </button>
                 ))}
               </div>
 
               {isWeb && (
-                <div className="flex flex-col items-center">
-                  <button onClick={() => { track('store_click', { from: 'menu' }); openStore(); }} className="bg-white text-slate-900 font-black py-2 px-5 rounded-full text-xs shadow-md cursor-pointer">{t.getOnPlay}</button>
-                  <p className="text-slate-400 text-[11px] font-bold mt-1 text-center">{t.webHint}</p>
+                <div className="flex flex-col items-center mt-4">
+                  <button onClick={() => { track('store_click', { from: 'menu' }); openStore(); }} className="w-full bg-white text-slate-900 font-black py-3 rounded-2xl text-sm shadow-md cursor-pointer">{t.getOnPlay}</button>
+                  <p className="text-slate-400 text-xs font-bold mt-1 text-center">{t.webHint}</p>
                 </div>
               )}
             </div>
