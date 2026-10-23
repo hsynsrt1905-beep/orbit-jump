@@ -254,7 +254,7 @@ const extraTranslations = {
     newBest: "🏆 NEW BEST!", newRecord: "🏆 NEW RECORD!", toBeatBest: "Only {n} to beat your best!", bestWas: "Best: {n}",
     streakLost: "Your {n}-day streak broke!", streakSave: "SAVE STREAK", streakSaveAd: "📺 Watch ad", streakSaveCrystals: "💎 {n}",
     lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
-    settings: "Settings", language: "Language", account: "Account", graphics: "Graphics", graphicsHigh: "High", graphicsLow: "Low",
+    settings: "Settings", soundLabel: "Sound", onLabel: "On", offLabel: "Off", language: "Language", account: "Account", graphics: "Graphics", graphicsHigh: "High", graphicsLow: "Low",
     challengeTitle: "⚔️ CHALLENGE", challengeBeat: "Beat {n} on the same map", challengeAccept: "ACCEPT", challengeWon: "🎉 Challenge won!", challengeShort: "{n} short of the challenge",
     challengeShare: "I scored {n} in Orbit Jump. Beat me on the same map! 🚀", challengeSend: "⚔️ CHALLENGE A FRIEND",
   },
@@ -265,7 +265,7 @@ const extraTranslations = {
     newBest: "🏆 YENİ REKOR!", newRecord: "🏆 YENİ REKOR!", toBeatBest: "Rekoruna sadece {n} kaldı!", bestWas: "Rekor: {n}",
     streakLost: "{n} günlük serin bozuldu!", streakSave: "SERİYİ KURTAR", streakSaveAd: "📺 Reklam izle", streakSaveCrystals: "💎 {n}",
     lv: "Sv", levelUp: "⬆️ SEVİYE {n}!", xpGain: "+{n} XP",
-    settings: "Ayarlar", language: "Dil", account: "Hesap", graphics: "Grafik", graphicsHigh: "Yüksek", graphicsLow: "Düşük",
+    settings: "Ayarlar", soundLabel: "Ses", onLabel: "Açık", offLabel: "Kapalı", language: "Dil", account: "Hesap", graphics: "Grafik", graphicsHigh: "Yüksek", graphicsLow: "Düşük",
     challengeTitle: "⚔️ MEYDAN OKUMA", challengeBeat: "Aynı haritada {n} puanı geç", challengeAccept: "KABUL ET", challengeWon: "🎉 Meydan okumayı kazandın!", challengeShort: "Meydan okumaya {n} puan kaldı",
     challengeShare: "Orbit Jump'ta {n} puan yaptım. Aynı haritada geç bakalım! 🚀", challengeSend: "⚔️ ARKADAŞINA MEYDAN OKU",
   },
@@ -276,7 +276,7 @@ const extraTranslations = {
     newBest: "🏆 ¡NUEVO RÉCORD!", newRecord: "🏆 ¡NUEVO RÉCORD!", toBeatBest: "¡Solo {n} para batir tu récord!", bestWas: "Récord: {n}",
     streakLost: "¡Tu racha de {n} días se rompió!", streakSave: "SALVAR RACHA", streakSaveAd: "📺 Ver anuncio", streakSaveCrystals: "💎 {n}",
     lv: "Nv", levelUp: "⬆️ ¡NIVEL {n}!", xpGain: "+{n} XP",
-    settings: "Ajustes", language: "Idioma", account: "Cuenta", graphics: "Gráficos", graphicsHigh: "Altos", graphicsLow: "Bajos",
+    settings: "Ajustes", soundLabel: "Sonido", onLabel: "Sí", offLabel: "No", language: "Idioma", account: "Cuenta", graphics: "Gráficos", graphicsHigh: "Altos", graphicsLow: "Bajos",
     challengeTitle: "⚔️ DESAFÍO", challengeBeat: "Supera {n} en el mismo mapa", challengeAccept: "ACEPTAR", challengeWon: "🎉 ¡Desafío superado!", challengeShort: "Te faltaron {n} para el desafío",
     challengeShare: "Hice {n} puntos en Orbit Jump. ¡Supérame en el mismo mapa! 🚀", challengeSend: "⚔️ DESAFIAR A UN AMIGO",
   },
@@ -287,7 +287,7 @@ const extraTranslations = {
     newBest: "🏆 NEUER REKORD!", newRecord: "🏆 NEUER REKORD!", toBeatBest: "Nur noch {n} bis zum Rekord!", bestWas: "Rekord: {n}",
     streakLost: "Deine {n}-Tage-Serie ist gerissen!", streakSave: "SERIE RETTEN", streakSaveAd: "📺 Werbung ansehen", streakSaveCrystals: "💎 {n}",
     lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
-    settings: "Einstellungen", language: "Sprache", account: "Konto", graphics: "Grafik", graphicsHigh: "Hoch", graphicsLow: "Niedrig",
+    settings: "Einstellungen", soundLabel: "Ton", onLabel: "An", offLabel: "Aus", language: "Sprache", account: "Konto", graphics: "Grafik", graphicsHigh: "Hoch", graphicsLow: "Niedrig",
     challengeTitle: "⚔️ HERAUSFORDERUNG", challengeBeat: "Schlage {n} auf derselben Karte", challengeAccept: "ANNEHMEN", challengeWon: "🎉 Herausforderung geschafft!", challengeShort: "{n} fehlten zur Herausforderung",
     challengeShare: "Ich habe {n} Punkte in Orbit Jump. Schlag mich auf derselben Karte! 🚀", challengeSend: "⚔️ FREUND HERAUSFORDERN",
   },
@@ -298,7 +298,7 @@ const extraTranslations = {
     newBest: "🏆 НОВЫЙ РЕКОРД!", newRecord: "🏆 НОВЫЙ РЕКОРД!", toBeatBest: "До рекорда всего {n}!", bestWas: "Рекорд: {n}",
     streakLost: "Серия из {n} дн. прервалась!", streakSave: "СПАСТИ СЕРИЮ", streakSaveAd: "📺 Смотреть рекламу", streakSaveCrystals: "💎 {n}",
     lv: "Ур", levelUp: "⬆️ УРОВЕНЬ {n}!", xpGain: "+{n} XP",
-    settings: "Настройки", language: "Язык", account: "Аккаунт", graphics: "Графика", graphicsHigh: "Высокая", graphicsLow: "Низкая",
+    settings: "Настройки", soundLabel: "Звук", onLabel: "Вкл", offLabel: "Выкл", language: "Язык", account: "Аккаунт", graphics: "Графика", graphicsHigh: "Высокая", graphicsLow: "Низкая",
     challengeTitle: "⚔️ ВЫЗОВ", challengeBeat: "Побейте {n} на той же карте", challengeAccept: "ПРИНЯТЬ", challengeWon: "🎉 Вызов выполнен!", challengeShort: "До вызова не хватило {n}",
     challengeShare: "Мой результат в Orbit Jump — {n}. Побей меня на той же карте! 🚀", challengeSend: "⚔️ БРОСИТЬ ВЫЗОВ ДРУГУ",
   }
@@ -2210,7 +2210,7 @@ function App() {
           {gameState === 'playing' && <div className="pointer-events-none flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold px-4 max-[380px]:px-3 h-12 max-[380px]:h-10 rounded-full text-lg shadow-md">💎 {runCrystals}</div>}
           {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setIsPaused(true); }} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">⏸️</button>}
           {gameState === 'playing' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); exitToMenu(); }} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">🏠</button>}
-          {gameState !== 'playing' && <button onClick={(e) => { e.stopPropagation(); toggleLite(); }} aria-label={liteMode ? 'Graphics: low' : 'Graphics: high'} className={`w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md ${liteMode ? 'border-amber-500/70' : 'border-slate-700/60'}`}>{liteMode ? '⚡' : '✨'}</button>}
+          {gameState === 'menu' && <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('settings'); }} aria-label={t.settings} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">⚙️</button>}
           <button onClick={(e) => { e.stopPropagation(); toggleSound(); }} className="w-12 h-12 max-[380px]:w-10 max-[380px]:h-10 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl cursor-pointer shadow-md">{soundOn ? '🔊' : '🔇'}</button>
         </div>
 
@@ -2299,17 +2299,16 @@ function App() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-4 gap-2.5">
                 {[
                   ['🛒', t.shop, () => setGameState('shop'), false],
                   ['🏆', t.missions, () => setGameState('missions'), hasClaimableDaily],
                   ['👑', t.leaderboard, () => { setGameState('leaderboard'); fetchOnlineScores('weekly'); }, false],
-                  ['🏅', t.badges, () => setGameState('badges'), false],
-                  ['⚙️', t.settings, () => setGameState('settings'), false]
+                  ['🏅', t.badges, () => setGameState('badges'), false]
                 ].map(([icon, label, go, dot]) => (
-                  <button key={icon} onClick={() => { playSound('click', soundOn); go(); }} className="relative flex flex-col items-center justify-center gap-1.5 bg-slate-900/90 border border-slate-700/60 rounded-2xl py-3 px-1 min-w-0">
-                    <span className="text-2xl leading-none">{icon}</span>
-                    <span className="text-[11px] font-bold text-slate-300 w-full truncate text-center">{label}</span>
+                  <button key={icon} onClick={() => { playSound('click', soundOn); go(); }} className="relative flex flex-col items-center justify-center gap-2 bg-slate-900/90 border border-slate-700/60 rounded-2xl py-4 [@media(max-height:700px)]:py-3 px-1 min-w-0">
+                    <span className="text-3xl leading-none">{icon}</span>
+                    <span className="text-xs font-bold text-slate-300 w-full truncate text-center">{label}</span>
                     {dot && <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-amber-400 animate-pulse" />}
                   </button>
                 ))}
@@ -2327,53 +2326,65 @@ function App() {
 
         {gameState === 'settings' && (
           <div className="absolute inset-0 z-10 overflow-y-auto overscroll-contain" style={{ touchAction: 'pan-y' }} onClick={(e) => e.stopPropagation()}>
-            <div className="flex flex-col w-full max-w-md mx-auto px-6 pb-8" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 100px)' }}>
-              <div className="flex items-center gap-3 mb-6">
-                <button onClick={() => { playSound('click', soundOn); setGameState('menu'); }} className="w-11 h-11 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-lg">←</button>
-                <h2 className="text-2xl font-black text-cyan-300">{t.settings}</h2>
+            <div className="flex flex-col gap-6 w-full max-w-md mx-auto px-5" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 100px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 24px)' }}>
+              <div className="flex items-center gap-4">
+                <button onClick={() => { playSound('click', soundOn); setGameState('menu'); }} className="w-12 h-12 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl">←</button>
+                <h2 className="text-3xl font-black text-cyan-300">{t.settings}</h2>
               </div>
 
-              <p className="text-xs font-black text-slate-400 mb-2">🌐 {t.language}</p>
-              <div className="grid grid-cols-2 gap-2 mb-6">
-                {Object.keys(translations).map((l) => (
-                  <button key={l} onClick={() => { playSound('click', soundOn); setLang(l); localStorage.setItem('orbitJumpLang', l); }} className={`py-2.5 rounded-xl font-bold text-sm border ${lang === l ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>{LANG_NAMES[l]}</button>
-                ))}
-              </div>
+              <section>
+                <p className="text-sm font-black text-slate-300 mb-3">🌐 {t.language}</p>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {Object.keys(translations).map((l) => (
+                    <button key={l} onClick={() => { playSound('click', soundOn); setLang(l); localStorage.setItem('orbitJumpLang', l); }} className={`py-4 rounded-2xl font-bold text-base border ${lang === l ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>{LANG_NAMES[l]}</button>
+                  ))}
+                </div>
+              </section>
 
-              <p className="text-xs font-black text-slate-400 mb-2">✨ {t.graphics}</p>
-              <div className="grid grid-cols-2 gap-2 mb-6">
-                <button onClick={() => { if (liteMode) toggleLite(); }} className={`py-2.5 rounded-xl font-bold text-sm border ${!liteMode ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>{t.graphicsHigh}</button>
-                <button onClick={() => { if (!liteMode) toggleLite(); }} className={`py-2.5 rounded-xl font-bold text-sm border ${liteMode ? 'bg-amber-500 border-amber-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>{t.graphicsLow}</button>
-              </div>
+              <section>
+                <p className="text-sm font-black text-slate-300 mb-3">🔊 {t.soundLabel}</p>
+                <div className="grid grid-cols-2 gap-2.5">
+                  <button onClick={() => { if (!soundOn) toggleSound(); }} className={`py-4 rounded-2xl font-bold text-base border ${soundOn ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>🔊 {t.onLabel}</button>
+                  <button onClick={() => { if (soundOn) toggleSound(); }} className={`py-4 rounded-2xl font-bold text-base border ${!soundOn ? 'bg-slate-600 border-slate-400 text-white font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>🔇 {t.offLabel}</button>
+                </div>
+              </section>
+
+              <section>
+                <p className="text-sm font-black text-slate-300 mb-3">✨ {t.graphics}</p>
+                <div className="grid grid-cols-2 gap-2.5">
+                  <button onClick={() => { if (liteMode) toggleLite(); }} className={`py-4 rounded-2xl font-bold text-base border ${!liteMode ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>✨ {t.graphicsHigh}</button>
+                  <button onClick={() => { if (!liteMode) toggleLite(); }} className={`py-4 rounded-2xl font-bold text-base border ${liteMode ? 'bg-amber-500 border-amber-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>⚡ {t.graphicsLow}</button>
+                </div>
+              </section>
 
               {!isWeb && (
-                <>
-                  <p className="text-xs font-black text-slate-400 mb-2">☁️ {t.account}</p>
-                  <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 mb-6 flex flex-col items-center gap-3">
+                <section>
+                  <p className="text-sm font-black text-slate-300 mb-3">☁️ {t.account}</p>
+                  <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 flex flex-col items-center gap-4">
                     {isGoogleUser(authUser) ? (
                       <>
-                        <p className="text-emerald-300 text-sm font-bold">☁️ {cloudReady ? t.signedInAs : t.syncing}</p>
-                        <div className="flex gap-4 text-xs font-bold">
+                        <p className="text-emerald-300 text-base font-bold">☁️ {cloudReady ? t.signedInAs : t.syncing}</p>
+                        <div className="flex gap-6 text-sm font-bold">
                           <button onClick={() => handleSignOut()} className="text-slate-400 underline">{t.signOut}</button>
                           <button onClick={() => handleDeleteAccount()} disabled={authBusy} className="text-red-400/80 underline">{t.deleteAccount}</button>
                         </div>
                       </>
                     ) : (
                       <>
-                        <button onClick={() => handleGoogleSignIn()} disabled={authBusy} className="flex items-center gap-2 bg-white text-slate-800 font-bold py-2 px-4 rounded-full text-sm shadow-md disabled:opacity-60">
+                        <button onClick={() => handleGoogleSignIn()} disabled={authBusy} className="flex items-center gap-2 bg-white text-slate-800 font-bold py-3 px-6 rounded-full text-base shadow-md disabled:opacity-60">
                           <span className="font-black" style={{ color: '#4285F4' }}>G</span> {authBusy ? t.syncing : t.signInGoogle}
                         </button>
-                        {authError && <p className="text-red-400 text-[11px] font-bold">{t.signInFailed}</p>}
+                        {authError && <p className="text-red-400 text-xs font-bold">{t.signInFailed}</p>}
                       </>
                     )}
                     {privacyOptionsRequired && (
-                      <button onClick={() => { AdMob.showPrivacyOptionsForm().catch(() => {}); }} className="text-slate-500 underline text-xs font-bold">{t.privacyOptions}</button>
+                      <button onClick={() => { AdMob.showPrivacyOptionsForm().catch(() => {}); }} className="text-slate-500 underline text-sm font-bold">{t.privacyOptions}</button>
                     )}
                   </div>
-                </>
+                </section>
               )}
 
-              <button onClick={() => { playSound('click', soundOn); setGameState('howtoplay'); }} className="bg-slate-900/90 border border-slate-700/60 text-teal-300 font-bold py-3 rounded-xl text-sm">❓ {t.howToPlay}</button>
+              <button onClick={() => { playSound('click', soundOn); setGameState('howtoplay'); }} className="bg-slate-900/90 border border-slate-700/60 text-teal-300 font-bold py-4 rounded-2xl text-base">❓ {t.howToPlay}</button>
             </div>
           </div>
         )}
