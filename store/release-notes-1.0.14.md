@@ -1,4 +1,4 @@
-# 1.0.14 (kod 15) — "Yenilikler" metinleri
+# 1.0.14 (kod 16) — "Yenilikler" metinleri
 
 Play Console sürüm notu biçimi (her dil en fazla 500 karakter):
 
