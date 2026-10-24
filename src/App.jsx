@@ -249,6 +249,7 @@ const translations = {
 // Rekor, seri kurtarma, seviye, meydan okuma, etkinlik ve ayarlar metinleri
 const extraTranslations = {
   en: {
+    helpBallFeature: "Characters: Collect 7 characters and upgrade them up to Level 5 to widen Perfect zones, unlock a glowing aura and earn crystal bonuses.", helpShopFeature: "Shop & Themes: Customize your game with 4 space themes, custom trails and boost packs.",
     badge5: "Orbit Pro", badge5Desc: "Score 25 in one run", badge6: "Comet Rider", badge6Desc: "Score 50 in one run", badge7: "Combo Master", badge7Desc: "Hit an 8x combo", badge8: "Flawless", badge8Desc: "Land 100 Perfect jumps", badge9: "Space Regular", badge9Desc: "Play 50 runs", badge10: "Crew Collector", badge10Desc: "Own 3 characters", badge11: "Veteran Explorer", badge11Desc: "Reach level 10", badge12: "Weekly Explorer", badge12Desc: "Keep a 7-day streak", playAchievements: "Google Play achievements",
     tabBalls: "SKINS", skinAstronaut: "Astronaut", skinRocket: "Rocket", skinUfo: "UFO", skinAlien: "Alien", skinRobot: "Robot", skinCat: "Space Cat", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Fast",
@@ -261,6 +262,7 @@ const extraTranslations = {
     challengeShare: "I scored {n} in Orbit Jump. Beat me on the same map! 🚀", challengeSend: "⚔️ CHALLENGE A FRIEND",
   },
   tr: {
+    helpBallFeature: "Karakterler: 7 karakteri topla ve 5. seviyeye kadar geliştir; Mükemmel alanı genişlesin, parlayan hale açılsın, ekstra kristal kazan.", helpShopFeature: "Mağaza & Temalar: 4 uzay teması, özel izler ve güçlendirme paketleriyle oyununu kişiselleştir.",
     badge5: "Yörünge Ustası", badge5Desc: "Tek turda 25 puan yap", badge6: "Kuyruklu Yıldız", badge6Desc: "Tek turda 50 puan yap", badge7: "Kombo Ustası", badge7Desc: "8x kombo yap", badge8: "Kusursuz", badge8Desc: "100 Mükemmel iniş yap", badge9: "Uzay Müdavimi", badge9Desc: "50 tur oyna", badge10: "Mürettebat", badge10Desc: "3 karaktere sahip ol", badge11: "Kıdemli Kâşif", badge11Desc: "10. seviyeye ulaş", badge12: "Haftalık Kâşif", badge12Desc: "7 günlük seri yap", playAchievements: "Google Play başarımları",
     tabBalls: "KARAKTER", skinAstronaut: "Astronot", skinRocket: "Roket", skinUfo: "UFO", skinAlien: "Uzaylı", skinRobot: "Robot", skinCat: "Uzay Kedisi", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Süpernova", tabZen: "Zen", tabFast: "Hızlı",
@@ -273,6 +275,7 @@ const extraTranslations = {
     challengeShare: "Orbit Jump'ta {n} puan yaptım. Aynı haritada geç bakalım! 🚀", challengeSend: "⚔️ ARKADAŞINA MEYDAN OKU",
   },
   es: {
+    helpBallFeature: "Personajes: Colecciona 7 personajes y mejóralos hasta el nivel 5 para ampliar la zona Perfecta, desbloquear un aura brillante y ganar cristales extra.", helpShopFeature: "Tienda y temas: Personaliza tu juego con 4 temas espaciales, estelas y paquetes de potenciadores.",
     badge5: "Experto orbital", badge5Desc: "Haz 25 puntos en una partida", badge6: "Jinete de cometas", badge6Desc: "Haz 50 puntos en una partida", badge7: "Maestro del combo", badge7Desc: "Logra un combo x8", badge8: "Impecable", badge8Desc: "Consigue 100 saltos Perfectos", badge9: "Habitual del espacio", badge9Desc: "Juega 50 partidas", badge10: "Coleccionista", badge10Desc: "Ten 3 personajes", badge11: "Explorador veterano", badge11Desc: "Llega al nivel 10", badge12: "Explorador semanal", badge12Desc: "Mantén una racha de 7 días", playAchievements: "Logros de Google Play",
     tabBalls: "PERSONAJES", skinAstronaut: "Astronauta", skinRocket: "Cohete", skinUfo: "OVNI", skinAlien: "Alien", skinRobot: "Robot", skinCat: "Gato espacial", skinMeteor: "Meteorito",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Rápido",
@@ -285,6 +288,7 @@ const extraTranslations = {
     challengeShare: "Hice {n} puntos en Orbit Jump. ¡Supérame en el mismo mapa! 🚀", challengeSend: "⚔️ DESAFIAR A UN AMIGO",
   },
   de: {
+    helpBallFeature: "Figuren: Sammle 7 Figuren und verbessere sie bis Level 5 – größere Perfekt-Zone, leuchtende Aura und Bonus-Kristalle.", helpShopFeature: "Shop & Themen: Gestalte dein Spiel mit 4 Weltraum-Themen, Spuren und Power-up-Paketen.",
     badge5: "Orbit-Profi", badge5Desc: "Erreiche 25 Punkte in einer Runde", badge6: "Kometenreiter", badge6Desc: "Erreiche 50 Punkte in einer Runde", badge7: "Kombo-Meister", badge7Desc: "Schaffe eine 8x-Kombo", badge8: "Makellos", badge8Desc: "Schaffe 100 perfekte Sprünge", badge9: "Stammgast im All", badge9Desc: "Spiele 50 Runden", badge10: "Crew-Sammler", badge10Desc: "Besitze 3 Figuren", badge11: "Erfahrener Entdecker", badge11Desc: "Erreiche Level 10", badge12: "Wochen-Entdecker", badge12Desc: "Halte eine 7-Tage-Serie", playAchievements: "Google Play-Erfolge",
     tabBalls: "FIGUREN", skinAstronaut: "Astronaut", skinRocket: "Rakete", skinUfo: "UFO", skinAlien: "Alien", skinRobot: "Roboter", skinCat: "Weltraumkatze", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Schnell",
@@ -297,6 +301,7 @@ const extraTranslations = {
     challengeShare: "Ich habe {n} Punkte in Orbit Jump. Schlag mich auf derselben Karte! 🚀", challengeSend: "⚔️ FREUND HERAUSFORDERN",
   },
   ru: {
+    helpBallFeature: "Персонажи: Соберите 7 персонажей и улучшайте их до 5 уровня — шире зона «Идеально», сияющая аура и бонусные кристаллы.", helpShopFeature: "Магазин и темы: Настройте игру с 4 космическими темами, следами и наборами усилений.",
     badge5: "Мастер орбиты", badge5Desc: "Наберите 25 очков за забег", badge6: "Наездник комет", badge6Desc: "Наберите 50 очков за забег", badge7: "Мастер комбо", badge7Desc: "Сделайте комбо x8", badge8: "Безупречный", badge8Desc: "Сделайте 100 идеальных прыжков", badge9: "Завсегдатай космоса", badge9Desc: "Сыграйте 50 забегов", badge10: "Коллекционер", badge10Desc: "Соберите 3 персонажа", badge11: "Опытный исследователь", badge11Desc: "Достигните 10 уровня", badge12: "Исследователь недели", badge12Desc: "Серия из 7 дней", playAchievements: "Достижения Google Play",
     tabBalls: "ГЕРОИ", skinAstronaut: "Астронавт", skinRocket: "Ракета", skinUfo: "НЛО", skinAlien: "Пришелец", skinRobot: "Робот", skinCat: "Космокот", skinMeteor: "Метеор",
     tabNormal: "Обычный", tabSupernova: "Сверхновая", tabZen: "Дзен", tabFast: "Быстрый",
