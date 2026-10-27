@@ -1108,7 +1108,7 @@ function App() {
     const initAdMob = async () => {
       if (isWeb) return;
       try {
-        let consentInfo = await AdMob.requestConsentInfo({ tagForUnderAgeOfConsent: true });
+        let consentInfo = await AdMob.requestConsentInfo();
         if (consentInfo.status === AdmobConsentStatus.REQUIRED && consentInfo.isConsentFormAvailable) {
           consentInfo = await AdMob.showConsentForm();
         }
@@ -1119,14 +1119,12 @@ function App() {
       try {
         // Geliştiricinin telefonu (Galaxy S24+) test cihazı: orada yalnız test
         // reklamı çıkar, kendi reklamına tıklama riski olmaz. Diğer cihazlar etkilenmez.
-        // Aile Politikası (Reklam İçeriği): oyun çocuklara da hitap ettiği için tüm
-        // isteklerde çocuk hedefli işaret ve yalnız "Genel" dereceli reklam.
+        // Hedef kitle 13+; reklam derecesi oyunun içerik derecelendirmesini aşmasın
+        // (Play "reklam içeriği derecelendirmeyle tutarsız" reddi, 24 Eki 2026).
         await AdMob.initialize({
           initializeForTesting: true,
           testingDevices: ['357057D2EFB25D17A16CB635B8A9CB39'],
-          tagForChildDirectedTreatment: true,
-          tagForUnderAgeOfConsent: true,
-          maxAdContentRating: MaxAdContentRating.General,
+          maxAdContentRating: MaxAdContentRating.ParentalGuidance,
         });
       } catch {}
     };
