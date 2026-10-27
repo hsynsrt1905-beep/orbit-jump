@@ -22,7 +22,7 @@ const translations = {
     selected: "SELECTED", perfect: "PERFECT", great: "GREAT", combo: "COMBO",
     dailyBonus: "DAILY BONUS", shield: "SHIELD", slowmo: "SLOW-MO", buy: "BUY", upgrade: "UPGRADE", level: "LVL", max: "MAX",
     buyPack: "BUY (+3)",
-    watchAdReward: "WATCH AD (+50 💎)", watchAdContinue: "WATCH AD & CONTINUE", adPlaying: "📺 LOADING AD...",
+    watchAdReward: "WATCH AD (+50 💎)", doubleCrystalsAd: "WATCH AD: 2X CRYSTALS (+{n} 💎)", watchAdContinue: "WATCH AD & CONTINUE", adPlaying: "📺 LOADING AD...",
     adWaitText: "Please wait for the ad to complete.",
     adLimitReached: "DAILY AD LIMIT REACHED (2/2)",
     insufficientCrystals: "NOT ENOUGH CRYSTALS",
@@ -68,7 +68,7 @@ const translations = {
     selected: "SEÇİLİ", perfect: "MÜKEMMEL", great: "İYİ", combo: "SERİ",
     dailyBonus: "GÜNLÜK SERİ", shield: "KALKAN", slowmo: "YAVAŞLATICI", buy: "SATIN AL", upgrade: "GELİŞTİR", level: "SEVİYE", max: "MAKS",
     buyPack: "SATIN AL (+3)",
-    watchAdReward: "REKLAM İZLE (+50 💎)", watchAdContinue: "REKLAM İZLE & DEVAM ET", adPlaying: "📺 REKLAM YÜKLENİYOR...",
+    watchAdReward: "REKLAM İZLE (+50 💎)", doubleCrystalsAd: "REKLAM İZLE: 2 KAT KRİSTAL (+{n} 💎)", watchAdContinue: "REKLAM İZLE & DEVAM ET", adPlaying: "📺 REKLAM YÜKLENİYOR...",
     adWaitText: "Lütfen reklamın tamamlanmasını bekleyin.",
     adLimitReached: "GÜNLÜK REKLAM HAKKI DOLDU (2/2)",
     insufficientCrystals: "YETERSİZ KRİSTAL",
@@ -114,7 +114,7 @@ const translations = {
     selected: "ELEGIDO", perfect: "PERFECTO", great: "GENIAL", combo: "COMBO",
     dailyBonus: "BONO DIARIO", shield: "ESCUDO", slowmo: "CÁMARA LENTA", buy: "COMPRAR", upgrade: "MEJORAR", level: "NV", max: "MÁX",
     buyPack: "COMPRAR (+3)",
-    watchAdReward: "VER ANUNCIO (+50 💎)", watchAdContinue: "VER ANUNCIO Y CONTINUAR", adPlaying: "📺 CARGANDO ANUNCIO...",
+    watchAdReward: "VER ANUNCIO (+50 💎)", doubleCrystalsAd: "VER ANUNCIO: CRISTALES X2 (+{n} 💎)", watchAdContinue: "VER ANUNCIO Y CONTINUAR", adPlaying: "📺 CARGANDO ANUNCIO...",
     adWaitText: "Por favor, espera a que termine el anuncio.",
     adLimitReached: "LÍMITE DIARIO ALCANZADO (2/2)",
     insufficientCrystals: "CRISTALES INSUFICIENTES",
@@ -160,7 +160,7 @@ const translations = {
     selected: "GEWÄHLT", perfect: "PERFEKT", great: "GUT", combo: "COMBO",
     dailyBonus: "TÄGLICHER BONUS", shield: "SCHILD", slowmo: "SLOW-MO", buy: "KAUFEN", upgrade: "UPGRADE", level: "LVL", max: "MAX",
     buyPack: "KAUFEN (+3)",
-    watchAdReward: "WERBUNG SEHEN (+50 💎)", watchAdContinue: "WERBUNG SEHEN & WEITER", adPlaying: "📺 WERBUNG LÄDT...",
+    watchAdReward: "WERBUNG SEHEN (+50 💎)", doubleCrystalsAd: "WERBUNG: KRISTALLE X2 (+{n} 💎)", watchAdContinue: "WERBUNG SEHEN & WEITER", adPlaying: "📺 WERBUNG LÄDT...",
     adWaitText: "Bitte warten, bis die Werbung beendet ist.",
     adLimitReached: "TÄGLICHES LIMIT ERREICHT (2/2)",
     insufficientCrystals: "NICHT GENUG KRISTALLE",
@@ -206,7 +206,7 @@ const translations = {
     selected: "ВЫБРАНО", perfect: "ИДЕАЛЬНО", great: "ОТЛИЧНО", combo: "КОМБО",
     dailyBonus: "ЕЖЕДНЕВНЫЙ БОНУС", shield: "ЩИТ", slowmo: "ЗАМЕДЛЕНИЕ", buy: "КУПИТЬ", upgrade: "УЛУЧШИТЬ", level: "УР", max: "МАКС",
     buyPack: "КУПИТЬ (+3)",
-    watchAdReward: "СМОТРЕТЬ РЕКЛАМУ (+50 💎)", watchAdContinue: "СМОТРЕТЬ И ПРОДОЛЖИТЬ", adPlaying: "📺 ЗАГРУЗКА...",
+    watchAdReward: "СМОТРЕТЬ РЕКЛАМУ (+50 💎)", doubleCrystalsAd: "РЕКЛАМА: КРИСТАЛЛЫ X2 (+{n} 💎)", watchAdContinue: "СМОТРЕТЬ И ПРОДОЛЖИТЬ", adPlaying: "📺 ЗАГРУЗКА...",
     adWaitText: "Пожалуйста, дождитесь окончания рекламы.",
     adLimitReached: "ЛИМИТ ИСЧЕРПАН (2/2)",
     insufficientCrystals: "НЕДОСТАТОЧНО КРИСТАЛЛОВ",
@@ -948,6 +948,7 @@ function App() {
   const [shieldActive, setShieldActive] = useState(false);
   const [adOverlay, setAdOverlay] = useState(false);
   const [reviveUsed, setReviveUsed] = useState(false);
+  const [doubleUsed, setDoubleUsed] = useState(false);
   const [leavingGameOver, setLeavingGameOver] = useState(false);
 
   const [dailyAdCount, setDailyAdCount] = useState(loadDailyAdCount);
@@ -1257,7 +1258,7 @@ function App() {
   const watchRewardedAd = async (onSuccess, countsTowardLimit = true) => {
     // Hata düzeltmesi: adOverlay zaten açıkken çift dokunuşla ikinci kez
     // tetiklenip AdMob listener'larının çakışmasını engeller.
-    if ((countsTowardLimit && dailyAdCount >= 2) || adOverlay) return;
+    if ((countsTowardLimit && dailyAdCount >= DAILY_AD_LIMIT) || adOverlay) return;
     playSound('click', soundOn); setAdOverlay(true);
     try {
       await AdMob.removeAllListeners();
@@ -1835,7 +1836,7 @@ function App() {
     particleCursorRef.current = 0;
     shakeUntilRef.current = 0;
     if (flashRef.current) flashRef.current.style.opacity = '0';
-    setReviveUsed(false);
+    setReviveUsed(false); setDoubleUsed(false);
     setScore(0); setComboCount(0); setRunCrystals(0); setPopup(null); setShieldActive(false); setSupernovaActive(false); planetTimerRef.current = 1; resetPlanetVisual(); slowMoUntilRef.current = 0; setGameState('playing');
   };
 
@@ -1847,6 +1848,18 @@ function App() {
       track('revive_ad');
       setReviveUsed(true); setRunCrystals(0);
       const p = physicsRef.current; p.dead = false; p.isFlying = false; p.ball.x = p.active.x + 120; p.ball.y = p.active.y; p.angle = 0; planetTimerRef.current = 1; resetPlanetVisual(); setShieldActive(true); setIsPaused(false); setGameState('playing'); playSound('shield', soundOn);
+    }, false);
+  };
+
+  // Tur sonunda reklamla bu turun kristallerini ikiye katla (tur başına bir kez,
+  // günlük kristal reklamı sınırına sayılmaz). Turun kristalleri ölümde zaten eklendi.
+  const doubleCrystalsWithAd = () => {
+    if (doubleUsed || runCrystals <= 0) return;
+    const bonus = runCrystals;
+    watchRewardedAd(() => {
+      setDoubleUsed(true);
+      setCrystals((c) => { const n = c + bonus; saveJSON('orbit_crystals', n); return n; });
+      playSound('perfect', soundOn); track('double_crystals_ad', { amount: bonus });
     }, false);
   };
 
@@ -1911,6 +1924,7 @@ function App() {
   const daysSinceStreak = lastStreakDate ? Math.round((new Date(new Date().toDateString()) - new Date(lastStreakDate)) / 86400000) : null;
   const canSaveStreak = daysSinceStreak === 2 && streakDays >= 2;
   const STREAK_SAVE_COST = 30;
+  const DAILY_AD_LIMIT = 4;
   const saveStreak = (useAd) => {
     if (!canSaveStreak) return;
     const apply = () => {
@@ -2021,7 +2035,7 @@ function App() {
   const currentAccent = backgroundAccents[selectedTheme] || backgroundAccents['bg_nebula'];
   const tier = getTier(score);
   const isStreakReady = lastStreakDate !== new Date().toDateString();
-  const isAdLimitReached = dailyAdCount >= 2;
+  const isAdLimitReached = dailyAdCount >= DAILY_AD_LIMIT;
   const currentSkinLvl = ballLevels[selectedSkin] || 1;
   const ballScale = 1 + (currentSkinLvl - 1) * 0.13;
   // Yerel yedek liste yalnızca tüm zamanlar sekmesinde anlamlı
@@ -2367,7 +2381,7 @@ function App() {
                   {!isWeb && (
                     <button onClick={() => { if (!isAdLimitReached) { watchRewardedAd(() => { const nextCrystals = crystals + 50; setCrystals(nextCrystals); saveJSON('orbit_crystals', nextCrystals); playSound('coin', soundOn); track('reward_ad_crystals'); }); } }} disabled={isAdLimitReached} className={`${canSaveStreak && isStreakReady ? 'col-span-2' : ''} flex flex-col items-center justify-center font-black py-3 rounded-2xl text-sm ${isAdLimitReached ? 'bg-slate-900/80 border border-slate-800 text-slate-500' : 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white'}`}>
                       <span>📺 💎 +50</span>
-                      <span className="text-xs font-bold">{isAdLimitReached ? t.adLimitReached : `${2 - dailyAdCount}/2`}</span>
+                      <span className="text-xs font-bold">{isAdLimitReached ? t.adLimitReached : `${DAILY_AD_LIMIT - dailyAdCount}/${DAILY_AD_LIMIT}`}</span>
                     </button>
                   )}
                 </div>
@@ -2757,6 +2771,11 @@ function App() {
               <p className="text-xs text-cyan-300 font-bold mb-1">💎 +{runCrystals}{lastRun ? ` · ${t.xpGain.replace('{n}', String(lastRun.xpGain))}` : ''}</p>
               {lastRun?.levelUp > 0 && <p className="text-sm font-black text-amber-300 mb-1">{t.levelUp.replace('{n}', String(lastRun.levelUp))} 💎 +{lastRun.levelCrystals}</p>}
               <div className="mb-4" />
+              {!doubleUsed && runCrystals >= 3 && !isWeb && (
+                <button onClick={doubleCrystalsWithAd} className="w-full mb-3 font-black py-3 px-4 rounded-xl text-sm shadow-md bg-gradient-to-r from-amber-400 to-yellow-300 text-slate-950">
+                  📺 {t.doubleCrystalsAd.replace('{n}', String(runCrystals))}
+                </button>
+              )}
               {!reviveUsed && !isWeb && (
                 <button onClick={continueGameWithAd} className="w-full font-black py-3 px-4 rounded-xl text-sm shadow-md bg-gradient-to-r from-purple-500 to-indigo-500 text-white">
                   📺 {t.watchAdContinue}
