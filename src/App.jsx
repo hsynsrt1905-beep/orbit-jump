@@ -11,6 +11,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { maybeRequestReview, shareScore, noteGameFinished, maybeShowInterstitial, scheduleStreakReminder, scheduleComebackReminders, track } from './engagement';
 import { utcDayId, utcWeekId, localDayId, seededRandom, submitPeriodScore, fetchPeriodScores, emptyDailyStats, dailyMissionsFor } from './periodic';
 import { syncAchievements, showAchievements, playGamesAvailable } from './playGames';
+import { checkForUpdate, completeUpdate } from './appUpdate';
 import { ensureSignedIn, isGoogleUser, signInWithGoogle, signOutGoogle, deleteAccount, loadCloudSave, writeCloudSave, mergeProgress, claimPlayerName, releaseNames, nameKey } from './cloudSave';
 
 const translations = {
@@ -254,6 +255,7 @@ const extraTranslations = {
     tabBalls: "SKINS", skinAstronaut: "Astronaut", skinRocket: "Rocket", skinUfo: "UFO", skinAlien: "Alien", skinRobot: "Robot", skinCat: "Space Cat", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Fast",
     hintNormal: "Classic — a timer on every planet", hintSupernova: "5 s per planet · 2× points", hintZen: "No timer — relax and aim", hintFast: "Faster planets · extreme",
+    updateReady: "Update ready", updateRestart: "Restart",
     newBest: "🏆 NEW BEST!", newRecord: "🏆 NEW RECORD!", toBeatBest: "Only {n} to beat your best!", bestWas: "Best: {n}",
     streakLost: "Your {n}-day streak broke!", streakSave: "SAVE STREAK", streakSaveAd: "📺 Watch ad", streakSaveCrystals: "💎 {n}",
     lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
@@ -267,6 +269,7 @@ const extraTranslations = {
     tabBalls: "KARAKTER", skinAstronaut: "Astronot", skinRocket: "Roket", skinUfo: "UFO", skinAlien: "Uzaylı", skinRobot: "Robot", skinCat: "Uzay Kedisi", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Süpernova", tabZen: "Zen", tabFast: "Hızlı",
     hintNormal: "Klasik — her gezegende süre sayacı", hintSupernova: "Gezegen başına 5 sn · 2× puan", hintZen: "Süre yok — rahatla ve nişan al", hintFast: "Daha hızlı gezegenler · ekstrem",
+    updateReady: "Güncelleme hazır", updateRestart: "Yeniden başlat",
     newBest: "🏆 YENİ REKOR!", newRecord: "🏆 YENİ REKOR!", toBeatBest: "Rekoruna sadece {n} kaldı!", bestWas: "Rekor: {n}",
     streakLost: "{n} günlük serin bozuldu!", streakSave: "SERİYİ KURTAR", streakSaveAd: "📺 Reklam izle", streakSaveCrystals: "💎 {n}",
     lv: "Sv", levelUp: "⬆️ SEVİYE {n}!", xpGain: "+{n} XP",
@@ -280,6 +283,7 @@ const extraTranslations = {
     tabBalls: "PERSONAJES", skinAstronaut: "Astronauta", skinRocket: "Cohete", skinUfo: "OVNI", skinAlien: "Alien", skinRobot: "Robot", skinCat: "Gato espacial", skinMeteor: "Meteorito",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Rápido",
     hintNormal: "Clásico — temporizador en cada planeta", hintSupernova: "5 s por planeta · puntos x2", hintZen: "Sin tiempo — relájate y apunta", hintFast: "Planetas más rápidos · extremo",
+    updateReady: "Actualización lista", updateRestart: "Reiniciar",
     newBest: "🏆 ¡NUEVO RÉCORD!", newRecord: "🏆 ¡NUEVO RÉCORD!", toBeatBest: "¡Solo {n} para batir tu récord!", bestWas: "Récord: {n}",
     streakLost: "¡Tu racha de {n} días se rompió!", streakSave: "SALVAR RACHA", streakSaveAd: "📺 Ver anuncio", streakSaveCrystals: "💎 {n}",
     lv: "Nv", levelUp: "⬆️ ¡NIVEL {n}!", xpGain: "+{n} XP",
@@ -293,6 +297,7 @@ const extraTranslations = {
     tabBalls: "FIGUREN", skinAstronaut: "Astronaut", skinRocket: "Rakete", skinUfo: "UFO", skinAlien: "Alien", skinRobot: "Roboter", skinCat: "Weltraumkatze", skinMeteor: "Meteor",
     tabNormal: "Normal", tabSupernova: "Supernova", tabZen: "Zen", tabFast: "Schnell",
     hintNormal: "Klassisch — Timer auf jedem Planeten", hintSupernova: "5 s pro Planet · 2× Punkte", hintZen: "Kein Timer — entspannt zielen", hintFast: "Schnellere Planeten · extrem",
+    updateReady: "Update bereit", updateRestart: "Neu starten",
     newBest: "🏆 NEUER REKORD!", newRecord: "🏆 NEUER REKORD!", toBeatBest: "Nur noch {n} bis zum Rekord!", bestWas: "Rekord: {n}",
     streakLost: "Deine {n}-Tage-Serie ist gerissen!", streakSave: "SERIE RETTEN", streakSaveAd: "📺 Werbung ansehen", streakSaveCrystals: "💎 {n}",
     lv: "Lv", levelUp: "⬆️ LEVEL {n}!", xpGain: "+{n} XP",
@@ -306,6 +311,7 @@ const extraTranslations = {
     tabBalls: "ГЕРОИ", skinAstronaut: "Астронавт", skinRocket: "Ракета", skinUfo: "НЛО", skinAlien: "Пришелец", skinRobot: "Робот", skinCat: "Космокот", skinMeteor: "Метеор",
     tabNormal: "Обычный", tabSupernova: "Сверхновая", tabZen: "Дзен", tabFast: "Быстрый",
     hintNormal: "Классика — таймер на каждой планете", hintSupernova: "5 с на планету · очки x2", hintZen: "Без таймера — спокойно цельтесь", hintFast: "Быстрые планеты · экстрим",
+    updateReady: "Обновление готово", updateRestart: "Перезапустить",
     newBest: "🏆 НОВЫЙ РЕКОРД!", newRecord: "🏆 НОВЫЙ РЕКОРД!", toBeatBest: "До рекорда всего {n}!", bestWas: "Рекорд: {n}",
     streakLost: "Серия из {n} дн. прервалась!", streakSave: "СПАСТИ СЕРИЮ", streakSaveAd: "📺 Смотреть рекламу", streakSaveCrystals: "💎 {n}",
     lv: "Ур", levelUp: "⬆️ УРОВЕНЬ {n}!", xpGain: "+{n} XP",
@@ -993,6 +999,7 @@ function App() {
   const [cloudReady, setCloudReady] = useState(false);
   const [authBusy, setAuthBusy] = useState(false);
   const [privacyOptionsRequired, setPrivacyOptionsRequired] = useState(false);
+  const [updateReady, setUpdateReady] = useState(false);
   const [authError, setAuthError] = useState(false);
 
   const progress = {
@@ -1129,6 +1136,10 @@ function App() {
       } catch {}
     };
     initAdMob();
+  }, []);
+
+  useEffect(() => {
+    if (!isWeb) checkForUpdate(() => setUpdateReady(true));
   }, []);
 
   // Google ile girişte bulut kaydını yerel ilerlemeyle birleştir. Birleştirme
@@ -2008,6 +2019,12 @@ function App() {
         style={{ width: '100vw', height: '100vh', WebkitTapHighlightColor: 'transparent', transform: supernovaActive ? 'scale(1.04)' : undefined, transition: 'transform 0.08s ease-out' }}
         onClick={handleJump}
       >
+        {updateReady && gameState !== 'playing' && (
+          <div className="absolute z-[60] top-[max(env(safe-area-inset-top),12px)] left-1/2 -translate-x-1/2 flex items-center gap-3 bg-slate-900/95 border border-cyan-400/40 rounded-2xl px-4 py-2 shadow-lg">
+            <span className="text-sm font-bold text-cyan-200 whitespace-nowrap">⬇️ {t.updateReady}</span>
+            <button onClick={(e) => { e.stopPropagation(); completeUpdate(); }} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-black rounded-xl px-3 py-1 whitespace-nowrap">{t.updateRestart}</button>
+          </div>
+        )}
         <style>{`
           /* ---------------- HAFİF MOD ---------------- */
           .lite .planet-layer, .lite .planet-atmo, .lite .p-shine,
