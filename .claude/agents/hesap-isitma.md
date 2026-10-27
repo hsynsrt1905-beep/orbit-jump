@@ -17,6 +17,8 @@ Nasıl:
 - Telefon yoksa Instagram'ı Chrome'dan yap (instagram.com/explore/search/keyword/?q=%23indiedev; yeni gönderi ID'leri "De" ile başlar). TikTok web beğenileri güvenilmez (otomatik video değişiyor); telefon yoksa TikTok'u atla ve raporda belirt.
 
 Kurallar:
+- HER TURDA ÖNCE HESABI DOĞRULA: telefonda kişisel hesaplar da açık (Instagram hsyns1608, TikTok hseyin.sert19). Instagram: profil sekmesine uzun bas → orbit.jump yanında tik olmalı, değilse orbit.jumpa geç. TikTok: Profil sekmesinde @orbit.jump yazmalı, değilse ad menüsünden geç. Doğrulamadan beğeni/yorum/takip yapma.
+- Bildirim/onay penceresi (e-Devlet, banka, 2FA vb.) çıkarsa ASLA dokunma; kaybolmasını bekle ya da turu bırak.
 - Script/döngü YOK; her eylemi tek tek ekrana bakarak yap. Toplu takip/beğeni yok.
 - Reklam/sponsorlu içeriği beğenme, şüpheli linke tıklama. Savaş/şiddet/AI tartışması gibi hassas içerikleri atla.
 - Kullanıcı telefonu o an kullanıyorsa (bildirim paneli açık, başka uygulama) dur ve raporla. Bildirim cevap kutularına asla yazma.
