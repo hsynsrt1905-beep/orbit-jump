@@ -62,7 +62,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
 - [x] R6 — Reels "Looks easy... then 0" — 2026-10-23 11:32 IG (müzik: I Know What You Want x Madison Calley) + 11:35 TikTok (MAFIA - Soothewave), telefondan
   Video: video/reel6_easy.mp4 (kaynak: kullanıcının 23 Ekim oyun kaydı)
 
-- [ ] R5 — Reels "Fast mode. Beat 10?"
+- [x] R5 — Reels "Fast mode. Beat 10?" — 2026-10-27 (Chrome'dan IG Reels, müzikli sürüm music/reel5_fast_m.mp4; 5 hashtag)
   Video: video/reel5_fast.mp4
   ```
   Fast mode is not a joke ⚡ Can you get past 10?

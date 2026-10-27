@@ -1,4 +1,5 @@
 # LinkedIn 2. gönderi — "Ucuz telefonda kasma" (planlanan: 2026-10-26)
+Paylaşıldı: 2026-10-27 · https://www.linkedin.com/feed/update/urn:li:activity:7520711182329204736/
 
 Görsel: oyun-2.png (veya menu.png)
 
