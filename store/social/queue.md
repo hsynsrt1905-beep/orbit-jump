@@ -74,6 +74,18 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #fastmode #challenge #mobilegame #indiegame #androidgames #reflex #arcade #reels #mobiloyun
   ```
 
+- [ ] R7 — Reels "Pick your space hero" (TikTok'ta 2026-10-27 telefondan paylaşıldı; Instagram'da bekliyor)
+  Video: video/reel7_heroes.mp4 (kedi/UFO/meteor, kendi müziği; Instagram'da uygulamadan popüler ses seçilebilir)
+  ```
+  Pick your space hero 🚀 1 Cat, 2 UFO or 3 Meteor? Tell me in the comments 👇
+
+  Uzay kahramanını seç: 1 Kedi, 2 UFO, 3 Meteor? Yorumlara yaz!
+
+  🎮 Free on Google Play → link in bio 👆 / Link profilde
+
+  #orbitjump #indiegame #mobilegame #gamedev #indiedev #androidgames #spacegame #reels #mobiloyun
+  ```
+
 - [ ] 3 — Temalar
   Görseller: zumrut-galaktik.png, nova-bosluk.png
   ```

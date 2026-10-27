@@ -1,24 +1,24 @@
 # LinkedIn 3. gönderi — "Aile politikası reddi ve 13+ kararı" (planlanan: 2026-10-27)
-Paylaşıldı: 2026-10-27 (bağlantı doğrulanmadı)
+Paylaşıldı: 2026-10-27 (bağlantı doğrulanmadı) · 2026-10-27'de metin düzenlendi (kullanıcı: "hepsi aynı gibi, değiştir")
 
 Görsel: oyun-1.png (veya menu.png)
 
+Not: Önceki gönderilerle aynı kalıba (madde listesi + "Öğrendiğim şey şu" + soru) düşmemek için kısa, konuşur gibi, tek bir an üzerinden anlatıldı.
+
 ```
-Orbit Jump'ın bir güncellemesi Google Play'den reddedildi. Sebep koddaki bir hata değil, bir form alanıydı 🙂
+"Güncellemeniz reddedildi."
 
-Uygulama içeriği formunda hedef kitleyi "6 yaş ve üzeri" seçmiştim. Basit, renkli, tek dokunuşla oynanan bir oyun; çocuklar da oynasın diye düşündüm. Ama bu seçim oyunu otomatik olarak Google Play'in Aile Politikası'na sokuyor. Aile Politikası'nın reklam kuralları ise çok daha sıkı: reklam içeriği, uygulamanın içerik derecelendirmesiyle birebir uyumlu olmalı. Benim reklam ayarlarım buna göre değildi ve güncelleme "Reklam İçeriği" gerekçesiyle geri döndü.
+Google Play'den gelen bu e-postayı açtığımda ilk düşüncem bir çökme ya da güvenlik açığıydı. Değilmiş. Sorun, aylar önce düşünmeden işaretlediğim tek bir kutucuktu: "Hedef kitle: 6 yaş ve üzeri."
 
-İki yol vardı:
-• Çocuklara uygun kalmak: tüm reklam isteklerine "çocuğa yönelik" işareti ve en düşük içerik derecesi. Gelir ciddi düşer.
-• Hedef kitleyi 13+ yapmak ve reklam derecesini yine de sınırlamak.
+O kutucuğu işaretlediğiniz an oyununuz Aile Politikası'na giriyor ve oyundaki her reklam artık çocuklara uygun olmak zorunda. Benim reklamlarım öyle ayarlı değildi.
 
-Oyunun gerçek oyuncu kitlesine bakıp ikincisini seçtim: hedef kitle 13 ve üzeri, reklam içerik derecesi PG ile sınırlı. Yani hem politikaya uygun hem de gelir modeli ayakta.
+Masada iki seçenek vardı: oyunu tamamen çocuklara göre ayarlayıp reklam gelirinin büyük kısmından vazgeçmek, ya da oyuncularıma gerçekten bakmak. Baktım; oynayanların neredeyse hepsi ergen ve yetişkin. Hedef kitleyi 13+ yaptım, reklamları yine de "PG" seviyesinde tuttum. Güncelleme tekrar incelemede.
 
-Öğrendiğim şey şu: Play Console'daki "Uygulama içeriği" formları sadece bürokrasi değil. Oradaki her işaret, reklamdan veri güvenliğine kadar kodda neyi değiştirmeniz gerektiğini belirliyor. Formu doldururken kodu da düşünmek gerekiyor.
+Küçük not, büyük ders: Play Console'daki formlar evrak işi gibi görünüyor ama aslında kodunuzun nasıl davranacağını belirliyor.
 
-Siz hedef kitle seçerken neye göre karar veriyorsunuz?
+Siz de bir form yüzünden reddedildiniz mi? 😅
 
 https://play.google.com/store/apps/details?id=com.orbitjump.game
 
-#gamedev #indiedev #googleplay #android #mobiloyun
+#indiedev #googleplay #mobiloyun
 ```
