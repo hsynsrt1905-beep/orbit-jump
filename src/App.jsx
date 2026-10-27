@@ -423,21 +423,25 @@ const applyPlanetTheme = (groupEl, theme) => {
    KARAKTERLER — mağazada satılır ve 5 seviyeye kadar geliştirilir.
    (Kimlikler eski sürümlerle uyum için "ball" tipinde kalır.)
    ============================================================ */
+// Fiyatlar 2026-10-28'de ~2,5 katına çıkarıldı (günde 4 reklam × 50 + görevler kristali çok bol veriyordu).
+const BOOST_PACK_COST = 90;
+const boostUpgradeCost = (level) => level * 70;
+const skinUpgradeCost = (level) => level * 80;
 const shopItems = [
   { id: 'astronaut', type: 'ball', price: 0, trailTint: '#67e8f9', nameKey: 'skinAstronaut' },
-  { id: 'rocket', type: 'ball', price: 40, trailTint: '#f97316', nameKey: 'skinRocket' },
-  { id: 'ufo', type: 'ball', price: 60, trailTint: '#a78bfa', nameKey: 'skinUfo' },
-  { id: 'alien', type: 'ball', price: 80, trailTint: '#4ade80', nameKey: 'skinAlien' },
-  { id: 'robot', type: 'ball', price: 100, trailTint: '#22d3ee', nameKey: 'skinRobot' },
-  { id: 'cat', type: 'ball', price: 120, trailTint: '#fb923c', nameKey: 'skinCat' },
-  { id: 'meteor', type: 'ball', price: 150, trailTint: '#fbbf24', nameKey: 'skinMeteor' },
-  { id: 'trail_gold', type: 'trail', price: 50, color: '#fde047', shape: 'dust', nameKey: 'trailGold' },
-  { id: 'trail_fire', type: 'trail', price: 75, color: '#ef4444', shape: 'flame', nameKey: 'trailFire' },
-  { id: 'trail_cyan', type: 'trail', price: 75, color: '#06b6d4', shape: 'plasma', nameKey: 'trailCyan' },
-  { id: 'bg_nebula', type: 'theme', price: 120, nameKey: 'themeNebula' },
-  { id: 'bg_void', type: 'theme', price: 150, nameKey: 'themeVoid' },
-  { id: 'bg_solar', type: 'theme', price: 180, nameKey: 'themeSolar' },
-  { id: 'bg_galactic', type: 'theme', price: 200, nameKey: 'themeGalactic' }
+  { id: 'rocket', type: 'ball', price: 100, trailTint: '#f97316', nameKey: 'skinRocket' },
+  { id: 'ufo', type: 'ball', price: 150, trailTint: '#a78bfa', nameKey: 'skinUfo' },
+  { id: 'alien', type: 'ball', price: 200, trailTint: '#4ade80', nameKey: 'skinAlien' },
+  { id: 'robot', type: 'ball', price: 250, trailTint: '#22d3ee', nameKey: 'skinRobot' },
+  { id: 'cat', type: 'ball', price: 300, trailTint: '#fb923c', nameKey: 'skinCat' },
+  { id: 'meteor', type: 'ball', price: 400, trailTint: '#fbbf24', nameKey: 'skinMeteor' },
+  { id: 'trail_gold', type: 'trail', price: 120, color: '#fde047', shape: 'dust', nameKey: 'trailGold' },
+  { id: 'trail_fire', type: 'trail', price: 180, color: '#ef4444', shape: 'flame', nameKey: 'trailFire' },
+  { id: 'trail_cyan', type: 'trail', price: 180, color: '#06b6d4', shape: 'plasma', nameKey: 'trailCyan' },
+  { id: 'bg_nebula', type: 'theme', price: 300, nameKey: 'themeNebula' },
+  { id: 'bg_void', type: 'theme', price: 380, nameKey: 'themeVoid' },
+  { id: 'bg_solar', type: 'theme', price: 450, nameKey: 'themeSolar' },
+  { id: 'bg_galactic', type: 'theme', price: 500, nameKey: 'themeGalactic' }
 ];
 
 
@@ -1898,10 +1902,10 @@ function App() {
   const showShopMessage = (msg) => { setShopMessage(msg); setTimeout(() => setShopMessage((cur) => (cur === msg ? null : cur)), 1400); };
 
   const buyBoostPackage = (boostType) => {
-    if (crystals >= 40) {
+    if (crystals >= BOOST_PACK_COST) {
       const level = boostLevels[boostType] || 1;
       const bonusAmount = 3 + (level - 1);
-      const nextCrystals = crystals - 40; const nextCounts = { ...boostCounts, [boostType]: (boostCounts[boostType] || 0) + bonusAmount };
+      const nextCrystals = crystals - BOOST_PACK_COST; const nextCounts = { ...boostCounts, [boostType]: (boostCounts[boostType] || 0) + bonusAmount };
       setCrystals(nextCrystals); setBoostCounts(nextCounts); saveJSON('orbit_crystals', nextCrystals); saveJSON('orbit_boost_counts_v2', nextCounts);
       playSound('coin', soundOn); vibrate(15);
     } else { playSound('gameover', soundOn); showShopMessage(t.insufficientCrystals); }
@@ -1909,7 +1913,7 @@ function App() {
 
   const upgradeBoost = (boostType) => {
     const currentLvl = boostLevels[boostType] || 1;
-    const cost = currentLvl * 30;
+    const cost = boostUpgradeCost(currentLvl);
     if (crystals >= cost && currentLvl < 5) {
       const nextCrystals = crystals - cost;
       const nextLevels = { ...boostLevels, [boostType]: currentLvl + 1 };
@@ -2007,7 +2011,7 @@ function App() {
   };
 
   const upgradeBall = (ballId) => {
-    const currentLvl = ballLevels[ballId] || 1; const cost = currentLvl * 35;
+    const currentLvl = ballLevels[ballId] || 1; const cost = skinUpgradeCost(currentLvl);
     if (crystals >= cost && currentLvl < 5) {
       const nextCrystals = crystals - cost; const nextLevels = { ...ballLevels, [ballId]: currentLvl + 1 };
       setCrystals(nextCrystals); setBallLevels(nextLevels); saveJSON('orbit_crystals', nextCrystals); saveJSON('orbit_ball_levels', nextLevels);
@@ -2593,7 +2597,7 @@ function App() {
                   {['shield', 'slowmo'].map((boostType) => {
                     const level = boostLevels[boostType] || 1;
                     const bonusAmount = 3 + (level - 1);
-                    const upgradeCost = level * 30;
+                    const upgradeCost = boostUpgradeCost(level);
                     const isMaxLevel = level >= 5;
                     const icon = boostType === 'shield' ? '🛡️' : '⏳';
                     const iconBg = boostType === 'shield' ? 'bg-cyan-500/20 border-cyan-400' : 'bg-purple-500/20 border-purple-400';
@@ -2608,8 +2612,8 @@ function App() {
                               <p className="text-xs text-slate-400">{t.level} {level}/5 {isMaxLevel ? `· ${t.max}` : ''}</p>
                             </div>
                           </div>
-                          <button onClick={(e) => { e.stopPropagation(); buyBoostPackage(boostType); }} className={`py-2 px-4 rounded-full text-xs font-black ${crystals >= 40 ? 'bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950' : 'bg-slate-800 text-slate-500'}`}>
-                            {t.buy} 💎40 (+{bonusAmount})
+                          <button onClick={(e) => { e.stopPropagation(); buyBoostPackage(boostType); }} className={`py-2 px-4 rounded-full text-xs font-black ${crystals >= BOOST_PACK_COST ? 'bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950' : 'bg-slate-800 text-slate-500'}`}>
+                            {t.buy} 💎{BOOST_PACK_COST} (+{bonusAmount})
                           </button>
                         </div>
                         <div className="flex items-center justify-between border-t border-slate-800 pt-3">
@@ -2630,7 +2634,7 @@ function App() {
                 const ballLvl = ballLevels[item.id] || 1;
                 const isUpgrading = upgradedBallId === item.id;
                 const isMaxLevel = ballLvl >= 5;
-                const upgradeCost = ballLvl * 35;
+                const upgradeCost = skinUpgradeCost(ballLvl);
 
                 if (item.type === 'ball' && owned) {
                   return (
