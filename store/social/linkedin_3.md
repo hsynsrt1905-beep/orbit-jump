@@ -1,5 +1,5 @@
 # LinkedIn 3. gönderi — "Aile politikası reddi ve 13+ kararı" (planlanan: 2026-10-27)
-Paylaşıldı: 2026-10-27 (bağlantı doğrulanmadı) · 2026-10-27'de metin düzenlendi (kullanıcı: "hepsi aynı gibi, değiştir")
+Paylaşıldı: 2026-10-27 https://www.linkedin.com/feed/update/urn:li:share:7520813351581536256/ (doğrulandı) · 2026-10-27'de metin düzenlendi (kullanıcı: "hepsi aynı gibi, değiştir")
 
 Görsel: oyun-1.png (veya menu.png)
 
