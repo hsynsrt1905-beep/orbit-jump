@@ -2414,7 +2414,7 @@ function App() {
 
         {gameState === 'settings' && (
           <div className="absolute inset-0 z-10 overflow-y-auto overscroll-contain" style={{ touchAction: 'pan-y' }} onClick={(e) => e.stopPropagation()}>
-            <div className="flex flex-col gap-6 w-full max-w-md mx-auto px-5" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 100px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 24px)' }}>
+            <div className="flex flex-col gap-6 w-full max-w-md mx-auto px-5" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 28px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 24px)' }}>
               <div className="flex items-center gap-4">
                 <button onClick={() => { playSound('click', soundOn); setGameState('menu'); }} className="w-12 h-12 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-xl">←</button>
                 <h2 className="text-3xl font-black text-cyan-300">{t.settings}</h2>
@@ -2478,7 +2478,7 @@ function App() {
         )}
 
         {gameState === 'badges' && (
-          <div className="flex flex-col items-center z-10 w-full max-w-md px-6 pt-8" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute inset-x-0 inset-y-0 mx-auto z-10 flex flex-col items-center w-full max-w-md px-6" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 28px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 20px)' }} onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between w-full mb-6">
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('menu'); }} className="w-11 h-11 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-lg">←</button>
               <h2 className="text-xl font-black text-yellow-300">{t.badges}</h2>
@@ -2489,7 +2489,7 @@ function App() {
                 🎮 {t.playAchievements}
               </button>
             )}
-            <div className="w-full bg-slate-900/85 border border-slate-800 rounded-2xl p-4 flex flex-col gap-3 max-h-[64vh] overflow-y-auto">
+            <div className="w-full bg-slate-900/85 border border-slate-800 rounded-2xl p-4 flex flex-col gap-3 flex-1 min-h-0 overflow-y-auto">
               {badgeDefs.map((b) => {
                 const unlocked = b.check(badgeStats);
                 const claimed = claimedBadges.includes(b.id);
@@ -2514,13 +2514,13 @@ function App() {
         )}
 
         {gameState === 'howtoplay' && (
-          <div className="flex flex-col items-center z-10 w-full max-w-md px-6 pt-8" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute inset-x-0 inset-y-0 mx-auto z-10 flex flex-col items-center w-full max-w-md px-6" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 28px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 20px)' }} onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between w-full mb-6">
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('menu'); }} className="w-11 h-11 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-lg">←</button>
               <h2 className="text-xl font-black text-teal-300">{t.howToPlay}</h2>
               <div className="w-11"></div>
             </div>
-            <div className="w-full bg-slate-900/85 border border-slate-800 rounded-2xl p-5 flex flex-col gap-4 text-sm text-slate-300 max-h-[60vh] overflow-y-auto">
+            <div className="w-full bg-slate-900/85 border border-slate-800 rounded-2xl p-5 flex flex-col gap-4 text-sm text-slate-300 flex-1 min-h-0 overflow-y-auto">
               <div className="flex items-start gap-3 bg-slate-950/60 p-3 rounded-xl border border-slate-800"><span className="text-xl">🚀</span><p>{t.helpRule1}</p></div>
               <div className="flex items-start gap-3 bg-slate-950/60 p-3 rounded-xl border border-slate-800"><span className="text-xl">✨</span><p>{t.helpRule2}</p></div>
               <div className="flex items-start gap-3 bg-slate-950/60 p-3 rounded-xl border border-slate-800"><span className="text-xl">⏰</span><p>{t.helpRule3}</p></div>
@@ -2532,7 +2532,7 @@ function App() {
         )}
 
         {gameState === 'leaderboard' && (
-          <div className="flex flex-col items-center z-10 w-full max-w-md px-6 pt-8" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute inset-x-0 inset-y-0 mx-auto z-10 flex flex-col items-center w-full max-w-md px-6" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 28px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 20px)' }} onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between w-full mb-6">
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('menu'); }} className="w-11 h-11 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-lg">←</button>
               <h2 className="text-2xl font-black text-amber-300">{t.leaderboard}</h2>
@@ -2567,7 +2567,7 @@ function App() {
         )}
 
         {gameState === 'shop' && (
-          <div className="flex flex-col items-center z-10 w-full max-w-md px-6 pt-8" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute inset-x-0 inset-y-0 mx-auto z-10 flex flex-col items-center w-full max-w-md px-6" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 28px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 20px)' }} onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between w-full mb-4">
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('menu'); }} className="w-11 h-11 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-lg">←</button>
               <h2 className="text-xl font-black text-cyan-300">{t.shop}</h2>
@@ -2587,7 +2587,7 @@ function App() {
               <button onClick={() => setShopTab('themes')} className={`py-2 rounded-xl text-[11px] font-bold border ${shopTab === 'themes' ? 'bg-cyan-500 text-slate-950 font-black' : 'bg-slate-900 text-slate-400 border-slate-800'}`}>{t.tabThemes}</button>
             </div>
 
-            <div className="w-full flex flex-col gap-3 max-h-[52vh] overflow-y-auto pr-1">
+            <div className="w-full flex flex-col gap-3 flex-1 min-h-0 overflow-y-auto pr-1">
               {shopTab === 'boosts' && (
                 <>
                   {['shield', 'slowmo'].map((boostType) => {
@@ -2695,13 +2695,13 @@ function App() {
         )}
 
         {gameState === 'missions' && (
-          <div className="flex flex-col items-center z-10 w-full max-w-md px-6 pt-8" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute inset-x-0 inset-y-0 mx-auto z-10 flex flex-col items-center w-full max-w-md px-6" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 28px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 20px)' }} onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between w-full mb-6">
               <button onClick={(e) => { e.stopPropagation(); playSound('click', soundOn); setGameState('menu'); }} className="w-11 h-11 bg-slate-900/90 border border-slate-700/60 rounded-full flex items-center justify-center text-lg">←</button>
               <h2 className="text-2xl font-black text-amber-300">{t.missions}</h2>
               <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 text-cyan-200 font-bold py-2 px-3 rounded-full text-sm">💎 {crystals}</div>
             </div>
-            <div className="w-full flex flex-col gap-3 max-h-[60vh] overflow-y-auto pr-1">
+            <div className="w-full flex flex-col gap-3 flex-1 min-h-0 overflow-y-auto pr-1">
               <div className="flex items-baseline justify-between px-1">
                 <p className="text-sm font-black text-amber-300">📅 {t.dailyMissions}</p>
                 <p className="text-[10px] text-slate-500 font-bold">{t.dailyMissionsHint}</p>
