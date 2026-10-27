@@ -2265,14 +2265,15 @@ function App() {
           .trail-star { width: 18px; height: 18px; transform-origin: 50% 50%;
                         clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
           .trail-pixel { width: 12px; height: 12px; transform-origin: 50% 50%; }
-          .theme-aurora::after { content: ''; position: absolute; inset: -20% -10% auto -10%; height: 55%;
-                        background: linear-gradient(100deg, transparent 10%, rgba(52,211,153,.35) 30%, rgba(167,139,250,.28) 50%, rgba(45,212,191,.32) 70%, transparent 90%);
-                        filter: blur(28px); animation: auroraWave 9s ease-in-out infinite alternate; }
-          @keyframes auroraWave { 0% { transform: translateX(-8%) skewY(-4deg); opacity: .7; } 100% { transform: translateX(8%) skewY(4deg); opacity: 1; } }
-          .theme-blackhole::after { content: ''; position: absolute; left: 50%; top: 32%; width: 900px; height: 900px; margin: -450px 0 0 -450px; border-radius: 50%;
-                        background: conic-gradient(from 0deg, transparent, rgba(251,146,60,.18), transparent 30%, rgba(217,70,239,.16), transparent 60%, rgba(251,146,60,.14), transparent);
-                        animation: holeSpin 28s linear infinite; }
+          .theme-aurora::after { content: ''; position: absolute; left: -10%; right: -10%; top: 0; height: 50%;
+                        background: radial-gradient(60% 45% at 30% 40%, rgba(52,211,153,.30), transparent 70%), radial-gradient(55% 40% at 72% 30%, rgba(167,139,250,.24), transparent 70%);
+                        will-change: opacity; animation: auroraPulse 6s ease-in-out infinite alternate; }
+          @keyframes auroraPulse { 0% { opacity: .55; } 100% { opacity: 1; } }
+          .theme-blackhole::after { content: ''; position: absolute; left: 50%; top: 32%; width: 620px; height: 620px; margin: -310px 0 0 -310px; border-radius: 50%;
+                        background: conic-gradient(from 0deg, transparent, rgba(251,146,60,.16), transparent 30%, rgba(217,70,239,.14), transparent 60%, rgba(251,146,60,.12), transparent);
+                        will-change: opacity; animation: auroraPulse 4s ease-in-out infinite alternate; }
           @keyframes holeSpin { to { transform: rotate(360deg); } }
+          .lite .theme-aurora::after, .lite .theme-blackhole::after { animation: none; }
 
           .impact-glow { position: absolute; inset: -55%; border-radius: 50%; pointer-events: none;
                          opacity: 0; z-index: 26; }
