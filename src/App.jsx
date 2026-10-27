@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { AdMob, RewardAdPluginEvents, AdmobConsentStatus } from '@capacitor-community/admob';
+import { AdMob, RewardAdPluginEvents, AdmobConsentStatus, MaxAdContentRating } from '@capacitor-community/admob';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
@@ -1108,7 +1108,7 @@ function App() {
     const initAdMob = async () => {
       if (isWeb) return;
       try {
-        let consentInfo = await AdMob.requestConsentInfo();
+        let consentInfo = await AdMob.requestConsentInfo({ tagForUnderAgeOfConsent: true });
         if (consentInfo.status === AdmobConsentStatus.REQUIRED && consentInfo.isConsentFormAvailable) {
           consentInfo = await AdMob.showConsentForm();
         }
@@ -1119,7 +1119,15 @@ function App() {
       try {
         // Geliştiricinin telefonu (Galaxy S24+) test cihazı: orada yalnız test
         // reklamı çıkar, kendi reklamına tıklama riski olmaz. Diğer cihazlar etkilenmez.
-        await AdMob.initialize({ initializeForTesting: true, testingDevices: ['357057D2EFB25D17A16CB635B8A9CB39'] });
+        // Aile Politikası (Reklam İçeriği): oyun çocuklara da hitap ettiği için tüm
+        // isteklerde çocuk hedefli işaret ve yalnız "Genel" dereceli reklam.
+        await AdMob.initialize({
+          initializeForTesting: true,
+          testingDevices: ['357057D2EFB25D17A16CB635B8A9CB39'],
+          tagForChildDirectedTreatment: true,
+          tagForUnderAgeOfConsent: true,
+          maxAdContentRating: MaxAdContentRating.General,
+        });
       } catch {}
     };
     initAdMob();
