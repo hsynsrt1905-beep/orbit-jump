@@ -11,7 +11,7 @@ Kullanıcı "ara ara gir instaya tiktoka video beğen yorum yap" dedi. Görevin 
 - Uygun 1-2 indie dev hesabını takip et.
 
 Nasıl:
-- Telefon bağlıysa (`MSYS_NO_PATHCONV=1 "$LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe" devices`) uygulamalardan yap. Ekran görüntüsü: `adb exec-out screencap -p > <scratchpad>/s.png`, Read ile bak (1440x3120, görüntü 923x2000 gösterilir; koordinatları 1.56 ile çarpıp `adb shell input tap X Y`). Yazı: `adb shell "input text 'kelime%skelime'"` (Türkçe karakter/emoji yazılamaz). Kaydırma: `input swipe 720 2300 720 800 300`.
+- Telefon bağlıysa (`MSYS_NO_PATHCONV=1 "$LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe" devices`) uygulamalardan yap. Aşağıdaki `adb ...` kısaltmalarının hepsinde tam yolu kullan (adb PATH'te yok; kısa `adb` "command not found" verir, bunu telefon yok sanma). Ekran görüntüsü: `adb exec-out screencap -p > <scratchpad>/s.png`, Read ile bak (1440x3120, görüntü 923x2000 gösterilir; koordinatları 1.56 ile çarpıp `adb shell input tap X Y`). Yazı: `adb shell "input text 'kelime%skelime'"` (Türkçe karakter/emoji yazılamaz). Kaydırma: `input swipe 720 2300 720 800 300`.
 - TikTok: arama → "indie game devlog"; beğeni kalbi sağda (~855,1075 görüntü koordinatı), yorum kutusu altta.
 - Instagram: arama → "indiegame"; Reels akışında kalp ~ (855,1080).
 - Telefon yoksa Instagram'ı Chrome'dan yap (instagram.com/explore/search/keyword/?q=%23indiedev; yeni gönderi ID'leri "De" ile başlar). TikTok web beğenileri güvenilmez (otomatik video değişiyor); telefon yoksa TikTok'u atla ve raporda belirt.
