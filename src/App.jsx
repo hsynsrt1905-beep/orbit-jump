@@ -20,7 +20,7 @@ const translations = {
     restart: "TRY AGAIN", menu: "MENU", shop: "SHOP", missions: "MISSIONS", leaderboard: "LEADERBOARD", badges: "BADGES", back: "BACK",
     crystals: "CRYSTALS", claim: "CLAIM", claimed: "CLAIMED", owned: "OWNED", select: "SELECT",
     selected: "SELECTED", perfect: "PERFECT", great: "GREAT", combo: "COMBO",
-    dailyBonus: "DAILY BONUS", shield: "SHIELD", slowmo: "SLOW-MO", buy: "BUY", upgrade: "UPGRADE", level: "LVL", max: "MAX",
+    dailyBonus: "DAILY BONUS", shield: "SHIELD", focus: "FOCUS", doubleBoost: "2X CRYSTALS", slowmo: "SLOW-MO", buy: "BUY", upgrade: "UPGRADE", level: "LVL", max: "MAX",
     buyPack: "BUY (+3)",
     watchAdReward: "WATCH AD (+50 💎)", doubleCrystalsAd: "WATCH AD: 2X CRYSTALS (+{n} 💎)", watchAdContinue: "WATCH AD & CONTINUE", adPlaying: "📺 LOADING AD...",
     adWaitText: "Please wait for the ad to complete.",
@@ -47,8 +47,8 @@ const translations = {
     m6: "Hit a 3x Combo streak", m7: "Collect a total of 100 crystals", m8: "Land 3 Perfect Jumps in a single run",
     m9: "Hit a 5x Combo streak", m10: "Play 25 runs (total)",
     itemGold: "Gold Ball", itemRuby: "Ruby Ball", itemEmerald: "Emerald Ball", itemNova: "Supernova Ball",
-    trailGold: "Gold Dust", trailFire: "Fire Trail", trailCyan: "Plasma Trail",
-    themeNebula: "Nebula", themeVoid: "Black Hole", themeSolar: "Solar Flare", themeGalactic: "Galactic Core",
+    trailGold: "Gold Dust", trailFire: "Fire Trail", trailRainbow: "Rainbow Trail", trailStar: "Stardust Trail", trailPixel: "Pixel Trail", trailCyan: "Plasma Trail",
+    themeNebula: "Nebula", themeVoid: "Black Hole", themeSolar: "Solar Flare", themeAurora: "Northern Lights", themeBlackhole: "Event Horizon", themeGalactic: "Galactic Core",
     pause: "GAME PAUSED", resume: "RESUME",
     noScores: "No scores recorded yet.",
     loadingScores: "Loading scores...",
@@ -66,7 +66,7 @@ const translations = {
     restart: "TEKRAR DENE", menu: "MENÜ", shop: "MAĞAZA", missions: "GÖREVLER", leaderboard: "SKOR TABLOSU", badges: "ROZETLER", back: "GERİ",
     crystals: "KRİSTAL", claim: "AL", claimed: "ALINDI", owned: "SAHİPSİN", select: "SEÇ",
     selected: "SEÇİLİ", perfect: "MÜKEMMEL", great: "İYİ", combo: "SERİ",
-    dailyBonus: "GÜNLÜK SERİ", shield: "KALKAN", slowmo: "YAVAŞLATICI", buy: "SATIN AL", upgrade: "GELİŞTİR", level: "SEVİYE", max: "MAKS",
+    dailyBonus: "GÜNLÜK SERİ", shield: "KALKAN", focus: "ODAK", doubleBoost: "2X KRİSTAL", slowmo: "YAVAŞLATICI", buy: "SATIN AL", upgrade: "GELİŞTİR", level: "SEVİYE", max: "MAKS",
     buyPack: "SATIN AL (+3)",
     watchAdReward: "REKLAM İZLE (+50 💎)", doubleCrystalsAd: "REKLAM İZLE: 2 KAT KRİSTAL (+{n} 💎)", watchAdContinue: "REKLAM İZLE & DEVAM ET", adPlaying: "📺 REKLAM YÜKLENİYOR...",
     adWaitText: "Lütfen reklamın tamamlanmasını bekleyin.",
@@ -93,8 +93,8 @@ const translations = {
     m6: "3'lü Kombo seri yakala", m7: "Toplam 100 kristal topla", m8: "Tek turda 3 Mükemmel Atlayış yap",
     m9: "5'li Kombo seri yakala", m10: "Toplam 25 tur oyna",
     itemGold: "Altın Top", itemRuby: "Yakut Top", itemEmerald: "Zümrüt Top", itemNova: "Süpernova Top",
-    trailGold: "Altın Tozu", trailFire: "Alev İzi", trailCyan: "Plazma İzi",
-    themeNebula: "Nebula Bulutsusu", themeVoid: "Kara Delik", themeSolar: "Solar Fırtına", themeGalactic: "Galaktik Çekirdek",
+    trailGold: "Altın Tozu", trailFire: "Alev İzi", trailRainbow: "Gökkuşağı İzi", trailStar: "Yıldız Tozu İzi", trailPixel: "Piksel İzi", trailCyan: "Plazma İzi",
+    themeNebula: "Nebula Bulutsusu", themeVoid: "Kara Delik", themeSolar: "Solar Fırtına", themeAurora: "Kuzey Işıkları", themeBlackhole: "Olay Ufku", themeGalactic: "Galaktik Çekirdek",
     pause: "OYUN DURAKLATILDI", resume: "DEVAM ET",
     noScores: "Henüz kayıtlı skor yok.",
     loadingScores: "Skorlar yükleniyor...",
@@ -112,7 +112,7 @@ const translations = {
     restart: "INTENTAR DE NUEVO", menu: "MENÚ", shop: "TIENDA", missions: "MISIONES", leaderboard: "TABLA", badges: "INSIGNIAS", back: "ATRÁS",
     crystals: "CRISTALES", claim: "RECLAMAR", claimed: "RECLAMADO", owned: "OBTENIDO", select: "ELEGIR",
     selected: "ELEGIDO", perfect: "PERFECTO", great: "GENIAL", combo: "COMBO",
-    dailyBonus: "BONO DIARIO", shield: "ESCUDO", slowmo: "CÁMARA LENTA", buy: "COMPRAR", upgrade: "MEJORAR", level: "NV", max: "MÁX",
+    dailyBonus: "BONO DIARIO", shield: "ESCUDO", focus: "ENFOQUE", doubleBoost: "CRISTALES X2", slowmo: "CÁMARA LENTA", buy: "COMPRAR", upgrade: "MEJORAR", level: "NV", max: "MÁX",
     buyPack: "COMPRAR (+3)",
     watchAdReward: "VER ANUNCIO (+50 💎)", doubleCrystalsAd: "VER ANUNCIO: CRISTALES X2 (+{n} 💎)", watchAdContinue: "VER ANUNCIO Y CONTINUAR", adPlaying: "📺 CARGANDO ANUNCIO...",
     adWaitText: "Por favor, espera a que termine el anuncio.",
@@ -139,8 +139,8 @@ const translations = {
     m6: "Alcanza un combo de 3x", m7: "Recolecta un total de 100 cristales", m8: "Logra 3 Saltos Perfectos en una partida",
     m9: "Alcanza un combo de 5x", m10: "Juega 25 partidas (total)",
     itemGold: "Bola de Oro", itemRuby: "Bola de Rubí", itemEmerald: "Bola Esmeralda", itemNova: "Bola Supernova",
-    trailGold: "Polvo de Oro", trailFire: "Estela de Fuego", trailCyan: "Estela de Plasma",
-    themeNebula: "Nebulosa", themeVoid: "Agujero Negro", themeSolar: "Tormenta Solar", themeGalactic: "Núcleo Galáctico",
+    trailGold: "Polvo de Oro", trailFire: "Estela de Fuego", trailRainbow: "Estela Arcoíris", trailStar: "Polvo de Estrellas", trailPixel: "Estela Píxel", trailCyan: "Estela de Plasma",
+    themeNebula: "Nebulosa", themeVoid: "Agujero Negro", themeSolar: "Tormenta Solar", themeAurora: "Aurora Boreal", themeBlackhole: "Horizonte de Sucesos", themeGalactic: "Núcleo Galáctico",
     pause: "JUEGO PAUSADO", resume: "CONTINUAR",
     noScores: "Aún no hay puntuaciones registradas.",
     loadingScores: "Cargando puntuaciones...",
@@ -158,7 +158,7 @@ const translations = {
     restart: "NOCHMAL", menu: "MENÜ", shop: "SHOP", missions: "MISSIONEN", leaderboard: "BESTENLISTE", badges: "ABZEICHEN", back: "ZURÜCK",
     crystals: "KRISTALLE", claim: "ABHOLEN", claimed: "ABGEHOLT", owned: "BESESSEN", select: "WÄHLEN",
     selected: "GEWÄHLT", perfect: "PERFEKT", great: "GUT", combo: "COMBO",
-    dailyBonus: "TÄGLICHER BONUS", shield: "SCHILD", slowmo: "SLOW-MO", buy: "KAUFEN", upgrade: "UPGRADE", level: "LVL", max: "MAX",
+    dailyBonus: "TÄGLICHER BONUS", shield: "SCHILD", focus: "FOKUS", doubleBoost: "KRISTALLE X2", slowmo: "SLOW-MO", buy: "KAUFEN", upgrade: "UPGRADE", level: "LVL", max: "MAX",
     buyPack: "KAUFEN (+3)",
     watchAdReward: "WERBUNG SEHEN (+50 💎)", doubleCrystalsAd: "WERBUNG: KRISTALLE X2 (+{n} 💎)", watchAdContinue: "WERBUNG SEHEN & WEITER", adPlaying: "📺 WERBUNG LÄDT...",
     adWaitText: "Bitte warten, bis die Werbung beendet ist.",
@@ -185,8 +185,8 @@ const translations = {
     m6: "Erreiche eine 3er-Kombo", m7: "Sammle insgesamt 100 Kristalle", m8: "Lande 3 perfekte Sprünge in einem Lauf",
     m9: "Erreiche eine 5er-Kombo", m10: "Spiele 25 Runden (gesamt)",
     itemGold: "Goldener Ball", itemRuby: "Rubinball", itemEmerald: "Smaragdball", itemNova: "Supernova-Ball",
-    trailGold: "Goldstaub", trailFire: "Feuerspur", trailCyan: "Plasmaspur",
-    themeNebula: "Nebel", themeVoid: "Schwarzes Loch", themeSolar: "Sonnensturm", themeGalactic: "Galaktischer Kern",
+    trailGold: "Goldstaub", trailFire: "Feuerspur", trailRainbow: "Regenbogenspur", trailStar: "Sternenstaub", trailPixel: "Pixelspur", trailCyan: "Plasmaspur",
+    themeNebula: "Nebel", themeVoid: "Schwarzes Loch", themeSolar: "Sonnensturm", themeAurora: "Nordlichter", themeBlackhole: "Ereignishorizont", themeGalactic: "Galaktischer Kern",
     pause: "SPIEL PAUSIERT", resume: "WEITER",
     noScores: "Noch keine Ergebnisse gespeichert.",
     loadingScores: "Ergebnisse werden geladen...",
@@ -204,7 +204,7 @@ const translations = {
     restart: "ПОВТОРИТЬ", menu: "МЕНЮ", shop: "МАГАЗИН", missions: "ЗАДАНИЯ", leaderboard: "ТАБЛИЦА", badges: "ЗНАЧКИ", back: "НАЗАД",
     crystals: "КРИСТАЛЛЫ", claim: "ЗАБРАТЬ", claimed: "ПОЛУЧЕНО", owned: "ЕСТЬ", select: "ВЫБРАТЬ",
     selected: "ВЫБРАНО", perfect: "ИДЕАЛЬНО", great: "ОТЛИЧНО", combo: "КОМБО",
-    dailyBonus: "ЕЖЕДНЕВНЫЙ БОНУС", shield: "ЩИТ", slowmo: "ЗАМЕДЛЕНИЕ", buy: "КУПИТЬ", upgrade: "УЛУЧШИТЬ", level: "УР", max: "МАКС",
+    dailyBonus: "ЕЖЕДНЕВНЫЙ БОНУС", shield: "ЩИТ", focus: "ФОКУС", doubleBoost: "КРИСТАЛЛЫ X2", slowmo: "ЗАМЕДЛЕНИЕ", buy: "КУПИТЬ", upgrade: "УЛУЧШИТЬ", level: "УР", max: "МАКС",
     buyPack: "КУПИТЬ (+3)",
     watchAdReward: "СМОТРЕТЬ РЕКЛАМУ (+50 💎)", doubleCrystalsAd: "РЕКЛАМА: КРИСТАЛЛЫ X2 (+{n} 💎)", watchAdContinue: "СМОТРЕТЬ И ПРОДОЛЖИТЬ", adPlaying: "📺 ЗАГРУЗКА...",
     adWaitText: "Пожалуйста, дождитесь окончания рекламы.",
@@ -231,8 +231,8 @@ const translations = {
     m6: "Добейся комбо 3х", m7: "Собери в сумме 100 кристаллов", m8: "Соверши 3 идеальных прыжка за один забег",
     m9: "Добейся комбо 5х", m10: "Сыграй 25 забегов (всего)",
     itemGold: "Золотой шар", itemRuby: "Рубиновый шар", itemEmerald: "Изумрудный шар", itemNova: "Шар Супернова",
-    trailGold: "Золотая пыль", trailFire: "Огненный след", trailCyan: "Плазменный след",
-    themeNebula: "Туманность", themeVoid: "Черная дыра", themeSolar: "Солнечная буря", themeGalactic: "Галактическое ядро",
+    trailGold: "Золотая пыль", trailFire: "Огненный след", trailRainbow: "Радужный след", trailStar: "Звёздная пыль", trailPixel: "Пиксельный след", trailCyan: "Плазменный след",
+    themeNebula: "Туманность", themeVoid: "Черная дыра", themeSolar: "Солнечная буря", themeAurora: "Северное сияние", themeBlackhole: "Горизонт событий", themeGalactic: "Галактическое ядро",
     pause: "ИГРА НА ПАУЗЕ", resume: "ПРОДОЛЖИТЬ",
     noScores: "Пока нет сохранённых результатов.",
     loadingScores: "Загрузка результатов...",
@@ -327,7 +327,9 @@ const backgroundThemesList = {
   bg_nebula: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-fuchsia-600 via-purple-800 via-30% to-indigo-950 pointer-events-none overflow-hidden transition-colors duration-700",
   bg_void: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-400 via-zinc-900 via-25% to-black pointer-events-none overflow-hidden transition-colors duration-700",
   bg_solar: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-400 via-orange-700 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700",
-  bg_galactic: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-300 via-blue-800 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700"
+  bg_galactic: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-300 via-blue-800 via-30% to-slate-950 pointer-events-none overflow-hidden transition-colors duration-700",
+  bg_aurora: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-300 via-teal-800 via-30% to-indigo-950 pointer-events-none overflow-hidden transition-colors duration-700 theme-aurora",
+  bg_blackhole: "absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-black via-violet-950 via-45% to-black pointer-events-none overflow-hidden transition-colors duration-700 theme-blackhole"
 };
 
 // Bulanık daire yerine radial-gradient: blur-[140px] filtresi zayıf
@@ -336,7 +338,9 @@ const backgroundAccents = {
   bg_nebula: 'radial-gradient(circle, rgba(217,70,239,0.4) 0%, rgba(217,70,239,0.18) 35%, rgba(217,70,239,0) 70%)',
   bg_void: 'radial-gradient(circle, rgba(203,213,225,0.2) 0%, rgba(203,213,225,0.09) 35%, rgba(203,213,225,0) 70%)',
   bg_solar: 'radial-gradient(circle, rgba(251,191,36,0.45) 0%, rgba(251,191,36,0.20) 35%, rgba(251,191,36,0) 70%)',
-  bg_galactic: 'radial-gradient(circle, rgba(103,232,249,0.45) 0%, rgba(103,232,249,0.20) 35%, rgba(103,232,249,0) 70%)'
+  bg_galactic: 'radial-gradient(circle, rgba(103,232,249,0.45) 0%, rgba(103,232,249,0.20) 35%, rgba(103,232,249,0) 70%)',
+  bg_aurora: 'radial-gradient(circle, rgba(52,211,153,0.42) 0%, rgba(167,139,250,0.20) 38%, rgba(52,211,153,0) 70%)',
+  bg_blackhole: 'radial-gradient(circle, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.92) 11%, rgba(251,146,60,0.55) 14%, rgba(217,70,239,0.28) 24%, rgba(91,33,182,0.12) 40%, rgba(0,0,0,0) 62%)'
 };
 
 /* ============================================================
@@ -425,6 +429,8 @@ const applyPlanetTheme = (groupEl, theme) => {
    ============================================================ */
 // Fiyatlar 2026-10-28'de ~2,5 katına çıkarıldı (günde 4 reklam × 50 + görevler kristali çok bol veriyordu).
 const BOOST_PACK_COST = 90;
+const BOOST_TYPES = ['shield', 'slowmo', 'focus', 'double'];
+const boostPackCost = (type) => (type === 'double' ? 120 : BOOST_PACK_COST);
 const boostUpgradeCost = (level) => level * 70;
 const skinUpgradeCost = (level) => level * 80;
 const shopItems = [
@@ -438,10 +444,15 @@ const shopItems = [
   { id: 'trail_gold', type: 'trail', price: 120, color: '#fde047', shape: 'dust', nameKey: 'trailGold' },
   { id: 'trail_fire', type: 'trail', price: 180, color: '#ef4444', shape: 'flame', nameKey: 'trailFire' },
   { id: 'trail_cyan', type: 'trail', price: 180, color: '#06b6d4', shape: 'plasma', nameKey: 'trailCyan' },
+  { id: 'trail_rainbow', type: 'trail', price: 250, color: 'rainbow', shape: 'rainbow', nameKey: 'trailRainbow' },
+  { id: 'trail_star', type: 'trail', price: 300, color: '#fef08a', shape: 'star', nameKey: 'trailStar' },
+  { id: 'trail_pixel', type: 'trail', price: 350, color: '#4ade80', shape: 'pixel', nameKey: 'trailPixel' },
   { id: 'bg_nebula', type: 'theme', price: 300, nameKey: 'themeNebula' },
   { id: 'bg_void', type: 'theme', price: 380, nameKey: 'themeVoid' },
   { id: 'bg_solar', type: 'theme', price: 450, nameKey: 'themeSolar' },
-  { id: 'bg_galactic', type: 'theme', price: 500, nameKey: 'themeGalactic' }
+  { id: 'bg_galactic', type: 'theme', price: 500, nameKey: 'themeGalactic' },
+  { id: 'bg_aurora', type: 'theme', price: 550, nameKey: 'themeAurora' },
+  { id: 'bg_blackhole', type: 'theme', price: 650, nameKey: 'themeBlackhole' }
 ];
 
 
@@ -1042,6 +1053,9 @@ function App() {
   const [comboCount, setComboCount] = useState(0);
   const slowMoUntilRef = useRef(0);
 
+  const focusUntilRef = useRef(0);
+  const doubleRunRef = useRef(false);
+  const [doubleActive, setDoubleActive] = useState(false);
   const physicsRef = useRef({ active: { x: 0, y: 0 }, target: { x: 80, y: -440, vx: 2.0 }, ball: { x: 120, y: 0, vx: 0, vy: 0 }, angle: 0, isFlying: false, speed: 0.02, combo: 0, dead: false, camera: { x: 0, y: 200 } });
   // ?autoplay=N (yalnız geliştirme): N = iniş sapma toleransı; tanıtım kaydı için.
   const autoplayRef = useRef(import.meta.env.DEV ? Number(new URLSearchParams(window.location.search).get('autoplay')) || 0 : 0);
@@ -1558,10 +1572,10 @@ function App() {
             // Şekil de iz türüne göre değişir: toz (dust) dağınık taneli,
             // alev (flame) uzayan/titreyen, plazma (plasma) geniş yumuşak şerit.
             {
-              const trailColor = live.trailColor;
               const shape = live.trailShape;
+              const trailColor = live.trailColor === 'rainbow' ? `hsl(${Math.floor(currentTime / 6) % 360} 95% 62%)` : live.trailColor;
               let jx = 0, jy = 0;
-              if (shape === 'dust') {
+              if (shape === 'dust' || shape === 'star' || shape === 'rainbow') {
                 const perpAngle = Math.atan2(p.ball.vy, p.ball.vx) + Math.PI / 2;
                 const spread = (Math.random() - 0.5) * 16;
                 jx = Math.cos(perpAngle) * spread;
@@ -1576,7 +1590,7 @@ function App() {
               if (tDot && tDot.dataset.look !== shape + trailColor) {
                 tDot.dataset.look = shape + trailColor;
                 tDot.className = `trail-dot trail-${shape} z-[24]`;
-                tDot.style.background = `radial-gradient(circle, rgba(255,255,255,0.85) 0%, ${trailColor} 38%, transparent 72%)`;
+                tDot.style.background = shape === 'pixel' ? trailColor : `radial-gradient(circle, rgba(255,255,255,0.85) 0%, ${trailColor} 38%, transparent 72%)`;
               }
             }
 
@@ -1585,8 +1599,9 @@ function App() {
             const distance = Math.sqrt(dx * dx + dy * dy);
 
             const currentBallLvl = live.ballLevels[live.selectedSkin] || 1;
-            const perfectTolerance = 5 + (currentBallLvl - 1) * 1.5;
-            const greatTolerance = 12 + (currentBallLvl - 1) * 2;
+            const focusMul = currentTime < focusUntilRef.current ? 2 : 1;
+            const perfectTolerance = (5 + (currentBallLvl - 1) * 1.5) * focusMul;
+            const greatTolerance = (12 + (currentBallLvl - 1) * 2) * focusMul;
 
             if (distance < 140 && distance > 100) {
               p.isFlying = false; planetTimerRef.current = 1; resetPlanetVisual();
@@ -1639,7 +1654,7 @@ function App() {
               let awardedCrystals = 0;
               if (nextMilestone > prevMilestone) {
                 const baseAward = live.gameMode === 'supernova' ? nextMilestone * 2 : nextMilestone;
-                awardedCrystals = baseAward + (currentBallLvl - 1);
+                awardedCrystals = (baseAward + (currentBallLvl - 1)) * (doubleRunRef.current ? 2 : 1);
                 setRunCrystals((r) => r + awardedCrystals); playSound('coin', live.soundOn); vibrate([15, 20, 15]);
                 extraText = ` +${awardedCrystals} 💎`;
               }
@@ -1776,10 +1791,12 @@ function App() {
             if (age >= TRAIL_LIFE) { dot.style.opacity = '0'; continue; }
             const frac = 1 - age / TRAIL_LIFE;
             const taper = Math.pow(frac, 1.6);
-            if (pt.shape === 'dust') {
+            if (pt.shape === 'dust' || pt.shape === 'rainbow' || pt.shape === 'star' || pt.shape === 'pixel') {
               dot.style.opacity = String(0.1 + taper * 0.85);
               const s = 0.3 + taper * 1.2;
-              dot.style.transform = `translate(${-7 + pt.x}px, ${-7 + pt.y}px) scale(${s})`;
+              const half = pt.shape === 'star' ? 9 : pt.shape === 'rainbow' ? 8 : pt.shape === 'pixel' ? 6 : 7;
+              const spin = pt.shape === 'star' ? ` rotate(${(age / 4) % 360}deg)` : '';
+              dot.style.transform = `translate(${-half + pt.x}px, ${-half + pt.y}px) scale(${s})${spin}`;
             } else {
               dot.style.opacity = String(0.15 + taper * 0.8);
               const sx = 0.3 + taper * 1.5;
@@ -1840,7 +1857,7 @@ function App() {
     particleCursorRef.current = 0;
     shakeUntilRef.current = 0;
     if (flashRef.current) flashRef.current.style.opacity = '0';
-    setReviveUsed(false); setDoubleUsed(false);
+    setReviveUsed(false); setDoubleUsed(false); focusUntilRef.current = 0; doubleRunRef.current = false; setDoubleActive(false);
     setScore(0); setComboCount(0); setRunCrystals(0); setPopup(null); setShieldActive(false); setSupernovaActive(false); planetTimerRef.current = 1; resetPlanetVisual(); slowMoUntilRef.current = 0; setGameState('playing');
   };
 
@@ -1889,6 +1906,28 @@ function App() {
     } else playSound('gameover', soundOn);
   };
 
+  const consumeBoost = (type) => {
+    if (isPaused) return false;
+    const n = boostCounts[type] || 0;
+    if (n <= 0 || gameState !== 'playing' || adOverlay) { playSound('gameover', soundOn); return false; }
+    setBoostCounts(prev => { const c = { ...prev, [type]: (prev[type] || 0) - 1 }; saveJSON('orbit_boost_counts_v2', c); return c; });
+    return true;
+  };
+  // Odak: süre boyunca mükemmel/iyi iniş toleransı iki kat
+  const triggerFocus = () => {
+    if (performance.now() < focusUntilRef.current) return;
+    if (!consumeBoost('focus')) return;
+    focusUntilRef.current = performance.now() + 6000 + ((boostLevels.focus || 1) - 1) * 1500;
+    playSound('perfect', soundOn); vibrate(25); track('boost_used', { type: 'focus' });
+  };
+  // Çift kristal: turun kalanında kazanılan kristaller iki kat
+  const activateDouble = () => {
+    if (doubleRunRef.current) return;
+    if (!consumeBoost('double')) return;
+    doubleRunRef.current = true; setDoubleActive(true);
+    playSound('coin', soundOn); vibrate(25); track('boost_used', { type: 'double' });
+  };
+
   const activateShield = () => {
     if (isPaused) return;
     const currentCounts = boostCounts.shield || 0;
@@ -1902,10 +1941,11 @@ function App() {
   const showShopMessage = (msg) => { setShopMessage(msg); setTimeout(() => setShopMessage((cur) => (cur === msg ? null : cur)), 1400); };
 
   const buyBoostPackage = (boostType) => {
-    if (crystals >= BOOST_PACK_COST) {
+    const packCost = boostPackCost(boostType);
+    if (crystals >= packCost) {
       const level = boostLevels[boostType] || 1;
       const bonusAmount = 3 + (level - 1);
-      const nextCrystals = crystals - BOOST_PACK_COST; const nextCounts = { ...boostCounts, [boostType]: (boostCounts[boostType] || 0) + bonusAmount };
+      const nextCrystals = crystals - packCost; const nextCounts = { ...boostCounts, [boostType]: (boostCounts[boostType] || 0) + bonusAmount };
       setCrystals(nextCrystals); setBoostCounts(nextCounts); saveJSON('orbit_crystals', nextCrystals); saveJSON('orbit_boost_counts_v2', nextCounts);
       playSound('coin', soundOn); vibrate(15);
     } else { playSound('gameover', soundOn); showShopMessage(t.insufficientCrystals); }
@@ -2221,6 +2261,18 @@ function App() {
           .trail-flame { width: 34px; height: 14px; transform-origin: 100% 50%;
                          clip-path: polygon(100% 50%, 55% 8%, 24% 32%, 8% 50%, 24% 68%, 55% 92%); }
           .trail-plasma { width: 46px; height: 12px; border-radius: 50%; transform-origin: 100% 50%; }
+          .trail-rainbow { width: 16px; height: 16px; border-radius: 50%; transform-origin: 50% 50%; }
+          .trail-star { width: 18px; height: 18px; transform-origin: 50% 50%;
+                        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+          .trail-pixel { width: 12px; height: 12px; transform-origin: 50% 50%; }
+          .theme-aurora::after { content: ''; position: absolute; inset: -20% -10% auto -10%; height: 55%;
+                        background: linear-gradient(100deg, transparent 10%, rgba(52,211,153,.35) 30%, rgba(167,139,250,.28) 50%, rgba(45,212,191,.32) 70%, transparent 90%);
+                        filter: blur(28px); animation: auroraWave 9s ease-in-out infinite alternate; }
+          @keyframes auroraWave { 0% { transform: translateX(-8%) skewY(-4deg); opacity: .7; } 100% { transform: translateX(8%) skewY(4deg); opacity: 1; } }
+          .theme-blackhole::after { content: ''; position: absolute; left: 50%; top: 32%; width: 900px; height: 900px; margin: -450px 0 0 -450px; border-radius: 50%;
+                        background: conic-gradient(from 0deg, transparent, rgba(251,146,60,.18), transparent 30%, rgba(217,70,239,.16), transparent 60%, rgba(251,146,60,.14), transparent);
+                        animation: holeSpin 28s linear infinite; }
+          @keyframes holeSpin { to { transform: rotate(360deg); } }
 
           .impact-glow { position: absolute; inset: -55%; border-radius: 50%; pointer-events: none;
                          opacity: 0; z-index: 26; }
@@ -2594,14 +2646,15 @@ function App() {
             <div className="w-full flex flex-col gap-3 flex-1 min-h-0 overflow-y-auto pr-1">
               {shopTab === 'boosts' && (
                 <>
-                  {['shield', 'slowmo'].map((boostType) => {
+                  {BOOST_TYPES.map((boostType) => {
                     const level = boostLevels[boostType] || 1;
                     const bonusAmount = 3 + (level - 1);
                     const upgradeCost = boostUpgradeCost(level);
                     const isMaxLevel = level >= 5;
-                    const icon = boostType === 'shield' ? '🛡️' : '⏳';
-                    const iconBg = boostType === 'shield' ? 'bg-cyan-500/20 border-cyan-400' : 'bg-purple-500/20 border-purple-400';
-                    const nameLabel = boostType === 'shield' ? t.shield : t.slowmo;
+                    const icon = { shield: '🛡️', slowmo: '⏳', focus: '🎯', double: '💎' }[boostType];
+                    const iconBg = { shield: 'bg-cyan-500/20 border-cyan-400', slowmo: 'bg-purple-500/20 border-purple-400', focus: 'bg-rose-500/20 border-rose-400', double: 'bg-amber-500/20 border-amber-400' }[boostType];
+                    const nameLabel = { shield: t.shield, slowmo: t.slowmo, focus: t.focus, double: t.doubleBoost }[boostType];
+                    const packCost = boostPackCost(boostType);
                     return (
                       <div key={boostType} className="flex flex-col gap-3 bg-slate-900/80 border border-slate-800 rounded-2xl p-4">
                         <div className="flex items-center justify-between">
@@ -2612,8 +2665,8 @@ function App() {
                               <p className="text-xs text-slate-400">{t.level} {level}/5 {isMaxLevel ? `· ${t.max}` : ''}</p>
                             </div>
                           </div>
-                          <button onClick={(e) => { e.stopPropagation(); buyBoostPackage(boostType); }} className={`py-2 px-4 rounded-full text-xs font-black ${crystals >= BOOST_PACK_COST ? 'bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950' : 'bg-slate-800 text-slate-500'}`}>
-                            {t.buy} 💎{BOOST_PACK_COST} (+{bonusAmount})
+                          <button onClick={(e) => { e.stopPropagation(); buyBoostPackage(boostType); }} className={`py-2 px-4 rounded-full text-xs font-black ${crystals >= packCost ? 'bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950' : 'bg-slate-800 text-slate-500'}`}>
+                            {t.buy} 💎{packCost} (+{bonusAmount})
                           </button>
                         </div>
                         <div className="flex items-center justify-between border-t border-slate-800 pt-3">
@@ -2830,6 +2883,18 @@ function App() {
               >
                 ⏳ <span className={`absolute bottom-1 right-2 text-xs font-black px-1.5 py-0.5 rounded-full ${(boostCounts.slowmo || 0) > 0 ? 'bg-slate-950/80 text-purple-300' : 'bg-slate-900/80 text-slate-500'}`}>{boostCounts.slowmo || 0}</span>
               </button>
+              {(boostCounts.focus || 0) > 0 && (
+                <button onClick={(e) => { e.stopPropagation(); triggerFocus(); }}
+                  className="relative w-14 h-14 rounded-full border flex items-center justify-center text-xl shadow-lg bg-slate-900/90 text-rose-300 border-slate-700">
+                  🎯 <span className="absolute bottom-1 right-2 text-xs font-black px-1.5 py-0.5 rounded-full bg-slate-950/80 text-rose-300">{boostCounts.focus}</span>
+                </button>
+              )}
+              {((boostCounts.double || 0) > 0 || doubleActive) && (
+                <button onClick={(e) => { e.stopPropagation(); activateDouble(); }}
+                  className={`relative w-14 h-14 rounded-full border flex items-center justify-center text-xl shadow-lg ${doubleActive ? 'bg-amber-400 text-slate-950 border-amber-200 animate-pulse' : 'bg-slate-900/90 text-amber-300 border-slate-700'}`}>
+                  💎 <span className="absolute bottom-1 right-2 text-xs font-black px-1.5 py-0.5 rounded-full bg-slate-950/80 text-amber-300">{doubleActive ? 'x2' : boostCounts.double}</span>
+                </button>
+              )}
             </div>
 
             {recordFlash && (
