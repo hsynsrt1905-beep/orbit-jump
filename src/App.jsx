@@ -1038,6 +1038,9 @@ function App() {
   const slowMoUntilRef = useRef(0);
 
   const physicsRef = useRef({ active: { x: 0, y: 0 }, target: { x: 80, y: -440, vx: 2.0 }, ball: { x: 120, y: 0, vx: 0, vy: 0 }, angle: 0, isFlying: false, speed: 0.02, combo: 0, dead: false, camera: { x: 0, y: 200 } });
+  // ?autoplay=N (yalnız geliştirme): N = iniş sapma toleransı; tanıtım kaydı için.
+  const autoplayRef = useRef(import.meta.env.DEV ? Number(new URLSearchParams(window.location.search).get('autoplay')) || 0 : 0);
+  useEffect(() => { if (import.meta.env.DEV) { window.__orbitAutoplay = autoplayRef; window.__orbitPhys = physicsRef; } }, []);
 
   const cameraRef = useRef(null);
   const activeGroupRef = useRef(null);
@@ -1481,6 +1484,23 @@ function App() {
           } else if (p.target.x < p.active.x - maxBoundX) {
             p.target.x = p.active.x - maxBoundX;
             p.target.vx = Math.abs(p.target.vx);
+          }
+
+          // Yalnız geliştirmede (?autoplay=1): tanıtım videosu kaydı için düz uçuşu
+          // ileriye simüle edip mükemmel inişe denk gelen anda zıplar.
+          if (import.meta.env.DEV && autoplayRef.current && !p.isFlying) {
+            const vx = Math.cos(p.angle) * 14, vy = Math.sin(p.angle) * 14;
+            let tx = p.target.x, tvx = p.target.vx * tierSpeedMul;
+            for (let k = 1; k < 90; k++) {
+              tx += tvx;
+              if (tx > p.active.x + 130) { tx = p.active.x + 130; tvx = -Math.abs(tvx); }
+              else if (tx < p.active.x - 130) { tx = p.active.x - 130; tvx = Math.abs(tvx); }
+              const d = Math.hypot(p.ball.x + vx * k - tx, p.ball.y + vy * k - p.target.y);
+              if (d < 140) {
+                if (d > 100 && Math.abs(d - 120) < autoplayRef.current) { p.isFlying = true; p.ball.vx = vx; p.ball.vy = vy; }
+                break;
+              }
+            }
           }
 
           if (!p.isFlying) {
