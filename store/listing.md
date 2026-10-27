@@ -147,6 +147,98 @@ Jetzt herunterladen, ab in den Orbit und den Highscore knacken! 🚀
 
 ---
 
+## Español (es-ES)
+
+### Nombre de la app
+```
+Orbit Jump: Salto Espacial
+```
+
+### Descripción breve
+```
+Juego espacial sin internet: salta entre planetas, aterriza y bate tu récord
+```
+
+### Descripción completa
+```
+¡Toca en el momento justo, lanza a tu personaje y aterriza perfecto en el siguiente planeta! Orbit Jump es un juego de saltos espaciales rápido y colorido: se juega con un toque, pero dominarlo exige habilidad. Sin internet, juega donde quieras.
+
+🪐 CÓMO SE JUEGA
+Tu personaje gira alrededor de un planeta. Toca para lanzarlo y alcanza el planeta objetivo en movimiento. Un aterrizaje perfecto da +3 puntos y cámara lenta, y encadenar aterrizajes crea combos. ¡Salta antes de que se acabe el tiempo!
+
+🎮 4 MODOS DE JUEGO
+• Normal – 10 segundos en cada planeta
+• Supernova – solo 5 segundos, pero puntos dobles
+• Zen – sin límite de tiempo, a tu ritmo
+• Rápido – velocidad extrema para tus reflejos
+
+✨ CARACTERÍSTICAS
+• Control con un solo toque: fácil de empezar, difícil de dominar
+• 7 personajes: astronauta, cohete, ovni, alienígena, robot, gato espacial y meteorito; colecciónalos y mejóralos
+• 10 tipos de planeta: luna, desierto, gigante de hielo, gigante tóxico, enano de cristal, asteroide y más
+• Sistema de niveles: gana XP en cada partida y recibe cristales al subir de nivel
+• Desafía a tus amigos: comparte tu puntuación y que intenten superarte en el mismo mapa
+• Desafío diario: el mismo mapa para todos cada día, con clasificaciones diarias y semanales
+• 12 insignias y logros de Google Play
+• Recompensas por racha diaria y salvador de racha
+• Tienda: efectos de estela y temas espaciales, mejora los potenciadores (escudo, cámara lenta)
+• Clasificación mundial y guardado en la nube con Google
+• Juega sin conexión: no necesitas Wi-Fi ni datos
+• Disponible en español, inglés, turco, alemán y ruso
+
+Perfecto para pausas cortas si te gustan los juegos de reflejos, ritmo y habilidad. Una partida dura un minuto, ¡pero nunca te quedarás en "solo una más"!
+
+¡Descárgalo, entra en órbita y bate tu récord! 🚀
+```
+
+---
+
+## Русский (ru-RU)
+
+### Название
+```
+Orbit Jump: Прыжки в космосе
+```
+
+### Краткое описание
+```
+Космическая игра без интернета: прыгай с планеты на планету и бей рекорды
+```
+
+### Полное описание
+```
+Нажми в нужный момент, запусти героя и идеально приземлись на следующую планету! Orbit Jump — быстрая и яркая космическая игра-прыгалка: играется одним касанием, но требует мастерства. Интернет не нужен — играй где угодно.
+
+🪐 КАК ИГРАТЬ
+Твой герой вращается вокруг планеты. Нажми, чтобы запустить его, и поймай движущуюся планету-цель. Идеальная посадка даёт +3 очка и замедление времени, а серия посадок — комбо. Прыгай, пока не вышло время!
+
+🎮 4 РЕЖИМА
+• Обычный — 10 секунд на каждой планете
+• Сверхновая — всего 5 секунд, но двойные очки
+• Дзен — без ограничения времени, в своём темпе
+• Быстрый — экстремальная скорость для настоящих рефлексов
+
+✨ ОСОБЕННОСТИ
+• Управление одним касанием: легко начать, сложно стать мастером
+• 7 героев: космонавт, ракета, НЛО, пришелец, робот, космический кот и метеор — собирай и улучшай
+• 10 типов планет: луна, пустыня, ледяной гигант, ядовитый гигант, кристаллический карлик, астероид и другие
+• Система уровней: получай опыт за каждый забег и кристаллы за новые уровни
+• Вызов друзьям: поделись результатом — пусть попробуют побить его на той же карте
+• Ежедневное испытание: одна карта для всех каждый день, дневные и недельные таблицы лидеров
+• 12 значков и достижения Google Play
+• Награды за ежедневную серию и спасение серии
+• Магазин: эффекты следа и космические темы, улучшение бонусов (щит, замедление)
+• Мировая таблица лидеров и облачное сохранение через Google
+• Игра без интернета: не нужен Wi-Fi или мобильные данные
+• На русском, английском, турецком, испанском и немецком
+
+Идеально для коротких перерывов, если любишь игры на реакцию, тайминг и ловкость. Забег длится минуту, но на «ещё одной» ты не остановишься!
+
+Скачивай, выходи на орбиту и бей свой рекорд! 🚀
+```
+
+---
+
 ## Anahtar kelime notları
 - Google Play başlığı, kısa açıklamayı ve tam açıklamayı aramada tarar; en çok başlık ve kısa açıklama etkiler.
 - Hedeflenen aramalar: "uzay oyunu", "zıplama oyunu", "internetsiz oyun", "refleks oyunu" / "space game", "jump game", "offline game".
