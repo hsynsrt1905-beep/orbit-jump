@@ -8,7 +8,7 @@ effort: low
 Kullanıcı "ara ara gir instaya tiktoka video beğen yorum yap" dedi. Görevin her platformda:
 - Oyun / indie dev / gamedev / mobil oyun içeriklerinden 5-8 videoyu izle ve beğen.
 - İçeriğe özel 1-2 kısa, samimi, insan gibi yorum yaz (içerik sahibinin dilinde). Oyunumuzu pazarlama, link verme, "takip et" isteme. Aynı yorumu tekrarlama; videoda gördüğün somut bir şeye değin.
-- Uygun 1-2 indie dev hesabını takip et.
+- Uygun 2-3 indie dev hesabını takip et (kullanıcı 2026-10-28'de 1'den 2-3'e çıkardı; büyük/doğrulanmış hesaplar yerine küçük-orta indie geliştiricileri seç, takip geri dönüşü daha olası).
 
 Nasıl:
 - Telefon bağlıysa (`MSYS_NO_PATHCONV=1 "$LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe" devices`) uygulamalardan yap. Aşağıdaki `adb ...` kısaltmalarının hepsinde tam yolu kullan (adb PATH'te yok; kısa `adb` "command not found" verir, bunu telefon yok sanma). Ekran görüntüsü: `adb exec-out screencap -p > <scratchpad>/s.png`, Read ile bak (1440x3120, görüntü 923x2000 gösterilir; koordinatları 1.56 ile çarpıp `adb shell input tap X Y`). Yazı: `adb shell "input text 'kelime%skelime'"` (Türkçe karakter/emoji yazılamaz). Kaydırma: `input swipe 720 2300 720 800 300`.
