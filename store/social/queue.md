@@ -86,7 +86,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #indiegame #mobilegame #gamedev #indiedev #androidgames #spacegame #reels #mobiloyun
   ```
 
-- [ ] R8 — Reels/TikTok "Big Update" — ⛔ 1.0.16 Play'de yayına çıkmadan PAYLAŞMA (sıradaysa atla, bir sonrakine geç)
+- [x] R8 — Reels/TikTok "Big Update" — 2026-10-28 TikTok + Instagram Reels telefondan paylaşıldı (kullanıcı isteğiyle, "Update coming this week" sürümüyle; 1.0.16 incelemede)
   Video: video/reel8_update.mp4 (15 sn, fast.wav müzikli) · müziksiz: video/reel8_update_noaudio.mp4 (TikTok/IG'de uygulamadan popüler ses için)
   İçerik: gökkuşağı izi + Kuzey Işıkları, 2x Kristal gücü + Olay Ufku, piksel izi + Odak gücü
   ```
