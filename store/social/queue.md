@@ -86,6 +86,19 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #indiegame #mobilegame #gamedev #indiedev #androidgames #spacegame #reels #mobiloyun
   ```
 
+- [ ] R8 — Reels/TikTok "Big Update" — ⛔ 1.0.16 Play'de yayına çıkmadan PAYLAŞMA (sıradaysa atla, bir sonrakine geç)
+  Video: video/reel8_update.mp4 (15 sn, fast.wav müzikli) · müziksiz: video/reel8_update_noaudio.mp4 (TikTok/IG'de uygulamadan popüler ses için)
+  İçerik: gökkuşağı izi + Kuzey Işıkları, 2x Kristal gücü + Olay Ufku, piksel izi + Odak gücü
+  ```
+  BIG UPDATE 🚀 New trails, new themes and two new boosts: Focus 🎯 and 2x Crystals 💎 Which one are you trying first?
+
+  Büyük güncelleme! Yeni izler, yeni temalar, iki yeni güç: Odak ve 2x Kristal. İlk hangisini deneyeceksin?
+
+  🎮 Free on Google Play → link in bio 👆 / Link profilde
+
+  #orbitjump #indiegame #mobilegame #gamedev #gameupdate
+  ```
+
 - [ ] 3 — Temalar
   Görseller: zumrut-galaktik.png, nova-bosluk.png
   ```
