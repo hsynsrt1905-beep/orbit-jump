@@ -3,6 +3,7 @@
 Paket: `store/web/orbit-jump-web.zip` (index.html kökte, HTML5, ~0.3 MB)
 Yeniden üretmek için: `npm run build:web` → `dist-web/` (ayrıca `hosting/game/` güncellenir)
 Kendi sitemizde: https://orbit-jump-73b68.web.app/game/
+itch.io (yayında, 2026-10-28): https://hsynsertt.itch.io/orbit-jump
 
 Web sürümünde reklam ve Google girişi yok; menüde ve oyun sonunda "Google Play'den indir"
 butonu var (Play bağlantısına `utm_source=<site adı>` eklenir, Play Console → Edinme
