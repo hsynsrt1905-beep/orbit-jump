@@ -830,6 +830,8 @@ const loadDailyStats = () => {
 // Tarayıcı sürümü (itch.io, CrazyGames vb.): reklam ve Google girişi yok,
 // bunların yerine oyuncu Play Store'a yönlendirilir.
 const isWeb = !Capacitor.isNativePlatform();
+// CrazyGames gibi portallar harici mağaza bağlantısına izin vermiyor: VITE_PORTAL=crazygames ile gizlenir.
+const showStoreLinks = isWeb && import.meta.env.VITE_PORTAL !== 'crazygames';
 const webStoreUrl = () => {
   const host = (typeof location !== 'undefined' && location.hostname.replace(/[^a-z0-9.]/gi, '')) || 'web';
   return `https://play.google.com/store/apps/details?id=com.orbitjump.game&referrer=utm_source%3D${host}%26utm_medium%3Dweb_game`;
@@ -2459,7 +2461,7 @@ function App() {
                 ))}
               </div>
 
-              {isWeb && (
+              {showStoreLinks && (
                 <div className="flex flex-col items-center mt-4">
                   <button onClick={() => { track('store_click', { from: 'menu' }); openStore(); }} className="w-full bg-white text-slate-900 font-black py-3 rounded-2xl text-sm shadow-md cursor-pointer">{t.getOnPlay}</button>
                   <p className="text-slate-400 text-xs font-bold mt-1 text-center">{t.webHint}</p>
@@ -2849,7 +2851,7 @@ function App() {
                   {t.challengeSend}
                 </button>
               )}
-              {isWeb && (
+              {showStoreLinks && (
                 <button onClick={() => { track('store_click', { from: 'gameover' }); openStore(); }} className="w-full mt-3 font-black py-2.5 px-4 rounded-xl text-sm bg-white text-slate-900">
                   {t.getOnPlay}
                 </button>
