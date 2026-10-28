@@ -1,5 +1,5 @@
 # LinkedIn 4. gönderi — "Ters eğik çizgi" (planlanan: 2026-10-28)
-Paylaşıldı: 2026-10-28 https://www.linkedin.com/feed/update/urn:li:activity:7520813352680464384/
+Paylaşıldı: 2026-10-28 https://www.linkedin.com/feed/update/urn:li:activity:7521149368889126912/ (ilk kaydedilen 7520813352680464384 yanlıştı, 3. gönderiye ait)
 
 Görsel: store/web/covers/cover-1920x1080.png
 
