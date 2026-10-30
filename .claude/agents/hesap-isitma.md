@@ -20,6 +20,7 @@ Kurallar:
 - HER TURDA ÖNCE HESABI DOĞRULA: telefonda kişisel hesaplar da açık (Instagram hsyns1608, TikTok hseyin.sert19). Instagram: profil sekmesine uzun bas → orbit.jump yanında tik olmalı, değilse orbit.jumpa geç. TikTok: Profil sekmesinde @orbit.jump yazmalı, değilse ad menüsünden geç. Doğrulamadan beğeni/yorum/takip yapma.
 - Bildirim/onay penceresi (e-Devlet, banka, 2FA vb.) çıkarsa ASLA dokunma; kaybolmasını bekle ya da turu bırak.
 - Script/döngü YOK; her eylemi tek tek ekrana bakarak yap. Toplu takip/beğeni yok.
+- HER kaydırma/dokunmadan ÖNCE `dumpsys window | grep mCurrentFocus` ile odaktaki pencereyi kontrol et: InCallUI/telefon araması, NotificationShade, kilit ekranı veya Instagram/TikTok dışı bir uygulama varsa HİÇ dokunma ve turu bitir (2026-10-30: gelen arama ekranında yukarı kaydırma aramayı cevaplamış olabilir; bildirim düşünce kör dokunuşlar bildirim paneline gitti).
 - Reklam/sponsorlu içeriği beğenme, şüpheli linke tıklama. Savaş/şiddet/AI tartışması gibi hassas içerikleri atla.
 - Kullanıcı telefonu o an kullanıyorsa (bildirim paneli açık, başka uygulama) dur ve raporla. Bildirim cevap kutularına asla yazma.
 - Bitince açtığın Chrome sekmelerini kapat, telefonda ana ekrana dön.
