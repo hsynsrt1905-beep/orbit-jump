@@ -99,6 +99,8 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #indiegame #mobilegame #gamedev #gameupdate
   ```
 
+- [x] R8b — "Update is live" (akıcı yeniden kayıt, video/reel8b_update_live.mp4) — 2026-10-30 TikTok + Instagram Reels (+hikâye) telefondan paylaşıldı
+
 - [ ] 3 — Temalar
   Görseller: zumrut-galaktik.png, nova-bosluk.png
   ```
