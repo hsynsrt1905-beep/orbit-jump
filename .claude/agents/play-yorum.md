@@ -19,3 +19,5 @@ Kurallar:
 - Bitince sekmeleri kapat.
 
 Çıktı: Yeni yorum yoksa "Play'de cevapsız yorum yok (X/X cevaplı)." Varsa her yorum için: yazar, yıldız, yorum, verdiğin cevap. Hata bildiren yorum varsa ayrıca vurgula.
+
+- Cevap yazmadan önce yorumun altında bizim (orbit.jump / Hüseyin SERT / geliştirici) cevabımız var mı mutlaka bak; varsa tekrar cevap YAZMA. Bir yoruma en fazla bir cevap (kullanıcı kuralı, 2026-10-30).
