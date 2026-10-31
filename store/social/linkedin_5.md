@@ -1,4 +1,5 @@
 # LinkedIn 5. gönderi — "Takılan video" (planlanan: 2026-10-31)
+Paylaşıldı: 2026-10-31 https://www.linkedin.com/feed/update/urn:li:share:7522238256999030785/ (doğrulandı)
 
 Görsel: store/web/covers/cover-1920x1080.png
 
