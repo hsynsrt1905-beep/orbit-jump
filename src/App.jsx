@@ -32,6 +32,7 @@ const translations = {
     helpRule2: "Perfect Landings: Landing very close to the edge grants +3 score and triggers a brief cinematic slow-mo effect.",
     helpRule3: "Game Modes: Normal Mode has a 10s timer, Supernova has 5s, Zen Mode has no timers, and Fast Mode delivers extreme speed.",
     helpRule4: "Boosts: Shield (🛡️) saves you from a miss, Slow-Mo (⏳) slows time, Focus (🎯) widens the Perfect zone for a few seconds and 2x Crystals (💎) doubles the crystals you earn for the rest of the run.",
+    featuresTitle: "Gameplay extras", featVariety: "Moving planets (after 15 points)", featJuice: "Extra effects", toRecord: "🏁 {n} to beat your record", newRecordRun: "👑 NEW RECORD RUN!", weekBonus: "Day 7 bonus: +1 Focus, +1 2x Crystals!", trailEmber: "Ember", trailComet: "Comet", unlockPerfects: "Land {n} Perfect jumps", unlockBestRun: "Score {n} in one run", unlockBtn: "UNLOCK", lockedMsg: "Complete the goal to unlock",
     helpBallFeature: "Ball Upgrades: Upgrade balls up to Level 5 to expand Perfect hit zones, reveal glowing cores, and earn crystal bonuses.",
     helpShopFeature: "Shop & Themes: Customize your experience with 4 unique themes, custom trails, and boost packs.",
     streakTitle: "DAILY STREAK BONUS", streakClaimed: "COLLECTED TODAY", streakBtn: "CLAIM STREAK",
@@ -78,6 +79,7 @@ const translations = {
     helpRule2: "Mükemmel Atlayış: Gezegenin kenarına çok yakın inişler +3 skor kazandırır ve kısa süreli yavaşlatıcı (slow-mo) tetikler.",
     helpRule3: "Oyun Modları: Normal modda 10sn, Süpernova'da 5sn süre sınırı vardır; Zen modunda süre sınırı yokken, Hızlı mod ekstrem bir tempo sunar.",
     helpRule4: "Güçler: Kalkan (🛡️) bir kaçırmada seni kurtarır, Yavaşlatıcı (⏳) zamanı yavaşlatır, Odak (🎯) birkaç saniyeliğine Mükemmel alanını genişletir, 2x Kristal (💎) tur boyunca kazandığın kristali ikiye katlar.",
+    featuresTitle: "Oynanış ekstraları", featVariety: "Hareketli gezegenler (15 puandan sonra)", featJuice: "Ekstra efektler", toRecord: "🏁 Rekora {n} kaldı", newRecordRun: "👑 YENİ REKOR TURU!", weekBonus: "7. gün bonusu: +1 Odak, +1 2x Kristal!", trailEmber: "Kor", trailComet: "Kuyruklu Yıldız", unlockPerfects: "{n} Mükemmel iniş yap", unlockBestRun: "Tek turda {n} puan yap", unlockBtn: "AÇ", lockedMsg: "Açmak için hedefi tamamla",
     helpBallFeature: "Top Geliştirmeleri: Topları 5. seviyeye kadar yükselterek Mükemmel piksellerini genişlet, çekirdeği parlat ve ekstra kristal kazan.",
     helpShopFeature: "Mağaza & Temalar: 4 benzersiz tema, özel izler (Trail) ve market paketleriyle deneyimini kişiselleştir.",
     streakTitle: "GÜNLÜK SERİ ÖDÜLÜ", streakClaimed: "BUGÜN ALINDI", streakBtn: "SERİYİ AL",
@@ -124,6 +126,7 @@ const translations = {
     helpRule2: "Aterrizajes Perfectos: Aterrizar muy cerca del borde otorga +3 puntos y activa un breve efecto de cámara lenta.",
     helpRule3: "Modos de Juego: El Modo Normal tiene 10s, Supernova 5s, el Modo Zen no tiene temporizadores y el Modo Rápido ofrece velocidad extrema.",
     helpRule4: "Potenciadores: el Escudo (🛡️) te salva de un fallo, la Cámara Lenta (⏳) ralentiza el tiempo, Enfoque (🎯) amplía la zona Perfecta unos segundos y Cristales x2 (💎) duplica los cristales del resto de la partida.",
+    featuresTitle: "Extras de juego", featVariety: "Planetas en movimiento (desde 15 puntos)", featJuice: "Efectos extra", toRecord: "🏁 {n} para superar tu récord", newRecordRun: "👑 ¡NUEVO RÉCORD!", weekBonus: "Bono del día 7: +1 Enfoque, +1 Cristales x2", trailEmber: "Brasa", trailComet: "Cometa", unlockPerfects: "Logra {n} saltos Perfectos", unlockBestRun: "Haz {n} puntos en una partida", unlockBtn: "DESBLOQUEAR", lockedMsg: "Completa el objetivo para desbloquear",
     helpBallFeature: "Mejoras de Bola: Sube hasta el nivel 5 para ampliar píxeles perfectos, núcleos brillantes y bonos de cristales.",
     helpShopFeature: "Tienda y Temas: Personaliza tu experiencia con 4 temas únicos, estelas personalizadas y paquetes.",
     streakTitle: "BONO DE RACHA DIARIA", streakClaimed: "RECLAMADO HOY", streakBtn: "RECLAMAR RACHA",
@@ -170,6 +173,7 @@ const translations = {
     helpRule2: "Perfekte Landungen: Landungen ganz nah am Rand geben +3 Punkte und lösen einen kurzen Slow-Mo-Effekt aus.",
     helpRule3: "Spielmodi: Normalmodus hat 10s, Supernova 5s, Zen-Modus hat keinen Timer und der Schnelle Modus bietet extremes Tempo.",
     helpRule4: "Boosts: Das Schild (🛡️) rettet dich bei einem Fehlsprung, Slow-Mo (⏳) verlangsamt die Zeit, Fokus (🎯) vergrößert kurz die Perfekt-Zone und 2x Kristalle (💎) verdoppelt deine Kristalle für den Rest der Runde.",
+    featuresTitle: "Gameplay-Extras", featVariety: "Bewegte Planeten (ab 15 Punkten)", featJuice: "Extra-Effekte", toRecord: "🏁 Noch {n} bis zum Rekord", newRecordRun: "👑 NEUER REKORD!", weekBonus: "Tag-7-Bonus: +1 Fokus, +1 2x Kristalle!", trailEmber: "Glut", trailComet: "Komet", unlockPerfects: "Lande {n} perfekte Sprünge", unlockBestRun: "Erziele {n} Punkte in einer Runde", unlockBtn: "FREISCHALTEN", lockedMsg: "Schließe das Ziel ab, um es freizuschalten",
     helpBallFeature: "Ball-Upgrades: Rüste Bälle bis Stufe 5 auf, um Trefferzonen zu vergrößern und Kristallboni zu erhalten.",
     helpShopFeature: "Shop & Themen: Passe dein Spiel mit 4 einzigartigen Themen, Spezialspuren und Boost-Paketen an.",
     streakTitle: "TÄGLICHER SERIENBONUS", streakClaimed: "HEUTE GEHOLT", streakBtn: "BONUS HOLEN",
@@ -216,6 +220,7 @@ const translations = {
     helpRule2: "Идеальные приземления: Посадка у самого края дает +3 очка и запускает короткий эффект замедления времени.",
     helpRule3: "Режимы игры: Обычный режим (10с), Супернова (5с), режим Дзен (без таймера) и Быстрый режим дает экстремальную скорость.",
     helpRule4: "Усиления: Щит (🛡️) спасает при промахе, Замедление (⏳) замедляет время, Фокус (🎯) на несколько секунд расширяет зону «Идеально», а Кристаллы x2 (💎) удваивают кристаллы до конца забега.",
+    featuresTitle: "Доп. возможности", featVariety: "Движущиеся планеты (с 15 очков)", featJuice: "Доп. эффекты", toRecord: "🏁 До рекорда: {n}", newRecordRun: "👑 НОВЫЙ РЕКОРД!", weekBonus: "Бонус 7-го дня: +1 Фокус, +1 Кристаллы x2!", trailEmber: "Уголь", trailComet: "Комета", unlockPerfects: "Сделайте {n} идеальных прыжков", unlockBestRun: "Наберите {n} очков за забег", unlockBtn: "ОТКРЫТЬ", lockedMsg: "Выполните цель, чтобы открыть",
     helpBallFeature: "Улучшение шаров: Прокачка до 5 уровня расширяет зону идеального прыжка и увеличивает доход кристаллов.",
     helpShopFeature: "Магазин и Темы: Настройте игру с помощью 4 тем, пользовательских следов и наборов усилений.",
     streakTitle: "ЕЖЕДНЕВНАЯ СЕРИЯ БОНУСОВ", streakClaimed: "ПОЛУЧЕНО СЕГОДНЯ", streakBtn: "ЗАБРАТЬ БОНУС",
@@ -447,6 +452,8 @@ const shopItems = [
   { id: 'trail_rainbow', type: 'trail', price: 250, color: 'rainbow', shape: 'rainbow', nameKey: 'trailRainbow' },
   { id: 'trail_star', type: 'trail', price: 300, color: '#fef08a', shape: 'star', nameKey: 'trailStar' },
   { id: 'trail_pixel', type: 'trail', price: 350, color: '#4ade80', shape: 'pixel', nameKey: 'trailPixel' },
+  { id: 'trail_ember', type: 'trail', price: 0, color: '#fb923c', shape: 'flame', nameKey: 'trailEmber', unlock: { stat: 'totalPerfects', target: 50, key: 'unlockPerfects' } },
+  { id: 'trail_comet', type: 'trail', price: 0, color: '#a78bfa', shape: 'plasma', nameKey: 'trailComet', unlock: { stat: 'bestRun', target: 40, key: 'unlockBestRun' } },
   { id: 'bg_nebula', type: 'theme', price: 300, nameKey: 'themeNebula' },
   { id: 'bg_void', type: 'theme', price: 380, nameKey: 'themeVoid' },
   { id: 'bg_solar', type: 'theme', price: 450, nameKey: 'themeSolar' },
@@ -919,6 +926,16 @@ function App() {
     liteRef.current = liteMode;
     document.documentElement.classList.toggle('lite', liteMode);
   }, [liteMode]);
+  // Oyuncunun ayarlardan açıp kapatabildiği oynanış eklentileri
+  const [features, setFeatures] = useState(() => ({ variety: true, juice: true, ...loadJSON('orbit_features', {}) }));
+  const featuresRef = useRef(features);
+  useEffect(() => { featuresRef.current = features; }, [features]);
+  const toggleFeature = (key) => {
+    playSound('click', soundOn);
+    setFeatures((f) => { const next = { ...f, [key]: !f[key] }; saveJSON('orbit_features', next); return next; });
+  };
+  const [runStartBest, setRunStartBest] = useState(0);
+
   const toggleLite = () => {
     const next = !liteMode;
     setLiteMode(next);
@@ -1498,7 +1515,11 @@ function App() {
           const effDelta = deltaTime * slowMoFactor;
 
           p.target.x += p.target.vx * (effDelta * 60) * tierSpeedMul;
-          const maxBoundX = 130;
+          if (p.target.bob) {
+            p.target.phase += effDelta * 2.2 * tierSpeedMul;
+            p.target.y = p.target.baseY + Math.sin(p.target.phase) * p.target.bob;
+          }
+          const maxBoundX = p.target.wide ? 175 : 130;
           if (p.target.x > p.active.x + maxBoundX) {
             p.target.x = p.active.x + maxBoundX;
             p.target.vx = -Math.abs(p.target.vx);
@@ -1665,6 +1686,10 @@ function App() {
               setTimeout(() => setPopup((cur) => (cur && cur.id === popupId ? null : cur)), 600);
 
               spawnParticles(shiftX, shiftY, kind);
+              if (featuresRef.current.juice && !liteRef.current && kind !== 'normal') {
+                if (kind === 'perfect') { shakeUntilRef.current = Math.max(shakeUntilRef.current, currentTime + 150); spawnParticles(shiftX, shiftY, 'great'); }
+                if (p.combo >= 3) spawnParticles(shiftX, shiftY, 'perfect');
+              }
               setStats((s) => {
                 const currentRunPerfects = kind === 'perfect' ? (s.tempRunPerfects || 0) + 1 : (s.tempRunPerfects || 0);
                 const next = {
@@ -1713,6 +1738,15 @@ function App() {
               const direction = rand() > 0.5 ? 1 : -1;
               const randomSpeed = (1.9 + rand() * 1.8) * (1 + tierLevel * 0.15);
               p.target = { x: shiftX + ((rand() * 220) - 110), y: shiftY - (440 + tierLevel * 20), vx: direction * randomSpeed };
+              {
+                const vr = rand(), vAmp = rand();
+                let variant = '';
+                if (featuresRef.current.variety && live.score >= 15) {
+                  if (vr < 0.35) { p.target.bob = 26 + vAmp * 18; p.target.baseY = p.target.y; p.target.phase = 0; variant = 'bob'; }
+                  else if (live.score >= 30 && vr < 0.6) { p.target.wide = true; variant = 'wide'; }
+                }
+                if (targetGroupRef.current) targetGroupRef.current.dataset.variant = variant;
+              }
               p.angle = Math.atan2(p.ball.y - p.active.y, p.ball.x - p.active.x);
             }
 
@@ -1853,6 +1887,8 @@ function App() {
     applyPlanetTheme(targetGroupRef.current, planetThemes[nextThemeIdxRef.current]);
 
     physicsRef.current = { active: { x: 0, y: 0 }, target: { x: 80, y: -440, vx: 2.0 }, ball: { x: 120, y: 0, vx: 0, vy: 0 }, angle: 0, isFlying: false, speed: 0.02, combo: 0, dead: false, camera: { x: 0, y: 200 } };
+    if (targetGroupRef.current) targetGroupRef.current.dataset.variant = '';
+    setRunStartBest(highScore);
     trailPointsRef.current = new Array(TRAIL_POOL_SIZE).fill(null);
     trailCursorRef.current = 0;
     particlesRef.current = new Array(PARTICLE_POOL_SIZE).fill(null);
@@ -1993,6 +2029,10 @@ function App() {
     setCrystals(nextCrystals); setStreakDays(nextStreak); setLastStreakDate(today);
     saveJSON('orbit_crystals', nextCrystals); saveJSON('orbit_streak_days', nextStreak); localStorage.setItem('orbit_last_streak', today);
     playSound('coin', soundOn); vibrate(15);
+    if (nextStreak % 7 === 0) {
+      setBoostCounts((prev) => { const n = { ...prev, focus: (prev.focus || 0) + 1, double: (prev.double || 0) + 1 }; saveJSON('orbit_boost_counts_v2', n); return n; });
+      showShopMessage(t.weekBonus);
+    }
     track('streak_claim', { day: nextStreak });
     // Bildirim izni burada, oyuncu seriyle ilgilendiği anda istenir
     scheduleStreakReminder({ claimedToday: true, streakDays: nextStreak + 1, title: t.streakReminderTitle, body: t.streakReminderBody, askPermission: true });
@@ -2041,6 +2081,15 @@ function App() {
       else if (item.type === 'trail') { setSelectedTrail(item.id); saveJSON('orbit_selected_trail', item.id); }
       else if (item.type === 'theme') { setSelectedTheme(item.id); saveJSON('orbit_selected_theme', item.id); }
       playSound('click', soundOn); return;
+    }
+    if (item.unlock) {
+      if ((stats[item.unlock.stat] || 0) >= item.unlock.target) {
+        const nextOwned = [...ownedItems, item.id];
+        setOwnedItems(nextOwned); saveJSON('orbit_owned_items', nextOwned);
+        setSelectedTrail(item.id); saveJSON('orbit_selected_trail', item.id);
+        playSound('perfect', soundOn); vibrate(25); track('goal_unlock', { item: item.id });
+      } else { playSound('click', soundOn); showShopMessage(t.lockedMsg); }
+      return;
     }
     if (crystals >= item.price) {
       const nextCrystals = crystals - item.price; const nextOwned = [...ownedItems, item.id];
@@ -2276,6 +2325,11 @@ function App() {
                         will-change: opacity; animation: auroraPulse 4s ease-in-out infinite alternate; }
           @keyframes holeSpin { to { transform: rotate(360deg); } }
           .lite .theme-aurora::after, .lite .theme-blackhole::after { animation: none; }
+          [data-variant="bob"] { filter: drop-shadow(0 0 14px rgba(167,139,250,.9)); }
+          [data-variant="wide"] { filter: drop-shadow(0 0 14px rgba(251,191,36,.85)); }
+          .lite [data-variant] { filter: none; }
+          @keyframes comboPop { 0% { transform: scale(1.45); } 100% { transform: scale(1); } }
+          .combo-pop { display: inline-block; animation: comboPop .25s ease-out; }
 
           .impact-glow { position: absolute; inset: -55%; border-radius: 50%; pointer-events: none;
                          opacity: 0; z-index: 26; }
@@ -2430,6 +2484,26 @@ function App() {
                     </div>
                   </div>
                 )}
+                {(() => {
+                  const done = isStreakReady ? (daysSinceStreak === 1 ? streakDays : 0) : streakDays;
+                  const upcoming = isStreakReady ? done + 1 : done;
+                  const start = Math.floor(Math.max(upcoming - 1, 0) / 7) * 7;
+                  return (
+                    <div className="w-full grid grid-cols-7 gap-1">
+                      {Array.from({ length: 7 }, (_, i) => {
+                        const day = start + i + 1;
+                        const claimed = day <= done;
+                        const isToday = isStreakReady && day === done + 1;
+                        return (
+                          <div key={day} className={`flex flex-col items-center rounded-xl py-1.5 border text-[10px] font-black ${claimed ? 'bg-emerald-500/20 border-emerald-400/60 text-emerald-200' : isToday ? 'bg-amber-400/25 border-amber-300 text-amber-100 animate-pulse' : 'bg-slate-900/70 border-slate-800 text-slate-500'}`}>
+                            <span>{day % 7 === 0 ? '🎁' : claimed ? '✓' : day}</span>
+                            <span>{day * 15}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
                 <div className="grid grid-cols-2 gap-3">
                   {!(canSaveStreak && isStreakReady) && (
                     <button onClick={() => claimStreakBonus()} disabled={!isStreakReady} className={`${isWeb ? 'col-span-2' : ''} flex flex-col items-center justify-center font-black py-3 rounded-2xl text-sm ${isStreakReady ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 animate-pulse' : 'bg-slate-900/80 border border-slate-800 text-slate-500'}`}>
@@ -2501,6 +2575,18 @@ function App() {
                 <div className="grid grid-cols-2 gap-2.5">
                   <button onClick={() => { if (liteMode) toggleLite(); }} className={`py-4 rounded-2xl font-bold text-base border ${!liteMode ? 'bg-cyan-500 border-cyan-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>✨ {t.graphicsHigh}</button>
                   <button onClick={() => { if (!liteMode) toggleLite(); }} className={`py-4 rounded-2xl font-bold text-base border ${liteMode ? 'bg-amber-500 border-amber-300 text-slate-950 font-black' : 'bg-slate-900/90 border-slate-700 text-slate-300'}`}>⚡ {t.graphicsLow}</button>
+                </div>
+              </section>
+
+              <section>
+                <p className="text-sm font-black text-slate-300 mb-3">🧩 {t.featuresTitle}</p>
+                <div className="flex flex-col gap-2">
+                  {[['variety', '🪐', 'featVariety'], ['juice', '💥', 'featJuice']].map(([k, ic, label]) => (
+                    <button key={k} onClick={() => toggleFeature(k)} className={`flex items-center justify-between py-3.5 px-4 rounded-2xl font-bold text-sm border ${features[k] ? 'bg-cyan-500/15 border-cyan-400/60 text-cyan-100' : 'bg-slate-900/90 border-slate-700 text-slate-400'}`}>
+                      <span>{ic} {t[label]}</span>
+                      <span className={`text-xs font-black px-2.5 py-1 rounded-full ${features[k] ? 'bg-cyan-400 text-slate-950' : 'bg-slate-700 text-slate-300'}`}>{features[k] ? t.onLabel : t.offLabel}</span>
+                    </button>
+                  ))}
                 </div>
               </section>
 
@@ -2691,6 +2777,8 @@ function App() {
                 const isUpgrading = upgradedBallId === item.id;
                 const isMaxLevel = ballLvl >= 5;
                 const upgradeCost = skinUpgradeCost(ballLvl);
+                const unlockProg = item.unlock ? Math.min(stats[item.unlock.stat] || 0, item.unlock.target) : 0;
+                const unlockMet = !!item.unlock && unlockProg >= item.unlock.target;
 
                 if (item.type === 'ball' && owned) {
                   return (
@@ -2735,16 +2823,16 @@ function App() {
                       {item.type === 'theme' && <div className="w-10 h-10 flex items-center justify-center text-xl">🌌</div>}
                       <div>
                         <p className="font-bold text-sm">{t[item.nameKey]}</p>
-                        <p className="text-xs text-slate-400">{owned ? t.owned : `💎 ${item.price}`}</p>
+                        <p className="text-xs text-slate-400">{owned ? t.owned : item.unlock ? `🔒 ${t[item.unlock.key].replace('{n}', String(item.unlock.target))} · ${unlockProg}/${item.unlock.target}` : `💎 ${item.price}`}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={(e) => { e.stopPropagation(); buyShopItem(item); }}
                         disabled={isSelected}
-                        className={`py-2 px-4 rounded-full text-xs font-black transition-colors ${isSelected ? 'bg-cyan-500/20 text-cyan-300' : owned ? 'bg-slate-700 text-white' : crystals >= item.price ? 'bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950' : 'bg-slate-800 text-slate-500'}`}
+                        className={`py-2 px-4 rounded-full text-xs font-black transition-colors ${isSelected ? 'bg-cyan-500/20 text-cyan-300' : owned ? 'bg-slate-700 text-white' : (item.unlock ? unlockMet : crystals >= item.price) ? 'bg-gradient-to-r from-cyan-400 to-teal-500 text-slate-950' : 'bg-slate-800 text-slate-500'}`}
                       >
-                        {isSelected ? t.selected : owned ? t.select : t.buy}
+                        {isSelected ? t.selected : owned ? t.select : item.unlock ? t.unlockBtn : t.buy}
                       </button>
                     </div>
                   </div>
@@ -2870,7 +2958,12 @@ function App() {
             <div className="absolute top-6 left-12 max-[380px]:left-5 z-50 pointer-events-none" style={{ marginTop: 'env(safe-area-inset-top)' }}>
               <div className="text-6xl font-black text-white/10 leading-none">{score}</div>
               <div className={`text-xs font-black tracking-widest mt-1 ${tier.color}`}>{tier.badge} {t[tier.key]}</div>
-              {comboCount > 1 && <div className="text-sm font-black text-orange-300 mt-1">🔥 {t.combo} x{comboCount}</div>}
+              {comboCount > 1 && <div key={features.juice ? comboCount : 'c'} className={`text-sm font-black text-orange-300 mt-1 ${features.juice ? 'combo-pop' : ''}`}>🔥 {t.combo} x{comboCount}</div>}
+              {runStartBest > 0 && (
+                <div className={`text-xs font-black mt-1 ${score > runStartBest ? 'text-amber-300' : 'text-slate-400'}`}>
+                  {score > runStartBest ? t.newRecordRun : t.toRecord.replace('{n}', String(runStartBest - score + 1))}
+                </div>
+              )}
             </div>
 
             <div className="absolute bottom-8 left-8 flex gap-3 z-50" style={{ marginBottom: 'env(safe-area-inset-bottom)' }}>
