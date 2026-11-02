@@ -11,12 +11,13 @@ const STORE_URL = 'https://play.google.com/store/apps/details?id=com.orbitjump.g
 
 // AdMob "OrbitJump_Interstitial" birimi. Boş bırakılırsa geçiş reklamı kapanır.
 const INTERSTITIAL_AD_ID = 'ca-app-pub-1803044471635660/1592634831';
-const GAMES_PER_INTERSTITIAL = 4;
-const INTERSTITIAL_MIN_GAP_MS = 3 * 60 * 1000;
-// Yeni oyuncu ilk gün ve ilk 15 oyunda geçiş reklamı görmez; oyunu
-// bırakmaların en çok ilk oturumdaki reklamdan geldiği görülüyor.
-const AD_FREE_MS = 24 * 60 * 60 * 1000;
-const AD_FREE_GAMES = 15;
+const GAMES_PER_INTERSTITIAL = 3;
+const INTERSTITIAL_MIN_GAP_MS = 2 * 60 * 1000;
+// Yeni oyuncu ilk 5 oyunda geçiş reklamı görmez. 1.0.17: 24 saat + 15 oyunluk
+// reklamsız dönem kaldırıldı; oyuncuların çoğu 15 oyuna varmadan bıraktığı
+// için neredeyse hiç geçiş reklamı gösterilmiyordu.
+const AD_FREE_MS = 0;
+const AD_FREE_GAMES = 5;
 
 const STREAK_REMINDER_ID = 1001;
 const STREAK_REMINDER_HOUR = 20;
