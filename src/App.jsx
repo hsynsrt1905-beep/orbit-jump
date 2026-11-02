@@ -1067,6 +1067,7 @@ function App() {
   const focusUntilRef = useRef(0);
   const doubleRunRef = useRef(false);
   const [doubleActive, setDoubleActive] = useState(false);
+  const [focusActive, setFocusActive] = useState(false);
   const physicsRef = useRef({ active: { x: 0, y: 0 }, target: { x: 80, y: -440, vx: 2.0 }, ball: { x: 120, y: 0, vx: 0, vy: 0 }, angle: 0, isFlying: false, speed: 0.02, combo: 0, dead: false, camera: { x: 0, y: 200 } });
   // ?autoplay=N (yalnız geliştirme): N = iniş sapma toleransı; tanıtım kaydı için.
   const autoplayRef = useRef(import.meta.env.DEV ? Number(new URLSearchParams(window.location.search).get('autoplay')) || 0 : 0);
@@ -1880,7 +1881,7 @@ function App() {
     particleCursorRef.current = 0;
     shakeUntilRef.current = 0;
     if (flashRef.current) flashRef.current.style.opacity = '0';
-    setReviveUsed(false); setDoubleUsed(false); focusUntilRef.current = 0; doubleRunRef.current = false; setDoubleActive(false);
+    setReviveUsed(false); setDoubleUsed(false); focusUntilRef.current = 0; setFocusActive(false); doubleRunRef.current = false; setDoubleActive(false);
     setScore(0); setComboCount(0); setRunCrystals(0); setPopup(null); setShieldActive(false); setSupernovaActive(false); planetTimerRef.current = 1; resetPlanetVisual(); slowMoUntilRef.current = 0; setGameState('playing');
   };
 
@@ -1940,7 +1941,9 @@ function App() {
   const triggerFocus = () => {
     if (performance.now() < focusUntilRef.current) return;
     if (!consumeBoost('focus')) return;
-    focusUntilRef.current = performance.now() + 6000 + ((boostLevels.focus || 1) - 1) * 1500;
+    const focusMs = 6000 + ((boostLevels.focus || 1) - 1) * 1500;
+    focusUntilRef.current = performance.now() + focusMs;
+    setFocusActive(true); setTimeout(() => { if (performance.now() >= focusUntilRef.current) setFocusActive(false); }, focusMs + 50);
     playSound('perfect', soundOn); vibrate(25); track('boost_used', { type: 'focus' });
   };
   // Çift kristal: turun kalanında kazanılan kristaller iki kat
@@ -2952,18 +2955,14 @@ function App() {
               >
                 ⏳ <span className={`absolute bottom-1 right-2 text-xs font-black px-1.5 py-0.5 rounded-full ${(boostCounts.slowmo || 0) > 0 ? 'bg-slate-950/80 text-purple-300' : 'bg-slate-900/80 text-slate-500'}`}>{boostCounts.slowmo || 0}</span>
               </button>
-              {(boostCounts.focus || 0) > 0 && (
-                <button onClick={(e) => { e.stopPropagation(); triggerFocus(); }}
-                  className="relative w-14 h-14 rounded-full border flex items-center justify-center text-xl shadow-lg bg-slate-900/90 text-rose-300 border-slate-700">
-                  🎯 <span className="absolute bottom-1 right-2 text-xs font-black px-1.5 py-0.5 rounded-full bg-slate-950/80 text-rose-300">{boostCounts.focus}</span>
-                </button>
-              )}
-              {((boostCounts.double || 0) > 0 || doubleActive) && (
-                <button onClick={(e) => { e.stopPropagation(); activateDouble(); }}
-                  className={`relative w-14 h-14 rounded-full border flex items-center justify-center text-xl shadow-lg ${doubleActive ? 'bg-amber-400 text-slate-950 border-amber-200 animate-pulse' : 'bg-slate-900/90 text-amber-300 border-slate-700'}`}>
-                  💎 <span className="absolute bottom-1 right-2 text-xs font-black px-1.5 py-0.5 rounded-full bg-slate-950/80 text-amber-300">{doubleActive ? 'x2' : boostCounts.double}</span>
-                </button>
-              )}
+              <button onClick={(e) => { e.stopPropagation(); triggerFocus(); }}
+                className={`relative w-14 h-14 rounded-full border flex items-center justify-center text-xl shadow-lg transition-all ${focusActive ? 'bg-rose-400 text-slate-950 border-rose-200 animate-pulse' : (boostCounts.focus || 0) > 0 ? 'bg-slate-900/90 text-rose-300 border-slate-700' : 'bg-slate-900/40 text-slate-500 border-slate-800 opacity-50 grayscale'}`}>
+                🎯 <span className={`absolute bottom-1 right-2 text-xs font-black px-1.5 py-0.5 rounded-full ${(boostCounts.focus || 0) > 0 || focusActive ? 'bg-slate-950/80 text-rose-300' : 'bg-slate-900/80 text-slate-500'}`}>{boostCounts.focus || 0}</span>
+              </button>
+              <button onClick={(e) => { e.stopPropagation(); activateDouble(); }}
+                className={`relative w-14 h-14 rounded-full border flex items-center justify-center text-xl shadow-lg transition-all ${doubleActive ? 'bg-amber-400 text-slate-950 border-amber-200 animate-pulse' : (boostCounts.double || 0) > 0 ? 'bg-slate-900/90 text-amber-300 border-slate-700' : 'bg-slate-900/40 text-slate-500 border-slate-800 opacity-50 grayscale'}`}>
+                💎 <span className={`absolute bottom-1 right-2 text-xs font-black px-1.5 py-0.5 rounded-full ${(boostCounts.double || 0) > 0 || doubleActive ? 'bg-slate-950/80 text-amber-300' : 'bg-slate-900/80 text-slate-500'}`}>{doubleActive ? 'x2' : boostCounts.double || 0}</span>
+              </button>
             </div>
 
             {recordFlash && (
