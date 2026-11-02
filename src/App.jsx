@@ -32,7 +32,7 @@ const translations = {
     helpRule2: "Perfect Landings: Landing very close to the edge grants +3 score and triggers a brief cinematic slow-mo effect.",
     helpRule3: "Game Modes: Normal Mode has a 10s timer, Supernova has 5s, Zen Mode has no timers, and Fast Mode delivers extreme speed.",
     helpRule4: "Boosts: Shield (🛡️) saves you from a miss, Slow-Mo (⏳) slows time, Focus (🎯) widens the Perfect zone for a few seconds and 2x Crystals (💎) doubles the crystals you earn for the rest of the run.",
-    featuresTitle: "Gameplay extras", featVariety: "Moving planets (after 15 points)", featJuice: "Extra effects", toRecord: "🏁 {n} to beat your record", newRecordRun: "👑 NEW RECORD RUN!", weekBonus: "Day 7 bonus: +1 Focus, +1 2x Crystals!", trailEmber: "Ember", trailComet: "Comet", unlockPerfects: "Land {n} Perfect jumps", unlockBestRun: "Score {n} in one run", unlockBtn: "UNLOCK", lockedMsg: "Complete the goal to unlock",
+    featuresTitle: "Gameplay extras", featVariety: "Moving planets (after 10 points)", featJuice: "Extra effects", toRecord: "🏁 {n} to beat your record", newRecordRun: "👑 NEW RECORD RUN!", weekBonus: "Day 7 bonus: +1 Focus, +1 2x Crystals!", trailEmber: "Ember", trailComet: "Comet", unlockPerfects: "Land {n} Perfect jumps", unlockBestRun: "Score {n} in one run", unlockBtn: "UNLOCK", lockedMsg: "Complete the goal to unlock",
     helpBallFeature: "Ball Upgrades: Upgrade balls up to Level 5 to expand Perfect hit zones, reveal glowing cores, and earn crystal bonuses.",
     helpShopFeature: "Shop & Themes: Customize your experience with 4 unique themes, custom trails, and boost packs.",
     streakTitle: "DAILY STREAK BONUS", streakClaimed: "COLLECTED TODAY", streakBtn: "CLAIM STREAK",
@@ -79,7 +79,7 @@ const translations = {
     helpRule2: "Mükemmel Atlayış: Gezegenin kenarına çok yakın inişler +3 skor kazandırır ve kısa süreli yavaşlatıcı (slow-mo) tetikler.",
     helpRule3: "Oyun Modları: Normal modda 10sn, Süpernova'da 5sn süre sınırı vardır; Zen modunda süre sınırı yokken, Hızlı mod ekstrem bir tempo sunar.",
     helpRule4: "Güçler: Kalkan (🛡️) bir kaçırmada seni kurtarır, Yavaşlatıcı (⏳) zamanı yavaşlatır, Odak (🎯) birkaç saniyeliğine Mükemmel alanını genişletir, 2x Kristal (💎) tur boyunca kazandığın kristali ikiye katlar.",
-    featuresTitle: "Oynanış ekstraları", featVariety: "Hareketli gezegenler (15 puandan sonra)", featJuice: "Ekstra efektler", toRecord: "🏁 Rekora {n} kaldı", newRecordRun: "👑 YENİ REKOR TURU!", weekBonus: "7. gün bonusu: +1 Odak, +1 2x Kristal!", trailEmber: "Kor", trailComet: "Kuyruklu Yıldız", unlockPerfects: "{n} Mükemmel iniş yap", unlockBestRun: "Tek turda {n} puan yap", unlockBtn: "AÇ", lockedMsg: "Açmak için hedefi tamamla",
+    featuresTitle: "Oynanış ekstraları", featVariety: "Hareketli gezegenler (10 puandan sonra)", featJuice: "Ekstra efektler", toRecord: "🏁 Rekora {n} kaldı", newRecordRun: "👑 YENİ REKOR TURU!", weekBonus: "7. gün bonusu: +1 Odak, +1 2x Kristal!", trailEmber: "Kor", trailComet: "Kuyruklu Yıldız", unlockPerfects: "{n} Mükemmel iniş yap", unlockBestRun: "Tek turda {n} puan yap", unlockBtn: "AÇ", lockedMsg: "Açmak için hedefi tamamla",
     helpBallFeature: "Top Geliştirmeleri: Topları 5. seviyeye kadar yükselterek Mükemmel piksellerini genişlet, çekirdeği parlat ve ekstra kristal kazan.",
     helpShopFeature: "Mağaza & Temalar: 4 benzersiz tema, özel izler (Trail) ve market paketleriyle deneyimini kişiselleştir.",
     streakTitle: "GÜNLÜK SERİ ÖDÜLÜ", streakClaimed: "BUGÜN ALINDI", streakBtn: "SERİYİ AL",
@@ -126,7 +126,7 @@ const translations = {
     helpRule2: "Aterrizajes Perfectos: Aterrizar muy cerca del borde otorga +3 puntos y activa un breve efecto de cámara lenta.",
     helpRule3: "Modos de Juego: El Modo Normal tiene 10s, Supernova 5s, el Modo Zen no tiene temporizadores y el Modo Rápido ofrece velocidad extrema.",
     helpRule4: "Potenciadores: el Escudo (🛡️) te salva de un fallo, la Cámara Lenta (⏳) ralentiza el tiempo, Enfoque (🎯) amplía la zona Perfecta unos segundos y Cristales x2 (💎) duplica los cristales del resto de la partida.",
-    featuresTitle: "Extras de juego", featVariety: "Planetas en movimiento (desde 15 puntos)", featJuice: "Efectos extra", toRecord: "🏁 {n} para superar tu récord", newRecordRun: "👑 ¡NUEVO RÉCORD!", weekBonus: "Bono del día 7: +1 Enfoque, +1 Cristales x2", trailEmber: "Brasa", trailComet: "Cometa", unlockPerfects: "Logra {n} saltos Perfectos", unlockBestRun: "Haz {n} puntos en una partida", unlockBtn: "DESBLOQUEAR", lockedMsg: "Completa el objetivo para desbloquear",
+    featuresTitle: "Extras de juego", featVariety: "Planetas en movimiento (desde 10 puntos)", featJuice: "Efectos extra", toRecord: "🏁 {n} para superar tu récord", newRecordRun: "👑 ¡NUEVO RÉCORD!", weekBonus: "Bono del día 7: +1 Enfoque, +1 Cristales x2", trailEmber: "Brasa", trailComet: "Cometa", unlockPerfects: "Logra {n} saltos Perfectos", unlockBestRun: "Haz {n} puntos en una partida", unlockBtn: "DESBLOQUEAR", lockedMsg: "Completa el objetivo para desbloquear",
     helpBallFeature: "Mejoras de Bola: Sube hasta el nivel 5 para ampliar píxeles perfectos, núcleos brillantes y bonos de cristales.",
     helpShopFeature: "Tienda y Temas: Personaliza tu experiencia con 4 temas únicos, estelas personalizadas y paquetes.",
     streakTitle: "BONO DE RACHA DIARIA", streakClaimed: "RECLAMADO HOY", streakBtn: "RECLAMAR RACHA",
@@ -173,7 +173,7 @@ const translations = {
     helpRule2: "Perfekte Landungen: Landungen ganz nah am Rand geben +3 Punkte und lösen einen kurzen Slow-Mo-Effekt aus.",
     helpRule3: "Spielmodi: Normalmodus hat 10s, Supernova 5s, Zen-Modus hat keinen Timer und der Schnelle Modus bietet extremes Tempo.",
     helpRule4: "Boosts: Das Schild (🛡️) rettet dich bei einem Fehlsprung, Slow-Mo (⏳) verlangsamt die Zeit, Fokus (🎯) vergrößert kurz die Perfekt-Zone und 2x Kristalle (💎) verdoppelt deine Kristalle für den Rest der Runde.",
-    featuresTitle: "Gameplay-Extras", featVariety: "Bewegte Planeten (ab 15 Punkten)", featJuice: "Extra-Effekte", toRecord: "🏁 Noch {n} bis zum Rekord", newRecordRun: "👑 NEUER REKORD!", weekBonus: "Tag-7-Bonus: +1 Fokus, +1 2x Kristalle!", trailEmber: "Glut", trailComet: "Komet", unlockPerfects: "Lande {n} perfekte Sprünge", unlockBestRun: "Erziele {n} Punkte in einer Runde", unlockBtn: "FREISCHALTEN", lockedMsg: "Schließe das Ziel ab, um es freizuschalten",
+    featuresTitle: "Gameplay-Extras", featVariety: "Bewegte Planeten (ab 10 Punkten)", featJuice: "Extra-Effekte", toRecord: "🏁 Noch {n} bis zum Rekord", newRecordRun: "👑 NEUER REKORD!", weekBonus: "Tag-7-Bonus: +1 Fokus, +1 2x Kristalle!", trailEmber: "Glut", trailComet: "Komet", unlockPerfects: "Lande {n} perfekte Sprünge", unlockBestRun: "Erziele {n} Punkte in einer Runde", unlockBtn: "FREISCHALTEN", lockedMsg: "Schließe das Ziel ab, um es freizuschalten",
     helpBallFeature: "Ball-Upgrades: Rüste Bälle bis Stufe 5 auf, um Trefferzonen zu vergrößern und Kristallboni zu erhalten.",
     helpShopFeature: "Shop & Themen: Passe dein Spiel mit 4 einzigartigen Themen, Spezialspuren und Boost-Paketen an.",
     streakTitle: "TÄGLICHER SERIENBONUS", streakClaimed: "HEUTE GEHOLT", streakBtn: "BONUS HOLEN",
@@ -220,7 +220,7 @@ const translations = {
     helpRule2: "Идеальные приземления: Посадка у самого края дает +3 очка и запускает короткий эффект замедления времени.",
     helpRule3: "Режимы игры: Обычный режим (10с), Супернова (5с), режим Дзен (без таймера) и Быстрый режим дает экстремальную скорость.",
     helpRule4: "Усиления: Щит (🛡️) спасает при промахе, Замедление (⏳) замедляет время, Фокус (🎯) на несколько секунд расширяет зону «Идеально», а Кристаллы x2 (💎) удваивают кристаллы до конца забега.",
-    featuresTitle: "Доп. возможности", featVariety: "Движущиеся планеты (с 15 очков)", featJuice: "Доп. эффекты", toRecord: "🏁 До рекорда: {n}", newRecordRun: "👑 НОВЫЙ РЕКОРД!", weekBonus: "Бонус 7-го дня: +1 Фокус, +1 Кристаллы x2!", trailEmber: "Уголь", trailComet: "Комета", unlockPerfects: "Сделайте {n} идеальных прыжков", unlockBestRun: "Наберите {n} очков за забег", unlockBtn: "ОТКРЫТЬ", lockedMsg: "Выполните цель, чтобы открыть",
+    featuresTitle: "Доп. возможности", featVariety: "Движущиеся планеты (с 10 очков)", featJuice: "Доп. эффекты", toRecord: "🏁 До рекорда: {n}", newRecordRun: "👑 НОВЫЙ РЕКОРД!", weekBonus: "Бонус 7-го дня: +1 Фокус, +1 Кристаллы x2!", trailEmber: "Уголь", trailComet: "Комета", unlockPerfects: "Сделайте {n} идеальных прыжков", unlockBestRun: "Наберите {n} очков за забег", unlockBtn: "ОТКРЫТЬ", lockedMsg: "Выполните цель, чтобы открыть",
     helpBallFeature: "Улучшение шаров: Прокачка до 5 уровня расширяет зону идеального прыжка и увеличивает доход кристаллов.",
     helpShopFeature: "Магазин и Темы: Настройте игру с помощью 4 тем, пользовательских следов и наборов усилений.",
     streakTitle: "ЕЖЕДНЕВНАЯ СЕРИЯ БОНУСОВ", streakClaimed: "ПОЛУЧЕНО СЕГОДНЯ", streakBtn: "ЗАБРАТЬ БОНУС",
@@ -1741,9 +1741,9 @@ function App() {
               {
                 const vr = rand(), vAmp = rand();
                 let variant = '';
-                if (featuresRef.current.variety && live.score >= 15) {
-                  if (vr < 0.35) { p.target.bob = 26 + vAmp * 18; p.target.baseY = p.target.y; p.target.phase = 0; variant = 'bob'; }
-                  else if (live.score >= 30 && vr < 0.6) { p.target.wide = true; variant = 'wide'; }
+                if (featuresRef.current.variety && nextScore >= 10) {
+                  if (vr < 0.6) { p.target.bob = 45 + vAmp * 30; p.target.baseY = p.target.y; p.target.phase = 0; variant = 'bob'; }
+                  else if (nextScore >= 25 && vr < 0.9) { p.target.wide = true; variant = 'wide'; }
                 }
                 if (targetGroupRef.current) targetGroupRef.current.dataset.variant = variant;
               }
@@ -2325,9 +2325,6 @@ function App() {
                         will-change: opacity; animation: auroraPulse 4s ease-in-out infinite alternate; }
           @keyframes holeSpin { to { transform: rotate(360deg); } }
           .lite .theme-aurora::after, .lite .theme-blackhole::after { animation: none; }
-          [data-variant="bob"] { filter: drop-shadow(0 0 14px rgba(167,139,250,.9)); }
-          [data-variant="wide"] { filter: drop-shadow(0 0 14px rgba(251,191,36,.85)); }
-          .lite [data-variant] { filter: none; }
           @keyframes comboPop { 0% { transform: scale(1.45); } 100% { transform: scale(1); } }
           .combo-pop { display: inline-block; animation: comboPop .25s ease-out; }
 
