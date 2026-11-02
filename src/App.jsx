@@ -1509,10 +1509,10 @@ function App() {
 
           p.target.x += p.target.vx * (effDelta * 60) * tierSpeedMul;
           if (p.target.bob) {
-            p.target.phase += effDelta * 2.2 * tierSpeedMul;
+            p.target.phase += effDelta * 3.2 * tierSpeedMul;
             p.target.y = p.target.baseY + Math.sin(p.target.phase) * p.target.bob;
           }
-          const maxBoundX = p.target.wide ? 175 : 130;
+          const maxBoundX = p.target.wide ? 190 : 130;
           if (p.target.x > p.active.x + maxBoundX) {
             p.target.x = p.active.x + maxBoundX;
             p.target.vx = -Math.abs(p.target.vx);
@@ -1728,8 +1728,8 @@ function App() {
                 const vr = rand(), vAmp = rand();
                 let variant = '';
                 if (nextScore >= 10) {
-                  if (vr < 0.6) { p.target.bob = 45 + vAmp * 30; p.target.baseY = p.target.y; p.target.phase = 0; variant = 'bob'; }
-                  else if (nextScore >= 25 && vr < 0.9) { p.target.wide = true; variant = 'wide'; }
+                  if (vr < 0.6) { p.target.bob = 80 + vAmp * 40; p.target.baseY = p.target.y; p.target.phase = 0; variant = 'bob'; }
+                  else { p.target.wide = true; variant = 'wide'; }
                 }
                 if (targetGroupRef.current) targetGroupRef.current.dataset.variant = variant;
               }
