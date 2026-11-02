@@ -101,7 +101,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
 
 - [x] R8b — "Update is live" (akıcı yeniden kayıt, video/reel8b_update_live.mp4) — 2026-10-30 TikTok + Instagram Reels (+hikâye) telefondan paylaşıldı
 
-- [ ] 3 — Temalar
+- [x] 3 — Temalar — 2026-10-31 Instagram (Chrome'dan, 2 görselli carousel; 5 hashtag; https://www.instagram.com/p/DfJ6jtADbM4/)
   Görseller: zumrut-galaktik.png, nova-bosluk.png
   ```
   Same game, different universe 🌌 Swipe to see the Galactic and Void themes.
@@ -138,4 +138,16 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   🎮 Free on Google Play → link in bio 👆 / Link profilde
 
   #orbitjump #challenge #highscore #mobilegame #indiegame #androidgames #arcade #gaming #casualgames #oyun
+  ```
+
+- [ ] R9 — Reels/TikTok "0 → 20" (telefondan gerçek oyun kaydı, 1.0.17) — 1.0.17 Play'de yayına çıktıktan SONRA paylaş
+  Video: video/reel9_update_phone.mp4 (20 sn, sessiz; uygulamadan popüler ses ekle). Ham kayıt: video/raw_phone1.mp4 (commit'lenmez)
+  ```
+  From 0 to 20 in one run 🚀 New update: planets start moving after 10 points. How far can you get?
+
+  Sıfırdan 20'ye tek turda! Yeni güncellemede 10 puandan sonra gezegenler hareket ediyor. Sen kaça çıkarsın?
+
+  🎮 Free on Google Play → link in bio 👆 / Link profilde
+
+  #orbitjump #indiegame #mobilegame #gamedev #androidgames
   ```
