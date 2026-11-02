@@ -1638,13 +1638,6 @@ function App() {
               }
 
               p.active.x = shiftX; p.active.y = shiftY;
-              // Tüm ekranı ölçekleyen nabız React render'ı tetiklemeden DOM'da
-              // yapılır; hafif modda tamamen atlanır.
-              if (rootRef.current && !liteRef.current) {
-                const rootEl = rootRef.current;
-                rootEl.style.transform = 'scale(1.04)';
-                setTimeout(() => { rootEl.style.transform = ''; }, 120);
-              }
 
               if (kind === 'perfect') slowMoUntilRef.current = currentTime + 160;
 
@@ -2317,6 +2310,9 @@ function App() {
                         will-change: opacity; animation: auroraPulse 4s ease-in-out infinite alternate; }
           @keyframes holeSpin { to { transform: rotate(360deg); } }
           .lite .theme-aurora::after, .lite .theme-blackhole::after { animation: none; }
+          /* Yüzey kayması (background-position) ve lav nabzı (filter) her karede iki gezegeni
+             baştan boyatıyordu; 1440p 120 Hz ekranda takılmanın ana sebebi. Yüzeyler sabit. */
+          .p-bands, .p-craters, .p-land, .p-clouds, .p-ice, .p-dunes, .p-spots, .p-lava { animation: none !important; }
           @keyframes comboPop { 0% { transform: scale(1.45); } 100% { transform: scale(1); } }
           .combo-pop { display: inline-block; animation: comboPop .25s ease-out; }
 
