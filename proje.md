@@ -133,6 +133,8 @@
 - **Her bilgiyi düzenli kaydet (3 Kas):** Kullanıcının verdiği her yeni bilgi, kural ve karar aynı oturumda bu dosyaya ve kalıcı hafızaya yazılır, commit + push edilir. Amaç: oturum başka bilgisayara/klasöre taşınınca kullanıcı aynı bilgileri tekrar vermesin.
 - **Yorum/mesaj cevapları (3 Kas):** Hesabı büyütüyoruz → Instagram ve TikTok'ta yorumların yanında DM'ler ve mesaj istekleri de cevaplanır; tanıtım/iş teklifi mesajlarına kısa kibar teşekkür (linke tıklanmaz, söz verilmez). Bir yoruma en fazla bir cevap, **aynı kişiye de toplamda en fazla bir cevap**.
 - **Isıtma:** Her gün düzenli beğeni + yorum turları (hesap-isitma), hesap büyütme için.
+- **LinkedIn (3 Kas):** Yorumların yanında LinkedIn mesajları da takip edilir (linkedin-yorum ajanı). Her kişiye bizden toplamda en fazla 1 mesaj/cevap; bizden ikinci mesaj ASLA gitmez. Reklam/InMail ve iş/ödeme isteklerine cevap yok.
+- **Tek oturum:** Claude yalnızca bu bilgisayarda çalışıyor (3 Kas, kullanıcı doğruladı); başka yerde aynı otomasyon açılmaz.
 
 ## Güvenlik sınırları (Claude için)
 
