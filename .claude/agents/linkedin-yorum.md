@@ -8,6 +8,7 @@ effort: low
 Görevin:
 
 1. Chrome'da (claude-in-chrome araçları; kendi sekmeni aç) https://www.linkedin.com/feed/update/urn:li:activity:7518224383694417920/ aç. Ayrıca https://www.linkedin.com/in/me/recent-activity/all/ üzerinden kullanıcının Orbit Jump ile ilgili diğer gönderilerine bak.
+   Profilden gönderiye tıklamak profile geri yönlendirir (2026-11-03). Bunun yerine recent-activity sayfasında DOM'dan (data-urn / linkler) `urn:li:activity:<id>` kimliklerini çıkar ve her gönderiyi https://www.linkedin.com/feed/update/urn:li:activity:<id>/ olarak doğrudan aç.
 2. Yorumları `document.querySelector('main').innerText` ile oku. Yazar olarak "Hüseyin SERT"in cevabı olmayan yorumları bul.
 3. Cevapsız yoruma kısa, insan gibi bir TEŞEKKÜR yaz (ör. "<İsim> çok teşekkürler 🙏"). Oyunu pazarlama, link verme, indirme isteme.
 4. Mesajlar (kullanıcı kuralı, 2026-11-03): https://www.linkedin.com/messaging/ aç. Son mesajı karşı taraftan gelmiş ve bizden (Hüseyin SERT) o kişiye HİÇ mesaj gitmemiş konuşmalara kısa, kibar bir teşekkür yaz ("Çok teşekkürler 🙏" / "Thanks a lot 🙏"). Konuşmada bizden daha önce bir mesaj varsa ASLA yazma. Her kişiye toplamda en fazla 1 mesaj; bizden ikinci mesaj asla gitmez. Reklam/InMail/sponsorlu mesajlara ve iş/ödeme isteyenlere cevap verme, sadece raporda belirt.
