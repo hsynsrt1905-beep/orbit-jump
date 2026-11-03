@@ -212,6 +212,17 @@ Zamanlayıcılar oturuma bağlıdır ve 7 günde silinir; oturum açılışında
 
 Model ölçümü (23 Eki): `haiku`→claude-haiku-5-5, `sonnet`→claude-sonnet-5-5, `opus`→claude-opus-5-5, `fable`→claude-opus-5-5 (bu hesapta Fable açık değil).
 
+## Güvenlik durumu (oyun) — son inceleme 2026-11-03
+
+Kullanıcı isteği (3 Kas): "ara ara sistem açıklarını kontrol et", "AdMob takip edilsin". Haftalık: pazartesi `bilesen-kontrol` (npm audit, sürüm uyumu), perşembe 09:17 oyun güvenlik incelemesi (kurallar + kod). AdMob her gün 10:27 `admob-yonetici`.
+
+Bulunanlar (3 Kas):
+- **Skor hilesi (orta):** Skorlar istemciden yazılıyor; kurallar yalnız biçim, kendi UID ve ≤10000 sınırı denetliyor. App Check zorunlu değil → herkes herkese açık API anahtarıyla anonim giriş yapıp 10000'e kadar sahte skor yazabilir. Çözüm: Firebase konsolunda Firestore için App Check'i zorunlu kılmak (web sürümü için önce reCAPTCHA Enterprise sağlayıcısı eklenmeli, yoksa web skor tablosu bozulur); uzun vadede sunucu tarafı doğrulama (Blaze + Cloud Functions).
+- **İsim kapma (düşük):** `names` kuralı belge anahtarının isimle eşleştiğini denetlemiyor; biri istemciyi atlayıp rastgele anahtarlar ayırabilir. Kurala `key == normalize(name)` benzeri eşleşme eklenebilir (normalize mantığı kurallarda sınırlı).
+- **Bulut kayıt boyutu (düşük):** `saves/{uid}` içeriği denetlenmiyor; kullanıcı yalnız kendi belgesine 1 MB'a kadar yazabilir. Kota riski küçük.
+- **API anahtarı:** Firebase web anahtarının istemcide olması normal; Google Cloud'da Android paketi + site alan adıyla kısıtlı olduğu kontrol edilmeli (kullanıcı/konsol).
+- Uygun olanlar: `saves` yalnız sahibi; skor yalnız artarak güncellenir; tarih sunucu saatine bağlı; site güvenlik başlıkları açık.
+
 ## Açık işler (kullanıcıda)
 
 - Play'deki geliştirici adresini değiştirmek; değişince mağaza sayfası kontrol edilecek.
