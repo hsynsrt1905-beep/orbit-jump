@@ -151,3 +151,51 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
 
   #orbitjump #indiegame #mobilegame #gamedev #androidgames
   ```
+
+- [ ] R10 — Reels/TikTok "Planets don't sit still anymore" (telefondan, 1.0.17)
+  Video: video/reel10_moving.mp4 (23 sn, 1080x1920, 60 fps, fast.wav müzikli)
+  ```
+  The planets don't sit still anymore 🪐 After 10 points they start moving. Can you keep up?
+
+  Gezegenler artık yerinde durmuyor! 10 puandan sonra hareket ediyorlar. Yetişebilir misin?
+
+  🎮 Free on Google Play → link in bio 👆 / Link profilde
+
+  #orbitjump #indiegame #mobilegame #gamedev #androidgames
+  ```
+
+- [ ] R11 — Reels/TikTok "So close..." (telefondan, 1.0.17)
+  Video: video/reel11_almost.mp4 (20 sn, 19 puanda kıl payı ıska → oyun bitti)
+  ```
+  19 points… and then this 😭 Would you have made that jump?
+
+  19 puan… sonra bu oldu. Sen o zıplamayı tutturur muydun?
+
+  🎮 Free on Google Play → link in bio 👆 / Link profilde
+
+  #orbitjump #soclose #mobilegame #indiegame #gaming
+  ```
+
+- [ ] R12 — Reels/TikTok "Supernova mode" (telefondan, 1.0.17)
+  Video: video/reel12_supernova.mp4 (25 sn, Süpernova modu 23 puan, Odak gücü + mükemmel iniş)
+  ```
+  Supernova mode: 5 seconds per planet, double points 💥 23 is my best here. Beat it?
+
+  Süpernova modu: gezegen başına 5 saniye, 2 kat puan. Burada rekorum 23. Geçebilir misin?
+
+  🎮 Free on Google Play → link in bio 👆 / Link profilde
+
+  #orbitjump #supernova #challenge #mobilegame #indiegame
+  ```
+
+- [ ] R13 — Reels/TikTok "Unlock the Comet" (telefondan, 1.0.17)
+  Video: video/reel13_shop.mp4 (26 sn, menü takvimi → mağaza: güçler, izler, kilitli Kor 11/50 ve Kuyruklu Yıldız 34/40 → oyun)
+  ```
+  Some trails can't be bought ☄️ Comet unlocks at 40 points in one run. I'm at 34… who gets there first?
+
+  Bazı izler satın alınamıyor! Kuyruklu Yıldız tek turda 40 puanla açılıyor. Ben 34'teyim, ilk kim açacak?
+
+  🎮 Free on Google Play → link in bio 👆 / Link profilde
+
+  #orbitjump #indiegame #mobilegame #gamedev #unlock
+  ```
