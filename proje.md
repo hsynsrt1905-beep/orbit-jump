@@ -232,6 +232,8 @@ Bulunanlar (3 Kas):
 - AdMob kimlik doğrulama ve banka bilgisi.
 - itch.io / CrazyGames yüklemesi (başka ağdan).
 - Almanya'dan çıkarma sorusu: sebep netleşince karar.
-- Anthropic destek cevabını takip (e-posta, konuşma `215476678539518`).
+- Anthropic destek bileti (konuşma `215476678539518`) artık gereksiz: sorun kullanıcı tarafında çözüldü (abonelik hesabıyla giriş). Cevap gelirse "çözüldü" denebilir.
+- **6 Kasım ~10:47:** App Check metrik kontrolü (Firebase → Uygulama Kontrolü → API'ler → Cloud Firestore). Doğrulanmış oran %90+ ise kullanıcıya "zorunlu yapalım" öner; zorunlu kılmayı kullanıcı onaylar.
+- **Otomasyon (3 Kas 14:15):** Kullanıcı isteğiyle otomasyon VS Code'daki Claude Code oturumuna taşındı. Masaüstü uygulamasındaki oturumun zamanlayıcıları silindi. VS Code'da `claude` mutlaka `D:\Desktop\orbit-jump` klasöründe açılmalı (açılış hook'u proje klasöründe çalışır).
 - TikTok'ta "Kızıl Siren" mesajı (22 Eki) web'de okunamıyor → telefon boştayken TikTok uygulamasından okunup cevaplanacak.
 - R9 videosu (`video/reel9_update_phone.mp4`) 1.0.17 Play'de yayına çıkınca paylaşılacak.
