@@ -32,7 +32,8 @@ if (Capacitor.isNativePlatform()) {
     isTokenAutoRefreshEnabled: true
   });
 } else if (import.meta.env.VITE_RECAPTCHA_SITE_KEY) {
-  // Web sürümü: reCAPTCHA Enterprise ile App Check. Anahtar yoksa (derleme
+  // Web sürümü: reCAPTCHA Enterprise (Google Cloud Fraud Defense) ile App Check;
+  // ayda 10.000 doğrulamaya kadar ücretsiz, kart gerekmez. Anahtar yoksa (derleme
   // ortamında tanımlı değilse) App Check açılmaz, oyun eskisi gibi çalışır.
   // Konsolda zorunlu kılmadan önce bu anahtarla web derlemesi yayınlanmalı.
   initializeAppCheck(app, {
