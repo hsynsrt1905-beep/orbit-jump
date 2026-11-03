@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx firebase deploy --only hosting --project orbit-jump-73b68)"
+      "Bash(npx firebase deploy --only hosting --project orbit-jump-73b68)",
+      "Bash(npx firebase deploy --only firestore:rules --project orbit-jump-73b68)"
     ]
   },
   "hooks": {
