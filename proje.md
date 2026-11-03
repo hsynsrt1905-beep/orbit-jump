@@ -162,7 +162,8 @@
 - **Ekran görüntüsü için oyun:** `vite preview` ve localStorage `orbit_highscore` yüksek ayarlanır ki test oyunları canlı skor tablosuna yazmasın.
 - **İsim anahtarı:** `nameKey` 1.0.13'e kadar `/s+/g` kullanıyordu ("s" harflerini boşluğa çeviriyordu). Düzeltildi; `claimPlayerName` eski anahtardaki ayırmaya da bakar (belgedeki asıl isimle karşılaştırarak). İsim değişince `releaseNames` eski belgeyi siler.
 - **Claude Code / VS Code (3 Kas):** VS Code eklentisi ve terminaldeki `claude` "Your organization has disabled Claude subscription access for Claude Code" hatası veriyor (hesap tarafında, Pro plan; yerel ayar, logout/login, eklenti 2.1.314'e dönüş çözmedi). Claude masaüstü uygulamasının Code sekmesi çalışıyor → şimdilik orada çalışılır. Anthropic destek bileti: konuşma ID `215476678539518` (insan ekibe aktarıldı, cevap e-postayla gelecek). Eklenti tekrar 2.1.317.
-- **Masaüstü uygulaması:** Ayarlarda Computer use (ekran kontrolü) yok (sürüm 4.4212.0); VS Code / Android Studio işleri terminal, Gradle ve adb ile yapılır. Android Studio kurulu (`C:\Program Files\Android\Android Studio`). adb PATH'te değil, tam yolla çağrılır.
+- **Computer use AÇIK (3 Kas 14:07, uygulama güncellendikten sonra):** Ekran görüntüsü + tıklama çalışıyor. VS Code ve Android Studio yalnız "click" kademesinde (görme + sol tık; yazı/klavye/sağ tık yok) — kod ve komutlar yine terminal/dosya araçlarıyla. Tarayıcılar "read" kademesinde; web işleri Chrome uzantısıyla.
+- **(Eski not) Masaüstü uygulaması:** Ayarlarda Computer use (ekran kontrolü) yok (sürüm 4.4212.0); VS Code / Android Studio işleri terminal, Gradle ve adb ile yapılır. Android Studio kurulu (`C:\Program Files\Android\Android Studio`). adb PATH'te değil, tam yolla çağrılır.
 - **Durum çubuğu:** `~/.claude/statusline.js` (model, efor, bağlam, 5 saatlik ve haftalık limit, branch, telefon, kuyruk, sonraki paylaşım).
 
 ## Telefon (adb) ve video üretimi
