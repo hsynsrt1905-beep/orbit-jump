@@ -174,6 +174,7 @@
 - Hikâye bağlantı çıkartması: Çıkartmalar → BAĞLANTI → `https://orbit-jump-73b68.web.app/play`, metin "Play free on Google Play".
 - Telefon bağlı değilken Instagram'a webden, Claude'un ürettiği telifsiz müzikle (`store/social/video/music/*_m.mp4`) paylaşılır — kullanıcı onayladı.
 - **TikTok'a webden yükleme yapılmaz** (0 izlenme); sadece telefondan. TikTok web'de beğeni de güvenilmez.
+- **3 Kas güncellemesi:** Kullanıcı "insta ve tiktok işini bilgisayardan yapabilirsin" dedi → yorum, DM, ısıtma ve paylaşım Chrome'dan yapılabilir (telefon şart değil). TikTok web yüklemesinin eskiden 0 izlenme aldığı hatırlatıldı; web yüklemelerinin izlenmesi takip edilir, yine 0 kalırsa kullanıcıya söylenir.
 
 ## Sosyal medya geçmişi ve öğrenilenler
 
