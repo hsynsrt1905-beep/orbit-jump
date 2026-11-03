@@ -130,6 +130,9 @@
 - **Sosyal medya:** Her gönderide oyun linki veya Play yönlendirmesi olsun. Instagram'da en fazla 5 hashtag. Sahte etkileşim/bot yok; kimseden 5 yıldız isteme. Toplu beğeni/takip döngüsü yok, her şey elle tek tek.
 - **Bilgisayar 7/24 açık.** Günlük Instagram paylaşımı 17:00 civarı.
 - **Dil:** Kullanıcı Türkçe konuşur, kısa ve samimi yazar; cevaplar Türkçe ve kısa.
+- **Her bilgiyi düzenli kaydet (3 Kas):** Kullanıcının verdiği her yeni bilgi, kural ve karar aynı oturumda bu dosyaya ve kalıcı hafızaya yazılır, commit + push edilir. Amaç: oturum başka bilgisayara/klasöre taşınınca kullanıcı aynı bilgileri tekrar vermesin.
+- **Yorum/mesaj cevapları (3 Kas):** Hesabı büyütüyoruz → Instagram ve TikTok'ta yorumların yanında DM'ler ve mesaj istekleri de cevaplanır; tanıtım/iş teklifi mesajlarına kısa kibar teşekkür (linke tıklanmaz, söz verilmez). Bir yoruma en fazla bir cevap, **aynı kişiye de toplamda en fazla bir cevap**.
+- **Isıtma:** Her gün düzenli beğeni + yorum turları (hesap-isitma), hesap büyütme için.
 
 ## Güvenlik sınırları (Claude için)
 
@@ -156,6 +159,8 @@
 - **Deploy sonrası:** /play, /privacy, /delete-account, /game sayfaları curl ile 200 kontrol edilir. Firestore kuralları ayrıca onayla deploy edilir.
 - **Ekran görüntüsü için oyun:** `vite preview` ve localStorage `orbit_highscore` yüksek ayarlanır ki test oyunları canlı skor tablosuna yazmasın.
 - **İsim anahtarı:** `nameKey` 1.0.13'e kadar `/s+/g` kullanıyordu ("s" harflerini boşluğa çeviriyordu). Düzeltildi; `claimPlayerName` eski anahtardaki ayırmaya da bakar (belgedeki asıl isimle karşılaştırarak). İsim değişince `releaseNames` eski belgeyi siler.
+- **Claude Code / VS Code (3 Kas):** VS Code eklentisi ve terminaldeki `claude` "Your organization has disabled Claude subscription access for Claude Code" hatası veriyor (hesap tarafında, Pro plan; yerel ayar, logout/login, eklenti 2.1.314'e dönüş çözmedi). Claude masaüstü uygulamasının Code sekmesi çalışıyor → şimdilik orada çalışılır. Anthropic destek bileti: konuşma ID `215476678539518` (insan ekibe aktarıldı, cevap e-postayla gelecek). Eklenti tekrar 2.1.317.
+- **Masaüstü uygulaması:** Ayarlarda Computer use (ekran kontrolü) yok (sürüm 4.4212.0); VS Code / Android Studio işleri terminal, Gradle ve adb ile yapılır. Android Studio kurulu (`C:\Program Files\Android\Android Studio`). adb PATH'te değil, tam yolla çağrılır.
 - **Durum çubuğu:** `~/.claude/statusline.js` (model, efor, bağlam, 5 saatlik ve haftalık limit, branch, telefon, kuyruk, sonraki paylaşım).
 
 ## Telefon (adb) ve video üretimi
@@ -209,3 +214,6 @@ Model ölçümü (23 Eki): `haiku`→claude-haiku-5-5, `sonnet`→claude-sonnet-
 - AdMob kimlik doğrulama ve banka bilgisi.
 - itch.io / CrazyGames yüklemesi (başka ağdan).
 - Almanya'dan çıkarma sorusu: sebep netleşince karar.
+- Anthropic destek cevabını takip (e-posta, konuşma `215476678539518`).
+- TikTok'ta "Kızıl Siren" mesajı (22 Eki) web'de okunamıyor → telefon boştayken TikTok uygulamasından okunup cevaplanacak.
+- R9 videosu (`video/reel9_update_phone.mp4`) 1.0.17 Play'de yayına çıkınca paylaşılacak.
