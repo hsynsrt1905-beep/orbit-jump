@@ -8,7 +8,8 @@ service cloud.firestore {
       // düşürmeden yazabilir; elle şişirilmiş skorlar reddedilir.
       allow create: if isOwner(userId) && validEntry(userId);
       allow update: if isOwner(userId) && validEntry(userId)
-                    && request.resource.data.score >= resource.data.score;
+                    && request.resource.data.score >= resource.data.score
+                    && notTooSoon();
       allow delete: if isOwner(userId);
     }
     // Günlük meydan okuma ve haftalık tablo: aynı kurallar, dönem başına
@@ -17,20 +18,24 @@ service cloud.firestore {
       allow read: if true;
       allow create: if isOwner(userId) && validEntry(userId) && dayId.size() == 10;
       allow update: if isOwner(userId) && validEntry(userId)
-                    && request.resource.data.score > resource.data.score;
+                    && request.resource.data.score > resource.data.score
+                    && notTooSoon();
       allow delete: if isOwner(userId);
     }
     match /weekly/{weekId}/scores/{userId} {
       allow read: if true;
       allow create: if isOwner(userId) && validEntry(userId) && weekId.size() == 8;
       allow update: if isOwner(userId) && validEntry(userId)
-                    && request.resource.data.score > resource.data.score;
+                    && request.resource.data.score > resource.data.score
+                    && notTooSoon();
       allow delete: if isOwner(userId);
     }
 
     match /saves/{userId} {
-      // Bulut kaydını yalnızca sahibi okuyup yazabilir
-      allow read, write: if isOwner(userId);
+      // Bulut kaydını yalnızca sahibi okuyup yazabilir; içerik biçim ve boyut
+      // olarak sınırlıdır (belgeye büyük/rastgele veri yazılamasın).
+      allow read, delete: if isOwner(userId);
+      allow create, update: if isOwner(userId) && validSave();
     }
 
     match /names/{key} {
@@ -43,12 +48,60 @@ service cloud.firestore {
                     && request.resource.data.name is string
                     && request.resource.data.name.size() >= 1
                     && request.resource.data.name.size() <= 12
-                    && key.size() <= 40;
+                    && key.size() <= 40
+                    && validNameKey(key, request.resource.data.name);
       allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
     }
 
     function isOwner(userId) {
       return request.auth != null && request.auth.uid == userId;
+    }
+
+    // Belge anahtarı ismin kendisinden üretilmiş olmalı (cloudSave.js nameKey).
+    // 1.0.13 ve öncesi "s" harflerini boşluğa çeviren eski anahtarı üretiyordu;
+    // o sürümler hâlâ kullanımda olabileceği için eski biçim de kabul edilir.
+    function validNameKey(key, name) {
+      // JS toLowerCase() "İ"yi "i̇" (i + birleşik nokta) yapar; kurallardaki
+      // lower() farklı davrandığı için önce elle aynı biçime çevrilir.
+      let n = name.trim().replace('İ', 'i̇').lower();
+      return key == n.replace('\\s+', ' ') || key == n.replace('s+', ' ');
+    }
+
+    // Aynı skor belgesine 3 saniyeden sık yazılamaz (otomatik betiklerle
+    // seri yazmayı yavaşlatır; gerçek oyunda yeni rekor bu kadar sık gelmez).
+    function notTooSoon() {
+      return !('date' in resource.data) || !(resource.data.date is timestamp)
+        || request.time > resource.data.date + duration.value(3, 's');
+    }
+
+    function optString(p, k, max) {
+      return !(k in p) || p[k] == null || (p[k] is string && p[k].size() <= max);
+    }
+    function optNumber(p, k) {
+      return !(k in p) || p[k] == null || p[k] is number;
+    }
+    function optList(p, k, max) {
+      return !(k in p) || p[k] == null || (p[k] is list && p[k].size() <= max);
+    }
+    function optMap(p, k, max) {
+      return !(k in p) || p[k] == null || (p[k] is map && p[k].size() <= max);
+    }
+
+    function validSave() {
+      let d = request.resource.data;
+      let p = d.progress;
+      return d.keys().hasOnly(['progress', 'updatedAt'])
+        && d.updatedAt == request.time
+        && p is map && p.size() <= 30
+        && optNumber(p, 'crystals') && optNumber(p, 'highScore')
+        && optNumber(p, 'streakDays') && optNumber(p, 'xp')
+        && optList(p, 'ownedItems', 300) && optList(p, 'claimedMissions', 500)
+        && optList(p, 'claimedBadges', 300)
+        && optMap(p, 'ballLevels', 100) && optMap(p, 'boostLevels', 50)
+        && optMap(p, 'boostCounts', 50) && optMap(p, 'stats', 100)
+        && optString(p, 'selectedSkin', 40) && optString(p, 'selectedTrail', 40)
+        && optString(p, 'selectedTheme', 40) && optString(p, 'lastStreakDate', 40)
+        && optString(p, 'playerName', 24);
     }
 
     function validEntry(userId) {

@@ -221,6 +221,7 @@ Bulunanlar (3 Kas):
 - **İsim kapma (düşük):** `names` kuralı belge anahtarının isimle eşleştiğini denetlemiyor; biri istemciyi atlayıp rastgele anahtarlar ayırabilir. Kurala `key == normalize(name)` benzeri eşleşme eklenebilir (normalize mantığı kurallarda sınırlı).
 - **Bulut kayıt boyutu (düşük):** `saves/{uid}` içeriği denetlenmiyor; kullanıcı yalnız kendi belgesine 1 MB'a kadar yazabilir. Kota riski küçük.
 - **API anahtarı:** Firebase web anahtarının istemcide olması normal; Google Cloud'da Android paketi + site alan adıyla kısıtlı olduğu kontrol edilmeli (kullanıcı/konsol).
+- **Yapılanlar (3 Kas, kurallar emülatörde 14/14 testten geçti, deploy kullanıcıda):** `names` anahtarı isimden üretilmiş olmalı (yeni + 1.0.13 öncesi biçim, Türkçe İ dahil); `saves` yalnız `progress`+`updatedAt`, alan tipleri ve liste/harita/metin boyutları sınırlı; skor belgelerine 3 sn'den sık yazılamaz. Web için App Check kodu hazır (`VITE_RECAPTCHA_SITE_KEY` tanımlanınca açılır; reCAPTCHA Enterprise anahtarı Google Cloud'da kullanıcı oluşturacak, alan adları: orbit-jump-73b68.web.app, firebaseapp.com, itch.io/CrazyGames alanları). Anahtar web derlemesine girip yayınlandıktan sonra konsolda Firestore için App Check "zorunlu" yapılacak. Test betiği: rules-unit-testing + `firebase emulators:exec` (Java: Android Studio jbr; Windows'ta `JAVA_TOOL_OPTIONS=-Djdk.net.unixdomain.tmpdir=C:\Users\Public` şart).
 - Uygun olanlar: `saves` yalnız sahibi; skor yalnız artarak güncellenir; tarih sunucu saatine bağlı; site güvenlik başlıkları açık.
 
 ## Açık işler (kullanıcıda)

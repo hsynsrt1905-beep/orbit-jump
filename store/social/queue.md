@@ -140,8 +140,8 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #challenge #highscore #mobilegame #indiegame #androidgames #arcade #gaming #casualgames #oyun
   ```
 
-- [ ] R9 — Reels/TikTok "0 → 20" (telefondan gerçek oyun kaydı, 1.0.17) — 1.0.17 Play'de yayına çıktıktan SONRA paylaş
-  Video: video/reel9_update_phone.mp4 (20 sn, sessiz; uygulamadan popüler ses ekle). Ham kayıt: video/raw_phone1.mp4 (commit'lenmez)
+- [x] R9 — Reels "0 → 20" (1.0.17) — 2026-11-03: eski reel (DfRqudMufCW) profil ızgarasından kaldırıldı (silinmedi); yeni reel video/reel9_v2.mp4 (1080x1920, 60 fps, müzikli) ile Instagram'a Chrome'dan paylaşıldı (9:16, 5 hashtag): https://www.instagram.com/orbit.jump/reel/DfRsERkO-X_/ ; TikTok: webden yüklendi (telefon bağlı değildi), izlenmesi takip edilecek, içerik incelemesi sırasında görünürlük "sadece ben" olabilir. BUGÜNÜN GÜNLÜK PAYLAŞIMI YAPILDI (2026-11-03), 17:03 turu ikinci gönderi ATMASIN
+  Eski video: video/reel9_update_phone.mp4 (20 sn, sessiz). Ham kayıt: video/raw_phone1.mp4 (commit'lenmez)
   ```
   From 0 to 20 in one run 🚀 New update: planets start moving after 10 points. How far can you get?
 

@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { initializeAppCheck, CustomProvider } from "firebase/app-check";
+import { initializeAppCheck, CustomProvider, ReCaptchaEnterpriseProvider } from "firebase/app-check";
 import { Capacitor } from "@capacitor/core";
 import { FirebaseAppCheck } from "@capacitor-firebase/app-check";
 
@@ -29,6 +29,14 @@ if (Capacitor.isNativePlatform()) {
         return { token, expireTimeMillis: expireTimeMillis || Date.now() + 30 * 60 * 1000 };
       }
     }),
+    isTokenAutoRefreshEnabled: true
+  });
+} else if (import.meta.env.VITE_RECAPTCHA_SITE_KEY) {
+  // Web sürümü: reCAPTCHA Enterprise ile App Check. Anahtar yoksa (derleme
+  // ortamında tanımlı değilse) App Check açılmaz, oyun eskisi gibi çalışır.
+  // Konsolda zorunlu kılmadan önce bu anahtarla web derlemesi yayınlanmalı.
+  initializeAppCheck(app, {
+    provider: new ReCaptchaEnterpriseProvider(import.meta.env.VITE_RECAPTCHA_SITE_KEY),
     isTokenAutoRefreshEnabled: true
   });
 }
