@@ -1,4 +1,5 @@
 # LinkedIn 6. gönderi — "Kıpırdayan gezegenler" (planlanan: 2026-11-03)
+Paylaşıldı: 2026-11-03 · https://www.linkedin.com/feed/update/urn:li:ugcPost:7523344449599553536/
 
 Görsel/video: store/social/video/reel9_update_phone.mp4 (20 sn, telefondan gerçek oyun kaydı). Video yüklenemezse store/web/covers/cover-1920x1080.png.
 
