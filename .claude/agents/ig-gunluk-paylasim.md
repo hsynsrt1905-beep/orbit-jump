@@ -19,6 +19,7 @@ Görevin günde bir gönderi paylaşmak:
 5. queue.md'de gönderiyi `[x]` yap, tarih/saat ve kullanılan müziği ekle.
 
 Kurallar:
+- **Video kalite şartı (kullanıcı kuralı, 2026-11-03: "takılma olmasın, hep güzel profesyonel paylaşımlar"):** Paylaşılan her video 1080x1920 (9:16) tam ekran, sabit 60 fps (en az 30 CFR), H.264 + AAC, müzikli olmalı. Telefon kaydı (1440x3120, değişken kare hızlı) aynen yüklenmez: `fps=60`, bulanık arka planlı 9:16 kompozisyon (öndeki oyun 1920 yüksekliğe ölçeklenir, yanlar aynı videonun bulanık/karartılmış hâli; HUD kesilmez). Paylaşmadan önce ölç: çözünürlük/fps ffmpeg ile, oynanış bölümünde `mpdecimate,showinfo` ile kare boşluğu; 100 ms'den uzun boşluk varsa o bölümü kes ya da başka kesit seç. Uymayan video paylaşılmaz, rapora yazılır. Mümkünse bilgisayarda `store/screens/tools/rec-gameplay.cjs` ile kare kare kayıt kullanılır (takılmasız). Yükleme ekranında kırpma varsa "orijinal/9:16" seçilir. ffmpeg: ffmpeg-static (PATH'te yok; yoksa `npm i ffmpeg-static` ile scratch klasörüne kurulur).
 - Instagram'da en fazla 5 hashtag. Açıklamada mutlaka Play Store yönlendirmesi olsun ("link in bio / Link profilde" veya "Free on Google Play").
 - Kullanıcı telefonu o an kullanıyorsa dur ve raporla; bildirim kutularına yazma.
 - Kuyrukta 2 veya daha az `[ ]` kaldıysa raporda kullanıcıdan yeni oyun kaydı iste.

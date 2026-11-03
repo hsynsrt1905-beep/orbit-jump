@@ -176,6 +176,7 @@
 - Hikâye bağlantı çıkartması: Çıkartmalar → BAĞLANTI → `https://orbit-jump-73b68.web.app/play`, metin "Play free on Google Play".
 - Telefon bağlı değilken Instagram'a webden, Claude'un ürettiği telifsiz müzikle (`store/social/video/music/*_m.mp4`) paylaşılır — kullanıcı onayladı.
 - **TikTok'a webden yükleme yapılmaz** (0 izlenme); sadece telefondan. TikTok web'de beğeni de güvenilmez.
+- **Video kalitesi (3 Kas):** "Takılma olmasın, hep profesyonel paylaşımlar." R9 ilk hâli 1080x2340 / 30 fps yüklendi → Instagram'da yarım ekran ve kare kare göründü; arşivlenip `video/reel9_v2.mp4` (1080x1920, 60 fps, bulanık yan arka plan, fast.wav) ile yeniden paylaşıldı. Bundan sonra her video bu standartta; şart `ig-gunluk-paylasim.md` içinde. Telefon kaydında birkaç küçük kare düşmesi kaynakta var (ör. raw_phone1 17,4 sn'de 150 ms).
 - **3 Kas güncellemesi:** Kullanıcı "insta ve tiktok işini bilgisayardan yapabilirsin" dedi → yorum, DM, ısıtma ve paylaşım Chrome'dan yapılabilir (telefon şart değil). TikTok web yüklemesinin eskiden 0 izlenme aldığı hatırlatıldı; web yüklemelerinin izlenmesi takip edilir, yine 0 kalırsa kullanıcıya söylenir.
 
 ## Sosyal medya geçmişi ve öğrenilenler
