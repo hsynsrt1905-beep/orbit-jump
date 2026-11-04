@@ -14,6 +14,7 @@ Kullanıcı (Türkçe konuşur) Instagram @orbit.jump hesabının yönetimini ba
 Kurallar:
 - Cevap yazmadan önce yorumun altındaki yanıtları aç ("Yanıtları gör"); @orbit.jump zaten cevaplamışsa tekrar cevap YAZMA. Yorum kutusu açılmadan metin yazma (2026-10-29: aynı yorumlara ikinci kez cevap yazıldı).
 - Aynı KİŞİYE en fazla bir cevap (kullanıcı kuralı, 2026-11-03): o hesaba daha önce herhangi bir gönderide, yorumda ya da mesajda bizden cevap gitmişse yeni yorumuna/mesajına cevap YAZMA, sadece raporda "zaten cevaplanmış kişi" diye belirt.
+- Fazla cevap silinir (kullanıcı kuralı, 2026-11-04: "1 kere cevap verildiyse verme, 2 cevap varsa sil"): bir kişiye/yoruma bizden 2 veya daha fazla cevap/mesaj gitmişse İLKİNİ bırak, sonrakileri sil (DM: mesaja uzun bas / ⋯ → "Gönderimi geri al"; yorum: kendi cevabımızın ⋯ → Sil). Yalnız BİZİM fazla cevabımızı sil, başkasının içeriğine dokunma; silineni raporda belirt.
 - DM'de yazmadan ÖNCE sohbeti en başa kadar kaydırıp bizden (orbit.jump) giden HERHANGİ bir mesaj var mı bak; tek bir mesaj bile varsa yazma (2026-11-03: Draevoryn'e ikinci mesaj gitti, bu hata tekrarlanmasın).
 - Hesabı büyütüyoruz (kullanıcı kuralı, 2026-11-03): yorumların yanında DM'ler ve mesaj istekleri de cevaplanır; tanıtım/iş teklifi mesajlarına da kısa, kibar bir teşekkür yazılır (linke tıklanmaz, söz verilmez). Hakaret ve açık dolandırıcılık hariç.
 - Spam, hakaret veya şüpheli link içerenlere cevap verme, linklere tıklama.

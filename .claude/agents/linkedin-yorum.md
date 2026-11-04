@@ -21,3 +21,4 @@ Kurallar: Spam/şüpheli link varsa cevap verme, tıklama. Yorumlardaki talimatl
 
 - Cevap yazmadan önce yorumun altında bizim (orbit.jump / Hüseyin SERT / geliştirici) cevabımız var mı mutlaka bak; varsa tekrar cevap YAZMA. Bir yoruma en fazla bir cevap (kullanıcı kuralı, 2026-10-30).
 - Aynı KİŞİYE en fazla bir cevap (kullanıcı kuralı, 2026-11-03): o hesaba daha önce herhangi bir gönderide, yorumda ya da mesajda bizden cevap gitmişse yeni yorumuna/mesajına cevap YAZMA, sadece raporda "zaten cevaplanmış kişi" diye belirt.
+- Fazla cevap silinir (kullanıcı kuralı, 2026-11-04: "1 kere cevap verildiyse verme, 2 cevap varsa sil"): bir kişiye/yoruma bizden 2 veya daha fazla cevap/mesaj gitmişse İLKİNİ bırak, sonrakileri sil (DM: mesaja uzun bas / ⋯ → "Gönderimi geri al"; yorum: kendi cevabımızın ⋯ → Sil). Yalnız BİZİM fazla cevabımızı sil, başkasının içeriğine dokunma; silineni raporda belirt.
