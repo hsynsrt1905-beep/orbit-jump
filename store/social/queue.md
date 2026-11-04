@@ -199,3 +199,13 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
 
   #orbitjump #indiegame #mobilegame #gamedev #unlock
   ```
+
+- [ ] R14 — SADECE TikTok: "Score 27. Your turn?" yeni kesim (Instagram'daki en çok izlenen reel, 2.147; TikTok'ta eskisi az izlendi)
+  Video: video/reel14_beat27_tiktok.mp4 (21 sn, 1080x1920, 60 fps, müzikli). Instagram'a ATMA (orada zaten var).
+  ```
+  27 before the planet went supernova 💥 Can you beat it? Drop your score 👇
+
+  Rekorum 27. Geçebilir misin? Skorunu yaz 👇
+
+  #orbitjump #mobilegame #indiegame #androidgames #gaming
+  ```
