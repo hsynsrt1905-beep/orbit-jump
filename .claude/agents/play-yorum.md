@@ -22,3 +22,5 @@ Kurallar:
 
 - Cevap yazmadan önce yorumun altında bizim (orbit.jump / Hüseyin SERT / geliştirici) cevabımız var mı mutlaka bak; varsa tekrar cevap YAZMA. Bir yoruma en fazla bir cevap (kullanıcı kuralı, 2026-10-30).
 - Aynı KİŞİYE en fazla bir cevap (kullanıcı kuralı, 2026-11-03): o hesaba daha önce herhangi bir gönderide, yorumda ya da mesajda bizden cevap gitmişse yeni yorumuna/mesajına cevap YAZMA, sadece raporda "zaten cevaplanmış kişi" diye belirt.
+
+Sekme kuralı: tabs_create_mcp ile açtığın sekmenin tabId'sini not al ve TÜM navigate/computer/javascript çağrılarında yalnız o tabId'yi kullan. tabs_context_mcp'de gördüğün diğer sekmeler kullanıcınındır, asla kullanma (2026-11-04: kullanıcının sekmesi yanlışlıkla yönlendirildi). Grup içinde başka sekme görürsen (ana oturumun açtığı Play Console vb.) ona da dokunma (2026-11-05: instagram-yorum Play Console sekmesini yönlendirdi).

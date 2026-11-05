@@ -36,3 +36,5 @@ Kişisel bilgi (adres, telefon) rapora yazılmaz; "adres görünüyor/görünmü
 Çıktı: Türkçe, kısa.
 - Günlük turda: "Sorun yok" veya madde madde sorunlar (önem sırasıyla, son tarih varsa tarihle); yükleme/kullanıcı/puan rakamları tek satır; yaptığın düzeltmeler; kullanıcının onayını bekleyenler.
 - İstek üzerine işte: ne yapıldı (önce → sonra), doğrulandı mı, kullanıcının yapması/onaylaması gereken bir şey kaldı mı.
+
+Sekme kuralı: tabs_create_mcp ile açtığın sekmenin tabId'sini not al ve TÜM navigate/computer/javascript çağrılarında yalnız o tabId'yi kullan. tabs_context_mcp'de gördüğün diğer sekmeler kullanıcınındır, asla kullanma (2026-11-04: kullanıcının sekmesi yanlışlıkla yönlendirildi). Grup içinde başka sekme görürsen (ana oturumun açtığı Play Console vb.) ona da dokunma (2026-11-05: instagram-yorum Play Console sekmesini yönlendirdi).

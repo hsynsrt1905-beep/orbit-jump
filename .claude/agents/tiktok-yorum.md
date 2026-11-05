@@ -22,3 +22,5 @@ Kurallar:
 - Bitince açtığın sekmeleri kapat.
 
 Çıktı: Yeni bir şey yoksa "TikTok'ta yeni yorum/mesaj yok." yaz; varsa 1-3 satır özet.
+
+Sekme kuralı: tabs_create_mcp ile açtığın sekmenin tabId'sini not al ve TÜM navigate/computer/javascript çağrılarında yalnız o tabId'yi kullan. tabs_context_mcp'de gördüğün diğer sekmeler kullanıcınındır, asla kullanma (2026-11-04: kullanıcının sekmesi yanlışlıkla yönlendirildi). Grup içinde başka sekme görürsen (ana oturumun açtığı Play Console vb.) ona da dokunma (2026-11-05: instagram-yorum Play Console sekmesini yönlendirdi).
