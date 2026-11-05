@@ -1,5 +1,7 @@
 # LinkedIn 7. gönderi — "Takılan kareler" (planlanan: 2026-11-05)
 
+Paylaşıldı: 2026-11-05 08:38 · https://www.linkedin.com/feed/update/urn:li:activity:7523982138690719744/ (video: reel10_moving.mp4)
+
 Görsel/video: store/social/video/reel10_moving.mp4 (23 sn, telefondan 1.0.17 kaydı). Video yüklenemezse store/web/covers/cover-1920x1080.png.
 
 Not: Performans hikâyesi (1.0.17 öncesi takılma düzeltmesi). Açılış ölçümle; madde listesi yok, önceki gönderilerden farklı bir konu.
