@@ -214,7 +214,7 @@ Zamanlayıcılar oturuma bağlıdır ve 7 günde silinir; oturum açılışında
 
 Model ölçümü (23 Eki): `haiku`→claude-haiku-5-5, `sonnet`→claude-sonnet-5-5, `opus`→claude-opus-5-5, `fable`→claude-opus-5-5 (bu hesapta Fable açık değil).
 
-## Güvenlik durumu (oyun) — son inceleme 2026-11-03
+## Güvenlik durumu (oyun) — son inceleme 2026-11-05
 
 Kullanıcı isteği (3 Kas): "ara ara sistem açıklarını kontrol et", "AdMob takip edilsin". Haftalık: pazartesi `bilesen-kontrol` (npm audit, sürüm uyumu), perşembe 09:17 oyun güvenlik incelemesi (kurallar + kod). AdMob her gün 10:27 `admob-yonetici`.
 
@@ -225,6 +225,24 @@ Bulunanlar (3 Kas):
 - **API anahtarı:** Firebase web anahtarının istemcide olması normal; Google Cloud'da Android paketi + site alan adıyla kısıtlı olduğu kontrol edilmeli (kullanıcı/konsol).
 - **Yapılanlar (3 Kas, kurallar emülatörde 14/14 testten geçti, 3 Kas'ta canlıya deploy edildi; izin `.claude/settings.json`'a eklendi):** `names` anahtarı isimden üretilmiş olmalı (yeni + 1.0.13 öncesi biçim, Türkçe İ dahil); `saves` yalnız `progress`+`updatedAt`, alan tipleri ve liste/harita/metin boyutları sınırlı; skor belgelerine 3 sn'den sık yazılamaz. Web App Check AÇIK (3 Kas): reCAPTCHA Enterprise / Fraud Defense anahtarı "Orbit Jump web" (GCP projesi "Orbit Jump", ayda 10.000 doğrulama ücretsiz, kart yok; alanlar: orbit-jump-73b68.web.app, orbit-jump-73b68.firebaseapp.com, itch.io, itch.zone, crazygames.com). Site anahtarı `.env` içinde (`VITE_RECAPTCHA_SITE_KEY`, herkese açık; gizli anahtar gerekmez). Firebase App Check: Android = Play Integrity, Web = Fraud Defense, ikisi de Registered. Web sürümü bu anahtarla yayınlandı (/game, enterprise.js yükleniyor). itch.io / CrazyGames paketleri de yeniden derlenip yüklenmeli (eskiler App Check göndermez). **Zorunlu kılma HENÜZ yapılmadı:** App Check metriklerinde doğrulanmış istek oranı yüksek görünce (eski Android sürümleri azalınca) konsolda Firestore için "Enforce" açılacak; erken açılırsa eski sürümlerin skor tablosu bozulur. Test betiği: rules-unit-testing + `firebase emulators:exec` (Java: Android Studio jbr; Windows'ta `JAVA_TOOL_OPTIONS=-Djdk.net.unixdomain.tmpdir=C:\Users\Public` şart).
 - Uygun olanlar: `saves` yalnız sahibi; skor yalnız artarak güncellenir; tarih sunucu saatine bağlı; site güvenlik başlıkları açık.
+
+İnceleme 5 Kas (perşembe). İncelenenler: `firestore.rules` (storage/database kuralı yok, kullanılmıyor), `src/cloudSave.js`, `src/firebase.js`, `src/App.jsx` (skor gönderme, isim girişi, meydan okuma bağlantısı), `hosting/` + `firebase.json` başlıkları, AndroidManifest, repo ve git geçmişinde gizli anahtar taraması, 29 Eki–5 Kas commit'leri (1.0.18 R8). Kod değiştirilmedi.
+
+Önceki bulguların durumu (5 Kas):
+- Skor hilesi (orta): **AÇIK.** App Check zorunlu değil. 6 Kas metrik kontrolünden sonra Firestore için "Enforce" kullanıcı onayıyla açılacak. Asıl çözüm bu.
+- İsim kapma (düşük): **KISMEN KAPANDI.** Anahtar–isim eşleşmesi kurallarda (3 Kas deploy). Kalan kısım aşağıda (hesap başına isim sınırı yok).
+- Bulut kayıt boyutu (düşük): **KAPANDI** (3 Kas, `validSave`).
+- API anahtarı kısıtı: **KULLANICIDA.** GCP'de Android paketi + alan adı kısıtı hâlâ doğrulanmadı.
+
+Yeni bulgular (5 Kas):
+- **Skor tablosunda isim taklidi (düşük):** `leaderboard`/`daily`/`weekly` kuralları `name` için yalnız uzunluğa bakıyor, `names` ayırmasıyla bağ kurmuyor. İstemciyi atlayan biri başkasının ayırdığı isimle skor yazabilir. Çözüm: `validEntry` içinde `get(/names/<anahtar>).data.uid == request.auth.uid` kontrolü (anahtar `validNameKey` ile aynı biçimde üretilir, eski anahtar da denenir; yazma başına +1 okuma). App Check zorunlu olunca risk zaten azalır.
+- **Hesap başına isim sınırı yok (düşük):** Bir UID sınırsız `names` belgesi açabilir (toplu isim kapma). Çözüm: `users/{uid}` içinde tek `nameKey` işaretçisi tutup kuralda tek isim şartı koymak ya da Cloud Functions. App Check zorunlu olunca öncelik düşer.
+- **İsim karakter denetimi yok (düşük):** Kurallar ve istemci yalnız 1–12 uzunluğa bakıyor. Görünmez/yön değiştiren karakterler (RTL, sıfır genişlik) ve küfür engellenmiyor. XSS yok: React metni kaçırıyor, `innerHTML`/`dangerouslySetInnerHTML` kullanılmıyor. Çözüm: istemcide ve kuralda izinli karakter listesi (ör. `name.matches('^[\\p{L}\\p{N} ._-]{1,12}$')`), istenirse basit küfür listesi.
+- **Hesap silmede eski dönem skorları kalıyor (düşük, gizlilik):** `deleteAccount` yalnız bugün/dün günlük ve bu haftanın tablosunu siliyor. Daha eski `daily/*/scores/{uid}` ve `weekly/*/scores/{uid}` belgeleri (isim + uid, herkese açık okunur) kalıyor. Play hesap silme politikası açısından eski dönem belgeleri de silinmeli (`collectionGroup('scores')` + `where('uid','==',uid)` ile; dizin gerekebilir) ya da gizlilik metninde belirtilmeli.
+- **Hosting'de CSP yok (düşük/bilgi):** Statik sayfalar, kullanıcı içeriği yok. `c.html` sorgu parametrelerini doğrulayıp `textContent` ile yazıyor (DOM XSS yok). `/game/` bilerek çerçevelenebilir (itch.io/CrazyGames). İleride `Content-Security-Policy` (en azından `object-src 'none'; base-uri 'self'`) eklenebilir.
+- **1.0.18 R8 değişikliği (bilgi):** Güvenlik açısından gerileme yok. Keystore şifreleri `keystore.properties`'te ve git dışında, `.jks` hiç commit'lenmemiş. Dikkat: `-dontwarn com.google.android.gms.**` eksik sınıf uyarılarını gizleyebilir. Yayın derlemesinde App Check belirteci (Play Integrity), Google girişi ve AdMob cihazda doğrulanmalı (App Check bozulursa zorunlu kılmadan sonra skor tablosu kapanır). Crashlytics için `mapping.txt` yüklendiği kontrol edilmeli.
+- **Gizli anahtar taraması:** Temiz. Repoda yalnız herkese açık değerler var (web Firebase yapılandırması, `google-services.json`, `.env`'de reCAPTCHA site anahtarı). Not: `.env` git'te izleniyor, içine gizli değer konmamalı (gerekirse gitignore'daki `.env.local`).
+- Diğer commit'ler (ajan/kural/metin/kuyruk) güvenliği etkilemiyor. Deep link (`orbitjump://c`) parametreleri doğrulanıyor; `allowBackup=false`.
 
 ## Açık işler (kullanıcıda)
 
