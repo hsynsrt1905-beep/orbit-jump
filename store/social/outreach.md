@@ -21,3 +21,13 @@ https://play.google.com/store/apps/details?id=com.orbitjump.game
 ## Gönderim kaydı
 | Tarih | Platform | Hesap | Takipçi | Dil | Kişisel not | Durum / cevap |
 |---|---|---|---|---|---|---|
+| 2026-11-05 | Instagram | @roganplaysgames | 90,8B | EN | "5 best indie games on mobile" videosu | gönderildi |
+| 2026-11-05 | Instagram | @serdartorlak | 28,5B | TR | "Bilmediğiniz 35 mobil oyun" videosu | gönderildi |
+| 2026-11-05 | Instagram | @exxotikgaming | 12,5B | EN | mobil oyun haber klipleri (WW1 FPS mobile) | gönderildi |
+| 2026-11-05 | Instagram | @ahmettoxp | 21,2B | TR | ücretsiz mobil oyun tanıtımları, "Bu hafta paylaştığım oyunlar" | gönderildi |
+| 2026-11-05 | Instagram | @deatwy | 17,4B | TR | mobil oyun oynanış klipleri (yarış/aksiyon) | gönderildi |
+| 2026-11-05 | Instagram | @umuut003 | 9,4B | TR | GOKA Street videosu, ücretsiz oyun önerileri | gönderildi |
+| 2026-11-05 | Instagram | @iregangaming | 21,9B | EN | "Top 3 best games to play on mobile" videosu | gönderildi |
+| 2026-11-05 | Instagram | @demonicgames22 | 19,1B | EN | "Undiscovered mobile games better than half the Play Store" reel | gönderildi |
+| 2026-11-05 | Instagram | @cozymamajess | 32,4B | EN | "Free iPad and mobile games" özeti (mikro ödemesiz cozy oyunlar) | gönderildi |
+| 2026-11-05 | Instagram | @potteronair | 15,9B | TR | cozy mobil oyun önerileri videosu | gönderildi |

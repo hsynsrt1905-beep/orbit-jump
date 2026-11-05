@@ -114,7 +114,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #space #galaxy #indiegame #mobilegame #androidgames #gameart #indiedev #spacegame #uzay
   ```
 
-- [ ] 4 — Geliştirici hikâyesi
+- [x] 4 — Geliştirici hikâyesi — 2026-11-05 Instagram (Chrome'dan, 2 görselli carousel, 5 hashtag; telefon bağlı değildi). BUGÜNÜN GÜNLÜK PAYLAŞIMI YAPILDI (2026-11-05)
   Görseller: menu.png, oyun-2.png
   ```
   I'm a solo dev from Turkey 🇹🇷 and Orbit Jump is my first game on Google Play.
