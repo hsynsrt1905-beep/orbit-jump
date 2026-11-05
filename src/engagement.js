@@ -21,8 +21,9 @@ const AD_FREE_GAMES = 5;
 
 const STREAK_REMINDER_ID = 1001;
 const STREAK_REMINDER_HOUR = 20;
-const COMEBACK_IDS = [1002, 1003];
-const COMEBACK_DAYS = [2, 5];
+// 1.0.19: ilk gün dönüşü (D1) çok düşüktü; ertesi gün de bir hatırlatma eklendi.
+const COMEBACK_IDS = [1002, 1003, 1004];
+const COMEBACK_DAYS = [1, 3, 6];
 const COMEBACK_HOUR = 18;
 
 const REVIEW_MIN_GAMES = 5;
@@ -166,7 +167,8 @@ export const scheduleStreakReminder = async ({ claimedToday, streakDays, title, 
   } catch {}
 };
 
-// --- Geri dönüş: oyuncu 2 ve 5 gün girmezse rekoruna atıfla bildirim.
+// --- Geri dönüş: oyuncu 1, 3 ve 6 gün girmezse sırayla günlük meydan okuma,
+// rekor ve günlük ödül hatırlatması.
 // Her açılışta ve tur sonunda yeniden kurulur, yani oynayan kimse bunu görmez.
 export const scheduleComebackReminders = async (messages) => {
   if (!isNative) return;

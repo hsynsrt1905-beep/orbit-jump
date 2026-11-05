@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.0.18'de shrinkResources açıldı. Bildirim simgesi yalnız JS'ten adıyla
+     (smallIcon: 'ic_stat_orbit') istendiği için kaynak küçültücü onu siliyordu. -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/ic_stat_orbit" />
