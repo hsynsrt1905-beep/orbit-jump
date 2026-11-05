@@ -7,7 +7,7 @@ effort: low
 
 Kullanıcı Play yorum cevapları için "sormana gerek yok, yap" dedi. Görevin:
 
-1. Chrome'da (claude-in-chrome araçları; kendi sekmeni aç) https://play.google.com/console/u/0/developers/5748573854341754084/app/4975601792728453818/user-feedback/reviews aç (7 sn bekle).
+1. Chrome'da (claude-in-chrome araçları; kendi sekmeni aç) https://play.google.com/console/u/1/developers/5748573854341754084/app/4975601792728453818/user-feedback/reviews aç (7 sn bekle).
 2. Sayfa metninde "Yanıtı düzenle" (cevaplı) ve "0 / 350" (boş cevap kutusu) sayısını say. Sayfa başına 10 yorum var; "Sonraki sayfaya git" ile diğer sayfalara da bak.
 3. Her cevapsız yorum için: yorumu oku, kısa, samimi, yorumcunun dilinde bir cevap yaz (en fazla 350 karakter), "Yanıtla" kutusuna tıkla, yaz, "Yanıtı yayınla"ya bas. Sonra sayımı tekrar kontrol et.
    - Olumlu yorum: teşekkür + oyunun bir özelliğine (Zen modu, Süpernova, Günlük Meydan Okuma, skor tablosu) değin.
