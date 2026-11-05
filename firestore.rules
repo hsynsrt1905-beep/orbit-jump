@@ -31,6 +31,13 @@ service cloud.firestore {
       allow delete: if isOwner(userId);
     }
 
+    // Hesap silme, oyuncunun tüm dönemlerdeki skorlarını collectionGroup
+    // sorgusuyla bulur; bu sorgu için özyinelemeli eşleşme gerekir. Skorlar
+    // zaten herkese açık okunduğu için yeni bir erişim açmaz.
+    match /{path=**}/scores/{userId} {
+      allow read: if true;
+    }
+
     match /saves/{userId} {
       // Bulut kaydını yalnızca sahibi okuyup yazabilir; içerik biçim ve boyut
       // olarak sınırlıdır (belgeye büyük/rastgele veri yazılamasın).
@@ -49,7 +56,8 @@ service cloud.firestore {
                     && request.resource.data.name.size() >= 1
                     && request.resource.data.name.size() <= 12
                     && key.size() <= 40
-                    && validNameKey(key, request.resource.data.name);
+                    && validNameKey(key, request.resource.data.name)
+                    && validNameChars(request.resource.data.name);
       allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
     }
 
@@ -65,6 +73,25 @@ service cloud.firestore {
       // lower() farklı davrandığı için önce elle aynı biçime çevrilir.
       let n = name.trim().replace('İ', 'i̇').lower();
       return key == n.replace('\\s+', ' ') || key == n.replace('s+', ' ');
+    }
+
+    // Yeni isimler yalnız harf, rakam, birleşik işaret (Türkçe İ vb.), boşluk
+    // ve _ . - içerebilir; görünmez/yön değiştiren karakterler reddedilir.
+    // Eski isimler skor yazarken bu kurala tabi değildir.
+    function validNameChars(name) {
+      return name.matches('^[\\p{L}\\p{M}\\p{N}][\\p{L}\\p{M}\\p{N} _.\\-]*$');
+    }
+
+    // Skordaki isim, oyuncunun kendi UID'siyle ayırdığı isim olmalı (başkasının
+    // ismiyle skor yazılamaz). Eski (1.0.13 öncesi) anahtar biçimi de kabul edilir.
+    function ownsName(name) {
+      let n = name.trim().replace('İ', 'i̇').lower();
+      let k1 = n.replace('\\s+', ' ');
+      let k2 = n.replace('s+', ' ');
+      return (exists(/databases/$(database)/documents/names/$(k1))
+              && get(/databases/$(database)/documents/names/$(k1)).data.uid == request.auth.uid)
+          || (k2 != k1 && exists(/databases/$(database)/documents/names/$(k2))
+              && get(/databases/$(database)/documents/names/$(k2)).data.uid == request.auth.uid);
     }
 
     // Aynı skor belgesine 3 saniyeden sık yazılamaz (otomatik betiklerle
@@ -110,7 +137,8 @@ service cloud.firestore {
         && d.name is string && d.name.size() >= 1 && d.name.size() <= 12
         && d.score is int && d.score > 0 && d.score <= 10000
         && d.uid == userId
-        && d.date == request.time;
+        && d.date == request.time
+        && ownsName(d.name);
     }
   }
 }
