@@ -12,7 +12,7 @@ import { maybeRequestReview, shareScore, noteGameFinished, maybeShowInterstitial
 import { utcDayId, utcWeekId, localDayId, seededRandom, submitPeriodScore, fetchPeriodScores, emptyDailyStats, dailyMissionsFor } from './periodic';
 import { syncAchievements, showAchievements, playGamesAvailable } from './playGames';
 import { checkForUpdate, completeUpdate } from './appUpdate';
-import { ensureSignedIn, isGoogleUser, signInWithGoogle, signOutGoogle, deleteAccount, loadCloudSave, writeCloudSave, mergeProgress, claimPlayerName, releaseNames, nameKey, sanitizeName, isValidName } from './cloudSave';
+import { ensureSignedIn, isGoogleUser, signInWithGoogle, signOutGoogle, deleteAccount, loadCloudSave, writeCloudSave, mergeProgress, claimPlayerName, releaseNames, nameKey, sanitizeName, isValidName, isProfane } from './cloudSave';
 
 const translations = {
   en: {
@@ -54,7 +54,7 @@ const translations = {
     noScores: "No scores recorded yet.",
     loadingScores: "Loading scores...",
     welcome: "WELCOME!", namePrompt: "Enter a name to appear on the leaderboard:",
-    namePlaceholder: "Your nickname", saveAndStart: "SAVE & START", nameTaken: "This name is taken, try another one.", nameInvalid: "Use only letters, numbers, spaces and _ . -", nameChecking: "Checking...",
+    namePlaceholder: "Your nickname", saveAndStart: "SAVE & START", nameTaken: "This name is taken, try another one.", nameInvalid: "Pick a different name (letters, numbers, spaces, _ . - only; no offensive words).", nameChecking: "Checking...",
     offlineScores: "Offline — showing local scores.",
     signInGoogle: "Sign in with Google", signedInAs: "Cloud save on", signOut: "Sign out", syncing: "Syncing...", signInFailed: "Sign-in failed. Try again.",
     shareScore: "SHARE SCORE", shareText: "I scored {n} in Orbit Jump! Can you beat me? 🚀", streakReminderTitle: "🔥 Your streak is about to break!", streakReminderBody: "Claim your day {n} reward before midnight.",
@@ -101,7 +101,7 @@ const translations = {
     noScores: "Henüz kayıtlı skor yok.",
     loadingScores: "Skorlar yükleniyor...",
     welcome: "HOŞ GELDİN!", namePrompt: "Skor tablosunda görünmek için bir isim gir:",
-    namePlaceholder: "Takma Adın", saveAndStart: "KAYDET VE BAŞLA", nameTaken: "Bu isim alınmış, başka bir isim dene.", nameInvalid: "Yalnız harf, rakam, boşluk ve _ . - kullan.", nameChecking: "Kontrol ediliyor...",
+    namePlaceholder: "Takma Adın", saveAndStart: "KAYDET VE BAŞLA", nameTaken: "Bu isim alınmış, başka bir isim dene.", nameInvalid: "Başka bir isim seç (yalnız harf, rakam, boşluk, _ . -; hakaret içermesin).", nameChecking: "Kontrol ediliyor...",
     offlineScores: "Çevrimdışı — yerel skorlar gösteriliyor.",
     signInGoogle: "Google ile giriş yap", signedInAs: "Bulut kaydı açık", signOut: "Çıkış yap", syncing: "Eşitleniyor...", signInFailed: "Giriş yapılamadı. Tekrar dene.",
     shareScore: "SKORU PAYLAŞ", shareText: "Orbit Jump'ta {n} puan yaptım! Geçebilir misin? 🚀", streakReminderTitle: "🔥 Serin bozulmak üzere!", streakReminderBody: "{n}. gün ödülünü gece yarısından önce al.",
@@ -148,7 +148,7 @@ const translations = {
     noScores: "Aún no hay puntuaciones registradas.",
     loadingScores: "Cargando puntuaciones...",
     welcome: "¡BIENVENIDO!", namePrompt: "Introduce un nombre para la tabla de clasificación:",
-    namePlaceholder: "Tu apodo", saveAndStart: "GUARDAR Y EMPEZAR", nameTaken: "Este nombre ya está en uso, prueba otro.", nameInvalid: "Usa solo letras, números, espacios y _ . -", nameChecking: "Comprobando...",
+    namePlaceholder: "Tu apodo", saveAndStart: "GUARDAR Y EMPEZAR", nameTaken: "Este nombre ya está en uso, prueba otro.", nameInvalid: "Elige otro nombre (solo letras, números, espacios, _ . -; sin palabras ofensivas).", nameChecking: "Comprobando...",
     offlineScores: "Sin conexión — mostrando puntuaciones locales.",
     signInGoogle: "Iniciar sesión con Google", signedInAs: "Guardado en la nube activo", signOut: "Cerrar sesión", syncing: "Sincronizando...", signInFailed: "No se pudo iniciar sesión. Inténtalo de nuevo.",
     shareScore: "COMPARTIR", shareText: "¡Hice {n} puntos en Orbit Jump! ¿Puedes superarme? 🚀", streakReminderTitle: "🔥 ¡Tu racha está a punto de romperse!", streakReminderBody: "Reclama tu recompensa del día {n} antes de medianoche.",
@@ -195,7 +195,7 @@ const translations = {
     noScores: "Noch keine Ergebnisse gespeichert.",
     loadingScores: "Ergebnisse werden geladen...",
     welcome: "WILLKOMMEN!", namePrompt: "Gib einen Namen für die Bestenliste ein:",
-    namePlaceholder: "Dein Spitzname", saveAndStart: "SPEICHERN & STARTEN", nameTaken: "Dieser Name ist vergeben, versuch einen anderen.", nameInvalid: "Nur Buchstaben, Zahlen, Leerzeichen und _ . - verwenden.", nameChecking: "Wird geprüft...",
+    namePlaceholder: "Dein Spitzname", saveAndStart: "SPEICHERN & STARTEN", nameTaken: "Dieser Name ist vergeben, versuch einen anderen.", nameInvalid: "Wähle einen anderen Namen (nur Buchstaben, Zahlen, Leerzeichen, _ . -; keine Beleidigungen).", nameChecking: "Wird geprüft...",
     offlineScores: "Offline — lokale Ergebnisse werden angezeigt.",
     signInGoogle: "Mit Google anmelden", signedInAs: "Cloud-Speicher aktiv", signOut: "Abmelden", syncing: "Synchronisiere...", signInFailed: "Anmeldung fehlgeschlagen. Erneut versuchen.",
     shareScore: "TEILEN", shareText: "Ich habe {n} Punkte in Orbit Jump! Schaffst du mehr? 🚀", streakReminderTitle: "🔥 Deine Serie reißt gleich ab!", streakReminderBody: "Hol dir deine Belohnung für Tag {n} vor Mitternacht.",
@@ -242,7 +242,7 @@ const translations = {
     noScores: "Пока нет сохранённых результатов.",
     loadingScores: "Загрузка результатов...",
     welcome: "ДОБРО ПОЖАЛОВАТЬ!", namePrompt: "Введите имя для таблицы рекордов:",
-    namePlaceholder: "Ваш ник", saveAndStart: "СОХРАНИТЬ И НАЧАТЬ", nameTaken: "Это имя занято, попробуйте другое.", nameInvalid: "Используйте только буквы, цифры, пробелы и _ . -", nameChecking: "Проверка...",
+    namePlaceholder: "Ваш ник", saveAndStart: "СОХРАНИТЬ И НАЧАТЬ", nameTaken: "Это имя занято, попробуйте другое.", nameInvalid: "Выберите другое имя (только буквы, цифры, пробелы, _ . -; без оскорблений).", nameChecking: "Проверка...",
     offlineScores: "Нет сети — показаны локальные результаты.",
     signInGoogle: "Войти через Google", signedInAs: "Облачное сохранение включено", signOut: "Выйти", syncing: "Синхронизация...", signInFailed: "Не удалось войти. Попробуйте снова.",
     shareScore: "ПОДЕЛИТЬСЯ", shareText: "Мой результат в Orbit Jump — {n}! Сможешь больше? 🚀", streakReminderTitle: "🔥 Серия вот-вот прервётся!", streakReminderBody: "Заберите награду за день {n} до полуночи.",
@@ -1369,6 +1369,11 @@ function App() {
 
       // Skor kuralları ismin bu oyuncuya ayrılmış olmasını ister; isim çevrimdışı
       // seçildiyse burada ayrılır, başkasınınsa ya da geçersizse yeni isim istenir.
+      // Küfürlü isimle skor yazılamaz (kurallar da reddeder); yeni isim istenir.
+      if (isProfane(playerName)) {
+        setNameInput(''); setNameError('invalid'); setShowNameModal(true);
+        return;
+      }
       if (claimedNameRef.current !== playerName) {
         try {
           await claimPlayerName(playerName);

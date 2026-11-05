@@ -57,7 +57,8 @@ service cloud.firestore {
                     && request.resource.data.name.size() <= 12
                     && key.size() <= 40
                     && validNameKey(key, request.resource.data.name)
-                    && validNameChars(request.resource.data.name);
+                    && validNameChars(request.resource.data.name)
+                    && !isProfane(request.resource.data.name);
       allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
     }
 
@@ -80,6 +81,21 @@ service cloud.firestore {
     // Eski isimler skor yazarken bu kurala tabi değildir.
     function validNameChars(name) {
       return name.matches('^[\\p{L}\\p{M}\\p{N}][\\p{L}\\p{M}\\p{N} _.\\-]*$');
+    }
+
+    // Küfür/hakaret filtresi — src/cloudSave.js isProfane ile AYNI listeler.
+    function foldName(name) {
+      return name.lower().replace('ı', 'i').replace('ş', 's').replace('ç', 'c')
+        .replace('ğ', 'g').replace('ö', 'o').replace('ü', 'u').replace('â', 'a')
+        .replace('î', 'i').replace('û', 'u').replace('\\p{M}', '')
+        .replace('[ _.\\-]', '').replace('0', 'o').replace('1', 'i')
+        .replace('3', 'e').replace('4', 'a').replace('5', 's');
+    }
+    function isProfane(name) {
+      let f = foldName(name);
+      return f.matches('.*(orospu|orosbu|oruspu|amina|amcik|yarrak|yarak|sikerim|siktir|sikik|sikis|sikim|sikiyim|sikeyim|gotveren|gotlek|ibne|kahpe|pezevenk|kaltak|gavat|yavsak|pust|serefsiz|fuck|shit|bitch|cunt|nigg|whore|slut|asshole|pussy|porn|hitler|nazi|faggot|retard).*')
+        || f.matches('^(amk|aq|mk|oc|got|sik|am|dick|cock|cum)$|^amk.*|.*amk$')
+        || name.lower().matches('.*(piç|göt).*');
     }
 
     // Skordaki isim, oyuncunun kendi UID'siyle ayırdığı isim olmalı (başkasının
@@ -138,6 +154,7 @@ service cloud.firestore {
         && d.score is int && d.score > 0 && d.score <= 10000
         && d.uid == userId
         && d.date == request.time
+        && !isProfane(d.name)
         && ownsName(d.name);
     }
   }

@@ -37,5 +37,22 @@ await t('collectionGroup sorgusu (alice skorları)', async () => {
 await t('kendi dönem skorlarını sil', () => Promise.all(snap.docs.map((d) => deleteDoc(d.ref))), true);
 await t('başkasının skorunu sil', () => deleteDoc(doc(a, 'daily', '2026-11-05', 'scores', 'bob')), false);
 
-console.log(fail ? `\n${fail} TEST BAŞARISIZ` : '\nTüm testler geçti');
+// Küfür filtresi: kurallar ve istemci aynı kararı vermeli.
+const { isProfane } = await import('../src/nameFilter.js');
+const cases = [
+  ['Orospu', true], ['0r0spu', true], ['s.i.k.t.i.r', true], ['Piç', true], ['FUCKER', true], ['amk', true],
+  ['Amk42', true], ['Yavşak', true], ['Hitler1', true],
+  ['Epic', false], ['Işık', false], ['Gotham', false], ['Sikke', false], ['Amira', false], ['Pusula', false],
+  ['Satanist sül', false], ['Kamkar', false], ['Mehmet', false], ['Ahmet_99', false],
+];
+let i = 0;
+for (const [name, bad] of cases) {
+  const key = name.trim().replace('İ', 'i̇').toLowerCase().replace(/\s+/g, ' ');
+  const uid = 'p' + i++;
+  const db = as(uid);
+  await t(`küfür kuralı: ${name}`, () => setDoc(doc(db, 'names', key), { uid, name }), !bad);
+  if (isProfane && isProfane(name) !== bad) { console.log('FAIL istemci isProfane:', name); fail++; }
+}
+
+console.log(fail ?`\n${fail} TEST BAŞARISIZ` : '\nTüm testler geçti');
 process.exit(fail ? 1 : 0);

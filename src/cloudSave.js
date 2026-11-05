@@ -79,10 +79,7 @@ export const deleteAccount = async () => {
 // isim de "alınmış" sayılır.
 export const nameKey = (name) => name.trim().toLowerCase().replace(/\s+/g, ' ');
 
-// İsimde izin verilen karakterler (firestore.rules validNameChars ile aynı):
-// harf, birleşik işaret, rakam, boşluk ve _ . - ; ilk karakter harf/rakam olmalı.
-export const sanitizeName = (s) => s.replace(/[^\p{L}\p{M}\p{N} _.-]/gu, '');
-export const isValidName = (s) => /^[\p{L}\p{M}\p{N}][\p{L}\p{M}\p{N} _.-]*$/u.test(s);
+export { sanitizeName, isValidName, isProfane } from './nameFilter';
 
 // 1.0.13 ve öncesi anahtarı yanlış üretiyordu ("s" harflerini boşluğa çeviriyordu).
 // O sürümlerle alınmış isimler hâlâ bu anahtarla duruyor; yeni anahtarda belge
