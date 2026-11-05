@@ -24,7 +24,7 @@ https://play.google.com/store/apps/details?id=com.orbitjump.game
 | 2026-11-05 | Instagram | @roganplaysgames | 90,8B | EN | "5 best indie games on mobile" videosu | gönderildi |
 | 2026-11-05 | Instagram | @serdartorlak | 28,5B | TR | "Bilmediğiniz 35 mobil oyun" videosu | gönderildi |
 | 2026-11-05 | Instagram | @exxotikgaming | 12,5B | EN | mobil oyun haber klipleri (WW1 FPS mobile) | gönderildi |
-| 2026-11-05 | Instagram | @ahmettoxp | 21,2B | TR | ücretsiz mobil oyun tanıtımları, "Bu hafta paylaştığım oyunlar" | gönderildi |
+| 2026-11-05 | Instagram | @ahmettoxp | 21,2B | TR | ücretsiz mobil oyun tanıtımları, "Bu hafta paylaştığım oyunlar" | cevap (5 Kas): yalnız ücretli iş birliği yapıyor, nazikçe tebrik etti — kurala göre cevap yazılmadı |
 | 2026-11-05 | Instagram | @deatwy | 17,4B | TR | mobil oyun oynanış klipleri (yarış/aksiyon) | gönderildi |
 | 2026-11-05 | Instagram | @umuut003 | 9,4B | TR | GOKA Street videosu, ücretsiz oyun önerileri | gönderildi |
 | 2026-11-05 | Instagram | @iregangaming | 21,9B | EN | "Top 3 best games to play on mobile" videosu | gönderildi |
