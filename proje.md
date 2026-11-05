@@ -47,7 +47,7 @@
 
 | Alan | Durum |
 |---|---|
-| Play Store | Yayında. Son yayınlanan sürüm 1.0.11 (11 Ekim 2026); **1.0.13 (kod 14) incelemede** |
+| Play Store | Yayında. 1.0.17 (kod 20) yayında (3 Kas); **1.0.18 (kod 21) 5 Kas 2026 üretime gönderildi** — R8 ile indirme 5,5 MB (-4,4 MB), skor ismi sahiplik kuralı, isim karakter + küfür filtresi, hesap silmede tüm dönem skorları silinir. Firestore kuralları ve scores.uid collection-group indeksi canlıda |
 | Değerlendirmeler | 5,0★ — 12 puan, 11 yorum, hepsi cevaplı |
 | AdMob | Yayında, politika sorunu yok. Ekim ayı ~₺18, eBGBM ~₺223, eşleşme %100. Ödeme için kimlik/banka adımları kullanıcıda |
 | Firebase | Spark (ücretsiz) plan, kotaların çok altında. Site yayında: /play, /privacy, /delete-account, /game, app-ads.txt |
@@ -247,11 +247,12 @@ Yeni bulgular (5 Kas):
 ## Açık işler (kullanıcıda)
 
 - Play'deki geliştirici adresini değiştirmek; değişince mağaza sayfası kontrol edilecek.
-- AdMob kimlik doğrulama ve banka bilgisi.
+- AdMob: banka doğrulandı (5 Kas); kimlik doğrulama + "AdSense ödeme hesabında işlem gerekli" uyarısı kullanıcıda.
+- Play satıcı (DSA trader) beyanı 5 Kas yapıldı: "Tacir"; ödeme profilindeki adres mağazada herkese açık görünür.
 - itch.io / CrazyGames yüklemesi (başka ağdan).
 - Almanya'dan çıkarma sorusu: sebep netleşince karar.
 - Anthropic destek bileti (konuşma `215476678539518`) artık gereksiz: sorun kullanıcı tarafında çözüldü (abonelik hesabıyla giriş). Cevap gelirse "çözüldü" denebilir.
 - **6 Kasım ~10:47:** App Check metrik kontrolü (Firebase → Uygulama Kontrolü → API'ler → Cloud Firestore). Doğrulanmış oran %90+ ise kullanıcıya "zorunlu yapalım" öner; zorunlu kılmayı kullanıcı onaylar.
 - **Otomasyon (3 Kas 14:15):** Kullanıcı isteğiyle otomasyon VS Code'daki Claude Code oturumuna taşındı. Masaüstü uygulamasındaki oturumun zamanlayıcıları silindi. VS Code'da `claude` mutlaka `D:\Desktop\orbit-jump` klasöründe açılmalı (açılış hook'u proje klasöründe çalışır).
-- TikTok'ta "Kızıl Siren" mesajı (22 Eki) web'de okunamıyor → telefon boştayken TikTok uygulamasından okunup cevaplanacak.
+- ~~TikTok "Kızıl Siren"~~ 5 Kas: uygulamada bakıldı, gerçek mesaj yok (spam hesap), cevap yazılmadı.
 - R9 videosu (`video/reel9_update_phone.mp4`) 1.0.17 Play'de yayına çıkınca paylaşılacak.
