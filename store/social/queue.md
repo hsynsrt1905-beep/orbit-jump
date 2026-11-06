@@ -152,7 +152,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #indiegame #mobilegame #gamedev #androidgames
   ```
 
-- [ ] R10 — Reels/TikTok "Planets don't sit still anymore" (telefondan, 1.0.17)
+- [ ] R10 — Reels/TikTok "Planets don't sit still anymore" (telefondan, 1.0.17) · TikTok: 2026-11-06 webden paylaşıldı (Instagram henüz değil)
   Video: video/reel10_moving.mp4 (23 sn, 1080x1920, 60 fps, fast.wav müzikli)
   ```
   The planets don't sit still anymore 🪐 After 10 points they start moving. Can you keep up?
@@ -164,7 +164,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #indiegame #mobilegame #gamedev #androidgames
   ```
 
-- [ ] R11 — Reels/TikTok "So close..." (telefondan, 1.0.17)
+- [ ] R11 — Reels/TikTok "So close..." (telefondan, 1.0.17) · TikTok: 2026-11-06 webden paylaşıldı (Instagram henüz değil)
   Video: video/reel11_almost.mp4 (20 sn, 19 puanda kıl payı ıska → oyun bitti)
   ```
   19 points… and then this 😭 Would you have made that jump?
@@ -176,7 +176,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #soclose #mobilegame #indiegame #gaming
   ```
 
-- [ ] R12 — Reels/TikTok "Supernova mode" (telefondan, 1.0.17)
+- [ ] R12 — Reels/TikTok "Supernova mode" (telefondan, 1.0.17) · TikTok: 2026-11-06 webden paylaşıldı (Instagram henüz değil)
   Video: video/reel12_supernova.mp4 (25 sn, Süpernova modu 23 puan, Odak gücü + mükemmel iniş)
   ```
   Supernova mode: 5 seconds per planet, double points 💥 23 is my best here. Beat it?
