@@ -215,6 +215,6 @@ Studio'dan yüklenir: başlık + açıklama + Play linki, "Hayır, çocuklara ö
 - [x] Y1 — video/reel14_beat27_tiktok.mp4 — 2026-11-06
 - [x] Y2 — video/reel9_v2.mp4 — 2026-11-06
 - [x] Y3 — video/reel11_almost.mp4 — 2026-11-06
-- [ ] Y4 — video/reel10_moving.mp4
+- [x] Y4 — video/reel10_moving.mp4 — 2026-11-06
 - [ ] Y5 — video/reel12_supernova_oj.mp4
 - [ ] Y6 — video/reel13_shop_oj.mp4
