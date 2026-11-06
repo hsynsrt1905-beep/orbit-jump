@@ -177,7 +177,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   ```
 
 - [ ] R12 — Reels/TikTok "Supernova mode" (telefondan, 1.0.17) · TikTok: 2026-11-06 webden paylaşıldı (Instagram henüz değil)
-  Video: video/reel12_supernova.mp4 (25 sn, Süpernova modu 23 puan, Odak gücü + mükemmel iniş)
+  Video: video/reel12_supernova_oj.mp4 (25 sn, Süpernova modu 23 puan, Odak gücü + mükemmel iniş)
   ```
   Supernova mode: 5 seconds per planet, double points 💥 23 is my best here. Beat it?
 
@@ -189,7 +189,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   ```
 
 - [ ] R13 — Reels/TikTok "Unlock the Comet" (telefondan, 1.0.17)
-  Video: video/reel13_shop.mp4 (26 sn, menü takvimi → mağaza: güçler, izler, kilitli Kor 11/50 ve Kuyruklu Yıldız 34/40 → oyun)
+  Video: video/reel13_shop_oj.mp4 (26 sn, menü takvimi → mağaza: güçler, izler, kilitli Kor 11/50 ve Kuyruklu Yıldız 34/40 → oyun)
   ```
   Some trails can't be bought ☄️ Comet unlocks at 40 points in one run. I'm at 34… who gets there first?
 
@@ -216,5 +216,5 @@ Studio'dan yüklenir: başlık + açıklama + Play linki, "Hayır, çocuklara ö
 - [x] Y2 — video/reel9_v2.mp4 — 2026-11-06
 - [x] Y3 — video/reel11_almost.mp4 — 2026-11-06
 - [ ] Y4 — video/reel10_moving.mp4
-- [ ] Y5 — video/reel12_supernova.mp4
-- [ ] Y6 — video/reel13_shop.mp4
+- [ ] Y5 — video/reel12_supernova_oj.mp4
+- [ ] Y6 — video/reel13_shop_oj.mp4
