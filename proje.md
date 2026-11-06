@@ -132,6 +132,7 @@
 - **Dil:** Kullanıcı Türkçe konuşur, kısa ve samimi yazar; cevaplar Türkçe ve kısa.
 - **Her bilgiyi düzenli kaydet (3 Kas):** Kullanıcının verdiği her yeni bilgi, kural ve karar aynı oturumda bu dosyaya ve kalıcı hafızaya yazılır, commit + push edilir. Amaç: oturum başka bilgisayara/klasöre taşınınca kullanıcı aynı bilgileri tekrar vermesin.
 - **Yorum/mesaj cevapları (3 Kas):** Hesabı büyütüyoruz → Instagram ve TikTok'ta yorumların yanında DM'ler ve mesaj istekleri de cevaplanır; tanıtım/iş teklifi mesajlarına kısa kibar teşekkür (linke tıklanmaz, söz verilmez). Bir yoruma en fazla bir cevap, **aynı kişiye de toplamda en fazla bir cevap**.
+- **Tanıtım mesajları (6 Kas):** Her gün Instagram'dan 10, TikTok'tan 10 yeni oyun içerik üreticisine kişiye özel mesaj gönderilir; kurallar ve kayıt `store/social/outreach.md`. Platform kısıt gösterirse o gün durulur.
 - **Isıtma:** Her gün düzenli beğeni + yorum turları (hesap-isitma), hesap büyütme için.
 - **LinkedIn (3 Kas):** Yorumların yanında LinkedIn mesajları da takip edilir (linkedin-yorum ajanı). Her kişiye bizden toplamda en fazla 1 mesaj/cevap; bizden ikinci mesaj ASLA gitmez. Reklam/InMail ve iş/ödeme isteklerine cevap yok.
 - **Tek oturum:** Claude yalnızca bu bilgisayarda çalışıyor (3 Kas, kullanıcı doğruladı); başka yerde aynı otomasyon açılmaz.
