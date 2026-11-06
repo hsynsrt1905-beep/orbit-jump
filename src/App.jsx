@@ -63,7 +63,7 @@ const translations = {
     deleteAccount: "Delete account", privacyOptions: "Privacy options", deleteConfirm: "Delete your account and cloud save permanently? Your leaderboard entry will also be removed. Progress on this device stays.", deleteFailed: "Could not delete account. Try again."
   },
   tr: {
-    title: "YÖRÜNGE", play: "OYNA", score: "SKOR", best: "REKOR", gameOver: "OYUN BİTTİ",
+    title: "ORBIT JUMP", play: "OYNA", score: "SKOR", best: "REKOR", gameOver: "OYUN BİTTİ",
     restart: "TEKRAR DENE", menu: "MENÜ", shop: "MAĞAZA", missions: "GÖREVLER", leaderboard: "SKOR TABLOSU", badges: "ROZETLER", back: "GERİ",
     crystals: "KRİSTAL", claim: "AL", claimed: "ALINDI", owned: "SAHİPSİN", select: "SEÇ",
     selected: "SEÇİLİ", perfect: "MÜKEMMEL", great: "İYİ", combo: "SERİ",
@@ -110,7 +110,7 @@ const translations = {
     deleteAccount: "Hesabı sil", privacyOptions: "Gizlilik seçenekleri", deleteConfirm: "Hesabın ve bulut kaydın kalıcı olarak silinsin mi? Skor tablosundaki kaydın da kaldırılır. Bu cihazdaki ilerlemen kalır.", deleteFailed: "Hesap silinemedi. Tekrar dene."
   },
   es: {
-    title: "SALTO ÓRBITA", play: "JUGAR", score: "PUNTAJE", best: "MEJOR", gameOver: "FIN DEL JUEGO",
+    title: "ORBIT JUMP", play: "JUGAR", score: "PUNTAJE", best: "MEJOR", gameOver: "FIN DEL JUEGO",
     restart: "INTENTAR DE NUEVO", menu: "MENÚ", shop: "TIENDA", missions: "MISIONES", leaderboard: "TABLA", badges: "INSIGNIAS", back: "ATRÁS",
     crystals: "CRISTALES", claim: "RECLAMAR", claimed: "RECLAMADO", owned: "OBTENIDO", select: "ELEGIR",
     selected: "ELEGIDO", perfect: "PERFECTO", great: "GENIAL", combo: "COMBO",
@@ -157,7 +157,7 @@ const translations = {
     deleteAccount: "Eliminar cuenta", privacyOptions: "Opciones de privacidad", deleteConfirm: "¿Eliminar tu cuenta y tu guardado en la nube para siempre? También se quitará tu puntuación de la clasificación. El progreso en este dispositivo se mantiene.", deleteFailed: "No se pudo eliminar la cuenta. Inténtalo de nuevo."
   },
   de: {
-    title: "ORBIT SPRUNG", play: "SPIELEN", score: "PUNKTE", best: "BESTE", gameOver: "SPIEL VORBEI",
+    title: "ORBIT JUMP", play: "SPIELEN", score: "PUNKTE", best: "BESTE", gameOver: "SPIEL VORBEI",
     restart: "NOCHMAL", menu: "MENÜ", shop: "SHOP", missions: "MISSIONEN", leaderboard: "BESTENLISTE", badges: "ABZEICHEN", back: "ZURÜCK",
     crystals: "KRISTALLE", claim: "ABHOLEN", claimed: "ABGEHOLT", owned: "BESESSEN", select: "WÄHLEN",
     selected: "GEWÄHLT", perfect: "PERFEKT", great: "GUT", combo: "COMBO",
@@ -204,7 +204,7 @@ const translations = {
     deleteAccount: "Konto löschen", privacyOptions: "Datenschutzoptionen", deleteConfirm: "Konto und Cloud-Speicher endgültig löschen? Dein Bestenlisten-Eintrag wird ebenfalls entfernt. Der Fortschritt auf diesem Gerät bleibt erhalten.", deleteFailed: "Konto konnte nicht gelöscht werden. Erneut versuchen."
   },
   ru: {
-    title: "ПРЫЖОК ОРБИТЫ", play: "ИГРАТЬ", score: "СЧЕТ", best: "РЕКОРД", gameOver: "ИГРА ОКОНЧЕНА",
+    title: "ORBIT JUMP", play: "ИГРАТЬ", score: "СЧЕТ", best: "РЕКОРД", gameOver: "ИГРА ОКОНЧЕНА",
     restart: "ПОВТОРИТЬ", menu: "МЕНЮ", shop: "МАГАЗИН", missions: "ЗАДАНИЯ", leaderboard: "ТАБЛИЦА", badges: "ЗНАЧКИ", back: "НАЗАД",
     crystals: "КРИСТАЛЛЫ", claim: "ЗАБРАТЬ", claimed: "ПОЛУЧЕНО", owned: "ЕСТЬ", select: "ВЫБРАТЬ",
     selected: "ВЫБРАНО", perfect: "ИДЕАЛЬНО", great: "ОТЛИЧНО", combo: "КОМБО",
