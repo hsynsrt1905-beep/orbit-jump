@@ -257,4 +257,4 @@ Yeni bulgular (5 Kas):
 - ~~TikTok "Kızıl Siren"~~ 5 Kas: uygulamada bakıldı, gerçek mesaj yok (spam hesap), cevap yazılmadı.
 - R9 videosu (`video/reel9_update_phone.mp4`) 1.0.17 Play'de yayına çıkınca paylaşılacak.
 
-- YouTube kanalı açıldı (2026-11-06): https://www.youtube.com/@OrbitJump — anonim; ad, profil resmi, banner ve açıklama hazır, Shorts yüklemesi kullanıcının kitle beyanını bekliyor.
+- YouTube kanalı açıldı (2026-11-06): https://www.youtube.com/@OrbitJump — anonim; ad, profil resmi, banner ve açıklama hazır, ilk 3 Shorts yüklendi; kuyruk store/social/queue.md sonunda (kitle beyanı: çocuklara özel değil, kullanıcı verdi).

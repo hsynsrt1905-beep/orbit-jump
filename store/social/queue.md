@@ -209,3 +209,12 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
 
   #orbitjump #mobilegame #indiegame #androidgames #gaming
   ```
+
+## YouTube Shorts (@OrbitJump)
+Studio'dan yüklenir: başlık + açıklama + Play linki, "Hayır, çocuklara özel değil" (kullanıcı beyanı, 2026-11-06), Herkese açık.
+- [x] Y1 — video/reel14_beat27_tiktok.mp4 — 2026-11-06
+- [x] Y2 — video/reel9_v2.mp4 — 2026-11-06
+- [x] Y3 — video/reel11_almost.mp4 — 2026-11-06
+- [ ] Y4 — video/reel10_moving.mp4
+- [ ] Y5 — video/reel12_supernova.mp4
+- [ ] Y6 — video/reel13_shop.mp4
