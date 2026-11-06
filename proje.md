@@ -256,3 +256,5 @@ Yeni bulgular (5 Kas):
 - **Otomasyon (3 Kas 14:15):** Kullanıcı isteğiyle otomasyon VS Code'daki Claude Code oturumuna taşındı. Masaüstü uygulamasındaki oturumun zamanlayıcıları silindi. VS Code'da `claude` mutlaka `D:\Desktop\orbit-jump` klasöründe açılmalı (açılış hook'u proje klasöründe çalışır).
 - ~~TikTok "Kızıl Siren"~~ 5 Kas: uygulamada bakıldı, gerçek mesaj yok (spam hesap), cevap yazılmadı.
 - R9 videosu (`video/reel9_update_phone.mp4`) 1.0.17 Play'de yayına çıkınca paylaşılacak.
+
+- YouTube kanalı açıldı (2026-11-06): https://www.youtube.com/@OrbitJump — anonim; ad, profil resmi, banner ve açıklama hazır, Shorts yüklemesi kullanıcının kitle beyanını bekliyor.
