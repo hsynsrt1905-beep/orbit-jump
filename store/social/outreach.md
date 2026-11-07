@@ -9,6 +9,10 @@ Kullanıcı onayı: 2026-11-05 — "en az 10 kanala, yerli yabancı fark etmez, 
 - Aynı kişiye ikinci mesaj YOK. Gönderilen herkes aşağıdaki tabloya yazılır; yazmadan önce tabloya bakılır.
 - Ücret teklif edilmez/kabul edilmez. Para isteyen olursa cevap verilmez, kullanıcıya raporlanır.
 - Gelen cevaplar: teşekkür + istenirse Play linki, hazır video (store/social/video/), kısa açıklama. iOS sorulursa: "Şu an Android'de; ilgi olursa iOS'a da çıkacağız."
+- Hesap bulma (7 Kas'ta işe yarayan): TikTok'ta kullanıcı değil VİDEO araması ("offline mobile games", "internetsiz oyunlar android", "mobile games you need to try"); Instagram'da etiket sayfaları (#mobilegames, #androidgames, #mobiloyun, #oyunonerisi). Instagram hesap araması verimsiz.
+- Takipçi aralığı 3B-250B. "İşbirlikleri için dm" yazanlara yazılabilir; "ücretli promo / paid" yazanlar, mod veya APK sitesine yönlendirenler atlanır.
+- Oyunu doğru anlat: refleks oyunu; "her telefonda çalışır" gibi abartı yok (Android 7 ve üstü, 5,5 MB).
+- TikTok'ta metin sohbet açıldıktan sonra ayrı adımda yazılır. Her gönderim ekrandan doğrulanır; teslim olmayan "gönderildi" sayılmaz.
 
 ## Şablon (TR)
 Merhaba! Orbit Jump'ı tek başıma geliştiren bağımsız bir geliştiriciyim. Tek dokunuşla gezegenler arasında zıpladığın, ücretsiz bir Android oyunu (Play'de 5,0★). Kanalındaki [kişiye özel] çok hoşuma gitti; oyunum da tarzına uyabilir diye düşündüm. Denemek ya da paylaşmak istersen çok sevinirim, hazır video da gönderebilirim. Şu an Android'de, ilgi olursa iOS'a da çıkacağız 🙏
