@@ -37,7 +37,7 @@ https://play.google.com/store/apps/details?id=com.orbitjump.game
 | 2026-11-05 | Instagram | @potteronair | 15,9B | TR | cozy mobil oyun önerileri videosu | gönderildi |
 | 2026-11-07 | TikTok | @whoelsbutme | 14,8B | EN | "Never Sort By Color" videosu (bağımsız oyun keşfi) | gönderildi |
 | 2026-11-07 | TikTok | @gameworld1664 | 7,3B | TR | sudoku ve satranç mobil oyun oynanış klipleri | gönderildi |
-| 2026-11-07 | Instagram | @singuru_gaming | 8,3B | EN | Tomb Raider mobil videosu (6GB RAM düşük cihazlarda çalışıyor) | gönderildi |
+| 2026-11-07 | Instagram | @singuru_gaming | 8,3B | EN | Tomb Raider mobil videosu (6GB RAM düşük cihazlarda çalışıyor) | teslim belirsiz: gelen kutusunda "mesaj alamıyor" notu var (7 Kas) |
 | 2026-11-07 | Instagram | @balgedikthegathering | 5,0B | TR | Stardew Valley "bunu sevdiysen bunu da dene" oyun önerisi videosu | gönderildi |
 | 2026-11-07 | TikTok | @hawk.dc | 59,1B | EN | "Best Indie Games on Mobile" videosu ve 2D Android oynatma listesi | gönderildi |
 | 2026-11-07 | TikTok | @allofgaming7 | 5,5B | EN | "Top 10 Best Offline Mobile Games" videosu | gönderildi |
@@ -49,7 +49,7 @@ https://play.google.com/store/apps/details?id=com.orbitjump.game
 | 2026-11-07 | TikTok | @curuthd | 30,7B | EN | tek oyunculu mobil oyun listesi ve çevrimdışı macera önerileri | gönderildi |
 | 2026-11-07 | Instagram | @indiegamejoe | 89,4B | EN | 19. yüzyıl hayatta kalma korku oyunu (kare kare piksel animasyon) gönderisi | gönderildi |
 | 2026-11-07 | Instagram | @oyunradarcisi | 77,1B | TR | "Ücretsiz Korku Oyun Önerileri" videosu ve ücretsiz oyun paylaşımları | gönderildi |
-| 2026-11-07 | Instagram | @sumi.bubbles | 12,6B | EN | "6 point-and-click games..." (tuhaf piksel sanat) gönderisi | gönderildi |
+| 2026-11-07 | Instagram | @sumi.bubbles | 12,6B | EN | "6 point-and-click games..." (tuhaf piksel sanat) gönderisi | cevap (7 Kas 10:27): oyunu kendi tarzı olmadığını nazikçe yazdı (kalp emojili); 7 Kas teşekkür mesajı gönderildi (sohbet açık, bu kişi için ek cevap yok) |
 | 2026-11-07 | Instagram | @cozybyjoshy | 5,6B | EN | "what I've learned after 1 year of being a gaming content creator" gönderisi | gönderildi |
 | 2026-11-07 | Instagram | @ab.nowww | 15,8B | EN | "Underrated Games" reel ve 150GB vs 10GB karşılaştırması | gönderildi |
 | 2026-11-07 | Instagram | @gaminggrly | 121B | EN | "Underrated mobile games" videosu ve ücretsiz oyunlar öne çıkanı | gönderildi |
