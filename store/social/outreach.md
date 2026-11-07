@@ -43,7 +43,7 @@ https://play.google.com/store/apps/details?id=com.orbitjump.game
 | 2026-11-07 | TikTok | @allofgaming7 | 5,5B | EN | "Top 10 Best Offline Mobile Games" videosu | gönderildi |
 | 2026-11-07 | TikTok | @rodgamespot | 31,3B | EN | "Top 4 Offline Football Games" videosu ve çevrimdışı oyunlar listesi | gönderildi |
 | 2026-11-07 | TikTok | @agalarovmobiloyunlar | 17,8B | TR | Monster Hunter Outlanders Poco X6 Pro videosu ve Sifu mobil klibi | gönderildi |
-| 2026-11-07 | TikTok | @immortalturkgaming | 8,6B | TR | "En İyi İnternetsiz Oyunlar" videosu | gönderildi |
+| 2026-11-07 | TikTok | @immortalturkgaming | 8,6B | TR | "En İyi İnternetsiz Oyunlar" videosu | cevap (7 Kas 18:15): "hazır video varsa gönder, derlerse yayınlarım" dedi; 7 Kas 18:54 teşekkür + Play linki + "hazır video ister misin, dikey mi yatay mı?" yazıldı, video henüz gönderilmedi (sohbet açık, sonraki cevap bekleniyor) |
 | 2026-11-07 | TikTok | @rae.x_games | 27,9B | EN | "11 Offline Games on Mobile" videosu | gönderildi |
 | 2026-11-07 | TikTok | @itsmonagaming | 100,1B | EN | Pop Epoch POV videosu | gönderildi |
 | 2026-11-07 | TikTok | @curuthd | 30,7B | EN | tek oyunculu mobil oyun listesi ve çevrimdışı macera önerileri | gönderildi |
