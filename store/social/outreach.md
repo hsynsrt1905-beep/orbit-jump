@@ -59,3 +59,4 @@ https://play.google.com/store/apps/details?id=com.orbitjump.game
 | 2026-11-07 | Instagram | @pavanlobby | 104B | EN | "Ye viral games miss mat karna" reel | teslim edilmedi: hesap yeni mesaj isteklerini kabul etmiyor; tekrar yazılmayacak |
 | 2026-11-07 | Instagram | @new_game_alert | 51,1B | EN | "no teasers" biyografisi ve reels | teslim edilmedi: hesap yeni mesaj isteklerini kabul etmiyor; tekrar yazılmayacak |
 | 2026-11-07 | TikTok | @cutieindierecs | 85,2B | EN | "Games like Stardew Valley that aren't farming sims" videosu | teslim edilmedi: iki denemede kırmızı ünlem, sayfa yenileyince mesaj yok; tekrar yazılmayacak |
+| 2026-11-07 | Instagram | @oyunlu_yorum | 58,6B | TR | Burglin' Gnomes tanıtımı (oyunun platformunu ve fiyatını net yazması) | gönderildi |
