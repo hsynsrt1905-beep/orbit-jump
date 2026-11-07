@@ -152,7 +152,7 @@ Açıklamalar global kitle için önce İngilizce, sonra Türkçe.
   #orbitjump #indiegame #mobilegame #gamedev #androidgames
   ```
 
-- [ ] R10 — Reels/TikTok "Planets don't sit still anymore" (telefondan, 1.0.17) · TikTok: 2026-11-06 webden paylaşıldı (Instagram henüz değil)
+- [x] R10 — Reels/TikTok "Planets don't sit still anymore" (telefondan, 1.0.17) · TikTok: 2026-11-06 webden paylaşıldı · Instagram: benzer metinli 2 reel zaten var (DfRsERkO-X_, DfRqudMufCW), üçüncüsü atılmadı (7 Kas)
   Video: video/reel10_moving.mp4 (23 sn, 1080x1920, 60 fps, fast.wav müzikli)
   ```
   The planets don't sit still anymore 🪐 After 10 points they start moving. Can you keep up?
