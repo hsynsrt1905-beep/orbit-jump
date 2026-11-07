@@ -153,7 +153,7 @@
 - Instagram / TikTok: `@orbit.jump`. Instagram bio linki: https://orbit-jump-73b68.web.app/play (Android'de Play Store'u açar; doğrudan Play linki Instagram içinde çalışmıyordu).
 - LinkedIn lansman gönderisi: activity `7518224383694417920`.
 - GitHub: `hsynsrt1905-beep/orbit-jump` (main).
-- Destek e-postası (gizlilik politikasında herkese açık): hsynsrt1905@gmail.com.
+- Destek e-postası (gizlilik politikasında herkese açık): orbitjump2026@gmail.com.
 
 ## Teknik notlar
 
