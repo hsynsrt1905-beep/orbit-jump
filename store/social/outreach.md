@@ -33,3 +33,5 @@ https://play.google.com/store/apps/details?id=com.orbitjump.game
 | 2026-11-05 | Instagram | @potteronair | 15,9B | TR | cozy mobil oyun önerileri videosu | gönderildi |
 | 2026-11-07 | TikTok | @whoelsbutme | 14,8B | EN | "Never Sort By Color" videosu (bağımsız oyun keşfi) | gönderildi |
 | 2026-11-07 | TikTok | @gameworld1664 | 7,3B | TR | sudoku ve satranç mobil oyun oynanış klipleri | gönderildi |
+| 2026-11-07 | Instagram | @singuru_gaming | 8,3B | EN | Tomb Raider mobil videosu (6GB RAM düşük cihazlarda çalışıyor) | gönderildi |
+| 2026-11-07 | Instagram | @balgedikthegathering | 5,0B | TR | Stardew Valley "bunu sevdiysen bunu da dene" oyun önerisi videosu | gönderildi |
