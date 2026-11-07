@@ -35,3 +35,23 @@ https://play.google.com/store/apps/details?id=com.orbitjump.game
 | 2026-11-07 | TikTok | @gameworld1664 | 7,3B | TR | sudoku ve satranç mobil oyun oynanış klipleri | gönderildi |
 | 2026-11-07 | Instagram | @singuru_gaming | 8,3B | EN | Tomb Raider mobil videosu (6GB RAM düşük cihazlarda çalışıyor) | gönderildi |
 | 2026-11-07 | Instagram | @balgedikthegathering | 5,0B | TR | Stardew Valley "bunu sevdiysen bunu da dene" oyun önerisi videosu | gönderildi |
+| 2026-11-07 | TikTok | @hawk.dc | 59,1B | EN | "Best Indie Games on Mobile" videosu ve 2D Android oynatma listesi | gönderildi |
+| 2026-11-07 | TikTok | @allofgaming7 | 5,5B | EN | "Top 10 Best Offline Mobile Games" videosu | gönderildi |
+| 2026-11-07 | TikTok | @rodgamespot | 31,3B | EN | "Top 4 Offline Football Games" videosu ve çevrimdışı oyunlar listesi | gönderildi |
+| 2026-11-07 | TikTok | @agalarovmobiloyunlar | 17,8B | TR | Monster Hunter Outlanders Poco X6 Pro videosu ve Sifu mobil klibi | gönderildi |
+| 2026-11-07 | TikTok | @immortalturkgaming | 8,6B | TR | "En İyi İnternetsiz Oyunlar" videosu | gönderildi |
+| 2026-11-07 | TikTok | @rae.x_games | 27,9B | EN | "11 Offline Games on Mobile" videosu | gönderildi |
+| 2026-11-07 | TikTok | @itsmonagaming | 100,1B | EN | Pop Epoch POV videosu | gönderildi |
+| 2026-11-07 | TikTok | @curuthd | 30,7B | EN | tek oyunculu mobil oyun listesi ve çevrimdışı macera önerileri | gönderildi |
+| 2026-11-07 | Instagram | @indiegamejoe | 89,4B | EN | 19. yüzyıl hayatta kalma korku oyunu (kare kare piksel animasyon) gönderisi | gönderildi |
+| 2026-11-07 | Instagram | @oyunradarcisi | 77,1B | TR | "Ücretsiz Korku Oyun Önerileri" videosu ve ücretsiz oyun paylaşımları | gönderildi |
+| 2026-11-07 | Instagram | @sumi.bubbles | 12,6B | EN | "6 point-and-click games..." (tuhaf piksel sanat) gönderisi | gönderildi |
+| 2026-11-07 | Instagram | @cozybyjoshy | 5,6B | EN | "what I've learned after 1 year of being a gaming content creator" gönderisi | gönderildi |
+| 2026-11-07 | Instagram | @ab.nowww | 15,8B | EN | "Underrated Games" reel ve 150GB vs 10GB karşılaştırması | gönderildi |
+| 2026-11-07 | Instagram | @gaminggrly | 121B | EN | "Underrated mobile games" videosu ve ücretsiz oyunlar öne çıkanı | gönderildi |
+| 2026-11-07 | Instagram | @kokopele | 12B | TR | "Mobil oyun severler için 5 oyun önerisi" videosu | gönderildi |
+| 2026-11-07 | Instagram | @oyuncu_muhendis | 6,9B | TR | "Rastgele Oyun Oynamak" serisi ve Geometry Dash bölümü | gönderildi |
+| 2026-11-07 | Instagram | @top.no.wifi.games | 8,0B | EN | "Best offline games" serisi | teslim belirsiz: mesaj sohbette duruyor ama altında "Bu profile herkes mesaj gönderemez" notu var; tekrar yazılmayacak |
+| 2026-11-07 | Instagram | @pavanlobby | 104B | EN | "Ye viral games miss mat karna" reel | teslim edilmedi: hesap yeni mesaj isteklerini kabul etmiyor; tekrar yazılmayacak |
+| 2026-11-07 | Instagram | @new_game_alert | 51,1B | EN | "no teasers" biyografisi ve reels | teslim edilmedi: hesap yeni mesaj isteklerini kabul etmiyor; tekrar yazılmayacak |
+| 2026-11-07 | TikTok | @cutieindierecs | 85,2B | EN | "Games like Stardew Valley that aren't farming sims" videosu | teslim edilmedi: iki denemede kırmızı ünlem, sayfa yenileyince mesaj yok; tekrar yazılmayacak |
